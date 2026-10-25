@@ -1,0 +1,30 @@
+=== c ≡ 0 (mod 3), r=1: is C(L^2) ≡ D(L/psi) ? ===
+  (a,b)≡(0,1): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(0,2): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(1,0): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(1,1): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(1,2): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(2,0): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(2,1): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  (a,b)≡(2,2): True   diff: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+=== r>=2: solve (D + M(psi-c)) g = h exactly, h = C(L^2) + M L ===
+  (a,b,c)=(2,-1,1) r=2 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(2,-1,1) r=2 m=2: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(2,-1,1) r=3 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=3
+  (a,b,c)=(2,-1,1) r=3 m=2: min v3(g_t)=0; v3(constraint)-r=1  [need >=0]; v3(constraint) raw=4
+  (a,b,c)=(3,-1,2) r=2 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(3,-1,2) r=2 m=2: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(3,-1,2) r=3 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=3
+  (a,b,c)=(3,-1,2) r=3 m=2: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=3
+  (a,b,c)=(-1,2,1) r=2 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(-1,2,1) r=2 m=2: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(-1,2,1) r=3 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=3
+  (a,b,c)=(-1,2,1) r=3 m=2: min v3(g_t)=0; v3(constraint)-r=1  [need >=0]; v3(constraint) raw=4
+  (a,b,c)=(5,2,1) r=2 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(5,2,1) r=2 m=2: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(5,2,1) r=3 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=3
+  (a,b,c)=(5,2,1) r=3 m=2: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=3
+  (a,b,c)=(1,1,2) r=2 m=1: min v3(g_t)=0; v3(constraint)-r=0  [need >=0]; v3(constraint) raw=2
+  (a,b,c)=(1,1,2) r=2 m=2: min v3(g_t)=0; v3(constraint)-r=3  [need >=0]; v3(constraint) raw=5
+  (a,b,c)=(1,1,2) r=3 m=1: min v3(g_t)=0; v3(constraint)-r=4  [need >=0]; v3(constraint) raw=7
+  (a,b,c)=(1,1,2) r=3 m=2: min v3(g_t)=0; v3(constraint)-r=11  [need >=0]; v3(constraint) raw=14

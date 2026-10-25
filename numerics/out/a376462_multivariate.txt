@@ -1,0 +1,5 @@
+diagonal check A(n,n,n,n,n;(n,n,n,n)) = a(n): True
+A(-n,...,-n;(n-1,n-1,n-1,n-1)) vs a(n-1): [(1, 1), (356, 5), (440154, 109), (785682400, 3317), (1674945763750, 121501)]
+A(-n,...,-n;(n,n,n,n)) vs a(n-1), a(n): [(29, 1, 5), (30909, 5, 109), (52032260, 109, 3317), (107515386125, 3317, 121501), (249664138115154, 121501, 4954505)]
+p=5: random multivariate A(pn;pd) vs A(n;d), 12 nontrivial tests, min slack vs p^3 = 0
+p=7: random multivariate A(pn;pd) vs A(n;d), 7 nontrivial tests, min slack vs p^3 = 0

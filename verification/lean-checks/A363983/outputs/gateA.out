@@ -1,0 +1,6 @@
+Gate A: target (with toNat) vs b-file: 19 terms (n = 0..18)
+positivity of the integer sum, n <= 800: True
+P-recurrence holds for 2 <= n <= 800
+ratios a(n)/a(n-1) for n=1..8: [2.0, 7.0, 9.143, 10.234, 10.879, 11.308, 11.616, 11.847]  min over n>=2: 7.0  at n = 2
+induction a(n) >= 7 a(n-1) from the recurrence works for all 3 <= n <= 800: True
+FAILURES: 0

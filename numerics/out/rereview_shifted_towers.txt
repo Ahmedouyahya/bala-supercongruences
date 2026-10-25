@@ -1,0 +1,44 @@
+Re-review (b): towers and kernel congruences (sections 1, 3, 5, 7)
+Lemma 1.2 (a),(b) for positive and negative m
+Lemma 3.4 (a)-(d), Lemma 3.5 congruence, (4.a) tower K^_r -> K_{r-1}
+Section 5: (i) Xi^' tower, (ii) rho' congruence, (iii) K', moment and harmonic kernels for Phi, (iv) K^'_r tower
+Section 7: towers G_1, G_2, R -> R^, R^ tower; T_2 analogues; Step-3 reductions
+
+== rereview_shifted_towers: 1096792 pass, 0 fail ==
+minimal slack per item (observed - claimed valuation):
+  (4.a) K^_r(k) = K_{r-1}([k/p]) mod p^r           min slack    0   (v=1, claimed 1) at p=5 m=1 r=1 k=1
+  L1.2 consequence (n-1 shift, p∤n) mod p^s        min slack    0   (v=1, claimed 1) at p=5 m=-2 s=1 n=2
+  L1.2 squares C(L-1,n)^2 mod p^s                  min slack    0   (v=1, claimed 1) at p=5 m=-2 s=1 n=1
+  L1.2(a) mod p^s                                  min slack    0   (v=1, claimed 1) at p=5 m=-2 s=1 n=1
+  L1.2(b) mod p^s                                  min slack    2   (v=3, claimed 1) at p=5 m=-2 s=1 n=5
+  L3.4(a) K_u(q) = K_{u-1}(q') mod p^u             min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=1
+  L3.4(a) scaled Psi_u(q,pj1) = Psi_{u-1}(q',j1) mod p^u min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=1 j=0
+  L3.4(a) unscaled Psi_u(q,j) = 0 mod p^u          min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=0 j=1
+  L3.4(b) Xi^_u(n,j) = Xi_(u-1)^(delta)([n/p],[j/p]) mod p^u min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 n=0 j=1
+  L3.4(b) Xi_u^(d) = Xi_(u-1)^(d') mod p^u         min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=0 q'=0 delta=1
+  L3.4(c) K_u^[t] = 0 mod p^u (t=1)                min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=0
+  L3.4(c) K_u^[t] = 0 mod p^u (t=2)                min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=1
+  L3.4(c) K_u^[t] = 0 mod p^u (t=3)                min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 q=1
+  L3.4(d) Ktilde_u^(d) = Ktilde_(u-1)^(d+1) mod p^u (d=1) min slack    2   (v=3, claimed 1) at p=5 m=1 u=1 q=1
+  L3.4(d) Ktilde_u^(d) = Ktilde_(u-1)^(d+1) mod p^u (d=2) min slack    4   (v=5, claimed 1) at p=5 m=1 u=1 q=1
+  L3.5 congruence mod p^{2u+2}                     min slack    0   (v=2, claimed 2) at p=5 m=1 u+1=1 n=1 j1=0
+  Step3 (-1)^{k'-1}C(-M-1,k'-1) -> (-1)^{kappa-1}C(-mp^{r-s}-1,kappa-1) mod p^{r-s+1} min slack    2   (v=4, claimed 2) at p=5 m=1 r=3 k'=5
+  Step3 C(M-1,k')^2 -> C(mp^{r-s}-1,kappa)^2 mod p^{r-s+1} min slack    2   (v=4, claimed 2) at p=5 m=1 r=3 k'=5
+  Step3 G_1(k') -> G_1^(r-s)(kappa) mod p^{r-s+1}  min slack    2   (v=4, claimed 2) at p=5 m=1 r=3 k'=5
+  Step4 G_2(j') -> G_2^(r-s)(iota) mod p^{r-s+1}   min slack    2   (v=4, claimed 2) at p=5 m=1 r=3 j'=5
+  sec5 scaled Phi_u(pk1,j) = Phi_{u-1}(k1,[j/p]) mod p^u min slack    0   (v=1, claimed 1) at p=5 m=2 u=1 k=5 j=1
+  sec5 unscaled Phi_u(k,j) = 0 mod p^u             min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 k=1 j=0
+  sec5(i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 k=1 j=0
+  sec5(ii) congruence mod p^{2u+2}                 min slack    0   (v=2, claimed 2) at p=5 m=1 u+1=1 k1=0 j=1
+  sec5(iii) K'_u(j) = K'_{u-1}([j/p]) mod p^u      min slack    0   (v=1, claimed 1) at p=7 m=5 u=1 j=1
+  sec5(iii) harmonic kernel tower for Phi mod p^u (d=1) min slack    2   (v=3, claimed 1) at p=5 m=1 u=1 j=1
+  sec5(iii) harmonic kernel tower for Phi mod p^u (d=2) min slack    4   (v=5, claimed 1) at p=5 m=1 u=1 j=1
+  sec5(iii) sum_k k^t Phi_u(k,j) = 0 mod p^u (t=1) min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 j=0
+  sec5(iii) sum_k k^t Phi_u(k,j) = 0 mod p^u (t=2) min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 j=1
+  sec5(iv) K^'_r(j) = K'_{r-1}([j/p]) mod p^r      min slack    0   (v=1, claimed 1) at p=5 m=1 r=1 j=1
+  sec7 G_1 tower mod p^u                           min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 x=1
+  sec7 G_2 tower mod p^u                           min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 y=1
+  sec7 R2^ tower mod p^w                           min slack    0   (v=1, claimed 1) at p=7 m=5 w=1 q=1
+  sec7 R2^(u)(iota) = R2^^(u-1)([iota/p]) mod p^u (p∤iota) min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 iota=1
+  sec7 R^ tower mod p^w                            min slack    0   (v=1, claimed 1) at p=5 m=1 w=1 q=1
+  sec7 R^(u)(kappa) = R^^(u-1)([kappa/p]) mod p^u (p∤kappa) min slack    0   (v=1, claimed 1) at p=5 m=1 u=1 kappa=1

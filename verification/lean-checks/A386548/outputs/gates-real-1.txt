@@ -1,0 +1,17 @@
+PASS   build exit 0: exit 0
+PASS   no sorry in build log
+PASS   no error in build log
+PASS   audit file exit 0: exit 0
+PASS   axioms of A386548_from_target: Classical.choice, Quot.sound, propext
+PASS   axioms of A386548.S_cong: Classical.choice, Quot.sound, propext
+PASS   axioms of A386548.a_eq_S: Classical.choice, Quot.sound, propext
+PASS   axioms of A386548.scaled_int: Classical.choice, Quot.sound, propext
+PASS   axioms of A386548.unscaled_nat: Classical.choice, Quot.sound, propext
+GREP modules: BalaCheck.A386548Main, BalaCheck.A386548Padic, BalaCheck.EpochJac, BalaCheck.A386548Series
+GREP hits: 0 | approved in GREP-ALLOW.txt: 0
+PASS   tamper grep: every hit reviewed and approved: 0 unapproved of 0
+PASS   lean4checker BalaCheck.A386548Main: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A386548Padic: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.EpochJac: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A386548Series: exit 0; Found 1 modules to check
+VERDICT: ACCEPT 

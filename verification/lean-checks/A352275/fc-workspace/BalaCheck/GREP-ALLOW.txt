@@ -1,0 +1,16 @@
+# Reviewed keyword hits (format: module:line:keyword  justification). Reviewed 2026-10-16.
+BalaCheck.EpochSol:58:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:61:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:67:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:73:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:82:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:113:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:433:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:437:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:500:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:508:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:536:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:592:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:631:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:2370:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check
+BalaCheck.EpochSol:2373:private  private declaration in Epoch's accepted A333096 proof; 'private' only restricts name visibility outside the file, it cannot change the meaning of other code or weaken any check

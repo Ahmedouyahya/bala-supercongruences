@@ -1,0 +1,132 @@
+p=5 k=1: v_p C(2n,n)=0  v_p C(3n,n)=1 (expect k)  v_p((3M-1)/(2M))=-1
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 3
+     C(2n,n)/C(2n',n') vs 4^phi -> 3
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 3
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=5 k=2: v_p C(2n,n)=0  v_p C(3n,n)=2 (expect k)  v_p((3M-1)/(2M))=-2
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 6
+     C(2n,n)/C(2n',n') vs 4^phi -> 6
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 1
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=5 k=3: v_p C(2n,n)=0  v_p C(3n,n)=3 (expect k)  v_p((3M-1)/(2M))=-3
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 9
+     C(2n,n)/C(2n',n') vs 4^phi -> 9
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 2
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=7 k=1: v_p C(2n,n)=0  v_p C(3n,n)=1 (expect k)  v_p((3M-1)/(2M))=-1
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 3
+     C(2n,n)/C(2n',n') vs 4^phi -> 0
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 5
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=7 k=2: v_p C(2n,n)=0  v_p C(3n,n)=2 (expect k)  v_p((3M-1)/(2M))=-2
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 6
+     C(2n,n)/C(2n',n') vs 4^phi -> 0
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 1
+       ... vs sgn*(27/4)^(phi/2) -> 1
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 1
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=7 k=3: v_p C(2n,n)=0  v_p C(3n,n)=3 (expect k)  v_p((3M-1)/(2M))=-3
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 9
+     C(2n,n)/C(2n',n') vs 4^phi -> 0
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 2
+       ... vs sgn*(27/4)^(phi/2) -> 2
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 2
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=11 k=1: v_p C(2n,n)=0  v_p C(3n,n)=1 (expect k)  v_p((3M-1)/(2M))=-1
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 3
+     C(2n,n)/C(2n',n') vs 4^phi -> 0
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 9
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=11 k=2: v_p C(2n,n)=0  v_p C(3n,n)=2 (expect k)  v_p((3M-1)/(2M))=-2
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 6
+     C(2n,n)/C(2n',n') vs 4^phi -> 0
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 1
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 1
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=11 k=3: v_p C(2n,n)=0  v_p C(3n,n)=3 (expect k)  v_p((3M-1)/(2M))=-3
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 9
+     C(2n,n)/C(2n',n') vs 4^phi -> 0
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 2
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 2
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=13 k=1: v_p C(2n,n)=0  v_p C(3n,n)=1 (expect k)  v_p((3M-1)/(2M))=-1
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 3
+     C(2n,n)/C(2n',n') vs 4^phi -> 3
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 0
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 0
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 11
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 0
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 0
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=13 k=2: v_p C(2n,n)=0  v_p C(3n,n)=2 (expect k)  v_p((3M-1)/(2M))=-2
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 6
+     C(2n,n)/C(2n',n') vs 4^phi -> 6
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 1
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 1
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 1
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 1
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1
+p=13 k=3: v_p C(2n,n)=0  v_p C(3n,n)=3 (expect k)  v_p((3M-1)/(2M))=-3
+     C(2n,n)/C(2n',n') vs sgn*4^phi -> 9
+     C(2n,n)/C(2n',n') vs 4^phi -> 9
+     [C(3n,n)/p^k]/[C(3n',n')/p^(k-1)] vs (27/4)^(phi/2) -> 2
+       ... vs -(27/4)^(phi/2) -> 0
+       ... vs sgn*(27/4)^(phi/2) -> 2
+       ... vs (27/4)^(phi/2) * 1/(something)?? just r3 mod p -> 1
+     full ratio a(M)/a(M') - 1 -> -1
+     r2*r3 vs sgn*(27)^(phi/2)*... 4^(phi) *(27/4)^(phi/2) = 27^(phi/2) 4^(phi/2) -> 2
+     r2*r3 vs 27^(phi/2)*2^phi, no sign -> 2
+     (3M-1)/(2M) / (3M'-1)/(2M') - 1 valuation: -1   rf*(-1)?: -1

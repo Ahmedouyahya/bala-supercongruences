@@ -1,0 +1,323 @@
+==============================================================================
+(p, r, m) = (11, 2, 1); N = 121, M = 11
+==============================================================================
+  [OK ] a(N-1) = Sigma_S + Sigma_K + Sigma_J + Sigma_B (exact)
+  [OK ] Theorem: a(N-1) - a(M-1): v_p = 6, claimed >= 6, slack 0
+  [OK ] (S): Sigma_S - a(M-1): v_p = 6, claimed >= 6, slack 0
+  [OK ] (K): Sigma_K: v_p = 6, claimed >= 6, slack 0
+  [OK ] (J): Sigma_J: v_p = 6, claimed >= 6, slack 0
+  [OK ] (B): Sigma_B: v_p = 6, claimed >= 6, slack 0
+--- Section 4 (class K) ---
+  [OK ] (4.1): Sigma_K - [N*sum'(1/k)K^_r - N^2*sum'(1/k^2)K^_r]: v_p = 10, claimed >= 6, slack 4
+  [OK ] (4.a): sum'_{k<N} (1/k^2) K^_r(k): v_p = 2, claimed >= 2, slack 0
+  [OK ] (4.a) tower: K^_r(k) = K_{r-1}([k/p]) mod p^r for all p-free k < N
+  [OK ] A_0 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] A_1 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  Lemma 3.5 (u=r-1): min v_p(Psi_r(k,pj1) - Psi_(r-1)(n',j1)(1 - N rho)) = 4, claimed >= 4
+  [OK ] Lemma 3.5 congruence at u = r-1
+  [OK ] (4.2): sum'(1/k)K^_r - (A_{r-1} - N X^): v_p = 5, claimed >= 4, slack 1
+  [OK ] (4.b.1) X^: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^ = X^_1 - X^_2 + 2 X^_3 (exact)
+  [OK ] X^_1: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^_2 (claimed mod p^(r+1)): v_p = 7, claimed >= 3, slack 4
+  [OK ] X^_3: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^_3 - X^_2 - X^_1 (= the t>=1 tail of the series): v_p = 3, claimed >= 2, slack 1
+  step s=0: min_n v_p(K_(s+1)(n) - first-order model) = 2, claimed >= 2
+  [OK ] step s=0: model congruence mod p^(2s+2)
+  [OK ] step s=0: X_s = X_s1 - X_s2 + 2X_s3 (exact)
+  [OK ] step s=0: X_(s,1) (claimed mod p^(2s'+1+s)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X_(s,2) (claimed mod p^(2s'+2+s)=4): v_p = inf, claimed >= 4, slack inf
+  [OK ] step s=0: X_(s,3) (claimed mod p^(2r-s-1)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X_(s,3)-X_(s,2)-X_(s,1) (t>=1 tail; claimed mod p^(1+2s'+s)=3): v_p = inf, claimed >= 3, slack inf
+  [OK ] step s=0: Y_s (claimed mod p^(2s'+s+1)=3): v_p = 4, claimed >= 3, slack 1
+  [OK ] step s=0: A_(s+1) - (A_s - L X_s + L Y_s) (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  step s=0: Lemma 2.7(Y) cells at t=1, s'=1: min v_p = 3, claimed >= 3
+  [OK ] step s=0: Lemma 2.7(Y) cell hypothesis t=1
+  [OK ] Section 4 recomputed Sigma_K agrees with the class split
+--- Section 5 (class J) ---
+  [OK ] S~(N;pk1,j) = (N/(N+j)) Phi_r(pk1,j) exactly
+  [OK ] (iv): Sigma_J - [N sum'(1/j)K^'_r - N^2 sum'(1/j^2)K^'_r]: v_p = 10, claimed >= 6, slack 4
+  [OK ] sum'_{j<N} (1/j^2) K^'_r(j): v_p = 2, claimed >= 2, slack 0
+  [OK ] tower: K^'_r(j) = K'_{r-1}([j/p]) mod p^r for p-free j
+  [OK ] (ii) exact identity Phi_(u+1)(pk1,j) = Phi_u(k1,[j/p]) P^2 Pbar P^2 Pbar at u=0
+  (ii) u=0: first-order model mod p^(2u+2)=2: with the NOTE's rho' (H'_j - H'_pk1 + 2H'_(j+pk1)) min v_p = 1; with rho' = H'_pk1 - H'_j + 2H'_(j+pk1) min v_p = 2
+  [OK ] (ii) u=0: corrected rho' gives the congruence mod p^(2u+2)
+  NOTE: the printed rho'_u(j,k1) is WRONG at u=0 (sign of H'_j and H'_pk1 swapped)
+  [OK ] (ii) exact identity Phi_(u+1)(pk1,j) = Phi_u(k1,[j/p]) P^2 Pbar P^2 Pbar at u=1
+  (ii) u=1: first-order model mod p^(2u+2)=4: with the NOTE's rho' (H'_j - H'_pk1 + 2H'_(j+pk1)) min v_p = 2; with rho' = H'_pk1 - H'_j + 2H'_(j+pk1) min v_p = 4
+  [OK ] (ii) u=1: corrected rho' gives the congruence mod p^(2u+2)
+  NOTE: the printed rho'_u(j,k1) is WRONG at u=1 (sign of H'_j and H'_pk1 swapped)
+  [OK ] (i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u at u=1
+  [OK ] (i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u at u=2
+  (iii) u=1: moment kernels sum_k k^t Phi_u(k,j), t=1..3: min v_p = 1, claimed >= 1
+  [OK ] (iii) moment kernels for Phi at u=1
+  [OK ] (iii) harmonically weighted tower for Phi (d=1) at u=1
+  (iii) u=2: moment kernels sum_k k^t Phi_u(k,j), t=1..3: min v_p = 2, claimed >= 2
+  [OK ] (iii) moment kernels for Phi at u=2
+  [OK ] (iii) harmonically weighted tower for Phi (d=1) at u=2
+  [OK ] A'_0 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] A'_1 (claimed mod p^(2r)): v_p = 5, claimed >= 4, slack 1
+  [OK ] (4.2)': sum'(1/j)K^'_r - (A'_{r-1} - N X^') with corrected rho': v_p = 5, claimed >= 4, slack 1
+  (for comparison, with the note's rho': v_p = 4, needs >= 4)
+  [OK ] X^' (corrected rho'): v_p = 2, claimed >= 2, slack 0
+  [OK ] X^' = -X^'_1 + X^'_2 + 2X^'_3 (exact, corrected signs)
+  [OK ] X^'_1: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^'_2 (claimed mod p^(r+1)): v_p = 7, claimed >= 3, slack 4
+  [OK ] X^'_3: v_p = 2, claimed >= 2, slack 0
+  [OK ] step s=0: X'_(s,1): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X'_(s,2): v_p = inf, claimed >= 4, slack inf
+  [OK ] step s=0: X'_(s,3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: Y'_s: v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: A'_(s+1) - (A'_s - L X'_s + L Y'_s) (corrected rho'): v_p = 4, claimed >= 4, slack 0
+  [OK ] Section 5 recomputed Sigma_J agrees with the class split
+--- Section 6 (class B) ---
+  [OK ] Sigma_B - N^2 sum' Xi^_r(k,j)/(kj): v_p = 7, claimed >= 6, slack 1
+  [OK ] sum' Xi^_r(k,j)/(kj): v_p = 2, claimed >= 2, slack 0
+  Lemma 2.7(B) cells at t=1: min v_p = 1, claimed >= 1
+  [OK ] Lemma 2.7(B) cell hypothesis t=1
+  Lemma 2.7(B) cells at t=2: min v_p = 2, claimed >= 2
+  [OK ] Lemma 2.7(B) cell hypothesis t=2
+  [OK ] Section 6 recomputed Sigma_B agrees with the class split
+--- Section 7 (class S) ---
+  [OK ] S~(N;pk',pj') = S~(M;k',j') E exactly
+  [OK ] Step 1: (Sigma_S - a(M-1)) + N T_S: v_p = 6, claimed >= 6, slack 0
+  Step 1 termwise: min v_p(S~(M;k',j')(E - 1 + N rho_S)) = 6, claimed >= 6
+  [OK ] Step 1 termwise second-order bound
+  Step 2: min over k',j' of v_p(Z) - (1+b) = 0, claimed >= 0
+  [OK ] Step 2: v(Z) >= 1 + b
+  [OK ] Step 2: T_S - 3T_1 - T_2: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_1: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_2: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_1 = sum of strata (exact)
+  [OK ] T_2 = sum of strata (exact)
+  [OK ] Step 3: T_1 stratum sigma=1: v_p = 4, claimed >= 4, slack 0
+  [OK ] Step 4: T_2 stratum sigma=1: v_p = 4, claimed >= 4, slack 0
+  [OK ]   sigma=1: T_1 stratum - reduced form m p^(r-sigma) sum' (1/kappa) H'_(p^sigma kappa) R^(r-sigma): v_p = inf, claimed >= 4, slack inf
+  [OK ]   sigma=1: T_2 stratum - reduced form (R_2): v_p = inf, claimed >= 4, slack inf
+  [OK ]   sigma=1: a_kappa = p^(-2sigma)(1/kappa)H'_(p^sigma kappa) integral
+  [OK ]   sigma=1: sum' a_kappa R^(r-sigma)(kappa) (Lemma 3.1 output, claimed mod p^(r-sigma)=1): v_p = 1, claimed >= 1, slack 0
+  [OK ]   sigma=1: sum' a_iota R_2^(r-sigma)(iota) (claimed mod p^(r-sigma)=1): v_p = 1, claimed >= 1, slack 0
+  sigma=1: Lemma 2.6 block sums (t=1, s=sigma): min v_p = 3, claimed >= 3
+  [OK ]   sigma=1: Lemma 2.6 strong form at t=1
+  [OK ]   sigma=1: R^(u)(kappa) = R^^(u-1)([kappa/p]) mod p^u (u=1) on units
+  [OK ] Section 7 recomputed Sigma_S agrees with the class split
+
+[timing] case (11, 2, 1): 3.0 s
+
+==============================================================================
+(p, r, m) = (13, 2, 1); N = 169, M = 13
+==============================================================================
+  [OK ] a(N-1) = Sigma_S + Sigma_K + Sigma_J + Sigma_B (exact)
+  [OK ] Theorem: a(N-1) - a(M-1): v_p = 6, claimed >= 6, slack 0
+  [OK ] (S): Sigma_S - a(M-1): v_p = 6, claimed >= 6, slack 0
+  [OK ] (K): Sigma_K: v_p = 6, claimed >= 6, slack 0
+  [OK ] (J): Sigma_J: v_p = 6, claimed >= 6, slack 0
+  [OK ] (B): Sigma_B: v_p = 6, claimed >= 6, slack 0
+--- Section 4 (class K) ---
+  [OK ] (4.1): Sigma_K - [N*sum'(1/k)K^_r - N^2*sum'(1/k^2)K^_r]: v_p = 10, claimed >= 6, slack 4
+  [OK ] (4.a): sum'_{k<N} (1/k^2) K^_r(k): v_p = 2, claimed >= 2, slack 0
+  [OK ] (4.a) tower: K^_r(k) = K_{r-1}([k/p]) mod p^r for all p-free k < N
+  [OK ] A_0 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] A_1 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  Lemma 3.5 (u=r-1): min v_p(Psi_r(k,pj1) - Psi_(r-1)(n',j1)(1 - N rho)) = 4, claimed >= 4
+  [OK ] Lemma 3.5 congruence at u = r-1
+  [OK ] (4.2): sum'(1/k)K^_r - (A_{r-1} - N X^): v_p = 5, claimed >= 4, slack 1
+  [OK ] (4.b.1) X^: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^ = X^_1 - X^_2 + 2 X^_3 (exact)
+  [OK ] X^_1: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^_2 (claimed mod p^(r+1)): v_p = 7, claimed >= 3, slack 4
+  [OK ] X^_3: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^_3 - X^_2 - X^_1 (= the t>=1 tail of the series): v_p = 3, claimed >= 2, slack 1
+  step s=0: min_n v_p(K_(s+1)(n) - first-order model) = 2, claimed >= 2
+  [OK ] step s=0: model congruence mod p^(2s+2)
+  [OK ] step s=0: X_s = X_s1 - X_s2 + 2X_s3 (exact)
+  [OK ] step s=0: X_(s,1) (claimed mod p^(2s'+1+s)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X_(s,2) (claimed mod p^(2s'+2+s)=4): v_p = inf, claimed >= 4, slack inf
+  [OK ] step s=0: X_(s,3) (claimed mod p^(2r-s-1)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X_(s,3)-X_(s,2)-X_(s,1) (t>=1 tail; claimed mod p^(1+2s'+s)=3): v_p = inf, claimed >= 3, slack inf
+  [OK ] step s=0: Y_s (claimed mod p^(2s'+s+1)=3): v_p = 4, claimed >= 3, slack 1
+  [OK ] step s=0: A_(s+1) - (A_s - L X_s + L Y_s) (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  step s=0: Lemma 2.7(Y) cells at t=1, s'=1: min v_p = 3, claimed >= 3
+  [OK ] step s=0: Lemma 2.7(Y) cell hypothesis t=1
+  [OK ] Section 4 recomputed Sigma_K agrees with the class split
+--- Section 5 (class J) ---
+  [OK ] S~(N;pk1,j) = (N/(N+j)) Phi_r(pk1,j) exactly
+  [OK ] (iv): Sigma_J - [N sum'(1/j)K^'_r - N^2 sum'(1/j^2)K^'_r]: v_p = 10, claimed >= 6, slack 4
+  [OK ] sum'_{j<N} (1/j^2) K^'_r(j): v_p = 2, claimed >= 2, slack 0
+  [OK ] tower: K^'_r(j) = K'_{r-1}([j/p]) mod p^r for p-free j
+  [OK ] (ii) exact identity Phi_(u+1)(pk1,j) = Phi_u(k1,[j/p]) P^2 Pbar P^2 Pbar at u=0
+  (ii) u=0: first-order model mod p^(2u+2)=2: with the NOTE's rho' (H'_j - H'_pk1 + 2H'_(j+pk1)) min v_p = 1; with rho' = H'_pk1 - H'_j + 2H'_(j+pk1) min v_p = 2
+  [OK ] (ii) u=0: corrected rho' gives the congruence mod p^(2u+2)
+  NOTE: the printed rho'_u(j,k1) is WRONG at u=0 (sign of H'_j and H'_pk1 swapped)
+  [OK ] (ii) exact identity Phi_(u+1)(pk1,j) = Phi_u(k1,[j/p]) P^2 Pbar P^2 Pbar at u=1
+  (ii) u=1: first-order model mod p^(2u+2)=4: with the NOTE's rho' (H'_j - H'_pk1 + 2H'_(j+pk1)) min v_p = 2; with rho' = H'_pk1 - H'_j + 2H'_(j+pk1) min v_p = 4
+  [OK ] (ii) u=1: corrected rho' gives the congruence mod p^(2u+2)
+  NOTE: the printed rho'_u(j,k1) is WRONG at u=1 (sign of H'_j and H'_pk1 swapped)
+  [OK ] (i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u at u=1
+  [OK ] (i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u at u=2
+  (iii) u=1: moment kernels sum_k k^t Phi_u(k,j), t=1..3: min v_p = 1, claimed >= 1
+  [OK ] (iii) moment kernels for Phi at u=1
+  [OK ] (iii) harmonically weighted tower for Phi (d=1) at u=1
+  (iii) u=2: moment kernels sum_k k^t Phi_u(k,j), t=1..3: min v_p = 2, claimed >= 2
+  [OK ] (iii) moment kernels for Phi at u=2
+  [OK ] (iii) harmonically weighted tower for Phi (d=1) at u=2
+  [OK ] A'_0 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] A'_1 (claimed mod p^(2r)): v_p = 6, claimed >= 4, slack 2
+  [OK ] (4.2)': sum'(1/j)K^'_r - (A'_{r-1} - N X^') with corrected rho': v_p = 5, claimed >= 4, slack 1
+  (for comparison, with the note's rho': v_p = 4, needs >= 4)
+  [OK ] X^' (corrected rho'): v_p = 2, claimed >= 2, slack 0
+  [OK ] X^' = -X^'_1 + X^'_2 + 2X^'_3 (exact, corrected signs)
+  [OK ] X^'_1: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^'_2 (claimed mod p^(r+1)): v_p = 7, claimed >= 3, slack 4
+  [OK ] X^'_3: v_p = 2, claimed >= 2, slack 0
+  [OK ] step s=0: X'_(s,1): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X'_(s,2): v_p = inf, claimed >= 4, slack inf
+  [OK ] step s=0: X'_(s,3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: Y'_s: v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: A'_(s+1) - (A'_s - L X'_s + L Y'_s) (corrected rho'): v_p = 4, claimed >= 4, slack 0
+  [OK ] Section 5 recomputed Sigma_J agrees with the class split
+--- Section 6 (class B) ---
+  [OK ] Sigma_B - N^2 sum' Xi^_r(k,j)/(kj): v_p = 7, claimed >= 6, slack 1
+  [OK ] sum' Xi^_r(k,j)/(kj): v_p = 2, claimed >= 2, slack 0
+  Lemma 2.7(B) cells at t=1: min v_p = 1, claimed >= 1
+  [OK ] Lemma 2.7(B) cell hypothesis t=1
+  Lemma 2.7(B) cells at t=2: min v_p = 2, claimed >= 2
+  [OK ] Lemma 2.7(B) cell hypothesis t=2
+  [OK ] Section 6 recomputed Sigma_B agrees with the class split
+--- Section 7 (class S) ---
+  [OK ] S~(N;pk',pj') = S~(M;k',j') E exactly
+  [OK ] Step 1: (Sigma_S - a(M-1)) + N T_S: v_p = 6, claimed >= 6, slack 0
+  Step 1 termwise: min v_p(S~(M;k',j')(E - 1 + N rho_S)) = 6, claimed >= 6
+  [OK ] Step 1 termwise second-order bound
+  Step 2: min over k',j' of v_p(Z) - (1+b) = 0, claimed >= 0
+  [OK ] Step 2: v(Z) >= 1 + b
+  [OK ] Step 2: T_S - 3T_1 - T_2: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_1: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_2: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_1 = sum of strata (exact)
+  [OK ] T_2 = sum of strata (exact)
+  [OK ] Step 3: T_1 stratum sigma=1: v_p = 4, claimed >= 4, slack 0
+  [OK ] Step 4: T_2 stratum sigma=1: v_p = 4, claimed >= 4, slack 0
+  [OK ]   sigma=1: T_1 stratum - reduced form m p^(r-sigma) sum' (1/kappa) H'_(p^sigma kappa) R^(r-sigma): v_p = inf, claimed >= 4, slack inf
+  [OK ]   sigma=1: T_2 stratum - reduced form (R_2): v_p = inf, claimed >= 4, slack inf
+  [OK ]   sigma=1: a_kappa = p^(-2sigma)(1/kappa)H'_(p^sigma kappa) integral
+  [OK ]   sigma=1: sum' a_kappa R^(r-sigma)(kappa) (Lemma 3.1 output, claimed mod p^(r-sigma)=1): v_p = 1, claimed >= 1, slack 0
+  [OK ]   sigma=1: sum' a_iota R_2^(r-sigma)(iota) (claimed mod p^(r-sigma)=1): v_p = 1, claimed >= 1, slack 0
+  sigma=1: Lemma 2.6 block sums (t=1, s=sigma): min v_p = 3, claimed >= 3
+  [OK ]   sigma=1: Lemma 2.6 strong form at t=1
+  [OK ]   sigma=1: R^(u)(kappa) = R^^(u-1)([kappa/p]) mod p^u (u=1) on units
+  [OK ] Section 7 recomputed Sigma_S agrees with the class split
+
+[timing] case (13, 2, 1): 8.9 s
+
+==============================================================================
+(p, r, m) = (7, 2, 2); N = 98, M = 14
+==============================================================================
+  [OK ] a(N-1) = Sigma_S + Sigma_K + Sigma_J + Sigma_B (exact)
+  [OK ] Theorem: a(N-1) - a(M-1): v_p = 8, claimed >= 6, slack 2
+  [OK ] (S): Sigma_S - a(M-1): v_p = 6, claimed >= 6, slack 0
+  [OK ] (K): Sigma_K: v_p = 6, claimed >= 6, slack 0
+  [OK ] (J): Sigma_J: v_p = 6, claimed >= 6, slack 0
+  [OK ] (B): Sigma_B: v_p = 6, claimed >= 6, slack 0
+--- Section 4 (class K) ---
+  [OK ] (4.1): Sigma_K - [N*sum'(1/k)K^_r - N^2*sum'(1/k^2)K^_r]: v_p = 10, claimed >= 6, slack 4
+  [OK ] (4.a): sum'_{k<N} (1/k^2) K^_r(k): v_p = 2, claimed >= 2, slack 0
+  [OK ] (4.a) tower: K^_r(k) = K_{r-1}([k/p]) mod p^r for all p-free k < N
+  [OK ] A_0 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] A_1 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  Lemma 3.5 (u=r-1): min v_p(Psi_r(k,pj1) - Psi_(r-1)(n',j1)(1 - N rho)) = 4, claimed >= 4
+  [OK ] Lemma 3.5 congruence at u = r-1
+  [OK ] (4.2): sum'(1/k)K^_r - (A_{r-1} - N X^): v_p = 6, claimed >= 4, slack 2
+  [OK ] (4.b.1) X^: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^ = X^_1 - X^_2 + 2 X^_3 (exact)
+  [OK ] X^_1: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^_2 (claimed mod p^(r+1)): v_p = 7, claimed >= 3, slack 4
+  [OK ] X^_3: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^_3 - X^_2 - X^_1 (= the t>=1 tail of the series): v_p = 3, claimed >= 2, slack 1
+  step s=0: min_n v_p(K_(s+1)(n) - first-order model) = 2, claimed >= 2
+  [OK ] step s=0: model congruence mod p^(2s+2)
+  [OK ] step s=0: X_s = X_s1 - X_s2 + 2X_s3 (exact)
+  [OK ] step s=0: X_(s,1) (claimed mod p^(2s'+1+s)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X_(s,2) (claimed mod p^(2s'+2+s)=4): v_p = 6, claimed >= 4, slack 2
+  [OK ] step s=0: X_(s,3) (claimed mod p^(2r-s-1)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X_(s,3)-X_(s,2)-X_(s,1) (t>=1 tail; claimed mod p^(1+2s'+s)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: Y_s (claimed mod p^(2s'+s+1)=3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: A_(s+1) - (A_s - L X_s + L Y_s) (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  step s=0: Lemma 2.7(Y) cells at t=1, s'=1: min v_p = 3, claimed >= 3
+  [OK ] step s=0: Lemma 2.7(Y) cell hypothesis t=1
+  [OK ] Section 4 recomputed Sigma_K agrees with the class split
+--- Section 5 (class J) ---
+  [OK ] S~(N;pk1,j) = (N/(N+j)) Phi_r(pk1,j) exactly
+  [OK ] (iv): Sigma_J - [N sum'(1/j)K^'_r - N^2 sum'(1/j^2)K^'_r]: v_p = 10, claimed >= 6, slack 4
+  [OK ] sum'_{j<N} (1/j^2) K^'_r(j): v_p = 2, claimed >= 2, slack 0
+  [OK ] tower: K^'_r(j) = K'_{r-1}([j/p]) mod p^r for p-free j
+  [OK ] (ii) exact identity Phi_(u+1)(pk1,j) = Phi_u(k1,[j/p]) P^2 Pbar P^2 Pbar at u=0
+  (ii) u=0: first-order model mod p^(2u+2)=2: with the NOTE's rho' (H'_j - H'_pk1 + 2H'_(j+pk1)) min v_p = 1; with rho' = H'_pk1 - H'_j + 2H'_(j+pk1) min v_p = 2
+  [OK ] (ii) u=0: corrected rho' gives the congruence mod p^(2u+2)
+  NOTE: the printed rho'_u(j,k1) is WRONG at u=0 (sign of H'_j and H'_pk1 swapped)
+  [OK ] (ii) exact identity Phi_(u+1)(pk1,j) = Phi_u(k1,[j/p]) P^2 Pbar P^2 Pbar at u=1
+  (ii) u=1: first-order model mod p^(2u+2)=4: with the NOTE's rho' (H'_j - H'_pk1 + 2H'_(j+pk1)) min v_p = 2; with rho' = H'_pk1 - H'_j + 2H'_(j+pk1) min v_p = 4
+  [OK ] (ii) u=1: corrected rho' gives the congruence mod p^(2u+2)
+  NOTE: the printed rho'_u(j,k1) is WRONG at u=1 (sign of H'_j and H'_pk1 swapped)
+  [OK ] (i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u at u=1
+  [OK ] (i) Xi^'_u(k,j) = Xi_(u-1)^(delta)([k/p],[j/p]) mod p^u at u=2
+  (iii) u=1: moment kernels sum_k k^t Phi_u(k,j), t=1..3: min v_p = 1, claimed >= 1
+  [OK ] (iii) moment kernels for Phi at u=1
+  [OK ] (iii) harmonically weighted tower for Phi (d=1) at u=1
+  (iii) u=2: moment kernels sum_k k^t Phi_u(k,j), t=1..3: min v_p = 2, claimed >= 2
+  [OK ] (iii) moment kernels for Phi at u=2
+  [OK ] (iii) harmonically weighted tower for Phi (d=1) at u=2
+  [OK ] A'_0 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] A'_1 (claimed mod p^(2r)): v_p = 4, claimed >= 4, slack 0
+  [OK ] (4.2)': sum'(1/j)K^'_r - (A'_{r-1} - N X^') with corrected rho': v_p = 5, claimed >= 4, slack 1
+  (for comparison, with the note's rho': v_p = 4, needs >= 4)
+  [OK ] X^' (corrected rho'): v_p = 2, claimed >= 2, slack 0
+  [OK ] X^' = -X^'_1 + X^'_2 + 2X^'_3 (exact, corrected signs)
+  [OK ] X^'_1: v_p = 2, claimed >= 2, slack 0
+  [OK ] X^'_2 (claimed mod p^(r+1)): v_p = 8, claimed >= 3, slack 5
+  [OK ] X^'_3: v_p = 2, claimed >= 2, slack 0
+  [OK ] step s=0: X'_(s,1): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: X'_(s,2): v_p = 6, claimed >= 4, slack 2
+  [OK ] step s=0: X'_(s,3): v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: Y'_s: v_p = 3, claimed >= 3, slack 0
+  [OK ] step s=0: A'_(s+1) - (A'_s - L X'_s + L Y'_s) (corrected rho'): v_p = 4, claimed >= 4, slack 0
+  [OK ] Section 5 recomputed Sigma_J agrees with the class split
+--- Section 6 (class B) ---
+  [OK ] Sigma_B - N^2 sum' Xi^_r(k,j)/(kj): v_p = 7, claimed >= 6, slack 1
+  [OK ] sum' Xi^_r(k,j)/(kj): v_p = 2, claimed >= 2, slack 0
+  Lemma 2.7(B) cells at t=1: min v_p = 1, claimed >= 1
+  [OK ] Lemma 2.7(B) cell hypothesis t=1
+  Lemma 2.7(B) cells at t=2: min v_p = 2, claimed >= 2
+  [OK ] Lemma 2.7(B) cell hypothesis t=2
+  [OK ] Section 6 recomputed Sigma_B agrees with the class split
+--- Section 7 (class S) ---
+  [OK ] S~(N;pk',pj') = S~(M;k',j') E exactly
+  [OK ] Step 1: (Sigma_S - a(M-1)) + N T_S: v_p = 6, claimed >= 6, slack 0
+  Step 1 termwise: min v_p(S~(M;k',j')(E - 1 + N rho_S)) = 6, claimed >= 6
+  [OK ] Step 1 termwise second-order bound
+  Step 2: min over k',j' of v_p(Z) - (1+b) = 0, claimed >= 0
+  [OK ] Step 2: v(Z) >= 1 + b
+  [OK ] Step 2: T_S - 3T_1 - T_2: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_1: v_p = 4, claimed >= 4, slack 0
+  [OK ] T_2: v_p = 5, claimed >= 4, slack 1
+  [OK ] T_1 = sum of strata (exact)
+  [OK ] T_2 = sum of strata (exact)
+  [OK ] Step 3: T_1 stratum sigma=1: v_p = 4, claimed >= 4, slack 0
+  [OK ] Step 4: T_2 stratum sigma=1: v_p = 4, claimed >= 4, slack 0
+  [OK ]   sigma=1: T_1 stratum - reduced form m p^(r-sigma) sum' (1/kappa) H'_(p^sigma kappa) R^(r-sigma): v_p = inf, claimed >= 4, slack inf
+  [OK ]   sigma=1: T_2 stratum - reduced form (R_2): v_p = inf, claimed >= 4, slack inf
+  [OK ]   sigma=1: a_kappa = p^(-2sigma)(1/kappa)H'_(p^sigma kappa) integral
+  [OK ]   sigma=1: sum' a_kappa R^(r-sigma)(kappa) (Lemma 3.1 output, claimed mod p^(r-sigma)=1): v_p = 1, claimed >= 1, slack 0
+  [OK ]   sigma=1: sum' a_iota R_2^(r-sigma)(iota) (claimed mod p^(r-sigma)=1): v_p = 1, claimed >= 1, slack 0
+  sigma=1: Lemma 2.6 block sums (t=1, s=sigma): min v_p = 3, claimed >= 3
+  [OK ]   sigma=1: Lemma 2.6 strong form at t=1
+  [OK ]   sigma=1: R^(u)(kappa) = R^^(u-1)([kappa/p]) mod p^u (u=1) on units
+  [OK ] Step 3: T_1 stratum sigma=2: v_p = 4, claimed >= 4, slack 0
+  [OK ] Step 4: T_2 stratum sigma=2: v_p = 4, claimed >= 4, slack 0
+  [OK ] Section 7 recomputed Sigma_S agrees with the class split
+
+[timing] case (7, 2, 2): 2.1 s
+
+==============================================================================
+No structural failures at the deeper cases.
+lines containing FAIL: 0

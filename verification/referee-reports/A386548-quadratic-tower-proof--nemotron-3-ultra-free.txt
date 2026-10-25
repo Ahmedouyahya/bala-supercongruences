@@ -1,0 +1,33 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/A386548-quadratic-tower-proof.md only (background notes not supplied). Prompt: notes/referee-reports/PROMPT.txt plus a 1500-word limit. AI output kept as evidence, not authority; see DISPOSITIONS.md for the disposition of each item.
+===========================================================================
+VERDICT: CORRECT WITH FIXES
+
+## Section 1: Statement and reformulation
+no issue found
+
+## Section 2: Input — Jacobsthal–Kazandzidis, quotient form
+**GAP** — Lemma (T2) line 25: claims `C(N+k−1,k) = (N/k) C(N+k−1, k−1)` to justify `v_p(C(N+k−1,k)) ≥ v_p(N)` for `p ∤ k`. This identity is false; the correct identity is `C(N+k−1,k) = ((N+k−1)/k) C(N+k−2, k−1)`. The conclusion `v_p(C(N+k−1,k)) ≥ v_p(N)` is true (by Kummer: adding `k` to `N−1` produces at least `v_p(N)` carries), but the written justification is invalid.
+
+## Section 3: Proof
+**GAP** — Line 33 (Unscaled terms): invokes (T2) to bound `v_p(C(N+k−1,k))`. Since (T2)'s justification is wrong, this step inherits the gap, though the numerical bound is correct.
+
+**GAP** — Line 43 (Case `s < r−1`): claims `v_p(T_M) ≥ 2(r−1−s)` “by the general forms of (T1),(T2)”. The general form of (T2) does not apply to `C(D−1,k')` (which is not of the form `C(N+k−1,k)`). The bound is true (Kummer on `C(M,j')` and `C(D−1,k')` each gives `≥ r−1−s`), but the cited justification is incorrect/missing.
+
+**UNCLEAR** — Line 41–43 (Case `s < r−1`): defines `s = min(v_p(j'), v_p(k'))` and argues `v_p(j') = v_p(k') = s` because otherwise the sum `2j'+3k'=M` would have valuation `s < r−1`. This is correct *if* `j',k' > 0`. The text says “Boundary pairs `j' = 0` or `k' = 0` have `s = v_p(M)` and fall into the next case.” This is correct (if `j'=0` then `k'=M/3` so `v_p(k')=v_p(M)=r−1`), but the handling of boundaries in the valuation bookkeeping for `Q_1,Q_2` (line 39) should be explicitly checked: for `j'=0`, `Q_1 = C(pM,0)/C(M,0)=1`; for `k'=0`, `Q_2 = C(pD,0)/C(D,0)=1`. The proof says they “give Q = 1 trivially”, which is fine.
+
+## Section 4: What was checked by computer
+no issue found
+
+## Section 5: References
+no issue found
+
+---
+
+### Three steps I am least sure about
+
+1. **The (T2) gap (Section 2, line 25; used in Section 3, line 33)** — The proof of the critical lower bound `v_p(C(N+k−1,k)) ≥ v_p(N)` for `p ∤ k` is given incorrectly. While the bound is true (Kummer's theorem on `N−1 + k`), the written argument is wrong and no alternative justification appears in the text. If this bound failed for some `(N,k)`, the unscaled terms would not vanish mod `p^{2r}` and the proof would collapse.
+
+2. **The `v_p(T_M) ≥ 2(r−1−s)` claim in Case `s < r−1` (line 43)** — The proof cites “general forms of (T1),(T2)” but (T2) does not cover `C(D−1,k')`. The bound holds by a separate Kummer analysis (carries when adding `j'` to `M−j'` and `k'` to `D−1−k' = M−1`), but this analysis is not in the proof. If `v_p(T_M)` were actually smaller, the estimate `v_p(T_N−T_M) ≥ 3r` could fail.
+
+3. **The redefinition `r := v_p(N)` throughout the proof (line 29)** — The theorem statement uses `r` as the exponent in `n p^r`, but the proof silently replaces it with `R = v_p(N) = r + v_p(n)`. The text says “the conclusion modulo `p^{2R}` implies the one modulo `p^{2r}`”. This is logically correct (`2R ≥ 2r`), but it means the induction (if viewed as an induction on `r`) is actually on `v_p(N)`, not on the original `r`. The argument never uses induction explicitly, so this is only a notational hazard; however, a reader expecting an induction on the theorem's `r` might be misled.

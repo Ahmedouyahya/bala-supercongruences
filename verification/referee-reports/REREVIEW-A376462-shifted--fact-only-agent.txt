@@ -1,0 +1,108 @@
+Fact-only re-review report (verbatim final message of a fresh same-model referee agent). Date: 2026-10-15 (night).
+Protocol: no access to earlier referee reports or status lines; a mistake may be reported only after the agent reproduced it with its own exact test; every 'checked for ...' sentence audited against numerics/out/. Scripts: numerics/rereview_*.py. Disposition of every finding: DISPOSITIONS.md.
+===========================================================================
+All evidence is in hand; nothing further to request. Final report follows.
+
+# Re-review of `notes/A376462-shifted-congruence-proof.md`
+
+Scope: note read twice (second pass line-by-line with the algebra redone by hand), Beukers 1985 read from page images (pp. 146–154; the OCR text is unusable for formulas), closed form of a(n) checked against the OEIS data (n ≤ 11, exact match), then every identity/congruence/step recomputed from the note's own definitions in seven new scripts (≈1.2 million checks). Parameter sets for the assembly (§§4–7): (p,r,m) ∈ {(5,2,1),(5,2,2),(5,3,1),(5,3,2),(7,2,1),(7,2,2),(7,3,1),(7,3,2),(11,2,1),(11,2,2),(13,2,1)}, r = 1 cases, and p | m cases (5,2,5),(5,1,5),(7,1,7).
+
+## (1) CONFIRMED ERRORS
+
+**E1 (§5, parenthetical; immaterial to the argument).** "…the kernel Ξ being symmetric in its two indices up to the position of δ…" is false: Ξ_u^{(δ)}(q,q′) ≠ Ξ_u^{(δ)}(q′,q) in general (the q-slot carries C(L−1,q)²(−1)^qC(−L−1,q), the q′-slot only (−1)^{q′}C(−L−1,q′)).
+Test: `numerics/rereview_shifted_misc.py` → `numerics/out/rereview_shifted_misc.txt`:
+```
+pairs tested: 15758; asymmetric: 14988; first example (p,m,u,q,q',delta,Xi(q,q'),Xi(q',q)) = (5, 1, 1, 0, 1, 0, 96, 1536)
+FAIL  Xi symmetric in (q,q') as the parenthetical says  14988 of 15758 pairs are asymmetric
+```
+What the proof actually uses is true and tested with 0 failures: Ξ̂′_u(k,j) ≡ Ξ^{(δ)}_{u−1}([k/p],[j/p]) (mod p^u) with the arguments in that order (`rereview_shifted_towers.txt`, item "sec5(i)"), and Lemma 3.2 is symmetric in the roles of (q,q′) (cells are). So the conclusion of §5 stands; only the justification sentence is wrong.
+
+No other error was found. Every lemma, every displayed identity, every intermediate congruence and every modulus count in §§0–7 reproduced at the claimed order.
+
+## (2) SUSPECTED THEN CLEARED
+
+- **Lemma 2.5, s = 0 general block.** Suspected: τ_0(n̄) = n̄^{−2} gives no p^s gain, so the piece −ip^{t′}Στ_0H′ might miss the modulus p^t. Cleared: all four pieces computed separately; min slack 0 (`rereview_shifted_harmonic.txt`, "L2.5 general: piece2…", "p^{t'} sum tau_s H'_nbar", t ≤ 3, i ∈ {1,2,p}).
+- **Lemma 2.6 strong form p^{t+2s} (Beukers prints p^{t+s}).** Cleared: holds for s ≤ 3, t ≤ 3, blocks i ∈ {0,1,2,3,p,p+1,2p+1}, p ∈ {5,7,11,13}; min slack exactly 0 (so the strong form is what §7 needs, and nothing stronger is available). The Beukers-form slack is exactly s (`L2.6 s=k vs Beukers' weaker`).
+- **Sign of ρ′ in §5** (a referee had reported a sign slip). Cleared exactly: (E − 1 + Lρ′)/L² is integral for ρ′ = −H′_j + H′_{pk₁} + 2H′_{j+pk₁} in 5,416 cases and the congruence §5(ii) has slack 0 (`rereview_shifted_exact.txt`, `rereview_shifted_towers.txt`). Note: the top-reduction identity mod p^{2r} cannot detect this sign (N·X̂′ ≡ 0 mod p^{2r} anyway); the exact first-order test does.
+- **X̂₂ claimed mod p^{r+1}** (one order more than X̂₁, X̂₃). Cleared: min slack 2 over all cases (`(4.b.1) X^_2`).
+- **§7 Step 2, v(Z) ≥ 1+b and the termwise bound v(pk′Z·S̃(M)) ≥ 2r.** Both tight (slack 0) and never violated (`rereview_shifted_classSB.txt`).
+- **§7 Step 1 termwise remainder** S̃(M;k′,j′)(E − 1 + Nρ_S) ≡ 0 mod p^{3r} and the bounds v(e_2) ≥ 1+min(a,b), v(S̃(M)) ≥ (r−1−a)⁺+(r−1−b)⁺: all hold, all with slack 0 somewhere.
+- **Lemma 1.1/1.2 with negative m** (used for the (−1)^nC(−L−1,n) factors): exact for m ∈ {−5,…,7}, s ≤ 3 (6,480 exact identities; congruences slack 0).
+- **Lemma 3.2 carry composition** [(q mod p^t)+(q′ mod p^t)+δ ≥ p^t] = [(q₁ mod p^{t−1})+(q₁′ mod p^{t−1})+δ′ ≥ p^{t−1}]: exhaustive for t ≤ 3, p ∈ {5,7}, 0 violations.
+- **Conclusion: r = 1 and p | m.** Theorem and all pieces hold for (5,1,1),(7,1,2),(5,1,5),(7,1,7),(5,2,5) with the same slacks as the generic cases; nothing in the proof used p ∤ m.
+- **§8.2 "(10) fails for k = 0".** Confirmed exactly: Σ_{n<p^t}H′_n = p^tH′_{p^t−1} − (p^t − p^{t−1}) (exact, p ≤ 13, t ≤ 3), valuation exactly t−1; Σ_{n<5}H′_n = 77/12 ≡ 1 (mod 5). Also confirmed the note's mechanism: the j = 0 and j = 1 terms of Beukers' expansion each have valuation t+2s−1 but their sum has valuation ≥ t+2s (`rereview_shifted_literature.txt`, item 3).
+- **§8.3 count.** From Beukers p. 154 (image): a_k = p^{−s}(1/k)Σ′_{λ≤kp^s}1/λ, Lemma 3(ii) at level r−s, prefactor mp^{r−s} ⇒ (r−s)+s+(r−s) = 2r−s, as the note says. Numerically the Lemma-3(ii) sum has valuation ≥ r+s in all tested cases (needed for 2r), never merely r.
+
+## (3) UNVERIFIED CONCERNS
+
+- Lemmas 3.1 and 3.2 are abstract induction lemmas; I checked their proofs by hand (correct) but could only test their *applications* numerically.
+- "the first-congruence note's referee checked p ≤ 23, m ≤ 6 at r = 1" (§9) — not checked (referee reports were off-limits).
+- The convergent-series steps (X̂₃, X_{s,3}, Z) were tested by truncation (t ≤ 7, error valuation ≥ t+1 confirmed) — the limit argument itself is standard.
+
+## (4) CITATION AUDIT
+
+| Citation in note | File | Verdict |
+|---|---|---|
+| Status line: referee A 782 checks / B 357 checks, 0 failures | `referee_A_shifted_lemmas.txt`, `referee_B_shifted_assembly.txt` | **Match**: 782 `[OK  ]` lines, "All recorded checks passed"; 357 `[OK ]` lines; the only "FAIL" string in B is in its footer sentence. |
+| §9 b1: theorem for p ∈ {5,7,11,13}, m ≤ 3, r ≤ 2 and (5,3,1) → `a376462_second_structure.txt`, `a376462_shift_pattern.txt` | both exist | **MISMATCH**: second_structure covers p ∈ {5,7,11}, r ≤ 2, m ≤ 2; shift_pattern covers p ∈ {5,7,11}, r ≤ 2, m ≤ 3. Neither contains p = 13 nor (5,3,1). (5,3,1) is in `a376462_beukers_architecture.txt` (cited in b2); p = 13 at r = 2 is only in `referee_B_wider_primes.txt` (not cited), at r = 1 in `a376462_second_r1_steps.txt` (not cited). The claim itself is true (my `rereview_shifted_classSB.txt`: (13,2,1) slack 0; (5,3,1),(5,3,2),(7,3,1),(7,3,2) slack 0). |
+| §9 b2: `a376462_beukers_architecture.txt` (r = 2,3; classes; models; T0,T1,T_B0,T_S) | exists, 24 lines | Match (p ∈ {5,7,11} r=2 m≤2, plus (5,3,1); all slacks ≥ 0). |
+| §9 b3: `a376462_lemma5_dissection.txt` (A_s, X_{s,1..3}, Y_s by carry, X̂, top) | exists | Match; "slack ≥ 0, often exactly 0" accurate. |
+| §9 b3 / §5 inline: `a376462_classJ_dissection.txt` | exists, 9 lines | Match (A′_s, top err, X̂′, X1′–X3′, Y0′, Y1′, slacks ≥ 0). |
+| §9 b4 / Lemma 3.4 inline "items A1–A3; (c): item B": `a376462_lemma_bank_checks.txt` | exists | Match (A1–A3, B, C = 2.7(Y), D = 2.7(B), E = 2.5 general blocks). |
+| §9 b4: `lemma4ii_strength.txt` | exists | Match (i ∈ {0,1}, s,t ∈ {1,2}, p ∈ {5,7,11}). |
+| §9 b4 / Step 2 inline "item (3)": `a376462_final_lemma_checks.txt` | exists | Partial: items (1),(2),(4) match. Item (3) prints "v(P2−2P1+2P3)−2r" and "v(3P1−P3)−2r" with P1–P3 undefined in the file; consistent with the claim only under the reading P1 = ΣS̃H′_{pk′}, P2 = 2ΣS̃H′_{p(k′+j′)}, P3 = −ΣS̃H′_{pj′}. Not self-evidently "T_S ≡ 3T_1+T_2" (referee_B's file states that check explicitly). |
+| §9 b4: `a376462_classS_strata.txt` | exists | Match. |
+| §8.4: `a376462_straub_shape_search.txt`, `a376462_dual_identity.txt` | exist | Match ("hits: none"; b,c,d,e ≠ ±a). |
+| §10: `literature/beukers1985-shifted-method.md`, `notes/A376462-proof-first-congruence.md` | exist | Existence only. |
+
+## (5) EXPOSITION
+
+- §8.2 calls the n^k display "his (10)"; in Beukers, (10) is the k!·C(n,k) form (the n^k form is the unnumbered display just before). Both fail at k = 0 (my table: at t = 1 the k!C(n,k) form fails for k = 0..p−2).
+- §8.3 "his proof (and ours, Lemma 2.6) gives p^{t+2s}": Beukers' printed proof of 4(ii) treats only the block i = 0 (k = 1..p^t−1, p. 149) although he states "∀i"; the general block is new in Lemma 2.6 and the note does not say so.
+- §4 (4.b.2): "using Lemma 3.5 for the scaled j and Lemma 3.3 for the unscaled j" appears twice in one sentence.
+- §7 Step 3: "reduction errors are O(p^{r−σ})" — they are O(p^{r−σ+1}), as the preceding line already says; harmless.
+- Lemma 3.1 remark: it would help to say explicitly that only the *top* level may be restricted to units; lower levels need the full tower property (they have it in every application).
+
+## (6) Minimal slack table (observed − claimed valuation, over all runs)
+
+| Lemma / step | min slack | where |
+|---|---|---|
+| L1.1 (i),(ii) exact, any m | exact (6,480) | — |
+| L1.2(a) / (b) / consequence / squares | 0 / 2 / 0 / 0 | p=5 m=−2 s=1 |
+| L1.3 e₁, e₂ formulas, e_d integral, v(e₂) bound | exact (80 random products) | — |
+| L2.1 unit power sums; S_d(p^v y); block μ^{−2} | 0 / 0 / 0 | p=5 v=1 |
+| L2.2 σ_t(l); H′_{p^v y} | 0 / 0 | |
+| L2.3 first (p^{2t}); weak (p^t); second (p^{t+2s}) | 0 / 0 / 0 | p=5 t=1 s=1 k=1 |
+| L2.4 | 0 | |
+| L2.5 main, s = 0,1,2,3; base-block pieces; general-block pieces 1–4 | 0 all | p=5 |
+| L2.6 s = 0..3; base pieces | 0 all | ; vs Beukers p^{t+s}: s |
+| L2.7(Y) s′ = 0,1,2; (B) | 0 / 0 / 0 / 0 | p=5 t=1 |
+| L3.3 both identities | exact (8,008) | |
+| L3.4(a) unscaled / scaled / K tower; (b) Ξ, Ξ̂; (c) t=1,2,3; (d) d=1,2 | 0 / 0 / 0 / 0 / 0 / 0 / 2,4 | |
+| L3.5 exact; congruence p^{2u+2} | exact (65,592 incl. Φ) / 0 | |
+| (4.1); (4.a); (4.b) sum′(1/k)K̂; (4.2) | 1 / 0 / 0 / 0 | |
+| X̂; X̂₁; X̂₂ (p^{r+1}); X̂₃; X̂₃ series terms | 0 / 0 / 2 / 0 / 0 | |
+| A_s; step identity; X_s; X_{s,1}; X_{s,2} (p^{2r−s}); X_{s,3}; Y_s (and per carry) | 0 / 0 / 0 / 0 / 2 / 0 / 0 | |
+| §5 (i) Ξ̂′ tower; (ii) ρ′; (iii) K′, moments, harmonic; (iv) K̂′ tower | 0 / 0 / 0 / 0 / 2 / 0 | |
+| Class J: Σ_J; A′_s; X̂′, X̂′₁₋₃; X′_s pieces; Y′_s | 0 / 0 / 0 / 0 / 0 | |
+| §6 Σ_B; reduction; inner sum (and per carry) | 0 / 0 / 0 / 0 | |
+| §7 E-identity; Step 1 termwise; v(e₂); v(ρ_S); v(S̃(M)) bound | exact / 0 / 0 / 0 / 0 | |
+| Step 2 identity; v(Z) ≥ 1+b; termwise 2r; T_S − 3T₁ − T₂ | exact / 0 / 0 / 0 | |
+| Step 3 T₁; strata; reduced form; Lemma-3.1 sum; a_κ block sums; G₁, R, R̂ towers | 0 / 0 / 5 / 0 / 0 / 0 | |
+| Step 4 T₂; strata; G₂, R₂ towers | 0 / 0 / 0 | |
+| Σ_S − a(M−1); Σ_K; Σ_J; Σ_B; **Theorem** | 0 / 0 / 0 / 0 / **0** | p=5 r=2 m=1 |
+
+## (7) Verdict
+
+The proof is correct as far as exhaustive numerical reproduction and a line-by-line logical audit can establish; every bound is tight (slack 0 somewhere), the one textual error found (§5 "Ξ symmetric") is immaterial, and §9 bullet 1 cites the wrong files for p = 13 and (5,3,1).
+
+## Scripts (all under `<working folder>/numerics/`, outputs in `out/` with the same basename)
+
+- `rereview_shifted_common.py` — shared exact (Fraction) and mod-p^E helpers, definitions transcribed from the note's §0–3.
+- `rereview_shifted_exact.py` — part (a), all exact identities incl. edge cases and negative m: **96,408 pass, 0 fail**.
+- `rereview_shifted_harmonic.py` — Lemmas 2.1–2.7 and the internal pieces of their proofs: **70,708 pass, 0 fail**.
+- `rereview_shifted_towers.py` — Lemma 1.2, 3.4(a)–(d), 3.5 congruence, §5(i)–(iv), §7 towers and Step-3 reductions: **1,096,792 pass, 0 fail**.
+- `rereview_shifted_classKJ.py` — §4 and §5 assembly piece by piece, 15 parameter sets: **750 pass, 0 fail**.
+- `rereview_shifted_classSB.py` — §6, §7 and the theorem, 16 parameter sets incl. p=13 and p | m: **36,456 pass, 0 fail**.
+- `rereview_shifted_literature.py` — §8 claims about Beukers ((10) failure, j=0/1 cancellation, 4(ii) strength, pp. 153–154 count): **185 pass, 0 fail**.
+- `rereview_shifted_misc.py` — Ξ symmetry parenthetical and carry composition: **1 pass, 1 fail** (the fail is E1 above, by design).

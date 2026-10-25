@@ -1,0 +1,6 @@
+Gate A: target definition vs OEIS b-file: 32 terms (n = 0..31)
+Gate B1: target formula = sum over 2j+3k=N (N <= 300) = direct series coefficient (N <= 60)
+Gate B2-B4: synchronisation, unscaled valuations >= R and 2R, scaled terms congruent mod p^(2R) and p^(3R), signs: 11892 index pairs
+Gate B5: target congruence mod p^(2r): 62 cases, min slack 0
+Gate B6: Epoch's JAC_bound statement: 2340 cases
+FAILURES: 0

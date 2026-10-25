@@ -1,0 +1,86 @@
+Fact-only re-review report (verbatim final message of a fresh same-model referee agent). Date: 2026-10-15 (night).
+Protocol: no access to earlier referee reports or status lines; a mistake may be reported only after the agent reproduced it with its own exact test; every 'checked for ...' sentence audited against numerics/out/. Scripts: numerics/rereview_*.py. Disposition of every finding: DISPOSITIONS.md.
+===========================================================================
+Nothing further is needed; all checks are complete. Final report follows.
+
+# Re-review report (fact-only), 2026-10-15
+
+Scope respected: did not open `notes/referee-reports/`, `STATUS.md`, `README.md`, `VERIFY.md`; did not compile Lean; did not edit any note. Internet used only for: OEIS JSON (A352275, A361711, A333093, A352276) and the arXiv abstract pages of 1604.00445 and 2607.11113 (neither paper is in `literature/papers/`). Raw downloads are in the session scratchpad, not in the project.
+
+---
+
+## Note 1: `notes/A352275-u_m-corollary-of-A333096-machine-proof.md`
+
+### (1) CONFIRMED ERRORS
+None.
+
+### (2) SUSPECTED THEN CLEARED (script: `numerics/rereview_short_A352275.py`, output `numerics/out/rereview_short_A352275.txt`, PASS 3265 / FAIL 0)
+- **Coefficient formula for negative r** (§1, "generalized binomials"; §2 "standard"). Tested against the actual series c(x)^r (using 1/c = 1 − x·c) for r ∈ [−15,15], k ≤ 15: `checked 496 coefficient identities, 488 r/(r+2k) forms (8 skipped with r+2k=0), 450 r/(r+k) forms` — all pass (the r/(r+k)·C(r+2k−1,k) form is the Epoch benchmark's definition).
+- **§3 chain** ([x^k]c^r = [X^k](1−X)(1+X)^{r+2k−1}; T(r,N) = [X^N](1−X)(1+X)^{r+2N+1}/(1+X+X²) = FNat(r+2N,N)), including A = r+2N < 0 as a power series, and Qseries = (1−X²)/(1+X+X²) against the Lean `qCoeff` (1, 2 if 3|n, else −1): `checked 1792 identities (152 with r+2N<0)` — all pass. I also re-derived the change-of-variable formula by hand (residue computation); it is correct.
+- **β(S,N) = T(S−N,N)** (note: checked only 1 ≤ r ≤ 8): holds for *all* S ∈ [−40,40], N ≤ 15: `mismatches 0`.
+- **Two-parameter congruence** with v = min(v_p(N), v_p(r)): p ∈ {5,7,11,13}, N ≤ 30, r ∈ [−N,30]: `tested 1365 pairs ... violations 0, min slack 0` for each p. Higher-v spot checks (v = 2, 3, e.g. p=5, N=125, r=125: `val=12 slack=0`; p=7, N=49, r=49: `val=9 slack=0`). With v_p(N) alone: 237/164/86/92 violations — the note's remark is right, and `p=5,S=11,N=10 (r=1): v_5 = 4` exactly as stated.
+- **r < −N range** ("artefact" remark): p ∈ {5,7}, N ≤ 14, −3N ≤ r < −N: `tested 210, violations 0, min slack 0`.
+- **Lean lemma as literally stated** (B, Y naturals, p^lev | B, Y; FNat computed from the series definition): 3118 (B,Y) pairs over (p,lev) ∈ {(5,0),(5,1),(7,0),(7,1),(11,0)}: `violations 0`, min slack 0.
+- **Formal Conjectures `u m n` (floor/toNat)**: every term n/(n+2k)·C(n+2k,k) is a non-negative integer = [x^k]c^n (n ≤ 40, k ≤ 3n); `u_lean(m,n) = T(n,mn)`; `u_2 == OEIS A352275 for n <= 18`, `u_1 == A333093 for n <= 22`, `u_3 == A352276 for n <= 15`; a_one/a_two/a_three = 4/64/1429.
+- **Corollary valuations** (m ≤ 3, p ∈ {5,7,11}, n ≤ 3, k ≤ 2): `total 54 cases, violations 0, slack exactly 0 in 26`; sharpness example m=1,p=7,n=1,k=1: `v_7 = 3`.
+
+### (3) UNVERIFIED CONCERNS
+- The Lean proof of `FNat_scale_supercongruence` itself was not re-checked (no compile, per instructions). What I did verify from the local clone `open-problems/data/LeanOpenProblems-results/runs/oeis-lite-200usd-sol-nk5wh4g0vh3546nm/…/Submission/Spec.lean`: 2546 lines, `grep -c sorry` = 0, no `axiom`/`native_decide`; `scores.txt`: `proof_scorer: C`, `SafeVerify check passed`, `Lean v4.27.0`, 361 declarations; the final theorem's axioms are only propext/Quot.sound/Classical.choice; dependency chain confirmed by grep: `oeis_333096_supercongruence_conjecture → a_gen_scale_all → a_gen_nat_scale (l.1545) → FNat_scale_supercongruence (l.1552: have h := FNat_scale_supercongruence hp hp5 hdiv hY)`.
+
+### (4) CITATION AUDIT
+- All `Spec.lean` details match verbatim: definitions/lemmas at l. 31, 348, 351, 383, 954, 1169, 1336, 1341, 1389, 1448, 1545; statements of `FNat`, `formalCatalanCoeff`, `formalPartial`, `formalPartial_eq_FNat`, `FNat_scale_supercongruence`, `a_gen_nat_eq_FNat`, `cyclo3_mul_Qseries` as transcribed; run model `epoch/gpt-5.6-sol` (info.json); no LICENSE file in the clone.
+- §3 "checked for 1 ≤ r ≤ 8, 0 ≤ N ≤ 8 (`sweep_2026-10-15.py`)": matches script and `sweep_2026-10-15.txt` ("mismatches: 0").
+- §4 bullet 1 (ranges S ≤ 39, N ≤ 24, min slack 0): matches. **The parenthetical example (p=5, S=11, N=10 → valuation 4) is not in the output file** (verified by me).
+- §4 bullet 2: matches the file's table. "Exactly 3k in most cases": 20 of the 36 entries in the file.
+- **§4 bullet 3 ("u_2 = A352275 agrees … for n ≤ 5") is not computed anywhere in `sweep_2026-10-15.py`/`.txt`** despite the header "output in numerics/out/" — mismatch (now verified by me against OEIS for n ≤ 18).
+- **§2 "numerically also holds for −3N ≤ r < −N, p = 5, N ≤ 14": no file in `numerics/out/`** (verified by me).
+- Adamczewski arXiv:2608.11941 "Appendix A": Table 1 is indeed in Appendix A.1 and gives the β(S,N) form and "p^{3(v+1)} | β(pS,pN) − β(S,N) whenever p^v | S, N". **But that entry describes the Claude Fable 5 proof ($119.23, run `oeis-lite-200usd-fable-i7s7n9q7v4emgjp7`, also verdict C, 4057 lines, 0 sorry)**, with "Cartier fixed-point identity, factorization of X^p+(1−X)^p−1, antisymmetry cancellation, Legendre–Kummer/Stirling-number valuation bounds". The method the note attributes to "Adamczewski's appendix" in §5(a) (Frobenius expansion with `frobError`, antisymmetry mod X²+X+1) is the Sol run's own `metadata.json` summary, not the paper's text. Attribution mismatch, not a mathematical one.
+- Useful fact for the note: the Fable file proves `theorem C2 … {S : ℤ} {N : ℕ} (hS : (p:ℤ)^v ∣ S) (hN : p^v ∣ N) (hN1 : 1 ≤ N) : (p:ℤ)^(3*(1+v)) ∣ bet (p*S) (p*N) − bet S N` with S any integer, i.e. the two-parameter theorem without r ≥ −N (given bet(S,N) = T(S−N,N), which I verified for S ∈ [−40,40]).
+
+### (5) EXPOSITION
+- "most cases" (20/36); two accepted machine proofs exist, the note mentions one; the Sol run's `metadata.json` contains an LM-written `full_proof` text (contrary to the flavour of §5(a) "no human-readable proof"; I did not check that text); OEIS JSON answered HTTP 200 today.
+
+### (6) Verdict: **no confirmed error.**
+
+---
+
+## Note 2: `notes/A361711-proof.md`
+
+### (1) CONFIRMED ERRORS
+None.
+
+### (2) SUSPECTED THEN CLEARED (script: `numerics/rereview_short_A361711.py`, output `numerics/out/rereview_short_A361711.txt`, PASS 276 / FAIL 0)
+- Definition vs OEIS: `a(1..26) by definition == OEIS: True`; the 8 listed terms match.
+- Lemma 1: odd closed form (n ≤ 200), Bala's (3n+1)/(2n+1)·(3n)!/n!³ form, even form (1 ≤ n ≤ 200), initial values — all pass.
+- Certificate (re-parsed independently): c₀,c₁,c₂ and R(n,k) with Appendix A's P match the file symbolically (`degrees of P: in n 8 in k 4`); rational identity cancels to 0; **the Φ-form polynomial identity: `polynomial identity expand == 0`**; P(n,n) = (n+2)⁴(n+1)²(3n²−2n+1) ✓; all five Φ-identities, the G(n,k+1) formula, R·F = Φ-form where R is finite, and the telescoped identity at `1888 integer points (2<=n<=60, 0<=k<=n): failures 0`; boundaries G(n,0)=G(n,n+1)=0; supports; recurrence from the definition n ≤ 300; closed forms satisfy the recurrence numerically n ≤ 400 and symbolically (`residual (odd N, even N): 0 0`); c₂(n) ≠ 0.
+- Lemma 2: (E1), (E2) and (★) exact for all odd primes p ≤ 100 (p = 3 included) with p^k ≤ 30000: `71 (p,k) pairs; failures 0`; floor claim (odd p ≤ 100, k ≤ 7, 1 ≤ a ≤ k+2), the sign (−1)^{n−n'} = (−1)^{(p−1)/2}, 3n+1 = M+n; (★) also from the *definition* for p^k ≤ 400.
+- Lemma 3 and Theorem: 62 pairs (5 ≤ p ≤ 100, p^k ≤ 30000): `Lemma 3 violations 0; Theorem violations 0`; non-zero slack only `(7,k,1,1)` for k ≤ 5; v(a−a') = 2k + v(H₂) relation and all Kummer claims hold; `p=7,k=1: v_7(49 H2) = 4  v_7(49^2 e2) = 5`; proof steps (power-sum formula, Σ1/v² ≡ Σv², 2H₂ ≡ full sum) for p ∈ {5,7,11,13}, k ≤ 3; p = 3: v₃(H₂) − k = −1 and theorem slack −1 for k ≤ 7.
+- §4 by-products: X ≡ 4^φ, Y ≡ 4^{−φ} (mod p^{3k}) for 5 ≤ p ≤ 60, `Y slack nonzero only {(29,1):1,(29,2):1,(29,3):1}`; Lehmer-type H₁ congruence; Cai's statement as transcribed (odd n < 400, 3 ∤ n, composite included): `failures []`; `v_5(a(35)-a(7)) = 5`; v_p(a(np)−a(n)) ≥ 3 for p ∈ {5,7,11}, odd n ≤ 15 (min 3).
+- Lean: `def A361711` and `theorem A361711_conjecture` in `lean/BalaProofs/BalaProofs/A361711.lean` are character-identical to `lean-targets/361711_10bc62a7.lean` (`diff` empty); no `sorry`/`axiom`/`admit`/`native_decide` in any of the six Lean files; the Lean-side closed form `A361711_odd_prod` (a(2n+1) = Π_{i≤n}(1 − M²/i²)) checked numerically for n ≤ 59.
+
+### (3) UNVERIFIED CONCERNS
+- "`#print axioms` gives only propext, Classical.choice, Quot.sound" / "compiles": not re-verified (no compile).
+- Cai 2002 (Acta Arith. 103) / Zhong–Chern–Cai eq. (1.2): papers not local; arXiv:1604.00445 exists with authors Zhong, Chern, Cai and an abstract stating it continues Cai et al. (2002, 2007), but the equation number and exact wording were not checked. The transcribed statement is numerically true (above). Used only for by-products.
+- "Independent referee check (2026-10-15): … n ≤ 300, n ≤ 400, p ≤ 79 with p^k ≤ 120000": **no file in `numerics/out/` corresponds**; I could not match it (referee reports off-limits). My own checks cover n ≤ 200/300/400 and p ≤ 100 with p^k ≤ 30000.
+- The Maxima run was not reproduced (the certificate was verified independently instead).
+
+### (4) CITATION AUDIT
+- `a361711_two_lemmas.txt`: matches the "Numerics" sentence exactly (prime list, k ≤ 4/3/2 cut at p^k ≤ 20000, 3k vs 3k+1 at p = 7; "except p = 29" for the Y-congruence = its LemmaM3 column). Note: that file computes a(p^k) from the closed form, not the definition.
+- `a361711_harmonic_reduction.txt`: supports "numerically sharp" (v(i)−2k = 0 for all p ≥ 5), v₃(H₂) = k−1, v₇(H₂) = k+1. **"(Both identities were also checked exactly for p ≤ 47, k ≤ 4)" overstates**: the file's cut-off is p^k ≤ 60000, so k ≤ 4 only for p ≤ 13, k ≤ 3 for 17–37, k ≤ 2 for 41–47.
+- `a361711_zeilberger_certificate.txt`: exists, matches the note's c_i, R and Appendix A P symbolically. `a361711_zeilberger.mac` writes `zeil_out.txt` in the cwd, not the cited path (renamed by hand).
+- `a361711_zeilberger_check.txt`: "certificate rational identity: 0", closed-form recurrence residuals 0, initial values — match the note. **But "which sympy `expand` confirms identically in (n,k)" and "P(n,n) = …, checked symbolically" have no corresponding check in `a361711_zeilberger_check.py`/`.txt`** (that script tests the identity at integer points 2 ≤ n < 40 instead). Both now verified symbolically by my script.
+- "v_5(a(35) − a(7)) = 5, v_p(a(np) − a(n)) ≥ 3 …": no cited file; verified.
+- Tang–Zhong arXiv:2607.11113 exists with the stated topic.
+- Lean target statement: identical.
+
+### (5) EXPOSITION
+- "k = n−2, n−1, n where R has poles": R's poles are at k = n−1, n, n+1, n+2; at k = n−2 it is G(n,k+1) that meets the pole.
+- `.mac` output filename vs cited path.
+
+### (6) Verdict: **no confirmed error.**
+
+---
+
+## Scripts written
+- `<working folder>/numerics/rereview_short_A352275.py` → `numerics/out/rereview_short_A352275.txt`: coefficient identity (negative r, three forms), §3 chain incl. A < 0, Qseries vs Lean `qCoeff`, β(S,N) for all integer S, two-parameter congruence with slack (incl. r < −N and v = 2,3), FNat lemma as stated, Lean `u` (floor/toNat) vs T and vs OEIS A352275/A333093/A352276, corollary valuations. **PASS 3265, FAIL 0** (9.7 s).
+- `<working folder>/numerics/rereview_short_A361711.py` → `numerics/out/rereview_short_A361711.txt`: definition vs OEIS, Lemma 1 both parities, full certificate re-derivation (rational + Φ-form polynomial identity + P(n,n) + 1888 integer points + symbolic recurrence of closed forms), Lemma 2/(★) exact for odd p ≤ 100, Lemma 3 and theorem slack, p = 3 failure, §4 by-products incl. the transcribed Cai statement, Lean closed-form identity. **PASS 276, FAIL 0** (7.1 s).

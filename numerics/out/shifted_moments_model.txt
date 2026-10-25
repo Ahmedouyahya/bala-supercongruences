@@ -1,0 +1,27 @@
+model shifted congruence slack: [(5, 1, 1, 1), (5, 1, 2, 2), (5, 2, 1, 1), (5, 2, 2, 2), (7, 1, 1, 0), (7, 1, 2, 0), (7, 2, 1, 0), (7, 2, 2, 0)]
+p=5 M=1 (s=0): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 99, 99, 99]
+p=5 M=2 (s=0): v(Q1)-2s=1  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 0, 0, 0]
+p=5 M=5 (s=1): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 1, 2, 3]
+p=5 M=10 (s=1): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 1, 2, 2]
+p=5 M=25 (s=2): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 2, 4, 6]
+p=5 M=50 (s=2): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 2, 4, 4]
+p=7 M=1 (s=0): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 99, 99, 99]
+p=7 M=2 (s=0): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 0, 0, 0]
+p=7 M=7 (s=1): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 1, 2, 3]
+p=7 M=14 (s=1): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 1, 2, 2]
+p=7 M=49 (s=2): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 2, 4, 6]
+p=7 M=98 (s=2): v(Q1)-2s=0  v(Q2)-2s=-   moments mu_t of model shifted terms: v=[0, 2, 4, 4]
+p=11 M=1 (s=0): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 99, 99, 99]
+p=11 M=2 (s=0): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 0, 0, 0]
+p=11 M=11 (s=1): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 1, 2, 3]
+p=11 M=22 (s=1): v(Q1)-2s=0  v(Q2)-2s=0   moments mu_t of model shifted terms: v=[0, 1, 2, 2]
+p=11 M=121 (s=2): v(Q1)-2s=0  v(Q2)-2s=-   moments mu_t of model shifted terms: v=[0, 2, 4, 6]
+model problem class sums (scaled k | unscaled k) slack vs p^{3r}:
+  p=5 r=1 m=1: scaled-A'(M-1): +96, unscaled: +1
+  p=5 r=1 m=2: scaled-A'(M-1): +1, unscaled: +1
+  p=5 r=2 m=1: scaled-A'(M-1): +0, unscaled: +0
+  p=5 r=2 m=2: scaled-A'(M-1): +0, unscaled: +0
+  p=7 r=1 m=1: scaled-A'(M-1): +96, unscaled: +0
+  p=7 r=1 m=2: scaled-A'(M-1): +0, unscaled: +0
+  p=7 r=2 m=1: scaled-A'(M-1): +0, unscaled: +0
+  p=7 r=2 m=2: scaled-A'(M-1): +0, unscaled: +0

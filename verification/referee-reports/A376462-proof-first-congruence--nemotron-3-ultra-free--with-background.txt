@@ -1,0 +1,44 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally. SECOND RUN with the background note (A363983 Lemmas 1-4) supplied.
+Input: notes/A376462-proof-first-congruence.md + notes/A363983-proof.md. Prompt: notes/referee-reports/PROMPT.txt plus a 1500-word limit. AI output kept as evidence, not authority.
+===========================================================================
+VERDICT: CORRECT WITH FIXES
+
+## Issues by section
+
+**Section 1 (Class S, Q₄ modulus)**  
+Line 32: “Q₄ ≡ 1 (mod p^{r+2+2min(r−1,μ−1)})” is derived assuming vₚ(M)=r−1 (i.e. p∤m). The theorem allows p|m, where vₚ(M)≥r and the true modulus is stronger. The stated bound still holds as a lower bound, but the derivation does not acknowledge the p|m case.  
+Severity: GAP (true but not fully justified for all m).
+
+**Section 1 (Class S, valuation of T(M;K',I'))**  
+Line 33: “vₚ(T(M;K',I')) ≥ 2·max(0,r−s)+2·max(0,r−σ)” uses vₚ(C(M,K')) ≥ r−s. Actually vₚ(M)=vₚ(m)+r−1, so vₚ(C(M,K')) ≥ vₚ(m)+r−s. The bound r−s is conservative (valid but not tight when p|m).  
+Severity: GAP (correct bound, justification incomplete).
+
+**Section 2 (Lemma 7, inner sum vanishing)**  
+Line 46: “C(mpᵗ,i')² ≡ 0 (mod p²ᵗ) for p∤i'”. This is true (vₚ≥t from the factor mpᵗ/i'), but the induction only needs congruence mod pᵗ. The proof sketches the self-similarity correctly; however, the claim that the i'=pi'' terms match “by Lemma 1 and Lemma 4(ii)” should explicitly note that Lemma 1 gives congruence mod p^{t+2} for those factors, which is stronger than the required pᵗ.  
+Severity: UNCLEAR (correct but the modulus tracking in the sketch is terse).
+
+**Section 5 (r=1, Classes K and J, first-order expansions)**  
+Lines 72–77: The expansions  
+C(N−1,k)² ≡ C(m−1,n')²(1−2pmH'_k),  
+C(N+k−1,k−1) ≡ C(m+n',n')(1+pm(H'_k−1/k)),  
+C(N−1,k+pj')² ≡ C(m−1,n'+j')²(1−2pmH'_k)  
+are stated without proof; only numerical verification is cited (“verified exactly for p∈{5,7,11}, m≤3”). For a rigorous proof these p-adic expansions must be derived from the product formulas for binomial coefficients.  
+Severity: GAP (critical step not proved).
+
+**Section 5 (r=1, Class B, block completion)**  
+Line 71: “completing the top blocks to full (u,v)-squares adds only pairs with k+j≥mp>N−1, where S̃=0 and R₁=0 because C(m−1,m)=0”. This is correct but the argument that R₁=0 for all added pairs should explicitly handle the case n'+n''+1>m (where C(m−1,·)=0 trivially) as well as n'+n''+1=m.  
+Severity: GAP (minor omission in justification).
+
+**Section 5 (r=1, Class K, H'_{k+pj'} ≡ H'_k mod p)**  
+Line 74: Used to drop the j'-dependence in the H'-term. Valid because both sides ≡ H_u (mod p) where u=k mod p, but the proof does not spell this out.  
+Severity: GAP (easily filled, but not shown).
+
+---
+
+### Three steps I am least sure about
+
+1. **Section 5 first-order expansions (lines 72–77)** – The entire r=1 proof rests on these unproven p²-expansions; a single miscalculated coefficient would break the cancellation of the block sums.
+
+2. **Section 1 Q₄ modulus for p|m (line 32)** – The written exponent r+2+2min(r−1,μ−1) assumes vₚ(M)=r−1. If p|m the true exponent is larger, so the conclusion still holds, but the proof does not address this case explicitly, leaving a hole in the “for every m” claim.
+
+3. **Section 2 Lemma 7 induction step (line 48)** – The replacement Ψ₁(mp^{r−s},n) → Ψ₁(mp^{r−s−1},[n/p]) costs p^{r−s} per term, and the inner sum is a multiple of p^s. The product is a multiple of p^r, but one must ensure the inner sum is *exactly* an integer multiple of p^s (not just ≡0 mod p^s in the p-adic sense) so that the product is an integer multiple of p^r. The proof says “each inner sum is ≡0 (mod p^s)”, which in the p-adic integers means it is p^s times a p-adic integer; since the inner sum is a rational number with denominator coprime to p, it is indeed p^s times a p-adic integer, and the product argument goes through. This is subtle and not spelled out.

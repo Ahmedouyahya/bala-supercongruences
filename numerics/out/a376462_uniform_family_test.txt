@@ -1,0 +1,3 @@
+sanity: F(n,..,n)=a(n)? [1, 5, 109, 3317, 121501]
+p=5: slack vs p^3 by sign pattern: {'allpos': (0, 19), 'allneg': (0, 12), 'mixed': (-3, 6)}
+p=7: slack vs p^3 by sign pattern: {'allpos': (0, 11), 'allneg': (0, 15), 'mixed': (-3, 12)}

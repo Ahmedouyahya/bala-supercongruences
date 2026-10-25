@@ -1,0 +1,88 @@
+Fact-only re-review report (verbatim final message of a fresh same-model referee agent). Date: 2026-10-15 (night).
+Protocol: no access to earlier referee reports or status lines; a mistake may be reported only after the agent reproduced it with its own exact test; every 'checked for ...' sentence audited against numerics/out/. Scripts: numerics/rereview_*.py. Disposition of every finding: DISPOSITIONS.md.
+===========================================================================
+All four runs are complete: 426 checks, 0 failures. Final report follows.
+
+# Re-review report: `notes/A363983-proof.md` and `notes/A376462-proof-first-congruence.md`
+
+Scope honoured: both notes read in full; OSS paper (`literature/papers/osburn-sahu-straub-2013-sporadic.pdf`) and Robert–Zuber (`literature/papers/robert-zuber-1995-kazandzidis-supercongruences.pdf`, abstract + p. 240 rendered as images) read for the cited statements; OEIS A108625 fetched. Not read: `notes/referee-reports/`, `STATUS.md`, `README.md`, `VERIFY.md`, other notes. Nothing edited except new files `numerics/rereview_oss_*.py` and `numerics/out/rereview_oss_*.txt`.
+
+---
+
+## Note 1: `notes/A363983-proof.md`
+
+### (1) CONFIRMED ERRORS
+None.
+
+### (2) SUSPECTED THEN CLEARED (each reproduced by my own exact code)
+- **Lemma 1 modulus r+s+min(r,s) derived from Kazandzidis rather than OSS's Jacobsthal citation.** Checked `v_p(C(pA,pB)/C(A,B)−1) ≥ 3+v_p(A)+v_p(B)+v_p(A−B)` for p∈{5,7,11,13}, all 0<B<A≤70/56/44/39 (5642 pairs, 0 failures, min slack 0) and the consequence for r,s≤3, a,b∈{1..4,p,2p} incl. A=B and B>A edge cases (0 failures, min slack 0). p=3 control: 741/741 failures — the p≥5 hypothesis is load-bearing. (`rereview_oss_lemmas.txt`)
+- **Lemma 2 both half sums** (the note's script only checks the lower half): p∈{5,7,11,13}, s≤3: full/lower/upper slacks all ≥0; p=5 upper half slack 1, p=7 lower half slack 1, others 0. p=3 control fails (slack −1).
+- **Lemma 3 for m ≤ 0** (needed by Lemma 4(i)): exhaustive with generalized binomials, m∈{−2,−1,0,1,2,3,p,2p}, r≤3, k up to 2|m|p^r+3 (up to 20000): 0 failures, min slack 0 (slack 1 when p|m).
+- **Lemma 4(i),(ii)** incl. the j<mp^r case: 0 failures, both sides zero for j<n confirmed.
+- **Lemma 5, every sub-claim** (p∈{5,7,11}, r≤3, m∈{1,2,3,p,2p}, s≤r+1, all p∤k incl. K=N): difference ≡0 mod p^{3r} with min slack 0 (tight at s=1) when p∤m, slack 3 when p|m; Q₂ rewriting `C(N+K−1,K)/C(M+K'−1,K') = C(N+K,K)/C(M+K',K')` exact in all cases; each of Q₁,Q₂,Q₃ ≡1 mod p^{r+s+min(r,s)} (0 failures — note this is stronger than OSS Lemma 2.3's p^{r+2min(r,s)} for the Q₂ analogue, and the stronger bound is correct); `v_p(A(M,K')) ≥ 2(r−s)` and both factor bounds `v_p(C(M,K')), v_p(C(M+K'−1,K')) ≥ r−s` (0 failures); nonvanishing equivalences agree. (`rereview_oss_a363983.txt`, lines `PASS Lemma5 …`)
+- **(1) telescoping, (2) exact identity, (3) reduction, Lemma 6 chain, Σ_r ≡ 0, Theorem**: all hold for the full grid up to N=2662; `(2) exact True` everywhere; slacks 0 attained for (1), (3), the chain and Σ_r (argument tight). Example line: `PASS (1)(2)(3)L6/Thm p=11 r=3 m=1 N=1331 v(a(N)-a(M)-G0)-3r=0; (2) exact True; v(S+Sigma_1)-r=0; chain slacks [1, 0]; v(Sigma_r)-r=0; THEOREM slack 1`.
+- **Lemma 6 internals**: floor identity `[2k/p^s]=2[k/p^s]+ε` exhaustive; half-block inner sums with the true weights k^{−2} (not u^{−2}) ≡0 mod p^s, min slack 0; `D(mp^t,n,j) ≡ D(mp^{t−1},[n/p],[j/p]) mod p^t` for p∈{5,7,11}, t≤3, m∈{1,2,p}, ~48k cases, 0 failures.
+- **§5 remark**: signed (A,B,C)=(2,0,1) gives f(1)=2, f(5)=−548, v₅=2 exactly as stated; families (1,1,2),(2,1,1),(1,2,1),(3,0,1),(4,0,2),(3,0,0) pass at p∈{5,7}, r≤2, m≤2; (2,0,1),(2,0,2),(1,0,1),(0,1,1),(0,2,1) fail (so the stated restrictions are right). p=3: slack −1 at all six (r,m) tested, consistent with excluding p=3.
+- **Wider theorem check** (no existing file reaches these): p=13 r≤3 (N=2197), p∈{17,19,23,31} r=2, p=29 r=1, m=p cases: 19/19, slack exactly 0 whenever p∤m. (`rereview_oss_a363983_wider.txt`)
+
+### (3) UNVERIFIED CONCERNS
+None of substance. The WLOG p∤m reduction is a one-line identity and needs no test.
+
+### (4) CITATION AUDIT
+- "every step was checked numerically (`numerics/a363983_oss_steps.py`, output in `numerics/out/`)" — file and `a363983_oss_steps.txt` exist; §4 bullets match the output exactly (Lemma 5 min slack 0 for p∈{5,7}; v(G₀)−3r ∈{0,1,2}; (3) slacks min 0; Lemma 2 p=7 half sums slack 1; 358 random Lemma 3–4 checks, 0 failures).
+- "`numerics/out/sweep_2026-10-15.txt` (p∈{5,7,11,13}, m≤3, r≤2)" — matches, except (13, r=2, m=3) is absent (script caps N≤400). My wider run covers it (slack 0).
+- **MISMATCH:** "(The computer checks were also run with p | m.)" — no file in `numerics/` or `numerics/out/` runs A363983 with p|m: `a363983_oss_steps.py` uses `m in (1,2)` / `(1,2,3)` with p∈{5,7,11}; `sweep_2026-10-15.py` uses n∈{1,2,3}; `a363983_structure.py` n∈{1,2,3}. The claim is now true via my runs (m=p,2p all pass) but was unbacked.
+- Minor: "Lemma 2: full and half sums" — `a363983_oss_steps.py` checks only the lower half `range(1,(p**s+1)//2)`; the upper half is only inferred. Also p=5's upper half has slack 1 (not only p=7).
+- External: OSS Lemma 2.1 reads exactly "For primes p ≥ 5, integers a, b and integers r, s ≥ 1, C(p^r a,p^s b)/C(p^{r−1}a,p^{s−1}b) ≡ 1 (mod p^{r+s+min(r,s)})" — matches. OSS Lemma 2.2 (20)/(21) require n ≢ 0 mod p−1 (so n=−2 needs p≥5) and p≥5 for the half sum — matches. OSS Lemma 2.4 is verbatim the note's Lemma 3 (for primes p, integers m, k≥0, r≥1). OSS (27), (28) are verbatim Lemma 4(i),(ii); OSS does not discuss j<np^r in (28), the note does. OSS (35)–(36) is the same induction as Lemma 6. Robert–Zuber abstract: `C(np,kp) ≡ C(n,k) mod p³·n·k·(n−k)·C(n,k)·ℤ_p (p ≥ 5)` — the note's quotient form is exactly this divided by C(n,k).
+
+### (5) EXPOSITION
+- Lemma 6: "For the last, incomplete block … the same holds because … every block … is complete" is self-contradictory wording (there is no incomplete block); content correct.
+- Lemma 1 proves a slightly stronger per-case modulus than OSS Lemma 2.1 (used for Q₂); worth one sentence saying this is deliberate.
+
+### (6) Verdict
+**Correct.** Every lemma, identity, modulus and case split reproduced exactly; the argument is tight (slack 0 attained at every stage); the only defect is one unbacked "also run with p | m" sentence.
+
+---
+
+## Note 2: `notes/A376462-proof-first-congruence.md`
+
+### (1) CONFIRMED ERRORS
+None.
+
+### (2) SUSPECTED THEN CLEARED
+- **Definitions**: a(n) matches OEIS data n=0..11; A108625 formula `Σ_i C(n,i)²C(n+k−i,k−i)` and Bala's `Σ_i C(n,i)C(n+i,i)C(k,i)` both confirmed verbatim on oeis.org/A108625 (T(2,2)=19, T(3,2)=55 match `W(n,j)` table). (1) `a(n)=ΣT(n;k,i)` n≤16; (R1) n≤13; symmetric form n≤13; CT[Λⁿ] n≤5. (`rereview_oss_a376462.txt`)
+- **Class (S), all sub-claims** (p∈{5,7,11}, r≤3, m∈{1,2,3,p,2p}, N≤1331, every (K',I')∈[0,M]² incl. k=0, i=0, k=i=0 and K'+I'=M): termwise ≡ mod p^{3r} (min slack 0, tight), Q₁,Q₂ ≡1 mod p^{r+s+min(r,s)}, Q₄ ≡1 mod both the Kazandzidis modulus and the stated p^{r+2+2min(r−1,μ−1)}, `v_p(T(M;K',I')) ≥ 2max(0,r−s)+2max(0,r−σ)`: `subclaim failures 0` on every line; Σ_S ≡ a(M).
+- **Class (B) ≥ p^{4r}**: slack ≥0 (0 attained at p=5, r=1).
+- **Classes (K),(I)**: `Σ_(K)=N²S_K`, `Σ_(I)=N²S_I` exact everywhere; S_K ≡ Σ₁ (min slack 1), S_I ≡ Σ₁ (min slack 0); chains and Σ_r ≥0, tight on the I side; floor identities `[(2N−k−pi')/p]=2M−i'−[k/p]−1` and `⌈(n'+1)/p⌉=[n'/p]+1` exhaustive; "Lemma 1 gives C(N,pi')≡C(M,i') mod p^r" holds with slack ≥2 (i.e. mod p^{r+2}).
+- **Lemma 7** (Ψ₁ and Ψ₂): p∈{5,7,11}, t≤3 (t≤2 at p=11), m∈{1,2,p}, all n'<2mp^t+3 — ~8700 cases, 0 failures (Ψ₁ min slack 1, Ψ₂ min slack 0).
+- **Theorem**: slack ∈{0,1} for p∤m, 3–4 for p|m; e.g. `PASS classes p=11 r=3 m=1 N=1331 … THEOREM slack 0`.
+- **§5 (superseded section)**: S̃ representation N≤20; (S) termwise mod p³ and the `C(N−1,pk')/C(M−1,k') = C(pM,pk')/C(M,k')` rewrite exact; (B) Lucas reduction of R(k,j) mod p to (n',n'',δ) verified exhaustively incl. m=p+1 (two base-p digits), and the completed block formula `Σ_(B) ≡ p²m²Σ[R₀Σ_{u+v<p}+R₁Σ_{u+v≥p}] mod p³` holds; harmonic identities `Σ_{u+v<p}1/(uv)=Σ(2/n)H_{n−1}=H²−H⁽²⁾`, `ΣH_u/u=(H²+H⁽²⁾)/2` exact and ≡0 mod p; (K) expansions (a),(b),(c1),(c2) 0 failures, assembled `B(k)≡B₀(n')(1−3pmH'_k−pm/k) mod p²` 0 failures, block sums ≡0; (J) `B̃(j)≡B̃₀(1−pmH'_j−pm/j)` 0 failures; each class ≡0 mod p³; Proposition for p≤23, m≤6 and m=p — all pass (p∈{5,7,11,13}, m∈1..6,p,p+1 for the sub-claims).
+- **Remark**: `S*(−N;k,j)=(−1)^{k+j}S̃(N;k,j)` N≤8 exact; sums 1,−3,−11,1077,−25059.
+
+### (3) UNVERIFIED CONCERNS
+- Literature-context sentences (Beukers–Houben–Straub Gauss congruences, Beukers–Vlasenko Prop. 5.11, Mellit–Vlasenko, Straub 2014 Thm 1.2/3.2 and the A_{λ,ε} shape claim, Newton-polytope interior point) were not re-derived; none is used in the proof.
+
+### (4) CITATION AUDIT
+- "`numerics/a376462_oss_steps.py`, `a376462_representations.py`, `a376462_laurent.py`; outputs in `numerics/out/`" — all exist; §4 matches `a376462_oss_steps.txt` (p∈{5,7}, r≤2, m≤2); Lemma 7 "532 cases" = 188+344 ✓; Theorem slack ∈{0,1} matches `sweep_2026-10-15.txt` (p=7 gives 4,4,7,7) ✓; `a376462_laurent.txt` n≤6 ✓; `a376462_multivariate.py` output min slack 0 ✓; `a376462_second_r1_steps.txt` (ii) p∈{5,7,11}, m≤3 and (iv) p∈{5,7,11,13}, m≤4 slack 0/1 ✓; `a376462_second_structure.txt` "termwise −1 at r=2" ✓.
+- **MISMATCH:** "Two further exact forms (checked for n ≤ 12)" — `a376462_representations.py` uses `range(12)`, i.e. n ≤ 11. (True to n≤13 by my run.)
+- **MISMATCH:** "(the computer checks were also run with p | m)" and the status line "checks extended to r = 3, p ≤ 13 and p | m" — r=3, p≤13 are backed by `a376462_deep_direct_test.txt` / `test2.log` (first congruence at (5,3,2),(5,3,3),(7,3,1),(7,3,2),(11,3,1),(13,3,1),(5,4,1),(7,4,1)); **p | m is backed by no file** (`a376462_oss_steps.py`: `m in (1,2)`, p∈{5,7}; sweep n≤2; deep tests m≤4 with p≥5). Now covered by my runs (m=p,2p; all pass).
+- **MISMATCH:** §5 "(checked exactly for N ≤ 20)" — `a376462_second_structure.py` checks `range(1,14)`, i.e. N ≤ 13. (True to N≤20 by my run.)
+- "the referee additionally verified … p ≤ 13, m ≤ 5 … Proposition for p ≤ 23, m ≤ 6, including p | m" — no matching file in `numerics/out/` (the `referee_*` outputs there concern the shifted-congruence note and a p=3 theorem). Reproduced independently by my §5 block.
+- "(all 120 determinants were computed and factored)" — `a376462_straub_shape_search.txt` says "distinct determinants: 120; hits: none"; the script has no factoring step. "homogenise … checked for n ≤ 4" — no script found (grep `t+u+v|tuvzw|homogen`); it is equivalent to the CT check, which exists for n≤6.
+
+### (5) EXPOSITION
+- §4 "min 0 attained, so the argument is tight" is true for the I-chain/Σ_r only; S_K ≡ Σ₁, the K-chain and Lemma 7 for Ψ₁ have slack ≥1 in both the note's output and mine.
+- §5 remains labelled "proved for r = 1" in two places while the header says superseded; harmless but inconsistent.
+
+### (6) Verdict
+**Correct** (first congruence; §5 also correct as an r=1 argument). Three numerical-range sentences overstate what the cited scripts ran (n≤12 vs 11, N≤20 vs 13, "also run with p | m" unbacked); none affects the proof.
+
+---
+
+## Scripts (all exact arithmetic, `~/venvs/general/bin/python -I`)
+- `<working folder>/numerics/rereview_oss_lemmas.py` → `numerics/out/rereview_oss_lemmas.txt` — Lemmas 1–4 incl. generalized binomials, p|m, p=3 controls: **161 pass / 0 fail**.
+- `<working folder>/numerics/rereview_oss_a363983.py` → `numerics/out/rereview_oss_a363983.txt` — Lemma 5 sub-claims, (1)(2)(3), Lemma 6 internals, Theorem, §5 remarks; p∈{5,7,11}, r≤3, m∈{1,2,3,p,2p}: **114 pass / 0 fail**.
+- `<working folder>/numerics/rereview_oss_a363983_wider.py` → `numerics/out/rereview_oss_a363983_wider.txt` — Theorem at p=13 (r≤3), 17, 19, 23, 29, 31, m=p: **19 pass / 0 fail**.
+- `<working folder>/numerics/rereview_oss_a376462.py` → `numerics/out/rereview_oss_a376462.txt` — definitions/OEIS, classes S/K/I/B with all sub-claims, Lemma 7, chains, Theorem, full §5: **132 pass / 0 fail**.
+
+Total: 426 checks, 0 failures; no confirmed mathematical error in either note.

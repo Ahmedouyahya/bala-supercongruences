@@ -1,0 +1,12 @@
+self-similarity: Psi_j(m p^t, n') == Psi_j(m p^(t-1), [n'/p]) mod p^t ?
+  p=5: 188 checks, failures Psi1: 0, Psi2: 0
+  p=7: 344 checks, failures Psi1: 0, Psi2: 0
+classes and chains (slack vs required):
+  p=5 r=1 m=1: scaled sum 0 (termwise 0); K 0, I 0, B 1 | K=N^2*Kexact True, v(Kexact-SigK1)-r=1, chainK=[], v(SigK_r)-r=0 | I=N^2*Iexact True, v(Iexact-SigI1)-r=0, chainI=[], v(SigI_r)-r=0
+  p=5 r=1 m=2: scaled sum 2 (termwise 0); K 1, I 0, B 1 | K=N^2*Kexact True, v(Kexact-SigK1)-r=1, chainK=[], v(SigK_r)-r=3 | I=N^2*Iexact True, v(Iexact-SigI1)-r=0, chainI=[], v(SigI_r)-r=0
+  p=5 r=2 m=1: scaled sum 0 (termwise 0); K 0, I 3, B 3 | K=N^2*Kexact True, v(Kexact-SigK1)-r=3, chainK=[4], v(SigK_r)-r=0 | I=N^2*Iexact True, v(Iexact-SigI1)-r=3, chainI=[0], v(SigI_r)-r=0
+  p=5 r=2 m=2: scaled sum 0 (termwise 0); K 1, I 0, B 3 | K=N^2*Kexact True, v(Kexact-SigK1)-r=3, chainK=[3], v(SigK_r)-r=1 | I=N^2*Iexact True, v(Iexact-SigI1)-r=1, chainI=[0], v(SigI_r)-r=0
+  p=7 r=1 m=1: scaled sum 0 (termwise 0); K 0, I 0, B 2 | K=N^2*Kexact True, v(Kexact-SigK1)-r=3, chainK=[], v(SigK_r)-r=0 | I=N^2*Iexact True, v(Iexact-SigI1)-r=0, chainI=[], v(SigI_r)-r=0
+  p=7 r=1 m=2: scaled sum 0 (termwise 0); K 0, I 0, B 2 | K=N^2*Kexact True, v(Kexact-SigK1)-r=2, chainK=[], v(SigK_r)-r=0 | I=N^2*Iexact True, v(Iexact-SigI1)-r=0, chainI=[], v(SigI_r)-r=0
+  p=7 r=2 m=1: scaled sum 0 (termwise 0); K 0, I 3, B 4 | K=N^2*Kexact True, v(Kexact-SigK1)-r=4, chainK=[3], v(SigK_r)-r=0 | I=N^2*Iexact True, v(Iexact-SigI1)-r=4, chainI=[0], v(SigI_r)-r=0
+  p=7 r=2 m=2: scaled sum 0 (termwise 0); K 0, I 0, B 4 | K=N^2*Kexact True, v(Kexact-SigK1)-r=4, chainK=[3], v(SigK_r)-r=0 | I=N^2*Iexact True, v(Iexact-SigI1)-r=1, chainI=[0], v(SigI_r)-r=0

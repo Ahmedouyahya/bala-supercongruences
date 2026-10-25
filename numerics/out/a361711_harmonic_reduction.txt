@@ -1,0 +1,45 @@
+ p k | E1 E2 | v(i)-2k  v(ii)-k  v(W)-2k | v(H1 + 2q) [the simpler form H1 == -2q_k (mod p^?)]
+ 3 1 | True  True  |  997    -1    -1 | 1
+ 3 2 | True  True  |    1    -1    -1 | 2
+ 3 3 | True  True  |    1    -1    -1 | 3
+ 3 4 | True  True  |    1    -1    -1 | 4
+ 5 1 | True  True  |    0     0     0 | 1
+ 5 2 | True  True  |    0     0     0 | 2
+ 5 3 | True  True  |    0     0     0 | 3
+ 5 4 | True  True  |    0     0     0 | 4
+ 7 1 | True  True  |    0     1     0 | 1
+ 7 2 | True  True  |    0     1     0 | 2
+ 7 3 | True  True  |    0     1     0 | 3
+ 7 4 | True  True  |    0     1     0 | 4
+11 1 | True  True  |    0     0     0 | 1
+11 2 | True  True  |    0     0     0 | 2
+11 3 | True  True  |    0     0     0 | 3
+11 4 | True  True  |    0     0     0 | 4
+13 1 | True  True  |    0     0     0 | 1
+13 2 | True  True  |    0     0     0 | 2
+13 3 | True  True  |    0     0     0 | 3
+13 4 | True  True  |    0     0     0 | 4
+17 1 | True  True  |    0     0     0 | 1
+17 2 | True  True  |    0     0     0 | 2
+17 3 | True  True  |    0     0     0 | 3
+19 1 | True  True  |    0     0     0 | 1
+19 2 | True  True  |    0     0     0 | 2
+19 3 | True  True  |    0     0     0 | 3
+23 1 | True  True  |    0     0     0 | 1
+23 2 | True  True  |    0     0     0 | 2
+23 3 | True  True  |    0     0     0 | 3
+29 1 | True  True  |    0     0     0 | 1
+29 2 | True  True  |    0     0     0 | 2
+29 3 | True  True  |    0     0     0 | 3
+31 1 | True  True  |    0     0     0 | 1
+31 2 | True  True  |    0     0     0 | 2
+31 3 | True  True  |    0     0     0 | 3
+37 1 | True  True  |    0     0     0 | 1
+37 2 | True  True  |    0     0     0 | 2
+37 3 | True  True  |    0     0     0 | 3
+41 1 | True  True  |    0     0     0 | 1
+41 2 | True  True  |    0     0     0 | 2
+43 1 | True  True  |    0     0     0 | 1
+43 2 | True  True  |    0     0     0 | 2
+47 1 | True  True  |    0     0     0 | 1
+47 2 | True  True  |    0     0     0 | 2

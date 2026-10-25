@@ -1,0 +1,51 @@
+== identity T(r,N) = beta(r+N, N) (Catalan truncation = Epoch beta) ==
+  mismatches: 0
+== two-parameter shift: v_p(beta(pS,pN)-beta(S,N)) for independent S,N (need >= 3(v+1), v=min v_p(S),v_p(N)) ==
+  p=5: minimal slack 0 at S=1,N=2 (v=0, val=3)
+  p=7: minimal slack 0 at S=1,N=2 (v=0, val=3)
+  p=11: minimal slack 0 at S=1,N=2 (v=0, val=3)
+  p=13: minimal slack 0 at S=1,N=2 (v=0, val=3)
+== A352275 / u_m(n): v_p(u_m(np^k)-u_m(np^(k-1))) ==
+  m=1 p=5: n=1,k=1:3 n=2,k=1:4 n=1,k=2:6 n=2,k=2:7
+  m=1 p=7: n=1,k=1:3 n=2,k=1:3 n=1,k=2:6 n=2,k=2:6
+  m=1 p=11: n=1,k=1:3 n=2,k=1:3 n=1,k=2:6 n=2,k=2:6
+  m=2 p=5: n=1,k=1:4 n=2,k=1:4 n=1,k=2:7 n=2,k=2:7
+  m=2 p=7: n=1,k=1:3 n=2,k=1:4 n=1,k=2:6 n=2,k=2:7
+  m=2 p=11: n=1,k=1:3 n=2,k=1:3 n=1,k=2:6 n=2,k=2:6
+  m=3 p=5: n=1,k=1:4 n=2,k=1:3 n=1,k=2:7 n=2,k=2:6
+  m=3 p=7: n=1,k=1:4 n=2,k=1:4 n=1,k=2:7 n=2,k=2:7
+  m=3 p=11: n=1,k=1:3 n=2,k=1:4 n=1,k=2:6 n=2,k=2:7
+== A386548: v_p(a(np^k)-a(np^(k-1))), conjecture >= 2k ==
+  p=5: n=1,k=1:2 n=2,k=1:2 n=3,k=1:2 n=1,k=2:4 n=2,k=2:4 n=3,k=2:4
+  p=7: n=1,k=1:2 n=2,k=1:2 n=3,k=1:2 n=1,k=2:4 n=2,k=2:4 n=3,k=2:4
+  p=11: n=1,k=1:2 n=2,k=1:2 n=3,k=1:2 n=1,k=2:4 n=2,k=2:4 n=3,k=2:4
+  p=13: n=1,k=1:2 n=2,k=1:2 n=3,k=1:2 n=1,k=2:4 n=2,k=2:4
+   p=3 check: [(1, 1, 1), (2, 1, 1), (1, 2, 3), (2, 2, 3), (1, 3, 7), (2, 3, 6)]
+== A361711 closed form check and valuations, need >= 3k ==
+   closed form ok: True
+  p=5: k=1:3 k=2:6 k=3:9
+  p=7: k=1:4 k=2:7 k=3:10
+  p=11: k=1:3 k=2:6 k=3:9
+  p=13: k=1:3 k=2:6 k=3:9
+  p=17: k=1:3 k=2:6 k=3:9
+  p=19: k=1:3 k=2:6
+  p=23: k=1:3 k=2:6
+== A364178 first terms: [Fraction(1, 1), Fraction(168, 1), Fraction(83980, 1), Fraction(48664320, 1), Fraction(29966636700, 1)]
+== A364175 first terms: [Fraction(1, 1), Fraction(36, 1), Fraction(3564, 1), Fraction(408408, 1), Fraction(49697388, 1)]
+  A364178 p=5: n=1,k=1:3 n=2,k=1:4 n=1,k=2:6 n=2,k=2:7
+  A364178 p=7: n=1,k=1:4 n=2,k=1:3 n=1,k=2:7 n=2,k=2:6
+  A364178 p=11: n=1,k=1:3 n=2,k=1:3 n=1,k=2:6
+  A364178 p=13: n=1,k=1:3 n=2,k=1:4 n=1,k=2:6
+  A364175 p=5: n=1,k=1:4 n=2,k=1:4 n=1,k=2:7 n=2,k=2:7
+  A364175 p=7: n=1,k=1:3 n=2,k=1:3 n=1,k=2:6 n=2,k=2:6
+  A364175 p=11: n=1,k=1:3 n=2,k=1:4 n=1,k=2:6
+  A364175 p=13: n=1,k=1:3 n=2,k=1:3 n=1,k=2:6
+== A363983 check: [1, 2, 14, 128, 1310, 14252, 161168, 1872096]
+  A363983 p=5: n=1,k=1:3 n=2,k=1:5 n=3,k=1:4 n=1,k=2:6 n=2,k=2:7 n=3,k=2:7
+  A363983 p=7: n=1,k=1:3 n=2,k=1:4 n=3,k=1:3 n=1,k=2:6 n=2,k=2:7 n=3,k=2:6
+  A363983 p=11: n=1,k=1:4 n=2,k=1:3 n=3,k=1:3 n=1,k=2:7 n=2,k=2:6 n=3,k=2:6
+  A363983 p=13: n=1,k=1:3 n=2,k=1:3 n=3,k=1:3 n=1,k=2:6 n=2,k=2:6
+== A376462 check: [1, 5, 109, 3317, 121501, 4954505]
+  A376462 p=5 (conj1,conj2): n=1,k=1:(3,3) n=2,k=1:(3,3) n=1,k=2:(6,6) n=2,k=2:(6,6)
+  A376462 p=7 (conj1,conj2): n=1,k=1:(4,4) n=2,k=1:(4,5) n=1,k=2:(7,7) n=2,k=2:(7,8)
+  A376462 p=11 (conj1,conj2): n=1,k=1:(3,3) n=2,k=1:(3,3) n=1,k=2:(6,6) n=2,k=2:(6,6)

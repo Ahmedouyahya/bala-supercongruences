@@ -1,0 +1,5 @@
+load(zeilberger)$
+F : (-1)^(n+k)*binomial(n,k)*binomial(n+k-1,k)*binomial(2*k,n)$
+res : Zeilberger(F, k, n)$
+print(string(res[1][1]))$
+print(string(res[1][2]))$

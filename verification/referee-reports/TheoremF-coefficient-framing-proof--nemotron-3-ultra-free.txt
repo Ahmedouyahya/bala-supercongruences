@@ -1,0 +1,89 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/TheoremF-coefficient-framing-proof.md only (background notes NOT supplied in this run; some 'missing lemma' remarks stem from that). Prompt: notes/referee-reports/PROMPT.txt. AI output kept as evidence, not authority.
+===========================================================================
+# Referee Report on PROOF.md
+
+## Section 1: Lemma 1 (Reduced Logarithm)
+
+**no issue found**
+
+## Section 2: Lemmas 2, 3, 4 (Harmonic Sums)
+
+**Lemma 2 (line 26-27)**
+- Claim: For p ≥ 5, e ≥ 1: S₂ ≡ 0 (mod pᵉ) and S₁ ≡ 0 (mod p²ᵉ).
+- Status: **Correct**. The permutation argument for S₂ and the pairing u ↔ pᵉ−u for S₁ are standard and correctly executed. The requirement p ≥ 5 (so 6 and 2 are units) is explicitly noted.
+
+**Lemma 3 (line 29-30)**
+- Claim: (i) H_T ≡ 0 (mod p²ᵉ); (ii) if T even, H_T^± ≡ 0 (mod p²ᵉ).
+- Status: **Correct**. The decomposition T = ℓpᵉ, i = βpᵉ + u is valid. The expansion (βpᵉ+u)⁻¹ ≡ u⁻¹ − βpᵉu⁻² (mod p²ᵉ) is correct because (βpᵉ+u)⁻¹ = u⁻¹(1+βpᵉ/u)⁻¹ ≡ u⁻¹(1−βpᵉ/u) ≡ u⁻¹−βpᵉu⁻². Summing over β gives ℓS₁ − pᵉS₂Σβ; both terms vanish mod p²ᵉ by Lemma 2. For (ii), the parity cancellation (ℓ even) and the analysis of S₂^± via u=2v pairing are sound. The step Σ_{v<pᵉ/2} v⁻² ≡ ½S₂ ≡ 0 (mod pᵉ) uses that 2 is a unit and (pᵉ−v)⁻² ≡ v⁻² (mod pᵉ).
+
+**Lemma 4 (line 32-33)**
+- Claim: Coefficient formulas for U², V², UV and v_p([xᵀ]L²) ≥ v_p(T).
+- Status: **Correct with a minor notational inaccuracy**. The stated formula [xᵀ]UV = (1+(−1)ᵀ)H_T^±/T omits a factor of (−1)ᵀ, but since (1+(−1)ᵀ) vanishes for odd T and equals 2 for even T (where (−1)ᵀ=1), the numerical value is identical. The valuation bound follows correctly from Lemma 3.
+
+**Severity: UNCLEAR → GAP (minor formula typo, no effect on conclusion)**
+
+## Section 3: Lemmas 5, 6 (Frobenius Lifting)
+
+**Lemma 5 (line 37-38)**
+- Claim: f(y)^{pᵏ} ≡ f(y^{pᵗ})^{p^{k−t}} (mod p^{k−t+1}).
+- Status: **Correct**. The freshman's dream gives the base case; the induction X ≡ Y (mod p) ⇒ X^{pᵘ} ≡ Y^{pᵘ} (mod p^{u+1}) is standard and correctly justified by the binomial expansion of (Y+pZ)^{pᵘ}.
+
+**Lemma 6 (line 40-41)**
+- Claim: For M = p^{r−1}m (p∤m), φ(y)^M = Σ γ_s y^s. If s ≥ 1 and σ = v_p(s) ≤ r−2, then v_p(γ_s) ≥ r−1−σ.
+- Status: **Correct**. Applying Lemma 5 with k=r−1, t=σ+1 gives φ^{p^{r−1}} ≡ Ψ(y^{p^{σ+1}}) (mod p^{r−1−σ}) where Ψ = φ^{p^{r−σ−2}} ∈ ℤ[[y]]. Raising to the m-th power preserves the congruence (since A ≡ B (mod p^N) ⇒ A^m ≡ B^m (mod p^N)). The right-hand side contains only monomials with exponent divisible by p^{σ+1}, so the coefficient of y^s (with v_p(s)=σ) vanishes modulo p^{r−1−σ}.
+
+## Section 4: Proof of Theorem F (lines 45-58)
+
+**Equation (1) and setup (lines 47-49)**
+- Claim: A(N) − A(M) = Σ_{s=0}^{cM−1} γ_s · ε_{p(cM−s)}.
+- Status: **Correct**. The rewriting (φ(x)/x^c)^N = (φ(x^p)/x^{pc})^M exp(NL(x)) uses Lemma 1. Extracting [x⁰] and shifting indices is valid. The sum is finite because exp(NL)−1 has no constant term and (φ(x^p)/x^{pc})^M has no positive powers of x.
+
+**Valuation of ε_T (lines 51-55)**
+- Claim: v_p(ε_T) ≥ min(2r + v_p(T), 3r) for T ≡ 0 (mod p).
+- Status: **Correct**. 
+  - j=1: [xᵀ]L = 0 because L contains only exponents not divisible by p.
+  - j=2: v_p(N²/2) = 2r; v_p([xᵀ]L²) ≥ v_p(T) by Lemma 4.
+  - j≥3: [xᵀ]L^j ∈ ℤ_(p) (denominators in U,V are coprime to p). For j=3: v_p(N³/3!) = 3r (p≥5 ⇒ v_p(3!)=0). For j≥4: v_p(N^j/j!) = jr − v_p(j!) ≥ jr − (j−1)/(p−1) ≥ jr − (j−1)/4 ≥ 3r when r≥1 (verified by the inequality (j−3)r ≥ (j−1)/4).
+
+**Case analysis (lines 57-58)**
+- Claim: Every term in (1) has valuation ≥ 3r.
+- Status: **Correct**. 
+  - τ = v_p(cM−s), T = p(cM−s), v_p(T) = 1+τ.
+  - If τ ≥ r−1: v_p(ε_T) ≥ 3r by (2); γ_s ∈ ℤ ⇒ v_p(γ_s) ≥ 0.
+  - If τ ≤ r−2: v_p(cM) ≥ r−1 > τ ⇒ v_p(s) = τ (standard valuation property). Lemma 6 gives v_p(γ_s) ≥ r−1−τ. Equation (2) gives v_p(ε_T) ≥ 2r+1+τ. Sum = 3r.
+  - The edge case r=1 is handled implicitly: τ ≥ 0 = r−1 always, so the first case applies and v_p(ε_T) ≥ 3 = 3r.
+
+**Potential oversight: c = 0 (line 7: "c ≥ 0")**
+- The sum Σ_{s=0}^{cM−1} becomes an empty sum when c=0. The theorem holds trivially (A(N)=A(M)=1), but the proof does not mention this case. **Severity: GAP (trivial but unaddressed edge case)**.
+
+## Section 5: The Instances
+
+**Items (a)–(d)**
+- Status: **Correct**. The generating function manipulations for A333561, A333562, A119259, A352373 are algebraically verified. The Lagrange inversion for A333565 is correctly reduced to a symbolic identity checked by sympy (and termwise for n ≤ 12). The A002003 formula is noted as unverified for n=0 and not relied upon.
+
+## Section 6: Remarks & Section 7: Computer Checks
+
+- The remarks on p=3, Jacobsthal–Kazandzidis, and generalizations are contextual and not part of the core proof.
+- Computer checks cover Lemma 3 bounds, Lemma 6, Theorem F for multiple parameters, and instance identities — all with "min slack 0", confirming tightness.
+
+---
+
+## VERDICT: CORRECT WITH FIXES
+
+The proof is mathematically sound. The only issues are:
+1. **Minor formula typo in Lemma 4** (missing (−1)ᵀ factor in [xᵀ]UV, but numerically equivalent).
+2. **Edge case c=0 not explicitly handled** in the summation notation of the main proof (trivial to fix by noting the sum is empty).
+
+---
+
+## Three Steps I Am Least Sure About (and Why)
+
+1. **Lemma 3(ii) cancellation of S₂^± (line 30)**
+   - The argument that Σ_{v<pᵉ/2} v⁻² ≡ ½S₂ (mod pᵉ) relies on pairing v with pᵉ−v and the congruence (pᵉ−v)⁻² ≡ v⁻² (mod pᵉ). This is correct, but the step "Σ_{v<pᵉ/2} v⁻² ≡ ½S₂" is a congruence mod pᵉ, not an equality. Since S₂ ≡ 0 (mod pᵉ) by Lemma 2, the conclusion Σ_{v<pᵉ/2} v⁻² ≡ 0 (mod pᵉ) is valid. However, the proof writes it as an equality ("≡ ½S₂") without explicitly stating the modulus, which could confuse a reader checking the p-adic precision.
+
+2. **Lemma 6 application when τ = r−2 and r=2 (line 57)**
+   - When r=2, τ ≤ 0. The case τ=0 gives σ=0. Lemma 6 requires σ ≤ r−2 = 0, which holds. The bound v_p(γ_s) ≥ r−1−τ = 1 is then used. This works, but the condition "σ ≤ r−2" in Lemma 6 is tight: if r=2 and σ=0, the lemma applies; if r=1, the condition is vacuous. The proof implicitly relies on r≥1 (true by definition) and handles r=1 in the first case (τ ≥ r−1). The boundary r=2 is the most delicate and deserves explicit verification, which the computer checks provide.
+
+3. **The j≥3 valuation bound for p=5, j=5 (line 54)**
+   - The proof claims v_p(N^j/j!) ≥ 3r using v_p(j!) ≤ (j−1)/4. For p=5, j=5: v_5(5!) = 1. The bound gives 5r − 1 ≥ 3r ⇒ 2r ≥ 1, which holds for r≥1. But the inequality v_p(j!) ≤ (j−1)/(p−1) is Legendre's formula (v_p(j!) = Σ floor(j/p^i) < j/(p−1)). For j=5, p=5: v_5(5!) = 1, while (5−1)/4 = 1. The inequality is tight here. The proof's estimate "v_p(j!) ≤ (j−1)/(p−1) ≤ (j−1)/4 ≤ (j−3)r" is a chain of inequalities; the last step (j−1)/4 ≤ (j−3)r requires r≥1 and j≥4, which holds. It is correct but very loose; a direct computation of v_p(j!) for small j would be more transparent.

@@ -1,0 +1,7 @@
+k=4: v2(b_4(n,2^m)) - m at n=m+2, m=2..9: [3, 3, 3, 3, 3, 3, 3, 3]
+k=4: min over n in [m+2, m+200) of v2(b_4)-m, m=2..6: [3, 3, 3, 3, 3]
+k=4: min over n in [40,200] of v2(b_4)-m, m=5,8 (the range used by lemmaB_stirling_2adic.py): [4, 4]
+k=8: min over n in [m+2, m+200) of v2(b_8)-m, m=2..9: [5, 6, 5, 6, 5, 6, 5, 6]
+k=12: min over n in [m+2, m+200) of v2(b_12)-m, m=2..9: [8, 7, 6, 6, 7, 7, 6, 6]
+k=12: first argmin n, m=2..9: [8, 6, 6, 7, 8, 9, 10, 11]
+Lemma B requirement at k=4 is v2(b_4)-m >= 1+floor(4/3) = 2: satisfied (min 3); at k=8: >= 3 (min 5); at k=12: >= 5 (min 6).

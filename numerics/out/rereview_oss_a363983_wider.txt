@@ -1,0 +1,20 @@
+PASS p=13 r=1 m=1 N=13: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=13 r=1 m=2 N=26: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=13 r=1 m=3 N=39: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=13 r=1 m=4 N=52: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=13 r=1 m=5 N=65: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=13 r=1 m=6 N=78: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=13 r=2 m=1 N=169: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=13 r=2 m=2 N=338: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=13 r=2 m=3 N=507: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=13 r=3 m=1 N=2197: v_p(a(N)-a(N/p)) = 9, need 9, slack 0
+PASS p=17 r=1 m=1 N=17: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=17 r=1 m=2 N=34: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=17 r=2 m=1 N=289: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=19 r=2 m=1 N=361: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=23 r=2 m=1 N=529: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=29 r=1 m=3 N=87: v_p(a(N)-a(N/p)) = 3, need 3, slack 0
+PASS p=31 r=2 m=1 N=961: v_p(a(N)-a(N/p)) = 6, need 6, slack 0
+PASS p=13 r=1 m=13 N=169: v_p(a(N)-a(N/p)) = 6, need 3, slack 3
+PASS p=13 r=2 m=13 N=2197: v_p(a(N)-a(N/p)) = 9, need 6, slack 3
+SUMMARY rereview_oss_a363983_wider: PASS 19, FAIL 0

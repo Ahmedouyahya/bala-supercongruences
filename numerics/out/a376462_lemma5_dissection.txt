@@ -1,0 +1,27 @@
+p=5 r=2 m=1:
+  v(A_0)-2r = +0
+  v(A_1)-2r = +0
+  top: v(sum'(1/k)Khat_r - (A_1 - N Xhat)) - 2r = +1;  v(Xhat)-r = +0;  v(classK) - 3r = +0
+  step 0->1: v(A_1-A_s + m p^(s+1)(X+Y)) - 2r = +0 | pieces vs p^{2r-s-1}: X1 +0, X2 +96, X3 +0, Y0 +0, Y1 +96, X2+X3 +0, X+Y +0
+p=5 r=2 m=2:
+  v(A_0)-2r = +0
+  v(A_1)-2r = +0
+  top: v(sum'(1/k)Khat_r - (A_1 - N Xhat)) - 2r = +1;  v(Xhat)-r = +0;  v(classK) - 3r = +0
+  step 0->1: v(A_1-A_s + m p^(s+1)(X+Y)) - 2r = +1 | pieces vs p^{2r-s-1}: X1 +0, X2 +3, X3 +0, Y0 +0, Y1 +0, X2+X3 +0, X+Y +0
+p=7 r=2 m=1:
+  v(A_0)-2r = +0
+  v(A_1)-2r = +0
+  top: v(sum'(1/k)Khat_r - (A_1 - N Xhat)) - 2r = +2;  v(Xhat)-r = +0;  v(classK) - 3r = +0
+  step 0->1: v(A_1-A_s + m p^(s+1)(X+Y)) - 2r = +0 | pieces vs p^{2r-s-1}: X1 +0, X2 +96, X3 +0, Y0 +0, Y1 +96, X2+X3 +0, X+Y +0
+p=5 r=3 m=1:
+  v(A_0)-2r = +0
+  v(A_1)-2r = +0
+  v(A_2)-2r = +0
+  top: v(sum'(1/k)Khat_r - (A_2 - N Xhat)) - 2r = +2;  v(Xhat)-r = +0;  v(classK) - 3r = +0
+  step 0->1: v(A_1-A_s + m p^(s+1)(X+Y)) - 2r = +0 | pieces vs p^{2r-s-1}: X1 +0, X2 +94, X3 +0, Y0 +0, Y1 +94, X2+X3 +0, X+Y +0
+  step 1->2: v(A_2-A_s + m p^(s+1)(X+Y)) - 2r = +1 | pieces vs p^{2r-s-1}: X1 +1, X2 +5, X3 +1, Y0 +0, Y1 +0, X2+X3 +1, X+Y +1
+p=7 r=2 m=2:
+  v(A_0)-2r = +0
+  v(A_1)-2r = +0
+  top: v(sum'(1/k)Khat_r - (A_1 - N Xhat)) - 2r = +2;  v(Xhat)-r = +0;  v(classK) - 3r = +0
+  step 0->1: v(A_1-A_s + m p^(s+1)(X+Y)) - 2r = +0 | pieces vs p^{2r-s-1}: X1 +0, X2 +3, X3 +0, Y0 +0, Y1 +0, X2+X3 +0, X+Y +0

@@ -1,0 +1,140 @@
+== Statement: a(n) against OEIS A376462 data; (1) double-sum form; representations
+PASS OEIS data n=0..11
+PASS (1) a(n) = sum_{k,i} T(n;k,i), n<=16
+PASS (R1) A108625(n,n-k) = sum_j C(n,j)C(n+j,j)C(n-k,j), n<=13
+PASS symmetric form a(n)=sum_{j,k} C(n,j)C(n-j,k)C(n,j)C(n+j,j)C(n,k)C(n+k,k), n<=13
+PASS (sec.5) a(N-1) = sum_{k+j<=N-1} S~(N;k,j), N<=20
+PASS (sec.5 remark) S*(-N;k,j) = (-1)^{k+j} S~(N;k,j) and sum = 1,-3,-11,1077,...  sums N=1..5: [1, -3, -11, 1077, -25059]
+PASS a(n) = CT[Lambda^n], n<=5  [1, 5, 109, 3317, 121501, 4954505]
+== Classes (S),(K),(I),(B) and the Theorem.  Slacks vs p^{3r} (B vs p^{4r}).
+PASS classes p=5 r=1 m=1 N=5  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 0 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 1, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=5 r=1 m=2 N=10  S: sum slack 2, termwise min 0, subclaim failures 0 | K 1, I 0, B(vs 4r) 0 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 1, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 3 I 0 | THEOREM slack 0
+PASS classes p=5 r=1 m=3 N=15  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 2, B(vs 4r) 0 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 1, S_I==Sig1 1 | chains K [] I [] | Sig_r: K 0 I 1 | THEOREM slack 0
+PASS classes p=5 r=1 m=5 N=25  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 5 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 4 | chains K [] I [] | Sig_r: K 1 I 4 | THEOREM slack 3
+PASS classes p=5 r=1 m=10 N=50  S: sum slack 3, termwise min 3, subclaim failures 0 | K 4, I 3, B(vs 4r) 5 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 2 | chains K [] I [] | Sig_r: K 2 I 1 | THEOREM slack 3
+PASS classes p=5 r=2 m=1 N=25  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 3, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 3, S_I==Sig1 3 | chains K [4] I [0] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=5 r=2 m=2 N=50  S: sum slack 0, termwise min 0, subclaim failures 0 | K 1, I 0, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 3, S_I==Sig1 1 | chains K [3] I [0] | Sig_r: K 1 I 0 | THEOREM slack 0
+PASS classes p=5 r=2 m=3 N=75  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 1, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 3, S_I==Sig1 2 | chains K [4] I [1] | Sig_r: K 0 I 1 | THEOREM slack 0
+PASS classes p=5 r=2 m=5 N=125  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 6 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 6, S_I==Sig1 6 | chains K [7] I [5] | Sig_r: K 1 I 4 | THEOREM slack 3
+PASS classes p=5 r=3 m=1 N=125  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 3, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 5, S_I==Sig1 5 | chains K [6, 3] I [4, 0] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=5 r=3 m=2 N=250  S: sum slack 0, termwise min 0, subclaim failures 0 | K 1, I 0, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 5, S_I==Sig1 2 | chains K [6, 3] I [1, 0] | Sig_r: K 1 I 0 | THEOREM slack 0
+PASS classes p=5 r=3 m=3 N=375  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 1, B(vs 4r) 3 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 5, S_I==Sig1 3 | chains K [6, 3] I [2, 1] | Sig_r: K 0 I 1 | THEOREM slack 0
+PASS classes p=5 r=3 m=5 N=625  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 7 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 8, S_I==Sig1 7 | chains K [10, 7] I [6, 5] | Sig_r: K 1 I 4 | THEOREM slack 3
+PASS classes p=7 r=1 m=1 N=7  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 3, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 0 I 0 | THEOREM slack 1
+PASS classes p=7 r=1 m=2 N=14  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 2, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 0 I 0 | THEOREM slack 1
+PASS classes p=7 r=1 m=3 N=21  S: sum slack 1, termwise min 0, subclaim failures 0 | K 1, I 1, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 2, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 1 I 0 | THEOREM slack 2
+PASS classes p=7 r=1 m=7 N=49  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 6 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 5, S_I==Sig1 5 | chains K [] I [] | Sig_r: K 1 I 4 | THEOREM slack 4
+PASS classes p=7 r=1 m=14 N=98  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 3, B(vs 4r) 6 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 5, S_I==Sig1 2 | chains K [] I [] | Sig_r: K 1 I 1 | THEOREM slack 4
+PASS classes p=7 r=2 m=1 N=49  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 3, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 4 | chains K [3] I [0] | Sig_r: K 0 I 0 | THEOREM slack 1
+PASS classes p=7 r=2 m=2 N=98  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 1 | chains K [3] I [0] | Sig_r: K 0 I 0 | THEOREM slack 1
+PASS classes p=7 r=2 m=3 N=147  S: sum slack 0, termwise min 0, subclaim failures 0 | K 1, I 0, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 1 | chains K [3] I [0] | Sig_r: K 1 I 0 | THEOREM slack 2
+PASS classes p=7 r=2 m=7 N=343  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 7 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 7, S_I==Sig1 6 | chains K [7] I [5] | Sig_r: K 1 I 4 | THEOREM slack 4
+PASS classes p=7 r=3 m=1 N=343  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 3, B(vs 4r) 3 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 6, S_I==Sig1 5 | chains K [6, 3] I [4, 0] | Sig_r: K 0 I 0 | THEOREM slack 1
+PASS classes p=7 r=3 m=2 N=686  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 3 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 6, S_I==Sig1 2 | chains K [6, 3] I [1, 0] | Sig_r: K 0 I 0 | THEOREM slack 1
+PASS classes p=11 r=1 m=1 N=11  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 2, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=11 r=1 m=2 N=22  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 2, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=11 r=1 m=3 N=33  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 1 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 3, S_I==Sig1 0 | chains K [] I [] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=11 r=1 m=11 N=121  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 6 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 5, S_I==Sig1 5 | chains K [] I [] | Sig_r: K 1 I 4 | THEOREM slack 3
+PASS classes p=11 r=2 m=1 N=121  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 3, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 4 | chains K [3] I [0] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=11 r=2 m=2 N=242  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 1 | chains K [3] I [0] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=11 r=2 m=3 N=363  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 0, B(vs 4r) 2 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 4, S_I==Sig1 1 | chains K [3] I [0] | Sig_r: K 0 I 0 | THEOREM slack 0
+PASS classes p=11 r=2 m=11 N=1331  S: sum slack 3, termwise min 3, subclaim failures 0 | K 3, I 6, B(vs 4r) 7 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 7, S_I==Sig1 6 | chains K [7] I [5] | Sig_r: K 1 I 4 | THEOREM slack 3
+PASS classes p=11 r=3 m=1 N=1331  S: sum slack 0, termwise min 0, subclaim failures 0 | K 0, I 3, B(vs 4r) 3 | K=N^2 S_K True, I=N^2 S_I True | S_K==Sig1 6, S_I==Sig1 5 | chains K [6, 3] I [4, 0] | Sig_r: K 0 I 0 | THEOREM slack 0
+   (class block took 174.3s)
+== Lemma 7 (self-similarity) Psi_1, Psi_2: Psi(mp^t,n') == Psi(mp^{t-1},[n'/p]) mod p^t, all n' < 2mp^t+3; plus floor identities; plus Lemma 1 as used (C(N,pi') == C(M,i'))
+PASS Lemma7 p=5 t=1 m=1 (M_t=5)  13 cases; failures Psi1 0, Psi2 0; min slack Psi1 1, Psi2 0
+PASS Lemma7 p=5 t=1 m=2 (M_t=10)  23 cases; failures Psi1 0, Psi2 0; min slack Psi1 1, Psi2 0
+PASS Lemma7 p=5 t=1 m=5 (M_t=25)  53 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 1
+PASS Lemma7 p=5 t=2 m=1 (M_t=25)  53 cases; failures Psi1 0, Psi2 0; min slack Psi1 2, Psi2 0
+PASS Lemma7 p=5 t=2 m=2 (M_t=50)  103 cases; failures Psi1 0, Psi2 0; min slack Psi1 2, Psi2 0
+PASS Lemma7 p=5 t=2 m=5 (M_t=125)  253 cases; failures Psi1 0, Psi2 0; min slack Psi1 4, Psi2 1
+PASS Lemma7 p=5 t=3 m=1 (M_t=125)  253 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 0
+PASS Lemma7 p=5 t=3 m=2 (M_t=250)  503 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 0
+PASS Lemma7 p=5 t=3 m=5 (M_t=625)  1253 cases; failures Psi1 0, Psi2 0; min slack Psi1 5, Psi2 1
+PASS Lemma7 p=7 t=1 m=1 (M_t=7)  17 cases; failures Psi1 0, Psi2 0; min slack Psi1 1, Psi2 0
+PASS Lemma7 p=7 t=1 m=2 (M_t=14)  31 cases; failures Psi1 0, Psi2 0; min slack Psi1 1, Psi2 0
+PASS Lemma7 p=7 t=1 m=7 (M_t=49)  101 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 1
+PASS Lemma7 p=7 t=2 m=1 (M_t=49)  101 cases; failures Psi1 0, Psi2 0; min slack Psi1 2, Psi2 0
+PASS Lemma7 p=7 t=2 m=2 (M_t=98)  199 cases; failures Psi1 0, Psi2 0; min slack Psi1 2, Psi2 0
+PASS Lemma7 p=7 t=2 m=7 (M_t=343)  689 cases; failures Psi1 0, Psi2 0; min slack Psi1 4, Psi2 1
+PASS Lemma7 p=7 t=3 m=1 (M_t=343)  689 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 0
+PASS Lemma7 p=7 t=3 m=2 (M_t=686)  1375 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 0
+PASS Lemma7 p=11 t=1 m=1 (M_t=11)  25 cases; failures Psi1 0, Psi2 0; min slack Psi1 1, Psi2 0
+PASS Lemma7 p=11 t=1 m=2 (M_t=22)  47 cases; failures Psi1 0, Psi2 0; min slack Psi1 1, Psi2 0
+PASS Lemma7 p=11 t=1 m=11 (M_t=121)  245 cases; failures Psi1 0, Psi2 0; min slack Psi1 3, Psi2 1
+PASS Lemma7 p=11 t=2 m=1 (M_t=121)  245 cases; failures Psi1 0, Psi2 0; min slack Psi1 2, Psi2 0
+PASS Lemma7 p=11 t=2 m=2 (M_t=242)  487 cases; failures Psi1 0, Psi2 0; min slack Psi1 2, Psi2 0
+   (Lemma 7 block took 113.1s)
+PASS floor identities: ceil((n'+1)/p) = [n'/p]+1 and [(2N-k-pi')/p] = 2M-i'-[k/p]-1 (p∤k)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=1 m=1  min slack all equal (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=1 m=2  min slack 2 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=1 m=5  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=2 m=1  min slack 3 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=2 m=2  min slack 3 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=2 m=5  min slack 5 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=3 m=1  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=3 m=2  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=5 r=3 m=5  min slack 6 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=1 m=1  min slack all equal (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=1 m=2  min slack 2 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=1 m=7  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=2 m=1  min slack 3 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=2 m=2  min slack 3 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=2 m=7  min slack 5 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=3 m=1  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=3 m=2  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=7 r=3 m=7  min slack 6 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=1 m=1  min slack all equal (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=1 m=2  min slack 2 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=1 m=11  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=2 m=1  min slack 3 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=2 m=2  min slack 3 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=2 m=11  min slack 5 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=3 m=1  min slack 4 (note: Lemma 1 actually gives >= r+2)
+PASS C(N,pi') == C(M,i') mod p^r, p=11 r=3 m=2  min slack 4 (note: Lemma 1 actually gives >= r+2)
+== SECTION 5 (SUPERSEDED): a(mp-1) == a(m-1) mod p^3 via S~; classes (S),(B),(K),(J) and the sub-claims
+PASS sec5 harmonic facts p=5  v(H_{p-1})=2 v(H2)=1 v(sum_{u+v<p})=1 v(sum_{u+v>=p})=1 v(sum H_u/u)=1 exact identities True
+PASS sec5 harmonic facts p=7  v(H_{p-1})=2 v(H2)=1 v(sum_{u+v<p})=1 v(sum_{u+v>=p})=1 v(sum H_u/u)=1 exact identities True
+PASS sec5 harmonic facts p=11  v(H_{p-1})=2 v(H2)=1 v(sum_{u+v<p})=1 v(sum_{u+v>=p})=1 v(sum H_u/u)=1 exact identities True
+PASS sec5 harmonic facts p=13  v(H_{p-1})=2 v(H2)=1 v(sum_{u+v<p})=1 v(sum_{u+v>=p})=1 v(sum H_u/u)=1 exact identities True
+PASS sec5 p=5 m=1 N=5  Prop slack 0; S: sum 999999997 termwise inf rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 1, slack 1
+PASS sec5 p=5 m=2 N=10  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=5 m=3 N=15  Prop slack 0; S: sum 1 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=5 m=4 N=20  Prop slack 1; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=5 m=5 N=25  Prop slack 3; S: sum 3 termwise 2 rewrite True; B: lucas True, block formula mod p^3 True, slack 3; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 2, slack 3; J: B~(j) fails 0, id True, slack vs p^2 2, slack 3
+PASS sec5 p=5 m=6 N=30  Prop slack 1; S: sum 1 termwise 1 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 1, slack 1; J: B~(j) fails 0, id True, slack vs p^2 1, slack 1
+PASS sec5 p=5 m=5 N=25  Prop slack 3; S: sum 3 termwise 2 rewrite True; B: lucas True, block formula mod p^3 True, slack 3; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 2, slack 3; J: B~(j) fails 0, id True, slack vs p^2 2, slack 3
+PASS sec5 p=5 m=6 N=30  Prop slack 1; S: sum 1 termwise 1 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 1, slack 1; J: B~(j) fails 0, id True, slack vs p^2 1, slack 1
+PASS sec5 p=7 m=1 N=7  Prop slack 1; S: sum 999999997 termwise inf rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=7 m=2 N=14  Prop slack 2; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=7 m=3 N=21  Prop slack 1; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=7 m=4 N=28  Prop slack 1; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=7 m=5 N=35  Prop slack 1; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=7 m=6 N=42  Prop slack 1; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 1, slack 1; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=7 m=7 N=49  Prop slack 4; S: sum 3 termwise 2 rewrite True; B: lucas True, block formula mod p^3 True, slack 3; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 2, slack 3; J: B~(j) fails 0, id True, slack vs p^2 2, slack 3
+PASS sec5 p=7 m=8 N=56  Prop slack 1; S: sum 1 termwise 1 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=1 N=11  Prop slack 0; S: sum 999999997 termwise inf rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=2 N=22  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=3 N=33  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 1, slack 1; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=4 N=44  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=5 N=55  Prop slack 1; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=6 N=66  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=11 m=11 N=121  Prop slack 3; S: sum 3 termwise 2 rewrite True; B: lucas True, block formula mod p^3 True, slack 3; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 2, slack 3; J: B~(j) fails 0, id True, slack vs p^2 2, slack 3
+PASS sec5 p=11 m=12 N=132  Prop slack 0; S: sum 1 termwise 1 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=13 m=1 N=13  Prop slack 0; S: sum 999999997 termwise inf rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=13 m=2 N=26  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 1; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 1, slack 1; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=13 m=3 N=39  Prop slack 2; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=13 m=4 N=52  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 1, slack 1
+PASS sec5 p=13 m=5 N=65  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=13 m=6 N=78  Prop slack 0; S: sum 0 termwise 0 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 p=13 m=13 N=169  Prop slack 3; S: sum 3 termwise 2 rewrite True; B: lucas True, block formula mod p^3 True, slack 3; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 2, slack 3; J: B~(j) fails 0, id True, slack vs p^2 2, slack 3
+PASS sec5 p=13 m=14 N=182  Prop slack 0; S: sum 1 termwise 1 rewrite True; B: lucas True, block formula mod p^3 True, slack 0; K: exp fails 0, B(k) fails 0, blocksum fails 0, id True, sum'B/k slack vs p^2 0, slack 0; J: B~(j) fails 0, id True, slack vs p^2 0, slack 0
+PASS sec5 Proposition p=5  (m, slack) [(1, 0), (2, 0), (3, 0), (4, 1), (5, 3), (6, 1), (5, 3)]
+PASS sec5 Proposition p=7  (m, slack) [(1, 1), (2, 2), (3, 1), (4, 1), (5, 1), (6, 1), (7, 4)]
+PASS sec5 Proposition p=11  (m, slack) [(1, 0), (2, 0), (3, 0), (4, 0), (5, 1), (6, 0), (11, 3)]
+PASS sec5 Proposition p=13  (m, slack) [(1, 0), (2, 0), (3, 2), (4, 0), (5, 0), (6, 0)]
+PASS sec5 Proposition p=17  (m, slack) [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0)]
+PASS sec5 Proposition p=19  (m, slack) [(1, 0), (2, 0), (3, 0), (4, 2), (5, 0), (6, 0)]
+PASS sec5 Proposition p=23  (m, slack) [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0)]
+
+SUMMARY rereview_oss_a376462: PASS 132, FAIL 0

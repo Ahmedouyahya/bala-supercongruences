@@ -1,0 +1,14 @@
+name     | matches OEIS data | integral n<=120 | floor criterion (odd q ∤ d) | ratio tower slack p=5,7 r<=2 n<=2 (min) | difference tower slack (min)
+A364172 | True | True | OK | 0 | 0
+A364173 | True | True | FAILS at x=[Fraction(1, 3), Fraction(20, 59)] | 0 | 0
+A364174 | True | True | FAILS at x=[Fraction(1, 5), Fraction(12, 59)] | 0 | 0
+A364175 | True | True | OK | 0 | 0
+A364176 | True | True | FAILS at x=[Fraction(1, 5), Fraction(12, 59)] | 0 | 0
+A364177 | True | True | FAILS at x=[Fraction(1, 4), Fraction(15, 59)] | 0 | 0
+A364178 | True | True | OK | 0 | 0
+A364179 | True | True | OK | 0 | 0
+A364180 | True | True | FAILS at x=[Fraction(2, 3), Fraction(39, 58)] | 0 | 0
+A364181 | True | True | FAILS at x=[Fraction(2, 3), Fraction(39, 58)] | 0 | 0
+A364182 | True | True | FAILS at x=[Fraction(1, 2), Fraction(30, 59)] | 0 | 1
+A364183 | True | True | FAILS at x=[Fraction(1, 3), Fraction(20, 59)] | 0 | 0
+A364184 | True | True | FAILS at x=[Fraction(1, 3), Fraction(20, 59)] | 0 | 0

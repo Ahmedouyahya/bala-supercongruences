@@ -1,0 +1,49 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/A363983-proof.md only (background notes NOT supplied in this run; some 'missing lemma' remarks stem from that). Prompt: notes/referee-reports/PROMPT.txt. AI output kept as evidence, not authority.
+NOTE: this run's output was truncated by the model mid-report; a re-run with a length limit is archived separately.
+===========================================================================
+**Adversarial Referee Report on PROOF.md**
+
+---
+
+### Section 1: Tools
+
+**Lemma 1 (Kazandzidis quotient form)** — *no issue found*  
+The derivation of the modulus \(p^{r+s+\min(r,s)}\) from \(3+v_p(A)+v_p(B)+v_p(A-B)\) with \(A=p^{r-1}a, B=p^{s-1}b\) is correct. The case \(a=b\) (hence \(A=B\) when \(r=s\)) is handled by the trivial quotient \(1\).
+
+**Lemma 2 (Half-sums of \(k^{-2}\))** — *no issue found*  
+The permutation argument with a unit \(\lambda\not\equiv\pm1\pmod p\) (exists for \(p\ge5\)) and the symmetry \(k\leftrightarrow p^s-k\) for the half sums are valid. The factor \(2\) is invertible mod \(p^s\).
+
+**Lemma 3 (OSS Lemma 2.4)** — *no issue found*  
+The factorization \(\binom{mp^r-1}{k}=\prod_{j=1}^k\frac{mp^r-j}{j}\) and the separation into \(p\mid j\) and \(p\nmid j\) factors is correct. Each \(p\nmid j\) factor is \(\equiv-1\pmod{p^r}\) because \(j\) is a unit.
+
+**Lemma 4 (OSS (27), (28))** — *no issue found*  
+Both parts follow correctly from Lemma 3 via the standard identities \(\binom{n+k}{k}=(-1)^k\binom{-n-1}{k}\) and \(\binom{j}{mp^r}=\binom{j}{j-mp^r}\).
+
+---
+
+### Section 2: Scaled terms
+
+**Lemma 5** — *no issue found*  
+The three quotients \(Q_1,Q_2,Q_3\) are each \(\equiv1\pmod{p^{r+s+\min(r,s)}}\) by Lemma 1. The rewriting \(C(N+K-1,K)/C(M+K'-1,K')=C(N+K,K)/C(M+K',K')\) uses \(\frac{N}{N+K}=\frac{M}{M+K'}\), which holds because both equal \(\frac{m}{m+kp^{s-r}}\). The valuation bound \(v_p(A(M,K'))\ge2(r-s)\) is correct (each of the two binomials contributes at least \(r-s\)). The case split \(s\ge r\) / \(s\le r\) and the final modulus \(p^{3r}\) are correctly computed.
+
+**Equation (1)** — *no issue found*  
+The decomposition \(a(N)=\sum_{s\ge0}G_s(N)\) with \(G_s(N)=\sum'_k A(N,kp^s)\) partitions the sum by \(v_p(k)\). Lemma 5 gives \(G_s(N)\equiv G_{s-1}(M)\pmod{p^{3r}}\) for \(s\ge1\); summing over \(s\ge1\) telescopes to \(a(M)\).
+
+---
+
+### Section 3: The unscaled sum
+
+**Equations (2) and (3) (reduction to \(S\) and \(\Sigma_1\))** — *no issue found*  
+The identities \(C(N,k)=\frac NkC(N-1,k-1)\) and \(C(N+k-1,k)=\frac NkC(N+k-1,k-1)\) are correct. The congruences from Lemmas 3–4 are applied with \(k-1\) (where \([(k-1)/p]=[k/p]\) because \(p\nmid k\)). The sign \((-1)^k=-(-1)^{k-1}\) is handled correctly. The definition of \(\Sigma_s\) matches the reduced expression.
+
+**Lemma 6 (Induction on \(\Sigma_s\))** — **GAP**  
+
+*Quoted lines 61–63:*  
+> “Replacing each D by its lower-level value changes \(\Sigma_s\) by a multiple of \(p^{r-s}\cdot p^s = p^r\), and since \([[k/p^s]/p] = [k/p^{s+1}]\) and \([[2k/p^s]/p] = [2k/p^{s+1}]\), the result is exactly \(\Sigma_{s+1}\).”
+
+*What is claimed:*  
+After replacing \(D(mp^{r-s},n,j)\) by \(D(mp^{r-s-1},[n/p],[j/p])\) (which is congruent mod \(p^{r-s}\)), the resulting sum equals \(\Sigma_{s+1}\).
+
+*Why it fails / what is missing:*  
+The replacement yields a sum where, for each \(n\), the same lower-level kernel \(D(

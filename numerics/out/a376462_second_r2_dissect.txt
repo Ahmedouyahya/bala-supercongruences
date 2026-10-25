@@ -1,0 +1,4 @@
+p=5 m=1 (r=2): first-order model failures mod p^4: 0; v(S_K)-4=0; v(T0)-4=0; v(T1)-2=1; T0 block valuations-4: [0]; min v(Psi(M,n')-Psi(m,[n'/p])) = 1 (expect 1)
+p=5 m=2 (r=2): first-order model failures mod p^4: 0; v(S_K)-4=0; v(T0)-4=0; v(T1)-2=1; T0 block valuations-4: [0, 1]; min v(Psi(M,n')-Psi(m,[n'/p])) = 1 (expect 1)
+p=7 m=1 (r=2): first-order model failures mod p^4: 0; v(S_K)-4=0; v(T0)-4=0; v(T1)-2=0; T0 block valuations-4: [0]; min v(Psi(M,n')-Psi(m,[n'/p])) = 1 (expect 1)
+p=7 m=2 (r=2): first-order model failures mod p^4: 0; v(S_K)-4=0; v(T0)-4=0; v(T1)-2=0; T0 block valuations-4: [0, 0]; min v(Psi(M,n')-Psi(m,[n'/p])) = 1 (expect 1)

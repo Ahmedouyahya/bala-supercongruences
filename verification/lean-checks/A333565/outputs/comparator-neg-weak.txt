@@ -1,0 +1,10 @@
+Building Challenge
+⚠ [8000/8001] Replayed Challenge
+warning: run/Challenge.lean:46:8: declaration uses 'sorry'
+warning: run/Challenge.lean:50:8: declaration uses 'sorry'
+Build completed successfully (8001 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_A333565_conjecture_strong_gauss_congruence, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.A333565NegWeak
+Build completed successfully (8015 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_A333565_conjecture_strong_gauss_congruence, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.A333565NegWeak
+uncaught exception: Challenge and solution theorem statement do not match: 'oeis_A333565_conjecture_strong_gauss_congruence'

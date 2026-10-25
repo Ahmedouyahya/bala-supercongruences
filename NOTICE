@@ -1,0 +1,31 @@
+Licences of the material in this repository
+
+1. The authors' own code (Lean files, Python and Maxima scripts, shell scripts) is licensed under the
+   Apache License, Version 2.0 (LICENSE; also LICENSES/Apache-2.0.txt).
+
+2. The authors' own text (proof notes in proofs/, the paper sources in paper/, and the documentation)
+   is licensed under the Creative Commons Attribution 4.0 International licence (LICENSES/CC-BY-4.0.txt).
+
+3. Formal Conjectures (https://github.com/google-deepmind/formal-conjectures), Copyright 2026 The Formal
+   Conjectures Authors, Apache License, Version 2.0: the benchmark statement files in
+   statements/lean-targets/, and the definitions and statements copied verbatim from them into
+   lean/BalaProofs/ (each such file says so in its header, with the changes made) and into
+   verification/lean-statement-check/ and verification/STATEMENT-SHEETS.md.
+
+4. LeanOpenProblems (https://github.com/epoch-research/LeanOpenProblems), Copyright (c) 2026 Epoch AI,
+   MIT License, with the Formal Conjectures notice above (LICENSES/LeanOpenProblems-LICENSE.txt): the
+   official challenge files copied byte for byte into verification/lean-checks/*/comparator-workspace/challenges/,
+   and the parts of them copied into the Submission files of those workspaces.
+
+5. Proofs by Epoch AI. The files lean/BalaProofs/EpochA333096.lean, lean/BalaProofs/EpochA361883.lean and
+   lean/BalaProofs/EpochA333042.lean, and the files Epoch*.lean in verification/lean-checks/, are the work
+   of Epoch AI, produced in Epoch AI's OEIS Open evaluation (repository epoch-research/LeanOpenProblems-results,
+   commit fd09021e). That repository has no licence file. Epoch AI permits their use on the condition that
+   the work is credited to Epoch AI. They are not covered by items 1 and 2. Sources, hashes and changes:
+   verification/lean-checks/EPOCH-FILES.md.
+
+6. The On-Line Encyclopedia of Integer Sequences (https://oeis.org), licensed under the Creative Commons
+   Attribution-ShareAlike 4.0 International licence (LICENSES/CC-BY-SA-4.0.txt): the conjecture texts,
+   definitions and terms quoted from OEIS entries (statements/STATEMENTS.md, the Bala quotations in
+   verification/STATEMENT-SHEETS.md, numerics/data/, and statements/oeis_bala_records.json) remain
+   under that licence. The conjectures are by Peter Bala.

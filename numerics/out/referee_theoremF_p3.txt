@@ -1,0 +1,172 @@
+Independent referee tests for TheoremF-p3-proof.md (p = 3). Exact arithmetic throughout.
+====================================================================================================
+
+[T0] Lemma 1 at p = 3: phi(x)^3 = phi(x^3) exp(3 L(x)) to degree 36
+  (a,b)=(2, -1): OK
+  (a,b)=(-1, -3): OK
+  (a,b)=(1, 1): OK
+  (a,b)=(4, 4): OK
+  (a,b)=(-2, 3): OK
+
+[T1] Lemma A: lambda_M(D g) = -M lambda_M((psi - c) g) exactly, random g; and lambda_M(psi - c) = 0
+  105 random instances of Lemma A + 35 instances of lambda_M(psi-c)=0: all OK
+
+[T2] Lemma B: A(N) - A(M) = sum_{j=2}^{3cM} (N^j/j!) lambda_M(C(L^j)) exactly; C(L) = 0; lambda_M(C(L^j)) in Z_(3)
+  (a,b,c,M)=(2, -1, 1, 1): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(2, -1, 1, 2): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(2, -1, 1, 3): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(3, -1, 2, 2): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(3, -1, 2, 3): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(4, -1, 3, 2): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(-1, -3, 1, 3): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(1, -1, 2, 3): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(-2, 5, 3, 3): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(0, 3, 1, 6): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+  (a,b,c,M)=(-4, 2, 1, 4): expansion exact True, all lambda_M(C(L^j)) 3-integral True
+
+[T3] Lemma C: v_3(N^j/j!) for N = 3^r m (3 ∤ m): j=2 -> 2r, j=3 -> 3r-1, j>=4 -> >= 3r; plus v_3(j!) = (j - s_3(j))/2
+  all OK
+  slack v_3(N^j/j!) - 3r at j=4,5 for r=1: [0, 1] (j=4,r=1 is tight)
+
+[T4] Lemma D: (N^3/6) lambda_M(C(L^3)) ≡ (9M^3/2) lambda_M(L) (mod 3^{3r}); and C(L^3) ≡ L(y) (mod 3) coefficientwise
+  (a,b)=(2, -1): C(L^3)≡L mod 3: True; slack v_3(diff)-3r: c1r1m1:+0 c1r1m2:+0 c1r2m1:+1 c1r2m2:+0 c2r1m1:+0 c2r1m2:+0 c2r2m1:+0 c2r2m2:+0 c3r1m1:+0 c3r1m2:+1 c3r2m1:+2 c3r2m2:+0
+  (a,b)=(-1, -3): C(L^3)≡L mod 3: True; slack v_3(diff)-3r: c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+0 c2r1m1:+0 c2r1m2:+0 c2r2m1:+2 c2r2m2:+1 c3r1m1:+0 c3r1m2:+0 c3r2m1:+1 c3r2m2:+1
+  (a,b)=(1, -1): C(L^3)≡L mod 3: True; slack v_3(diff)-3r: c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+0 c2r1m1:+0 c2r1m2:+0 c2r2m1:+0 c2r2m2:+1 c3r1m1:+2 c3r1m2:+0 c3r2m1:+0 c3r2m2:+0
+  (a,b)=(3, 3): C(L^3)≡L mod 3: True; slack v_3(diff)-3r: c1r1m1:=0 c1r1m2:+0 c1r2m1:=0 c1r2m2:+2 c2r1m1:+0 c2r1m2:+0 c2r2m1:+2 c2r2m2:+2 c3r1m1:=0 c3r1m2:+1 c3r2m1:=0 c3r2m2:+3
+  (a,b)=(-2, 5): C(L^3)≡L mod 3: True; slack v_3(diff)-3r: c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+0 c2r1m1:+1 c2r1m2:+0 c2r2m1:+0 c2r2m2:+1 c3r1m1:+0 c3r1m2:+0 c3r2m1:+0 c3r2m2:+0
+
+[T5] Lemma E: S_2 ≡ -3^{e-1} (mod 3^e), 2 S_1 ≡ 3^{2e-1} (mod 3^{2e}), S_2^± ≡ 0 (mod 3^e); exact valuations shown
+  e=1: (a) True [v3(S2)=0]  (b) True [v3(S1)=1]  (c) True [v3(S2±)=1]   (info: v3(S1±)=0)
+  e=2: (a) True [v3(S2)=1]  (b) True [v3(S1)=3]  (c) True [v3(S2±)=2]   (info: v3(S1±)=0)
+  e=3: (a) True [v3(S2)=2]  (b) True [v3(S1)=5]  (c) True [v3(S2±)=3]   (info: v3(S1±)=0)
+  e=4: (a) True [v3(S2)=3]  (b) True [v3(S1)=7]  (c) True [v3(S2±)=4]   (info: v3(S1±)=0)
+  e=5: (a) True [v3(S2)=4]  (b) True [v3(S1)=9]  (c) True [v3(S2±)=5]   (info: v3(S1±)=0)
+
+[T6] Lemma F: T = l 3^e, 3∤l: H_T ≡ -3^{2e-1} (mod 3^{2e}) [v_3 = 2e-1]; T even: H_T^± ≡ 0 (mod 3^{2e})
+  e=1: l=1:(a)ok,(odd T: v3(H±)=0)  l=2:(a)ok,(b)ok[v=2]  l=4:(a)ok,(b)ok[v=2]  l=5:(a)ok,(odd T: v3(H±)=0)  l=7:(a)ok,(odd T: v3(H±)=0)  l=8:(a)ok,(b)ok[v=2]
+  e=2: l=1:(a)ok,(odd T: v3(H±)=0)  l=2:(a)ok,(b)ok[v=4]  l=4:(a)ok,(b)ok[v=4]  l=5:(a)ok,(odd T: v3(H±)=0)  l=7:(a)ok,(odd T: v3(H±)=0)  l=8:(a)ok,(b)ok[v=4]
+  e=3: l=1:(a)ok,(odd T: v3(H±)=0)  l=2:(a)ok,(b)ok[v=6]  l=4:(a)ok,(b)ok[v=6]  l=5:(a)ok,(odd T: v3(H±)=0)  l=7:(a)ok,(odd T: v3(H±)=0)  l=8:(a)ok,(b)ok[v=6]
+  e=4: l=1:(a)ok,(odd T: v3(H±)=0)  l=2:(a)ok,(b)ok[v=8]  l=4:(a)ok,(b)ok[v=8]  l=5:(a)ok,(odd T: v3(H±)=0)  l=7:(a)ok,(odd T: v3(H±)=0)  l=8:(a)ok,(b)ok[v=8]
+
+[T7] Lemma G: [x^T]U^2 = 2H_T/T, [x^T]V^2 = (-1)^T 2H_T/T, [x^T]UV = (1+(-1)^T) H_T^±/T for 3 | T, T <= 90
+  all OK
+
+[T8] Lemma H: g_t = [x^{3t}]L^2/t is 3-integral and g_t ≡ a^2(-1)^t + b^2 (mod 3), t <= 150; D g = C(L^2)
+  (a,b)=(2, -1): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(3, -1): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(4, -1): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(-1, -3): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(1, -1): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(0, 1): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(2, 2): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(3, 3): integral True (min v3(g_t) = 2), residues True, Dg=C(L^2) True
+  (a,b)=(-4, 5): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+  (a,b)=(0, 3): integral True (min v3(g_t) = 2), residues True, Dg=C(L^2) True
+  (a,b)=(7, -5): integral True (min v3(g_t) = 0), residues True, Dg=C(L^2) True
+
+[T9] Lemma J over F_3: all 27 residue triples (a,b,c). Series truncated at degree 60; polynomial identities exact.
+  (a,b,c) | class        | J(a) L=Dpsi,rat.form | psi,g rat.forms | stated identity | residual L-(psi-c)g = K(psi-c)? (all K) 
+  (0, 0, 0) | good:3|c     | True  True          | True  True      | J(c) K0=2 poly OK, series OK       | K in [0, 1, 2]
+  (0, 1, 0) | good:3|c     | True  True          | True  True      | J(c) K0=1 poly OK, series OK       | K in [1]
+  (0, 2, 0) | good:3|c     | True  True          | True  True      | J(c) K0=1 poly OK, series OK       | K in [1]
+  (1, 0, 0) | good:3|c     | True  True          | True  True      | J(c) K0=1 poly OK, series OK       | K in [1]
+  (1, 1, 0) | good:3|c     | True  True          | True  True      | J(c) K0=2 poly OK, series OK       | K in [2]
+  (1, 2, 0) | good:3|c     | True  True          | True  True      | J(c) K0=1 poly OK, series OK       | K in [1]
+  (2, 0, 0) | good:3|c     | True  True          | True  True      | J(c) K0=1 poly OK, series OK       | K in [1]
+  (2, 1, 0) | good:3|c     | True  True          | True  True      | J(c) K0=1 poly OK, series OK       | K in [1]
+  (2, 2, 0) | good:3|c     | True  True          | True  True      | J(c) K0=2 poly OK, series OK       | K in [2]
+  (0, 0, 1) | EXTRA:a=b=0  | True  True          | True  True      | n/a                                | K in [0]
+  (0, 1, 1) | good:a+b=c   | True  True          | True  True      | J(b) poly OK, series OK            | K in [0]
+  (0, 2, 1) | bad          | True  True          | True  True      | n/a                                | K in []
+  (1, 0, 1) | good:a+b=c   | True  True          | True  True      | J(b) poly OK, series OK            | K in [0]
+  (1, 1, 1) | bad          | True  True          | True  True      | n/a                                | K in []
+  (1, 2, 1) | bad          | True  True          | True  True      | n/a                                | K in []
+  (2, 0, 1) | bad          | True  True          | True  True      | n/a                                | K in []
+  (2, 1, 1) | bad          | True  True          | True  True      | n/a                                | K in []
+  (2, 2, 1) | good:a+b=c   | True  True          | True  True      | J(b) poly OK, series OK            | K in [0]
+  (0, 0, 2) | EXTRA:a=b=0  | True  True          | True  True      | n/a                                | K in [0]
+  (0, 1, 2) | bad          | True  True          | True  True      | n/a                                | K in []
+  (0, 2, 2) | good:a+b=c   | True  True          | True  True      | J(b) poly OK, series OK            | K in [0]
+  (1, 0, 2) | bad          | True  True          | True  True      | n/a                                | K in []
+  (1, 1, 2) | good:a+b=c   | True  True          | True  True      | J(b) poly OK, series OK            | K in [0]
+  (1, 2, 2) | bad          | True  True          | True  True      | n/a                                | K in []
+  (2, 0, 2) | good:a+b=c   | True  True          | True  True      | J(b) poly OK, series OK            | K in [0]
+  (2, 1, 2) | bad          | True  True          | True  True      | n/a                                | K in []
+  (2, 2, 2) | bad          | True  True          | True  True      | n/a                                | K in []
+  Residue classes with 3 ∤ c, a+b ≢ c where the residual IS still K(psi-c): [(0, 0, 1, [0]), (0, 0, 2, [0])]
+
+[T10] Proposition I: v_3( A(N)-A(M) - (9M^3/2) lambda_M(L - (psi-c) g) ) - 3r  [need >= 0], with digit check of Remark 1
+  (2, -1, 1) [good:a+b=c]: r1m1:+0(digit 0) r1m2:+0(digit 0) r1m4:+0(digit 0) r2m1:+1(digit 0) r2m2:+0(digit 0) r2m4:+1(digit 0) r3m1:+2(digit 0) r3m2:+3(digit 0) r3m4:+2(digit 0)
+  (3, -1, 2) [good:a+b=c]: r1m1:+1(digit 0) r1m2:+0(digit 0) r1m4:+0(digit 0) r2m1:+1(digit 0) r2m2:+0(digit 0) r2m4:+2(digit 0) r3m1:+2(digit 0) r3m2:+2(digit 0) r3m4:+3(digit 0)
+  (4, -1, 3) [good:3|c]: r1m1:+0(digit 0) r1m2:+0(digit 0) r1m4:+0(digit 0) r2m1:+0(digit 0) r2m2:+0(digit 0) r2m4:+0(digit 0) r3m1:+3(digit 0) r3m2:+5(digit 0) r3m4:+3(digit 0)
+  (-1, -3, 1) [bad]: r1m1:+0(digit 2) r1m2:+0(digit 0) r1m4:+2(digit 1) r2m1:+0(digit 2) r2m2:+0(digit 0) r2m4:+0(digit 1) r3m1:+1(digit 2) r3m2:+2(digit 0) r3m4:+1(digit 1)
+  (1, -1, 1) [bad]: r1m1:+0(digit 1) r1m2:+0(digit 1) r1m4:+3(digit 0) r2m1:+0(digit 1) r2m2:+0(digit 1) r2m4:+0(digit 0) r3m1:+1(digit 1) r3m2:+1(digit 1) r3m4:+2(digit 0)
+  (1, -1, 2) [bad]: r1m1:+0(digit 1) r1m2:+0(digit 2) r1m4:+0(digit 2) r2m1:+0(digit 1) r2m2:+1(digit 2) r2m4:+0(digit 2) r3m1:+1(digit 1) r3m2:+1(digit 2) r3m4:+1(digit 2)
+  (3, -1, 1) [bad]: r1m1:+0(digit 1) r1m2:+0(digit 0) r1m4:+0(digit 0) r2m1:+0(digit 1) r2m2:+0(digit 0) r2m4:+1(digit 0) r3m1:+1(digit 1) r3m2:+2(digit 0) r3m4:+2(digit 0)
+  (-3, -2, 2) [bad]: r1m1:+1(digit 0) r1m2:+0(digit 0) r1m4:+1(digit 0) r2m1:+0(digit 0) r2m2:+7(digit 0) r2m4:+0(digit 0) r3m1:+2(digit 0) r3m2:+5(digit 0) r3m4:+3(digit 0)
+  (0, 1, 2) [bad]: r1m1:+0(digit 0) r1m2:+0(digit 0) r1m4:+1(digit 0) r2m1:+0(digit 0) r2m2:+4(digit 0) r2m4:+6(digit 0) r3m1:+4(digit 0) r3m2:+12(digit 0) r3m4:+21(digit 0)
+  (1, 2, 1) [bad]: r1m1:=0(digit 1) r1m2:+0(digit 1) r1m4:+1(digit 2) r2m1:+0(digit 1) r2m2:+0(digit 1) r2m4:+1(digit 2) r3m1:+1(digit 1) r3m2:+1(digit 1) r3m4:+1(digit 2)
+  (3, 0, 1) [EXTRA:a=b=0]: r1m1:+0(digit 0) r1m2:+0(digit 0) r1m4:+2(digit 0) r2m1:+2(digit 0) r2m2:+2(digit 0) r2m4:+3(digit 0) r3m1:+4(digit 0) r3m2:+5(digit 0) r3m4:+5(digit 0)
+  (3, 3, 2) [EXTRA:a=b=0]: r1m1:+0(digit 0) r1m2:+0(digit 0) r1m4:+2(digit 0) r2m1:+2(digit 0) r2m2:+2(digit 0) r2m4:+3(digit 0) r3m1:+4(digit 0) r3m2:+5(digit 0) r3m4:+5(digit 0)
+  (-2, 1, 2) [good:a+b=c]: r1m1:+0(digit 0) r1m2:+0(digit 0) r1m4:+0(digit 0) r2m1:+0(digit 0) r2m2:+3(digit 0) r2m4:+0(digit 0) r3m1:+2(digit 0) r3m2:+7(digit 0) r3m4:+4(digit 0)
+  (1, -1, 3) [good:3|c]: r1m1:+3(digit 0) r1m2:+0(digit 0) r1m4:+0(digit 0) r2m1:+0(digit 0) r2m2:+0(digit 0) r2m4:+0(digit 0) r3m1:+3(digit 0) r3m2:+3(digit 0) r3m4:+3(digit 0)
+  (-1, -1, 1) [good:a+b=c]: r1m1:=0(digit 0) r1m2:=0(digit 0) r1m4:+0(digit 0) r2m1:=0(digit 0) r2m2:+0(digit 0) r2m4:+1(digit 0) r3m1:=0(digit 0) r3m2:+2(digit 0) r3m4:+2(digit 0)
+  (5, 2, 2) [bad]: r1m1:+1(digit 1) r1m2:+1(digit 0) r1m4:+0(digit 1) r2m1:+0(digit 1) r2m2:+0(digit 0) r2m4:+0(digit 1) r3m1:+1(digit 1) r3m2:+2(digit 0) r3m4:+1(digit 1)
+
+[T11] Theorem F_3: slack v_3(A(3M)-A(M)) - 3r; need >= 0 in good classes, >= -1 always. r in {1,2,3}, m in {1,2,4,5,7}
+  (2, -1, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+0 r1m5:+2 r1m7:+1 r2m1:+0 r2m2:+1 r2m4:+0 r2m5:+2 r2m7:+1 r3m1:+0 r3m2:+1 r3m4:+0 r3m5:+2 r3m7:+1
+  (3, -1, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+0 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+0 r3m4:+1 r3m5:+0 r3m7:+1
+  (-1, 2, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+0 r1m5:+2 r1m7:+1 r2m1:+0 r2m2:+1 r2m4:+0 r2m5:+2 r2m7:+1 r3m1:+0 r3m2:+1 r3m4:+0 r3m5:+2 r3m7:+1
+  (-1, -1, 1) [good:a+b=c ] min slack 0: r1m1:=0 r1m2:+0 r1m4:+0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:+0 r2m4:+0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:+0 r3m4:+0 r3m5:=0 r3m7:=0
+  (-4, 2, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+1 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+0 r2m4:+1 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+0 r3m4:+1 r3m5:+0 r3m7:+0
+  (0, 2, 2) [good:a+b=c ] min slack inf: r1m1:=0 r1m2:=0 r1m4:=0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:=0 r2m4:=0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:=0 r3m4:=0 r3m5:=0 r3m7:=0
+  (1, 1, 2) [good:a+b=c ] min slack inf: r1m1:=0 r1m2:=0 r1m4:=0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:=0 r2m4:=0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:=0 r3m4:=0 r3m5:=0 r3m7:=0
+  (-2, 1, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+2 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+0 r2m4:+2 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+0 r3m4:+2 r3m5:+0 r3m7:+0
+  (5, -3, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+0 r3m7:+1
+  (-5, 1, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+2 r1m4:+0 r1m5:+1 r1m7:+0 r2m1:+0 r2m2:+1 r2m4:+0 r2m5:+1 r2m7:+0 r3m1:+0 r3m2:+1 r3m4:+0 r3m5:+1 r3m7:+0
+  (2, 2, 1) [good:a+b=c ] min slack 0: r1m1:=0 r1m2:+0 r1m4:+0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:+0 r2m4:+0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:+0 r3m4:+0 r3m5:=0 r3m7:=0
+  (-2, -2, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+0 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+0 r3m4:+1 r3m5:+0 r3m7:+1
+  (4, 0, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+0 r1m5:+1 r1m7:+2 r2m1:+0 r2m2:+0 r2m4:+0 r2m5:+1 r2m7:+2 r3m1:+0 r3m2:+0 r3m4:+0 r3m5:+1 r3m7:+2
+  (0, -4, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+1 r1m7:+0 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+1 r2m7:+0 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+1 r3m7:+0
+  (7, -3, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+2 r2m4:+4 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+2 r3m4:+2 r3m5:+0 r3m7:+0
+  (-4, -3, 2) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+4 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+1 r2m4:+2 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+1 r3m4:+2 r3m5:+0 r3m7:+0
+  (-1, 5, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+0 r3m4:+0 r3m5:+0 r3m7:+0
+  (4, -1, 3) [good:3|c   ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+0 r1m5:+1 r1m7:+2 r2m1:+0 r2m2:+0 r2m4:+0 r2m5:+1 r2m7:+2 r3m1:+0 r3m2:+0 r3m4:+0 r3m5:+1
+  (1, -1, 3) [good:3|c   ] min slack 0: r1m1:+1 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r2m1:+1 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r3m1:+1 r3m2:+0 r3m4:+0 r3m5:+0
+  (-1, -3, 3) [good:3|c   ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+5 r2m4:+1 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+2 r3m4:+1 r3m5:+0
+  (2, 1, 3) [good:3|c   ] min slack inf: r1m1:=0 r1m2:=0 r1m4:=0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:=0 r2m4:=0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:=0 r3m4:=0 r3m5:=0
+  (-2, 5, 3) [good:3|c   ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+0
+  (1, 1, 3) [good:3|c   ] min slack inf: r1m1:=0 r1m2:=0 r1m4:=0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:=0 r2m4:=0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:=0 r3m4:=0 r3m5:=0
+  (-4, -4, 3) [good:3|c   ] min slack 1: r1m1:=0 r1m2:+1 r1m4:+1 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:+1 r2m4:+1 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:+1 r3m4:+1 r3m5:=0
+  (5, 0, 3) [good:3|c   ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+0
+  (0, -2, 3) [good:3|c   ] min slack 0: r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+0
+  (2, -1, 6) [good:3|c   ] min slack 0: r1m1:+4 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r2m1:+1 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r3m1:+1 r3m2:+0
+  (1, -2, 6) [good:3|c   ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+3 r1m5:+0 r1m7:+0 r2m1:+0 r2m2:+0 r2m4:+3 r2m5:+0 r2m7:+0 r3m1:+0 r3m2:+0
+  (3, 0, 1) [EXTRA:a=b=0] min slack 1: r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 r1m7:+2 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+1 r2m7:+2 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+1 r3m7:+2
+  (0, 3, 2) [EXTRA:a=b=0] min slack 1: r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 r1m7:+2 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+1 r2m7:+2 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+1 r3m7:+2
+  (3, 3, 1) [EXTRA:a=b=0] min slack 1: r1m1:=0 r1m2:+1 r1m4:+1 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:+1 r2m4:+1 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:+1 r3m4:+1 r3m5:=0 r3m7:=0
+  (-3, 3, 2) [EXTRA:a=b=0] min slack 1: r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+2 r1m7:+1 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+2 r2m7:+1 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+2 r3m7:+1
+  (3, -3, 1) [EXTRA:a=b=0] min slack 1: r1m1:+2 r1m2:+1 r1m4:+1 r1m5:+1 r1m7:+1 r2m1:+2 r2m2:+1 r2m4:+1 r2m5:+1 r2m7:+1 r3m1:+2 r3m2:+1 r3m4:+1 r3m5:+1 r3m7:+1
+  (-3, -3, 2) [EXTRA:a=b=0] min slack 1: r1m1:+1 r1m2:+1 r1m4:+1 r1m5:+2 r1m7:+3 r2m1:+1 r2m2:+1 r2m4:+1 r2m5:+2 r2m7:+3 r3m1:+1 r3m2:+1 r3m4:+1 r3m5:+2 r3m7:+3
+  (6, -3, 1) [EXTRA:a=b=0] min slack 1: r1m1:+2 r1m2:+1 r1m4:+1 r1m5:+3 r1m7:+4 r2m1:+2 r2m2:+1 r2m4:+1 r2m5:+3 r2m7:+5 r3m1:+2 r3m2:+1 r3m4:+1 r3m5:+3 r3m7:+6
+  (-6, 3, 2) [EXTRA:a=b=0] min slack 1: r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 r1m7:+4 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+1 r2m7:+4 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+1 r3m7:+4
+  (3, 6, 1) [EXTRA:a=b=0] min slack 1: r1m1:=0 r1m2:+1 r1m4:+1 r1m5:+1 r1m7:+1 r2m1:+3 r2m2:+1 r2m4:+1 r2m5:+1 r2m7:+1 r3m1:+3 r3m2:+1 r3m4:+1 r3m5:+1 r3m7:+1
+  (1, -1, 1) [bad        ] min slack -1: r1m1:-1 r1m2:-1 r1m4:+0 r1m5:+0 r1m7:-1 r2m1:-1 r2m2:-1 r2m4:+0 r2m5:+0 r2m7:-1 r3m1:-1 r3m2:-1 r3m4:+0 r3m5:+0 r3m7:-1
+  (1, -1, 2) [bad        ] min slack -1: r1m1:-1 r1m2:-1 r1m4:-1 r1m5:-1 r1m7:-1 r2m1:-1 r2m2:-1 r2m4:-1 r2m5:-1 r2m7:-1 r3m1:-1 r3m2:-1 r3m4:-1 r3m5:-1 r3m7:-1
+  (-1, -3, 1) [bad        ] min slack -1: r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+0 r2m7:-1 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+0 r3m7:-1
+  (2, -1, 2) [bad        ] min slack -1: r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+0 r2m7:-1 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+0 r3m7:-1
+  (3, -1, 1) [bad        ] min slack -1: r1m1:-1 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r2m1:-1 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r3m1:-1 r3m2:+0 r3m4:+0 r3m5:+0 r3m7:+0
+  (-3, -2, 2) [bad        ] min slack -1: r1m1:+0 r1m2:+3 r1m4:+1 r1m5:-1 r1m7:+0 r2m1:+0 r2m2:+3 r2m4:+1 r2m5:-1 r2m7:+0 r3m1:+0 r3m2:+3 r3m4:+1 r3m5:-1 r3m7:+0
+  (0, 1, 2) [bad        ] min slack inf: r1m1:=0 r1m2:=0 r1m4:=0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:=0 r2m4:=0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:=0 r3m4:=0 r3m5:=0 r3m7:=0
+  (1, 2, 1) [bad        ] min slack -1: r1m1:-1 r1m2:-1 r1m4:-1 r1m5:-1 r1m7:-1 r2m1:-1 r2m2:-1 r2m4:-1 r2m5:-1 r2m7:-1 r3m1:-1 r3m2:-1 r3m4:-1 r3m5:-1 r3m7:-1
+  (4, 4, 1) [bad        ] min slack -1: r1m1:=0 r1m2:-1 r1m4:+0 r1m5:=0 r1m7:=0 r2m1:=0 r2m2:-1 r2m4:+0 r2m5:=0 r2m7:=0 r3m1:=0 r3m2:-1 r3m4:+0 r3m5:=0 r3m7:=0
+  (-2, 3, 1) [good:a+b=c ] min slack 0: r1m1:+0 r1m2:+0 r1m4:+1 r1m5:+0 r1m7:+1 r2m1:+0 r2m2:+0 r2m4:+1 r2m5:+0 r2m7:+1 r3m1:+0 r3m2:+0 r3m4:+1 r3m5:+0 r3m7:+1
+  (5, 2, 2) [bad        ] min slack -1: r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+0 r2m7:-1 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+0 r3m7:-1
+  (iii) examples v_3(A(3)-A(1)): {(-1, -3, 1): 2, (1, -1, 1): 2, (1, -1, 2): 2} (note claims 2)
+  (-3,-2,2), r=1, slack for m = 1..16 (3∤m): [(1, 0), (2, 3), (4, 1), (5, -1), (7, 0), (8, 1), (10, 0), (11, 0), (13, 2), (14, 0), (16, 1)]
+
+[T12] Context check (Corollary input from the p>=5 note): A119259(n) = sum_{j<=n} 2^j C(n+j-1,j) = A_{(2,-1,1)}(n), n <= 25
+  OK
+
+====================================================================================================
+SUMMARY: 0 failing checks; elapsed 2.2s

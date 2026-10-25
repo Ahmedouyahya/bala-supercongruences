@@ -1,0 +1,6 @@
+Fresh clone of commit d35673b, 2026-10-16: lake exe cache get exit 0; lake build exit 0 (280 s), "Build completed successfully (9135 jobs)", no sorry warning; 80 BalaProofs modules.
+81
+'aRS_neg_one_neg_three_eq_A352373' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BalaGeneral.bala_A352373_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BalaGeneral.bala_A333715_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+leanchecker BalaGeneral exit=0

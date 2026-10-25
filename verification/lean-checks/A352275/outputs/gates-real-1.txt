@@ -1,0 +1,30 @@
+REJECT build exit 0: exit 1
+PASS   no sorry in build log
+REJECT no error in build log
+REJECT audit file exit 0: exit 1
+REJECT axioms of A352275_from_target: no axiom line for this exact name
+REJECT axioms of BalaA352275.u_scale: no axiom line for this exact name
+REJECT axioms of A352275_a_eq_u2: no axiom line for this exact name
+REJECT axioms of a_one: no axiom line for this exact name
+REJECT axioms of a_two: no axiom line for this exact name
+REJECT axioms of a_three: no axiom line for this exact name
+GREP modules: BalaCheck.A352275, BalaCheck.EpochSol
+GREP hits: 15 | approved in GREP-ALLOW.txt: 1
+   UNAPPROVED BalaCheck.EpochSol:46:private
+   UNAPPROVED BalaCheck.EpochSol:49:private
+   UNAPPROVED BalaCheck.EpochSol:55:private
+   UNAPPROVED BalaCheck.EpochSol:70:private
+   UNAPPROVED BalaCheck.EpochSol:101:private
+   UNAPPROVED BalaCheck.EpochSol:421:private
+   UNAPPROVED BalaCheck.EpochSol:425:private
+   UNAPPROVED BalaCheck.EpochSol:488:private
+   UNAPPROVED BalaCheck.EpochSol:496:private
+   UNAPPROVED BalaCheck.EpochSol:524:private
+   UNAPPROVED BalaCheck.EpochSol:580:private
+   UNAPPROVED BalaCheck.EpochSol:619:private
+   UNAPPROVED BalaCheck.EpochSol:2358:private
+   UNAPPROVED BalaCheck.EpochSol:2361:private
+REJECT tamper grep: every hit reviewed and approved: 14 unapproved of 15
+REJECT lean4checker BalaCheck.A352275: exit 1; uncaught exception: Could not find any oleans for: BalaCheck.A352275
+PASS   lean4checker BalaCheck.EpochSol: exit 0; Found 1 modules to check
+VERDICT: REJECT 

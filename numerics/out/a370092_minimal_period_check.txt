@@ -1,0 +1,8 @@
+first terms [1, 1, 3, 16, 105, 856, 8433, 96916, 1272225, 18789136]
+violations of: odd n>=m+7 -> v2=m+1 ; even n -> v2>=m+2 : [] 0
+m 1 odd n failing (n<60): [1, 3]
+m 2 odd n failing (n<60): [1, 3]
+m 3 odd n failing (n<60): [1, 3, 5]
+m 4 odd n failing (n<60): [1, 3, 5]
+m 5 odd n failing (n<60): [1, 3, 5]
+finite check W in Z_2 (m, n mod 8, ok): [(1, 1, True), (1, 3, True), (1, 5, True), (1, 7, True), (2, 1, True), (2, 3, True), (2, 5, True), (2, 7, True), (3, 1, True), (3, 3, True), (3, 5, True), (3, 7, True), (4, 1, True), (4, 3, True), (4, 5, True), (4, 7, True)] True

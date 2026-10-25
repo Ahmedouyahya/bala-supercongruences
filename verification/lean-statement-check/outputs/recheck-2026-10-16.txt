@@ -1,0 +1,15 @@
+Re-run of the twelve statement checks, 2026-10-16, Lean v4.35.0, against the modules of commit 22a0b6c (identical to the files in lean/BalaProofs). Command per file: lake env lean <file>. Columns: file, exit code, wall time, error count, the conjecture's axioms line.
+CheckA333561 exit=0 wall=191s errors=0 | 'Bench333561.oeis_333561_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA333562 exit=0 wall=21s errors=0 | 'Bench333562.oeis_333562_conjecture_0_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA333565 exit=0 wall=6s errors=0 | 'Bench333565.oeis_A333565_conjecture_strong_gauss_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA352275 exit=0 wall=5s errors=0 | 'Bench352275.u_m_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA352373 exit=0 wall=4s errors=0 | 'Bench352373.oeis_a352373_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA361711 exit=0 wall=4s errors=0 | 'Bench361711.A361711_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA363983 exit=0 wall=3s errors=0 | 'Bench363983.oeis_A363983_conjecture_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA364175 exit=0 wall=3s errors=0 | 'Bench364175.oeis_364175_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA364178 exit=0 wall=4s errors=0 | 'Bench364178.oeis_364178_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA370092 exit=0 wall=4s errors=0 | 'Bench370092.oeis_370092_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA376462 exit=0 wall=4s errors=0 | 'Bench376462.oeis_376462_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckA386548 exit=0 wall=4s errors=0 | 'Bench386548.oeis_A386548_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+'declaration uses sorry' warnings appear only in CheckA333561, CheckA333562, CheckA333565 and CheckA370092, at the target's own sample lemmas (sorry in the benchmark file itself); the conjecture's axioms line above shows that the conjecture does not depend on them.

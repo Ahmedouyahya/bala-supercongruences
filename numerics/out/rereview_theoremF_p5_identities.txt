@@ -1,0 +1,150 @@
+Re-review of TheoremF-coefficient-framing-proof.md: exact identities. 2026-10-15 20:49
+====================================================================================================
+
+== Lemma 1: phi(x)^p = phi(x^p) * exp(p L(x)),  L = aV - bU   (tested to order 60, p = 3,5,7,11, a,b of all signs) ==
+[PASS] Lemma 1 at p=3, 13 pairs (a,b), order 60 -- bad pairs: []
+[PASS] Lemma 1 at p=5, 13 pairs (a,b), order 60 -- bad pairs: []
+[PASS] Lemma 1 at p=7, 13 pairs (a,b), order 60 -- bad pairs: []
+[PASS] Lemma 1 at p=11, 13 pairs (a,b), order 60 -- bad pairs: []
+
+== Lemma 4 (p>=5) / Lemma G (p=3): [x^T]U^2 = 2H_T/T, [x^T]V^2 = (-1)^T 2H_T/T, [x^T]UV = (1+(-1)^T) H_T^±/T for p | T ==
+[PASS] Lemma 4 at p=3, all T = p, 2p, ..., 90 -- bad T: []
+[PASS] Lemma 4 at p=3: [x^T]UV = 0 for odd T
+[PASS] Lemma 4 at p=5, all T = p, 2p, ..., 150 -- bad T: []
+[PASS] Lemma 4 at p=5: [x^T]UV = 0 for odd T
+[PASS] Lemma 4 at p=7, all T = p, 2p, ..., 210 -- bad T: []
+[PASS] Lemma 4 at p=7: [x^T]UV = 0 for odd T
+[PASS] Lemma 4 at p=11, all T = p, 2p, ..., 330 -- bad T: []
+[PASS] Lemma 4 at p=11: [x^T]UV = 0 for odd T
+
+== Lemma 5: f(y)^{p^k} ≡ f(y^{p^t})^{p^{k-t}} (mod p^{k-t+1}), random integer f of degree 6 ==
+[PASS] Lemma 5 p=3 k=0 t=0 (4 random f) -- bound attained (fails mod p^2) in some trial: False
+[PASS] Lemma 5 p=3 k=1 t=0 (4 random f) -- bound attained (fails mod p^3) in some trial: False
+[PASS] Lemma 5 p=3 k=1 t=1 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+[PASS] Lemma 5 p=3 k=2 t=0 (4 random f) -- bound attained (fails mod p^4) in some trial: False
+[PASS] Lemma 5 p=3 k=2 t=1 (4 random f) -- bound attained (fails mod p^3) in some trial: True
+[PASS] Lemma 5 p=3 k=2 t=2 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+[PASS] Lemma 5 p=3 k=3 t=0 (4 random f) -- bound attained (fails mod p^5) in some trial: False
+[PASS] Lemma 5 p=3 k=3 t=1 (4 random f) -- bound attained (fails mod p^4) in some trial: True
+[PASS] Lemma 5 p=3 k=3 t=2 (4 random f) -- bound attained (fails mod p^3) in some trial: True
+[PASS] Lemma 5 p=3 k=3 t=3 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+[PASS] Lemma 5 p=5 k=0 t=0 (4 random f) -- bound attained (fails mod p^2) in some trial: False
+[PASS] Lemma 5 p=5 k=1 t=0 (4 random f) -- bound attained (fails mod p^3) in some trial: False
+[PASS] Lemma 5 p=5 k=1 t=1 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+[PASS] Lemma 5 p=5 k=2 t=0 (4 random f) -- bound attained (fails mod p^4) in some trial: False
+[PASS] Lemma 5 p=5 k=2 t=1 (4 random f) -- bound attained (fails mod p^3) in some trial: True
+[PASS] Lemma 5 p=5 k=2 t=2 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+[PASS] Lemma 5 p=7 k=0 t=0 (4 random f) -- bound attained (fails mod p^2) in some trial: False
+[PASS] Lemma 5 p=7 k=1 t=0 (4 random f) -- bound attained (fails mod p^3) in some trial: False
+[PASS] Lemma 5 p=7 k=1 t=1 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+[PASS] Lemma 5 p=7 k=2 t=0 (4 random f) -- bound attained (fails mod p^4) in some trial: False
+[PASS] Lemma 5 p=7 k=2 t=1 (4 random f) -- bound attained (fails mod p^3) in some trial: True
+[PASS] Lemma 5 p=7 k=2 t=2 (4 random f) -- bound attained (fails mod p^2) in some trial: True
+
+== Section 4, identity (1): A(N) - A(M) = sum_{s=0}^{cM-1} gamma_s * eps_{p(cM-s)}  (exact) ==
+[PASS] (1) p=5 (a,b,c)=(2,-1,1) M=1 -- A(N)-A(M)=5500
+[PASS] (1) p=5 (a,b,c)=(2,-1,1) M=2 -- A(N)-A(M)=127574000
+[PASS] (1) p=5 (a,b,c)=(2,-1,1) M=5 -- A(N)-A(M)=2840491845703386000000
+[PASS] (1) p=5 (a,b,c)=(2,-1,1) M=10 -- A(N)-A(M)=75898442806337555036709065826081163648000000
+[PASS] (1) p=5 (a,b,c)=(3,-1,2) M=1 -- A(N)-A(M)=1579000
+[PASS] (1) p=5 (a,b,c)=(3,-1,2) M=2 -- A(N)-A(M)=15956734640000
+[PASS] (1) p=5 (a,b,c)=(3,-1,2) M=5 -- A(N)-A(M)=29754989698128108780761000608000000
+[PASS] (1) p=5 (a,b,c)=(3,-1,2) M=10 -- A(N)-A(M)=12790190279206686117479776038376397420120039097387210725007687680000000
+[PASS] (1) p=5 (a,b,c)=(-1,-3,1) M=1 -- A(N)-A(M)=3250
+[PASS] (1) p=5 (a,b,c)=(-1,-3,1) M=2 -- A(N)-A(M)=54071500
+[PASS] (1) p=5 (a,b,c)=(-1,-3,1) M=5 -- A(N)-A(M)=432126124037771343750
+[PASS] (1) p=5 (a,b,c)=(-1,-3,1) M=10 -- A(N)-A(M)=2075095967157068842275561419357450932062500
+[PASS] (1) p=5 (a,b,c)=(4,-1,3) M=1 -- A(N)-A(M)=208470000
+[PASS] (1) p=5 (a,b,c)=(4,-1,3) M=2 -- A(N)-A(M)=368599603785760000
+[PASS] (1) p=5 (a,b,c)=(4,-1,3) M=5 -- A(N)-A(M)=3682696038139661781421472944275523824640000000
+[PASS] (1) p=5 (a,b,c)=(4,-1,3) M=10 -- A(N)-A(M)=259733698060087772278228908514963861240943940127201417773716415445585049798686403461120000000
+[PASS] (1) p=5 (a,b,c)=(-2,5,1) M=1 -- A(N)-A(M)=-392000
+[PASS] (1) p=5 (a,b,c)=(-2,5,1) M=2 -- A(N)-A(M)=614479345000
+[PASS] (1) p=5 (a,b,c)=(-2,5,1) M=5 -- A(N)-A(M)=-4165066850384407256737693453125
+[PASS] (1) p=5 (a,b,c)=(-2,5,1) M=10 -- A(N)-A(M)=152599675038375295709932660469213672312645156227788746366953125
+[PASS] (1) p=5 (a,b,c)=(1,1,1) M=1 -- A(N)-A(M)=0
+[PASS] (1) p=5 (a,b,c)=(1,1,1) M=2 -- A(N)-A(M)=-250
+[PASS] (1) p=5 (a,b,c)=(1,1,1) M=5 -- A(N)-A(M)=0
+[PASS] (1) p=5 (a,b,c)=(1,1,1) M=10 -- A(N)-A(M)=-126410606437500
+[PASS] (1) p=7 (a,b,c)=(2,-1,1) M=1 -- A(N)-A(M)=297724
+[PASS] (1) p=7 (a,b,c)=(2,-1,1) M=2 -- A(N)-A(M)=441739706352
+[PASS] (1) p=7 (a,b,c)=(2,-1,1) M=7 -- A(N)-A(M)=9583576175160390107482410461159224304694528
+[PASS] (1) p=7 (a,b,c)=(2,-1,1) M=14 -- A(N)-A(M)=1209147651452475051727997050343324840274441566850252459873284356050716913319177598730240
+[PASS] (1) p=7 (a,b,c)=(3,-1,2) M=1 -- A(N)-A(M)=970522616
+[PASS] (1) p=7 (a,b,c)=(3,-1,2) M=2 -- A(N)-A(M)=7159857331658817408
+[PASS] (1) p=7 (a,b,c)=(3,-1,2) M=7 -- A(N)-A(M)=478525857019613638980626419840021951123095842079891313864906035888128
+[PASS] (1) p=7 (a,b,c)=(3,-1,2) M=14 -- A(N)-A(M)=4635391504155192906979507088118451460723822268146196602903302615217253736929235727109468073305470613213646176808616443311999395496628060160
+[PASS] (1) p=7 (a,b,c)=(-1,-3,1) M=1 -- A(N)-A(M)=154350
+[PASS] (1) p=7 (a,b,c)=(-1,-3,1) M=2 -- A(N)-A(M)=142662737364
+[PASS] (1) p=7 (a,b,c)=(-1,-3,1) M=7 -- A(N)-A(M)=280651461365683996030185224043436479235078
+[PASS] (1) p=7 (a,b,c)=(-1,-3,1) M=14 -- A(N)-A(M)=1221211446010716266981765634249950660856955954308819369229053592096126462086740988324
+[PASS] (1) p=7 (a,b,c)=(4,-1,3) M=1 -- A(N)-A(M)=1011196362736
+[PASS] (1) p=7 (a,b,c)=(4,-1,3) M=2 -- A(N)-A(M)=10301634747725237826092288
+[PASS] (1) p=7 (a,b,c)=(4,-1,3) M=7 -- A(N)-A(M)=3459032182739640759764159500753273187109833526891250915912870726333786266720356215184949248
+[PASS] (1) p=7 (a,b,c)=(-2,5,1) M=1 -- A(N)-A(M)=-114558913
+[PASS] (1) p=7 (a,b,c)=(-2,5,1) M=2 -- A(N)-A(M)=61731081909727545
+[PASS] (1) p=7 (a,b,c)=(-2,5,1) M=7 -- A(N)-A(M)=-8305662009651026857185629383400040096981975859230104288958580
+[PASS] (1) p=7 (a,b,c)=(-2,5,1) M=14 -- A(N)-A(M)=847852409831747702954568499375671190258203687317301803640362810558648198839452644542058548936877178526130714399313270492100
+[PASS] (1) p=7 (a,b,c)=(1,1,1) M=1 -- A(N)-A(M)=0
+[PASS] (1) p=7 (a,b,c)=(1,1,1) M=2 -- A(N)-A(M)=-3430
+[PASS] (1) p=7 (a,b,c)=(1,1,1) M=7 -- A(N)-A(M)=0
+[PASS] (1) p=7 (a,b,c)=(1,1,1) M=14 -- A(N)-A(M)=-25477612258980856902730425168
+[PASS] (1) p=3 (a,b,c)=(2,-1,1) M=1 -- A(N)-A(M)=108
+[PASS] (1) p=3 (a,b,c)=(2,-1,1) M=2 -- A(N)-A(M)=40176
+[PASS] (1) p=3 (a,b,c)=(2,-1,1) M=3 -- A(N)-A(M)=16807824
+[PASS] (1) p=3 (a,b,c)=(2,-1,1) M=6 -- A(N)-A(M)=1595964714345216
+[PASS] (1) p=3 (a,b,c)=(3,-1,2) M=1 -- A(N)-A(M)=2808
+[PASS] (1) p=3 (a,b,c)=(3,-1,2) M=2 -- A(N)-A(M)=38862720
+[PASS] (1) p=3 (a,b,c)=(3,-1,2) M=3 -- A(N)-A(M)=623210132736
+[PASS] (1) p=3 (a,b,c)=(3,-1,2) M=6 -- A(N)-A(M)=3353980992519398247825408
+[PASS] (1) p=3 (a,b,c)=(-1,-3,1) M=1 -- A(N)-A(M)=72
+[PASS] (1) p=3 (a,b,c)=(-1,-3,1) M=2 -- A(N)-A(M)=22248
+[PASS] (1) p=3 (a,b,c)=(-1,-3,1) M=3 -- A(N)-A(M)=7621452
+[PASS] (1) p=3 (a,b,c)=(-1,-3,1) M=6 -- A(N)-A(M)=392188079564208
+[PASS] (1) p=3 (a,b,c)=(4,-1,3) M=1 -- A(N)-A(M)=47088
+[PASS] (1) p=3 (a,b,c)=(4,-1,3) M=2 -- A(N)-A(M)=14413724928
+[PASS] (1) p=3 (a,b,c)=(4,-1,3) M=3 -- A(N)-A(M)=5124481173374976
+[PASS] (1) p=3 (a,b,c)=(4,-1,3) M=6 -- A(N)-A(M)=300580655971671901657903078047744
+[PASS] (1) p=3 (a,b,c)=(-2,5,1) M=1 -- A(N)-A(M)=-1449
+[PASS] (1) p=3 (a,b,c)=(-2,5,1) M=2 -- A(N)-A(M)=6656373
+[PASS] (1) p=3 (a,b,c)=(-2,5,1) M=3 -- A(N)-A(M)=-34874140869
+[PASS] (1) p=3 (a,b,c)=(-2,5,1) M=6 -- A(N)-A(M)=6465722491123296483465
+[PASS] (1) p=3 (a,b,c)=(1,1,1) M=1 -- A(N)-A(M)=0
+[PASS] (1) p=3 (a,b,c)=(1,1,1) M=2 -- A(N)-A(M)=-18
+[PASS] (1) p=3 (a,b,c)=(1,1,1) M=3 -- A(N)-A(M)=0
+[PASS] (1) p=3 (a,b,c)=(1,1,1) M=6 -- A(N)-A(M)=-48600
+
+== Section 5(a): change-of-variables formula [x^K]f = [z^K] f(x(z)) psi(z)^K (1 - z psi'/psi),  x = z/psi(z) ==
+[PASS] change-of-variables formula, psi=[1, 1], random f, K<=9
+[PASS] change-of-variables formula, psi=[1, 2, 3], random f, K<=9
+[PASS] change-of-variables formula, psi=[1, -1, 0, 1], random f, K<=9
+[PASS] change-of-variables formula, psi=[1, 0, 0, 0, 5], random f, K<=9
+
+== Section 5(a): S_c(n) = sum_{j=0}^{cn} 2^j C(n+j-1,j) = A_{(c+1,-1,c)}(n) ==
+[PASS] S_1(n) = A_((2,-1,1))(n) for 1<=n<=25
+[PASS] S_2(n) = A_((3,-1,2))(n) for 1<=n<=25
+[PASS] S_3(n) = A_((4,-1,3))(n) for 1<=n<=25
+[PASS] S_4(n) = A_((5,-1,4))(n) for 1<=n<=25
+[PASS] S_5(n) = A_((6,-1,5))(n) for 1<=n<=25
+
+== Instance identities against statements/STATEMENTS.md data (last data term dropped: truncated in the file) ==
+[PASS] A333561 = A_(3,-1,2): offset 0, 12 terms -- data[:5]=[1, 7, 129, 2815, 65537]
+[PASS] A333562 = A_(4,-1,3): offset 0, 11 terms -- data[:5]=[1, 15, 769, 47103, 3080193]
+[PASS] A352373 = A_(-1,-3,1): offset 1, 15 terms -- data[:5]=[2, 12, 74, 484, 3252]
+[PASS] A333565(n) = 2*A_(2,-1,1)(n) - (-1)^n: offset 0, 15 terms -- data[:5]=[1, 7, 33, 223, 1537]
+[PASS] A119259 implied by A333565 data is even-divisible and equals A_(2,-1,1) -- implied A119259[:6]=[1, 3, 17, 111, 769, 5503]
+[PASS] A119259 = S_1(n) = sum_{j<=n} 2^j C(n+j-1,j) (Barry formula as quoted) vs A_(2,-1,1), n<=30
+[PASS] o.g.f. (1+4t)/((1+t)sqrt(1-8t)) reproduces A333565 data, 15 terms
+[PASS] A352373 formula sum_k C(3n-2k-1,n-2k)C(n+k-1,k) = A_(-1,-3,1), n<=30
+[PASS] b=0: A_(a,0,c)(N) = C(aN, cN)
+
+== Section 5(c): x = t(1+x)^2/(1-x);  sum_N B(N) t^N = (1-x^2)/(1-3x), B = A_(2,-1,1);  2(1-x^2)/(1-3x) - 1/(1+t) = (1+4t)/((1+t)sqrt(1-8t)) ==
+[PASS] x(t) solves x = t(1+x)^2/(1-x) to order 18 -- x(t) = ['0', '1', '3', '13', '67', '381', '2307']
+[PASS] (1-x^2)/(1-3x) = sum_N A_(2,-1,1)(N) t^N to order 18 (Lagrange inversion step) -- series=[1, 3, 17, 111, 769, 5503, 40193, 297727]
+[PASS] 2(1-x^2)/(1-3x) - 1/(1+t) = (1+4t)/((1+t)sqrt(1-8t)) as series to order 18
+[PASS] sympy: closed-form x(t) matches the series solution (8 terms) -- closed-form coefficients [0, 1, 3, 13, 67, 381, 2307, 14589]
+[PASS] sympy: 2(1-x^2)/(1-3x) - 1/(1+t) - (1+4t)/((1+t)sqrt(1-8t)) simplifies to 0 (or has zero series to O(t^12)) -- simplify -> 0; series -> 0
+[PASS] sympy numeric check at t = 1/20, 1/11, -1/7 (|expr| < 1e-20) -- [5.426657103235053e-166, 2.170662841294021e-165, 1.7365302730352168e-164]
+
+====================================================================================================
+SUMMARY: 129 passed, 0 failed; elapsed 4.1s

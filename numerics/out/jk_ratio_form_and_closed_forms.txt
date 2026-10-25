@@ -1,0 +1,8 @@
+p=5: 1770 pairs, min(v_p(ratio-1) - (3+v(a)+v(b)+v(a-b))) = 0 at (a,b,lhs,rhs)=(2, 1, 3, 3)
+p=7: 1770 pairs, min(v_p(ratio-1) - (3+v(a)+v(b)+v(a-b))) = 0 at (a,b,lhs,rhs)=(2, 1, 3, 3)
+p=11: 1770 pairs, min(v_p(ratio-1) - (3+v(a)+v(b)+v(a-b))) = 0 at (a,b,lhs,rhs)=(2, 1, 3, 3)
+p=5: level form min slack = 0
+p=7: level form min slack = 0
+A361711 closed forms: odd N (n<=59): True  even N (OEIS formula, n=1..59): True
+p=5 odd n>1: [(3, 1, 3), (3, 2, 6), (5, 1, 6), (5, 2, 9), (7, 1, 5), (7, 2, 8)]
+p=7 odd n>1: [(3, 1, 4), (3, 2, 7), (5, 1, 5), (5, 2, 8), (7, 1, 7), (7, 2, 10)]

@@ -1,0 +1,10 @@
+(1) Amice sanity: min over 200 random coset-polynomial f and k<45 of v2(a_k) - v2(floor(k/2)!) = 0
+(2) finite checks of S1 for exceptional k:
+  k=3: need v2(S1) >= 1; violations over m=2..12, n<16: []  (count 0)
+  k=6: need v2(S1) >= 2; violations over m=2..12, n<16: []  (count 0)
+  k=7: need v2(S1) >= 2; violations over m=2..12, n<16: []  (count 0)
+  k=15: need v2(S1) >= 5; violations over m=2..12, n<72: []  (count 0)
+  direct: k=3, v2(b_k) >= m+2 for m=2..10, 70 values of n each: violations=0
+  direct: k=6, v2(b_k) >= m+3 for m=2..10, 70 values of n each: violations=0
+  direct: k=7, v2(b_k) >= m+3 for m=2..10, 70 values of n each: violations=0
+  direct: k=15, v2(b_k) >= m+6 for m=2..10, 70 values of n each: violations=0

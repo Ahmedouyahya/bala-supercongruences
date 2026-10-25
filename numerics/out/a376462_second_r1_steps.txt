@@ -1,0 +1,45 @@
+(i) double harmonic sums mod p: sum_{u+v<p} 1/(uv), sum_{u+v>=p, u,v<p} 1/(uv), sum_{u<p} H_u/u:
+  p=5: v_p = 1, 1, 1
+  p=7: v_p = 1, 1, 1
+  p=11: v_p = 1, 1, 1
+  p=13: v_p = 1, 1, 1
+(ii) first-order expansions mod p^2 (N=mp, p∤k, n'=[k/p]):
+  p=5 m=1: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=5 m=2: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=5 m=3: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=7 m=1: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=7 m=2: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=7 m=3: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=11 m=1: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=11 m=2: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+  p=11 m=3: failures (a),(b),(c1),(c2) = [0, 0, 0, 0]
+(iii) block sums mod p^2 / p: sum'_{block} 1/k (mod p^2), sum'_{block} 1/k^2 (mod p), sum'_{block} H'_k/k (mod p):
+  p=5 block 0: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=5 block 1: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=5 block 2: v(1/k)-2=1, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=5 block 3: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=7 block 0: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=7 block 1: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=7 block 2: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=7 block 3: v(1/k)-2=1, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=11 block 0: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=11 block 1: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=11 block 2: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+  p=11 block 3: v(1/k)-2=0, v(1/k^2)-1=0, v(H'/k)-1=0
+(iv) assembled classes at r=1 (slack vs p^3): KU, JU, BU, scaled termwise:
+  p=5 m=1: KU 0, JU 1, BU 0, scaled termwise n/a, total 0
+  p=5 m=2: KU 0, JU 0, BU 0, scaled termwise 0, total 0
+  p=5 m=3: KU 0, JU 0, BU 1, scaled termwise 0, total 0
+  p=5 m=4: KU 0, JU 0, BU 1, scaled termwise 0, total 1
+  p=7 m=1: KU 0, JU 0, BU 0, scaled termwise n/a, total 1
+  p=7 m=2: KU 0, JU 0, BU 0, scaled termwise 0, total 2
+  p=7 m=3: KU 0, JU 0, BU 0, scaled termwise 0, total 1
+  p=7 m=4: KU 0, JU 0, BU 0, scaled termwise 0, total 1
+  p=11 m=1: KU 0, JU 0, BU 0, scaled termwise n/a, total 0
+  p=11 m=2: KU 0, JU 0, BU 0, scaled termwise 0, total 0
+  p=11 m=3: KU 1, JU 0, BU 1, scaled termwise 0, total 0
+  p=11 m=4: KU 0, JU 0, BU 0, scaled termwise 0, total 0
+  p=13 m=1: KU 0, JU 0, BU 0, scaled termwise n/a, total 0
+  p=13 m=2: KU 1, JU 0, BU 1, scaled termwise 0, total 0
+  p=13 m=3: KU 0, JU 0, BU 0, scaled termwise 0, total 2
+  p=13 m=4: KU 0, JU 1, BU 0, scaled termwise 0, total 0

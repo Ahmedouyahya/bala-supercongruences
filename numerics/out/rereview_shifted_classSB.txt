@@ -1,0 +1,64 @@
+Re-review (b): class B (section 6), class S (section 7), and the theorem
+--- case p=5 r=2 m=1: N=25, M=5, E=26
+    (0.0s)
+--- case p=5 r=2 m=2: N=50, M=10, E=26
+    (0.0s)
+--- case p=5 r=3 m=1: N=125, M=25, E=29
+    (0.0s)
+--- case p=5 r=3 m=2: N=250, M=50, E=29
+    (0.4s)
+--- case p=7 r=2 m=1: N=49, M=7, E=26
+    (0.0s)
+--- case p=7 r=2 m=2: N=98, M=14, E=26
+    (0.0s)
+--- case p=7 r=3 m=1: N=343, M=49, E=29
+    (0.2s)
+--- case p=7 r=3 m=2: N=686, M=98, E=29
+    (1.5s)
+--- case p=11 r=2 m=1: N=121, M=11, E=26
+    (0.0s)
+--- case p=11 r=2 m=2: N=242, M=22, E=26
+    (0.3s)
+--- case p=5 r=2 m=5: N=125, M=25, E=26
+    (0.0s)
+--- case p=5 r=1 m=5: N=25, M=5, E=23
+    (0.0s)
+--- case p=7 r=1 m=7: N=49, M=7, E=23
+    (0.0s)
+--- case p=5 r=1 m=1: N=5, M=1, E=23
+    (0.0s)
+--- case p=7 r=1 m=2: N=14, M=2, E=23
+    (0.0s)
+--- case p=13 r=2 m=1: N=169, M=13, E=26
+    (0.1s)
+sec7 Step1: v(e_2) >= 1 + min(a,b) (exact expansion of E in powers of N)
+
+== rereview_shifted_classSB: 36456 pass, 0 fail ==
+minimal slack per item (observed - claimed valuation):
+  (B) Sigma_B = 0 mod p^{3r}                       min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  (J) Sigma_J = 0 mod p^{3r}                       min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  (K) Sigma_K = 0 mod p^{3r}                       min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  (S) Sigma_S - a(M-1) = 0 mod p^{3r}              min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  THEOREM a(N-1) - a(M-1) = 0 mod p^{3r}           min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  sec6 Sigma_B - N^2 sum' Xi^_r/(kj) = 0 mod p^{3r} min slack    0   (v=3, claimed 3) at p=5 r=1 m=1
+  sec6 inner sum split by top-level carry c = 0 mod p^r min slack    0   (v=2, claimed 2) at p=5 r=2 m=1 c=0
+  sec6 sum' Xi^_r(k,j)/(kj) = 0 mod p^r            min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  sec7 Step1 Sigma_S - a(M-1) + N T_S = 0 mod p^{3r} min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  sec7 Step1 e_d integral (d>=3)                   min slack    0   (v=0, claimed 0) at p=5 N=10 k'=0 j'=1 d=4
+  sec7 Step1 termwise S~(M)(E-1+N rho_S) = 0 mod p^{3r} min slack    0   (v=6, claimed 6) at p=5 r=2 m=1 k'=0 j'=1
+  sec7 Step1 v(S~(M;k',j')) >= (r-1-a)^+ + (r-1-b)^+ min slack    0   (v=0, claimed 0) at p=5 r=2 m=1 k'=0 j'=0
+  sec7 Step1 v(e_2) >= 1+min(a,b)                  min slack    0   (v=1, claimed 1) at p=5 N=10 k'=0 j'=1
+  sec7 Step1 v(rho_S) >= 2+2min(a,b)               min slack    0   (v=2, claimed 2) at p=5 N=10 k'=1 j'=0
+  sec7 Step2 T_S - 3T_1 - T_2 = 0 mod p^{2r}       min slack    0   (v=4, claimed 4) at p=5 r=2 m=1
+  sec7 Step2 termwise v(p k' Z S~(M)) >= 2r        min slack    0   (v=4, claimed 4) at p=5 r=2 m=1 k'=1 j'=1
+  sec7 Step2 v(Z) >= 1+b                           min slack    0   (v=1, claimed 1) at p=5 r=2 m=1 k'=1 j'=1
+  sec7 Step3 Lemma-3.1 sum = 0 mod p^{2sigma+(r-sigma)} min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 sigma=1
+  sec7 Step3 T_1 = 0 mod p^{2r}                    min slack    0   (v=4, claimed 4) at p=5 r=2 m=1
+  sec7 Step3 block sums of a_kappa = 0 mod p^{t+2sigma} min slack    0   (v=2, claimed 2) at p=5 r=2 m=1 sigma=1 t=0 i=1
+  sec7 Step3 stratum - reduced form = 0 mod p^{2r} min slack    5   (v=11, claimed 6) at p=5 r=3 m=1 sigma=2
+  sec7 Step3 stratum of T_1 = 0 mod p^{2r}         min slack    0   (v=4, claimed 4) at p=5 r=2 m=1 sigma=1
+  sec7 Step4 Lemma-3.1 sum = 0 mod p^{2sigma+(r-sigma)} min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 sigma=1
+  sec7 Step4 T_2 = 0 mod p^{2r}                    min slack    0   (v=4, claimed 4) at p=5 r=2 m=1
+  sec7 Step4 stratum - reduced form = 0 mod p^{2r} min slack    5   (v=11, claimed 6) at p=5 r=3 m=1 sigma=2
+  sec7 Step4 stratum of T_2 = 0 mod p^{2r}         min slack    0   (v=4, claimed 4) at p=5 r=2 m=1 sigma=1
+  sec7 T_S = 0 mod p^{2r}                          min slack    0   (v=4, claimed 4) at p=5 r=2 m=1

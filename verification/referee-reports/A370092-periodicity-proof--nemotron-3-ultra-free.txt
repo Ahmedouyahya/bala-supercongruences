@@ -1,0 +1,58 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/A370092-periodicity-proof.md only (background notes NOT supplied in this run; some 'missing lemma' remarks stem from that). Prompt: notes/referee-reports/PROMPT.txt. AI output kept as evidence, not authority.
+===========================================================================
+## Section 0: The sequence
+no issue found
+
+## Section 1: Stirling expansion and integrality
+no issue found
+
+## Section 2: Odd prime powers
+no issue found
+
+## Section 3: Powers of two — **ISSUES FOUND**
+
+### Lemma B (valuation bounds for E_k and S_2)
+- **Quoted lines**: 49–52: "E_k = Σ_{j even} ... v_2(E_k) ≥ n + v_2(⌊k/2⌋!); S_2 = Σ_t ... v_2(S_2) ≥ v_2(⌊k/2⌋!)"
+- **Claim**: The Mahler coefficients of the even-part and the remainder-part of the 2-adic decomposition satisfy these valuation bounds.
+- **Why it fails / what is missing**: These bounds are asserted without proof. E_k and S_2 are Mahler coefficients of functions *discontinuous* on ℤ₂ (supported only on even/odd cosets respectively). The Amice theorem cited (Colmez Th. I.4.7) applies only to *continuous* functions in LA₁(ℤ₂, ℚ₂). The extension to piecewise locally analytic functions with jump discontinuities is non-trivial and not justified here. This is a central gap in the proof of Lemma B for the exceptional k = 3, 6, 7, 15.
+- **Severity**: GAP
+
+### Lemma B (finite verification for k = 15)
+- **Quoted line**: 53: "`numerics/lemmaB_finite_checks.py`: no violation for m = 2..12 and n < 72, covering every residue class; the referee re-ran the exhaustive residue check"
+- **Claim**: The remaining case k = 15 (where d = ⌊15/3⌋ = 5) is verified by finite computation.
+- **Why it fails / what is missing**: The computer output is not shown or independently reproducible in the text. The claim "covering every residue class" relies on the period of (1+2t)ⁿ mod 32 being 8 and 2ᵐ mod 32 stabilizing for m ≥ 5, giving ≤ 32 cases — but the script and its output are not provided for audit.
+- **Severity**: GAP
+
+### Proposition 2, α = 2 clause (minor imprecision)
+- **Quoted line**: 36: "For α = 2: a(n+2) ≡ a(n) (mod 4) for n ≥ 3"
+- **Claim**: Period 2 modulo 4 starting at n = 3.
+- **Why it fails / what is missing**: The proof is correct, but in Section 4 the combined start index is given as "max(α_i + 1, α + 1)" whereas Proposition 1 only requires n ≥ α_i (not α_i + 1). This makes the overall start bound weaker than necessary (by 1 for odd prime factors) but does not invalidate the theorem.
+- **Severity**: UNCLEAR (not an error, but an unnecessary weakening)
+
+## Section 4: Assembling the theorem
+no issue found (aside from the minor start-index weakening noted above)
+
+## Section 5: Sharpness and remarks
+no issue found
+
+## Section 6: Computer checks
+no issue found
+
+---
+
+## VERDICT: CORRECT WITH FIXES
+
+The proof strategy is sound and the numerical evidence strongly supports the result, but two gaps must be closed for a complete rigorous proof:
+1. The valuation bounds for E_k and S_2 in the Lemma B refinement (Section 3, lines 49–52) need a proper justification — either by extending the Amice/Colmez theory to the relevant discontinuous functions or by an elementary 2-adic difference estimate.
+2. The finite check for k = 15 must be made reproducible (e.g., by including the full output or a verifiable transcript).
+
+---
+
+## Three steps I am least sure about and why
+
+1. **Lemma B, E_k/S_2 valuation bounds (Section 3, lines 49–52)** — The proof invokes Mahler-coefficient theory for functions that are not continuous on ℤ₂. The cited Amice theorem does not directly apply, and no alternative argument is given. This is the core of the 2-adic proof for the four exceptional k values.
+
+2. **Lemma B, k = 15 finite check (Section 3, line 53)** — The claim rests entirely on an external script whose output is not shown. Without seeing the exhaustive residue-class verification, I cannot confirm that all 32 (or so) cases actually satisfy v₂(S₁) ≥ 5.
+
+3. **Lemma B, equation (2) domain claim (Section 3, line 45)** — The text states the bound holds "for all k ≥ 0, n ≥ m+1", but the lemma hypothesis requires n ≥ m+2 and the refined analysis uses n ≥ m+2 essentially. While not used incorrectly later, this inconsistency suggests the n ≥ m+1 claim was not carefully checked and might hide a boundary issue.

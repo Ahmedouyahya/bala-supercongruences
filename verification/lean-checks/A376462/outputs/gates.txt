@@ -1,0 +1,29 @@
+PASS   build exit 0: exit 0
+PASS   no sorry in build log
+PASS   no error in build log
+PASS   audit file exit 0: exit 0
+PASS   axioms of A376462_from_target: Classical.choice, Quot.sound, propext
+PASS   axioms of A376462_first: Classical.choice, Quot.sound, propext
+PASS   axioms of A376462_shifted: Classical.choice, Quot.sound, propext
+PASS   axioms of A376462Proof.cong: Classical.choice, Quot.sound, propext
+GREP modules: BalaCheck.A376462Main, BalaCheck.A376462ShiftMain, BalaCheck.A376462ShiftS, BalaCheck.A376462ShiftK, BalaCheck.A376462ShiftRep, BalaCheck.ShiftLibBlock, BalaCheck.ShiftLibHarm, BalaCheck.ShiftLibProd, BalaCheck.OSSLib, BalaCheck.A386548Padic, BalaCheck.EpochJac, BalaCheck.A376462ShiftB, BalaCheck.A376462ShiftJ, BalaCheck.A376462First, BalaCheck.A376462Classes, BalaCheck.A376462Kernel, BalaCheck.A376462Rep
+GREP hits: 0 | approved in GREP-ALLOW.txt: 0
+PASS   tamper grep: every hit reviewed and approved: 0 unapproved of 0
+PASS   lean4checker BalaCheck.A376462Main: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462ShiftMain: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462ShiftS: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462ShiftK: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462ShiftRep: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.ShiftLibBlock: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.ShiftLibHarm: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.ShiftLibProd: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.OSSLib: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A386548Padic: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.EpochJac: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462ShiftB: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462ShiftJ: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462First: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462Classes: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462Kernel: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A376462Rep: exit 0; Found 1 modules to check
+VERDICT: ACCEPT 

@@ -1,0 +1,5 @@
+k=3: need v2(S1) >= 1; tested m=2..9, n=m+2..m+33 (256 cases); min v2(S1) = 2
+k=6: need v2(S1) >= 2; tested m=2..9, n=m+2..m+33 (256 cases); min v2(S1) = 2
+k=7: need v2(S1) >= 2; tested m=2..9, n=m+2..m+33 (256 cases); min v2(S1) = 2
+k=15: need v2(S1) >= 5; tested m=2..9, n=m+2..m+33 (256 cases); min v2(S1) = 9
+violations: 0

@@ -1,0 +1,14 @@
+Legendre C(n,k)C(n+k,k)            integral=False  b[:8]=['1', '2', '16', '703/5', '50168/35', '110259/7', '14037269/77', '313004397/143']
+binomial C(n,k)                    integral=True  b[:8]=['1', '4', '100', '3004', '108868', '4379104', '188898676', '8562883480']
+signed binomial (-1)^(n-k)C(n,k)   integral=True  b[:8]=['1', '6', '120', '3660', '135444', '5596296', '248485476', '11607544080']
+C(n,k)^2                           integral=True  b[:8]=['1', '4', '92', '2452', '78892', '2727704', '99918236', '3782454848']
+C(n,k)C(n+k,k)^2                   integral=False  b[:8]=['1', '1', '5/2', '1259/200', '174359/9800', '1587419/30240', '2739069049/17075520', '827689985513/1649007360']
+C(n+k,2k)                          integral=True  b[:8]=['1', '4', '96', '2812', '100336', '3969324', '168447228', '7512105528']
+C(n+k,2k)C(2k,k)                   integral=False  b[:8]=['1', '2', '16', '703/5', '50168/35', '110259/7', '14037269/77', '313004397/143']
+C(n,k)^2 C(n+k,k)                  integral=False  b[:8]=['1', '2', '14', '496/5', '29114/35', '48584/7', '4892218/77', '77647149/143']
+C(2n-k, n) C(n,k)                  integral=True  b[:8]=['1', '3', '85', '2187', '69621', '2356863', '84687709', '3137631675']
+  OEIS lookup failed: HTTP Error 403: Forbidden
+  OEIS lookup failed: HTTP Error 403: Forbidden
+  OEIS lookup failed: HTTP Error 403: Forbidden
+  OEIS lookup failed: HTTP Error 403: Forbidden
+  OEIS lookup failed: HTTP Error 403: Forbidden

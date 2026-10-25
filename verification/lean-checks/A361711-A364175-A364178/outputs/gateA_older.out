@@ -1,0 +1,6 @@
+A361711: 26 b-file terms (n = 1..26), mismatches: 0
+A364175 (Num/Den): 15 b-file terms (n = 0..14), mismatches: 0
+A364178 (Num/Den): 13 b-file terms (n = 0..12), mismatches: 0
+A364175 Gamma definition vs Num/Den, n = 0..40 (precision: digits of the value + 40): mismatches: 0
+A364178 Gamma definition vs Num/Den, n = 0..40 (precision: digits of the value + 40): mismatches: 0
+FAILURES: 0

@@ -1,0 +1,74 @@
+=== p=5 ===
+ m=1 s=1: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ m=1 s=2: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ m=2 s=1: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ m=2 s=2: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ (C) t=1 s'=0 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=0 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=1 s'=0 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=1 s'=0 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=1 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=1 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=1 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=1 s'=1 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (D) t=1 blocks(0,0): slack vs p^t by carry: [0, 0]
+ (D) t=1 blocks(1,0): slack vs p^t by carry: [1, 1]
+ (D) t=1 blocks(1,2): slack vs p^t by carry: [0, 0]
+ (E) Lemma4(i) t=1 s=1 i=0: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=1 i=1: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=1 i=2: slack vs p^(t+2s) = 1
+ (E) Lemma4(i) t=1 s=2 i=0: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=2 i=1: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=2 i=2: slack vs p^(t+2s) = 1
+ (C) t=2 s'=0 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=0 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=0 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=0 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=1 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=2 s'=1 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=2 s'=1 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [2, 2]
+ (C) t=2 s'=1 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (D) t=2 blocks(0,0): slack vs p^t by carry: [0, 0]
+ (D) t=2 blocks(1,0): slack vs p^t by carry: [0, 0]
+ (D) t=2 blocks(1,2): slack vs p^t by carry: [0, 0]
+ (E) Lemma4(i) t=2 s=1 i=0: slack vs p^(t+2s) = 1
+ (E) Lemma4(i) t=2 s=1 i=1: slack vs p^(t+2s) = 1
+ (E) Lemma4(i) t=2 s=1 i=2: slack vs p^(t+2s) = 2
+ (E) Lemma4(i) t=2 s=2 i=0: slack vs p^(t+2s) = 1
+=== p=7 ===
+ m=1 s=1: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ m=1 s=2: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ m=2 s=1: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ m=2 s=2: (A1) Psi tower True; (A2) unscaled-j terms ≡0 mod p^s True; (A3) Xi tower with carry True; (B) moment kernels ≡0 mod p^s True
+ (C) t=1 s'=0 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=0 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=0 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=0 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=1 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=1 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=1 s'=1 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=1 s'=1 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (D) t=1 blocks(0,0): slack vs p^t by carry: [0, 0]
+ (D) t=1 blocks(1,0): slack vs p^t by carry: [0, 0]
+ (D) t=1 blocks(1,2): slack vs p^t by carry: [0, 0]
+ (E) Lemma4(i) t=1 s=1 i=0: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=1 i=1: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=1 i=2: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=2 i=0: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=2 i=1: slack vs p^(t+2s) = 0
+ (E) Lemma4(i) t=1 s=2 i=2: slack vs p^(t+2s) = 0
+ (C) t=2 s'=0 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=0 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=0 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=0 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [0, 0]
+ (C) t=2 s'=1 blocks(0,0): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=2 s'=1 blocks(1,0): slack vs p^(2s'+t) by carry c=0,1: [2, 2]
+ (C) t=2 s'=1 blocks(0,1): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (C) t=2 s'=1 blocks(1,2): slack vs p^(2s'+t) by carry c=0,1: [1, 1]
+ (D) t=2 blocks(0,0): slack vs p^t by carry: [0, 0]
+ (D) t=2 blocks(1,0): slack vs p^t by carry: [0, 0]
+ (D) t=2 blocks(1,2): slack vs p^t by carry: [0, 0]
+ (E) Lemma4(i) t=2 s=1 i=0: slack vs p^(t+2s) = 1
+ (E) Lemma4(i) t=2 s=1 i=1: slack vs p^(t+2s) = 1
+ (E) Lemma4(i) t=2 s=1 i=2: slack vs p^(t+2s) = 1
+ (E) Lemma4(i) t=2 s=2 i=0: slack vs p^(t+2s) = 1

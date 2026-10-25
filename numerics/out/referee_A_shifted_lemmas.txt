@@ -1,0 +1,864 @@
+Referee A: independent checks of Sections 0-3 of notes/A376462-shifted-congruence-proof.md
+python 3.14.7; exact arithmetic (int / Fraction)
+
+=== A. Lemma 1.2 (a),(b) for NEGATIVE and positive m, incl. the 'consequence' at index n-1 ===
+  [OK  ] L1.2(a) p=5 m=-3 s=1
+  [OK  ] L1.2(b) p=5 m=-3 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-3 s=1
+  [OK  ] L1.2(a) p=5 m=-3 s=2
+  [OK  ] L1.2(b) p=5 m=-3 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-3 s=2
+  [OK  ] L1.2(a) p=5 m=-3 s=3
+  [OK  ] L1.2(b) p=5 m=-3 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-3 s=3
+  [OK  ] L1.2(a) p=5 m=-2 s=1
+  [OK  ] L1.2(b) p=5 m=-2 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-2 s=1
+  [OK  ] L1.2(a) p=5 m=-2 s=2
+  [OK  ] L1.2(b) p=5 m=-2 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-2 s=2
+  [OK  ] L1.2(a) p=5 m=-2 s=3
+  [OK  ] L1.2(b) p=5 m=-2 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-2 s=3
+  [OK  ] L1.2(a) p=5 m=-1 s=1
+  [OK  ] L1.2(b) p=5 m=-1 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-1 s=1
+  [OK  ] L1.2(a) p=5 m=-1 s=2
+  [OK  ] L1.2(b) p=5 m=-1 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-1 s=2
+  [OK  ] L1.2(a) p=5 m=-1 s=3
+  [OK  ] L1.2(b) p=5 m=-1 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=-1 s=3
+  [OK  ] L1.2(a) p=5 m=1 s=1
+  [OK  ] L1.2(b) p=5 m=1 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=1 s=1
+  [OK  ] L1.2(a) p=5 m=1 s=2
+  [OK  ] L1.2(b) p=5 m=1 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=1 s=2
+  [OK  ] L1.2(a) p=5 m=1 s=3
+  [OK  ] L1.2(b) p=5 m=1 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=1 s=3
+  [OK  ] L1.2(a) p=5 m=2 s=1
+  [OK  ] L1.2(b) p=5 m=2 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=2 s=1
+  [OK  ] L1.2(a) p=5 m=2 s=2
+  [OK  ] L1.2(b) p=5 m=2 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=2 s=2
+  [OK  ] L1.2(a) p=5 m=2 s=3
+  [OK  ] L1.2(b) p=5 m=2 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=2 s=3
+  [OK  ] L1.2(a) p=5 m=3 s=1
+  [OK  ] L1.2(b) p=5 m=3 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=3 s=1
+  [OK  ] L1.2(a) p=5 m=3 s=2
+  [OK  ] L1.2(b) p=5 m=3 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=3 s=2
+  [OK  ] L1.2(a) p=5 m=3 s=3
+  [OK  ] L1.2(b) p=5 m=3 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=5 m=3 s=3
+  [OK  ] L1.2(a) p=7 m=-3 s=1
+  [OK  ] L1.2(b) p=7 m=-3 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-3 s=1
+  [OK  ] L1.2(a) p=7 m=-3 s=2
+  [OK  ] L1.2(b) p=7 m=-3 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-3 s=2
+  [OK  ] L1.2(a) p=7 m=-3 s=3
+  [OK  ] L1.2(b) p=7 m=-3 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-3 s=3
+  [OK  ] L1.2(a) p=7 m=-2 s=1
+  [OK  ] L1.2(b) p=7 m=-2 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-2 s=1
+  [OK  ] L1.2(a) p=7 m=-2 s=2
+  [OK  ] L1.2(b) p=7 m=-2 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-2 s=2
+  [OK  ] L1.2(a) p=7 m=-2 s=3
+  [OK  ] L1.2(b) p=7 m=-2 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-2 s=3
+  [OK  ] L1.2(a) p=7 m=-1 s=1
+  [OK  ] L1.2(b) p=7 m=-1 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-1 s=1
+  [OK  ] L1.2(a) p=7 m=-1 s=2
+  [OK  ] L1.2(b) p=7 m=-1 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-1 s=2
+  [OK  ] L1.2(a) p=7 m=-1 s=3
+  [OK  ] L1.2(b) p=7 m=-1 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=-1 s=3
+  [OK  ] L1.2(a) p=7 m=1 s=1
+  [OK  ] L1.2(b) p=7 m=1 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=1 s=1
+  [OK  ] L1.2(a) p=7 m=1 s=2
+  [OK  ] L1.2(b) p=7 m=1 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=1 s=2
+  [OK  ] L1.2(a) p=7 m=1 s=3
+  [OK  ] L1.2(b) p=7 m=1 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=1 s=3
+  [OK  ] L1.2(a) p=7 m=2 s=1
+  [OK  ] L1.2(b) p=7 m=2 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=2 s=1
+  [OK  ] L1.2(a) p=7 m=2 s=2
+  [OK  ] L1.2(b) p=7 m=2 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=2 s=2
+  [OK  ] L1.2(a) p=7 m=2 s=3
+  [OK  ] L1.2(b) p=7 m=2 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=2 s=3
+  [OK  ] L1.2(a) p=7 m=3 s=1
+  [OK  ] L1.2(b) p=7 m=3 s=1
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=3 s=1
+  [OK  ] L1.2(a) p=7 m=3 s=2
+  [OK  ] L1.2(b) p=7 m=3 s=2
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=3 s=2
+  [OK  ] L1.2(a) p=7 m=3 s=3
+  [OK  ] L1.2(b) p=7 m=3 s=3
+  [OK  ] L1.2 consequence (index n-1, p∤n) p=7 m=3 s=3
+  min slack over all L1.2(a) checks: 0 (0 means the modulus p^s is sharp somewhere)
+  (section_A: 0.5s)
+
+=== B. Lemma 1.3: e_1, e_2 formulas (re-derived by polynomial expansion in L), integrality ===
+  [OK  ] L1.3 e_1 formula p=5 A=[(7, 2), (12, 2)] B=[(7, 1), (10, 1)]
+  [OK  ] L1.3 e_2 formula p=5 A=[(7, 2), (12, 2)] B=[(7, 1), (10, 1)]
+  [OK  ] L1.3 e_0..e_3 p-integral p=5  -- vals ['0', '0', '0', '0']
+  [OK  ] L1.3 e_1 formula p=5 A=[(23, 2), (33, 2)] B=[(23, 1), (10, 1)]
+  [OK  ] L1.3 e_2 formula p=5 A=[(23, 2), (33, 2)] B=[(23, 1), (10, 1)]
+  [OK  ] L1.3 e_0..e_3 p-integral p=5  -- vals ['0', '0', '0', '0']
+  [OK  ] L1.3 e_1 formula p=7 A=[(9, 1), (20, 3)] B=[(4, 2), (31, 1)]
+  [OK  ] L1.3 e_2 formula p=7 A=[(9, 1), (20, 3)] B=[(4, 2), (31, 1)]
+  [OK  ] L1.3 e_0..e_3 p-integral p=7  -- vals ['0', '0', '0', '0']
+  [OK  ] L1.3 e_1 formula p=7 A=[(50, 2), (57, 2)] B=[(50, 1), (7, 1)]
+  [OK  ] L1.3 e_2 formula p=7 A=[(50, 2), (57, 2)] B=[(50, 1), (7, 1)]
+  [OK  ] L1.3 e_0..e_3 p-integral p=7  -- vals ['0', '0', '0', '0']
+  [OK  ] L1.3 e_1 formula p=5 A=[(0, 2)] B=[(13, 1)]
+  [OK  ] L1.3 e_2 formula p=5 A=[(0, 2)] B=[(13, 1)]
+  [OK  ] L1.3 e_0..e_3 p-integral p=5  -- vals ['0', '0', '0', '0']
+  [OK  ] L1.3 e_1 formula p=11 A=[(12, 2), (25, 2)] B=[(12, 1), (13, 1)]
+  [OK  ] L1.3 e_2 formula p=11 A=[(12, 2), (25, 2)] B=[(12, 1), (13, 1)]
+  [OK  ] L1.3 e_0..e_3 p-integral p=11  -- vals ['0', '0', '1', '0']
+  (section_B: 0.0s)
+
+=== C. Lemma 2.1: sum over (Z/p^v)^x of u^{-d} mod p^{v-e(d)}; S_d(p^v y); block sums of k^{-2} ===
+  [OK  ] L2.1 group sum p=5 v=1, d in 12 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[4, 8, 20, 40, 100, 24]
+  [OK  ] L2.1 group sum p=5 v=2, d in 12 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[4, 8, 24]
+  [OK  ] L2.1 group sum p=5 v=3, d in 12 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[4, 8, 24]
+  [OK  ] L2.1 group sum p=5 v=4, d in 12 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[4, 8, 24]
+  [OK  ] L2.1 group sum p=7 v=1, d in 16 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[6, 12, 42, 84, 294, 48]
+  [OK  ] L2.1 group sum p=7 v=2, d in 16 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[6, 12, 48]
+  [OK  ] L2.1 group sum p=7 v=3, d in 16 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[6, 12, 48]
+  [OK  ] L2.1 group sum p=7 v=4, d in 16 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[6, 12, 48]
+  [OK  ] L2.1 group sum p=11 v=1, d in 24 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[10, 20, 110, 220, 1210, 120]
+  [OK  ] L2.1 group sum p=11 v=2, d in 24 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[10, 20, 120]
+  [OK  ] L2.1 group sum p=11 v=3, d in 24 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[10, 20, 120]
+  [OK  ] L2.1 group sum p=11 v=4, d in 24 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[10, 20, 120]
+  [OK  ] L2.1 group sum p=13 v=1, d in 28 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[12, 24, 156, 312, 2028, 168]
+  [OK  ] L2.1 group sum p=13 v=2, d in 28 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[12, 24, 168]
+  [OK  ] L2.1 group sum p=13 v=3, d in 28 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[12, 24, 168]
+  [OK  ] L2.1 group sum p=13 v=4, d in 28 values incl. (p-1)|d  -- tight (valuation exactly v-e(d)) at d=[12, 24, 168]
+  [OK  ] L2.1 S_d(p^v y) p=5 v=1 y=1
+  [OK  ] L2.1 S_d(p^v y) p=5 v=1 y=2
+  [OK  ] L2.1 S_d(p^v y) p=5 v=1 y=3
+  [OK  ] L2.1 block sum k^-2 over B_1(0) p=5  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(1) p=5  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(2) p=5  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(3) p=5  -- v_p=1 need 1
+  [OK  ] L2.1 S_d(p^v y) p=5 v=2 y=1
+  [OK  ] L2.1 S_d(p^v y) p=5 v=2 y=2
+  [OK  ] L2.1 S_d(p^v y) p=5 v=2 y=3
+  [OK  ] L2.1 block sum k^-2 over B_2(0) p=5  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(1) p=5  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(2) p=5  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(3) p=5  -- v_p=2 need 2
+  [OK  ] L2.1 S_d(p^v y) p=7 v=1 y=1
+  [OK  ] L2.1 S_d(p^v y) p=7 v=1 y=2
+  [OK  ] L2.1 S_d(p^v y) p=7 v=1 y=3
+  [OK  ] L2.1 block sum k^-2 over B_1(0) p=7  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(1) p=7  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(2) p=7  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(3) p=7  -- v_p=1 need 1
+  [OK  ] L2.1 S_d(p^v y) p=7 v=2 y=1
+  [OK  ] L2.1 S_d(p^v y) p=7 v=2 y=2
+  [OK  ] L2.1 S_d(p^v y) p=7 v=2 y=3
+  [OK  ] L2.1 block sum k^-2 over B_2(0) p=7  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(1) p=7  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(2) p=7  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(3) p=7  -- v_p=2 need 2
+  [OK  ] L2.1 S_d(p^v y) p=11 v=1 y=1
+  [OK  ] L2.1 S_d(p^v y) p=11 v=1 y=2
+  [OK  ] L2.1 S_d(p^v y) p=11 v=1 y=3
+  [OK  ] L2.1 block sum k^-2 over B_1(0) p=11  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(1) p=11  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(2) p=11  -- v_p=1 need 1
+  [OK  ] L2.1 block sum k^-2 over B_1(3) p=11  -- v_p=1 need 1
+  [OK  ] L2.1 S_d(p^v y) p=11 v=2 y=1
+  [OK  ] L2.1 S_d(p^v y) p=11 v=2 y=2
+  [OK  ] L2.1 S_d(p^v y) p=11 v=2 y=3
+  [OK  ] L2.1 block sum k^-2 over B_2(0) p=11  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(1) p=11  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(2) p=11  -- v_p=2 need 2
+  [OK  ] L2.1 block sum k^-2 over B_2(3) p=11  -- v_p=2 need 2
+  (section_C: 0.6s)
+
+=== D. Lemma 2.3 (reflection), both claims ===
+  [OK  ] L2.3 first claim p=5 t=1 (all n<p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=5 t=1 s=1 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=5 t=1 s=2 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 first claim p=5 t=2 (all n<p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=5 t=2 s=1 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=5 t=2 s=2 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 first claim p=7 t=1 (all n<p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=7 t=1 s=1 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=7 t=1 s=2 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 first claim p=7 t=2 (all n<p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=7 t=2 s=1 (all 0<=k<=p^t)  -- min slack 0
+  [OK  ] L2.3 second claim p=7 t=2 s=2 (all 0<=k<=p^t)  -- min slack 0
+  (section_D: 0.0s)
+
+=== E. Lemma 2.5: sum_{n in B_t(i)} sigma_s(n) H'_n == 0 mod p^{t+2s} ===
+  [OK  ] L2.5 p=5 s=0 t=0 i=0  -- v_p=inf need 0
+  [OK  ] L2.5 p=5 s=0 t=0 i=1  -- v_p=0 need 0
+  [OK  ] L2.5 p=5 s=0 t=0 i=2  -- v_p=0 need 0
+  [OK  ] L2.5 p=5 s=0 t=0 i=3  -- v_p=0 need 0
+  [OK  ] L2.5 p=5 s=0 t=1 i=0  -- v_p=1 need 1
+  [OK  ] L2.5 p=5 s=0 t=1 i=1  -- v_p=1 need 1
+  [OK  ] L2.5 p=5 s=0 t=1 i=2  -- v_p=1 need 1
+  [OK  ] L2.5 p=5 s=0 t=1 i=3  -- v_p=1 need 1
+  [OK  ] L2.5 p=5 s=0 t=2 i=0  -- v_p=2 need 2
+  [OK  ] L2.5 p=5 s=0 t=2 i=1  -- v_p=2 need 2
+  [OK  ] L2.5 p=5 s=0 t=2 i=2  -- v_p=2 need 2
+  [OK  ] L2.5 p=5 s=0 t=2 i=3  -- v_p=2 need 2
+  [OK  ] L2.5 p=5 s=1 t=0 i=0  -- v_p=inf need 2
+  [OK  ] L2.5 p=5 s=1 t=0 i=1  -- v_p=2 need 2
+  [OK  ] L2.5 p=5 s=1 t=0 i=2  -- v_p=3 need 2
+  [OK  ] L2.5 p=5 s=1 t=0 i=3  -- v_p=2 need 2
+  [OK  ] L2.5 p=5 s=1 t=1 i=0  -- v_p=3 need 3
+  [OK  ] L2.5 p=5 s=1 t=1 i=1  -- v_p=3 need 3
+  [OK  ] L2.5 p=5 s=1 t=1 i=2  -- v_p=4 need 3
+  [OK  ] L2.5 p=5 s=1 t=1 i=3  -- v_p=3 need 3
+  [OK  ] L2.5 p=5 s=1 t=2 i=0  -- v_p=5 need 4
+  [OK  ] L2.5 p=5 s=1 t=2 i=1  -- v_p=5 need 4
+  [OK  ] L2.5 p=5 s=1 t=2 i=2  -- v_p=6 need 4
+  [OK  ] L2.5 p=5 s=1 t=2 i=3  -- v_p=5 need 4
+  [OK  ] L2.5 p=5 s=2 t=0 i=0  -- v_p=inf need 4
+  [OK  ] L2.5 p=5 s=2 t=0 i=1  -- v_p=4 need 4
+  [OK  ] L2.5 p=5 s=2 t=0 i=2  -- v_p=5 need 4
+  [OK  ] L2.5 p=5 s=2 t=0 i=3  -- v_p=4 need 4
+  [OK  ] L2.5 p=5 s=2 t=1 i=0  -- v_p=5 need 5
+  [OK  ] L2.5 p=5 s=2 t=1 i=1  -- v_p=5 need 5
+  [OK  ] L2.5 p=5 s=2 t=1 i=2  -- v_p=6 need 5
+  [OK  ] L2.5 p=5 s=2 t=1 i=3  -- v_p=5 need 5
+  [OK  ] L2.5 p=5 s=2 t=2 i=0  -- v_p=7 need 6
+  [OK  ] L2.5 p=5 s=2 t=2 i=1  -- v_p=7 need 6
+  [OK  ] L2.5 p=5 s=2 t=2 i=2  -- v_p=8 need 6
+  [OK  ] L2.5 p=5 s=2 t=2 i=3  -- v_p=7 need 6
+  [OK  ] L2.5 p=7 s=0 t=0 i=0  -- v_p=inf need 0
+  [OK  ] L2.5 p=7 s=0 t=0 i=1  -- v_p=0 need 0
+  [OK  ] L2.5 p=7 s=0 t=0 i=2  -- v_p=0 need 0
+  [OK  ] L2.5 p=7 s=0 t=0 i=3  -- v_p=0 need 0
+  [OK  ] L2.5 p=7 s=0 t=1 i=0  -- v_p=1 need 1
+  [OK  ] L2.5 p=7 s=0 t=1 i=1  -- v_p=1 need 1
+  [OK  ] L2.5 p=7 s=0 t=1 i=2  -- v_p=1 need 1
+  [OK  ] L2.5 p=7 s=0 t=1 i=3  -- v_p=1 need 1
+  [OK  ] L2.5 p=7 s=0 t=2 i=0  -- v_p=2 need 2
+  [OK  ] L2.5 p=7 s=0 t=2 i=1  -- v_p=2 need 2
+  [OK  ] L2.5 p=7 s=0 t=2 i=2  -- v_p=2 need 2
+  [OK  ] L2.5 p=7 s=0 t=2 i=3  -- v_p=2 need 2
+  [OK  ] L2.5 p=7 s=1 t=0 i=0  -- v_p=inf need 2
+  [OK  ] L2.5 p=7 s=1 t=0 i=1  -- v_p=2 need 2
+  [OK  ] L2.5 p=7 s=1 t=0 i=2  -- v_p=2 need 2
+  [OK  ] L2.5 p=7 s=1 t=0 i=3  -- v_p=3 need 2
+  [OK  ] L2.5 p=7 s=1 t=1 i=0  -- v_p=3 need 3
+  [OK  ] L2.5 p=7 s=1 t=1 i=1  -- v_p=3 need 3
+  [OK  ] L2.5 p=7 s=1 t=1 i=2  -- v_p=3 need 3
+  [OK  ] L2.5 p=7 s=1 t=1 i=3  -- v_p=4 need 3
+  [OK  ] L2.5 p=7 s=1 t=2 i=0  -- v_p=5 need 4
+  [OK  ] L2.5 p=7 s=1 t=2 i=1  -- v_p=5 need 4
+  [OK  ] L2.5 p=7 s=1 t=2 i=2  -- v_p=5 need 4
+  [OK  ] L2.5 p=7 s=1 t=2 i=3  -- v_p=6 need 4
+  [OK  ] L2.5 p=7 s=2 t=0 i=0  -- v_p=inf need 4
+  [OK  ] L2.5 p=7 s=2 t=0 i=1  -- v_p=4 need 4
+  [OK  ] L2.5 p=7 s=2 t=0 i=2  -- v_p=4 need 4
+  [OK  ] L2.5 p=7 s=2 t=0 i=3  -- v_p=5 need 4
+  [OK  ] L2.5 p=7 s=2 t=1 i=0  -- v_p=5 need 5
+  [OK  ] L2.5 p=7 s=2 t=1 i=1  -- v_p=5 need 5
+  [OK  ] L2.5 p=7 s=2 t=1 i=2  -- v_p=5 need 5
+  [OK  ] L2.5 p=7 s=2 t=1 i=3  -- v_p=6 need 5
+  [OK  ] L2.5 p=7 s=2 t=2 i=0  -- v_p=7 need 6
+  [OK  ] L2.5 p=7 s=2 t=2 i=1  -- v_p=7 need 6
+  [OK  ] L2.5 p=7 s=2 t=2 i=2  -- v_p=7 need 6
+  [OK  ] L2.5 p=7 s=2 t=2 i=3  -- v_p=8 need 6
+  [OK  ] L2.5 p=11 s=0 t=0 i=0  -- v_p=inf need 0
+  [OK  ] L2.5 p=11 s=0 t=0 i=1  -- v_p=0 need 0
+  [OK  ] L2.5 p=11 s=0 t=0 i=2  -- v_p=0 need 0
+  [OK  ] L2.5 p=11 s=0 t=1 i=0  -- v_p=1 need 1
+  [OK  ] L2.5 p=11 s=0 t=1 i=1  -- v_p=1 need 1
+  [OK  ] L2.5 p=11 s=0 t=1 i=2  -- v_p=1 need 1
+  [OK  ] L2.5 p=11 s=0 t=2 i=0  -- v_p=2 need 2
+  [OK  ] L2.5 p=11 s=0 t=2 i=1  -- v_p=2 need 2
+  [OK  ] L2.5 p=11 s=0 t=2 i=2  -- v_p=2 need 2
+  [OK  ] L2.5 p=11 s=1 t=0 i=0  -- v_p=inf need 2
+  [OK  ] L2.5 p=11 s=1 t=0 i=1  -- v_p=2 need 2
+  [OK  ] L2.5 p=11 s=1 t=0 i=2  -- v_p=2 need 2
+  [OK  ] L2.5 p=11 s=1 t=1 i=0  -- v_p=3 need 3
+  [OK  ] L2.5 p=11 s=1 t=1 i=1  -- v_p=3 need 3
+  [OK  ] L2.5 p=11 s=1 t=1 i=2  -- v_p=3 need 3
+  [OK  ] L2.5 p=11 s=2 t=0 i=0  -- v_p=inf need 4
+  [OK  ] L2.5 p=11 s=2 t=0 i=1  -- v_p=4 need 4
+  [OK  ] L2.5 p=11 s=2 t=0 i=2  -- v_p=4 need 4
+
+--- E.1 the floor identity used in the base block: [(p^{t'}-k)/p^s] == p^t-1-[k/p^s] for p∤k ---
+  p=5 s=0 t=1: identity holds for all units k: False   <-- FALSE for s=0: [(p^t-k)] = p^t-k = (p^t-1-k)+1
+  p=5 s=0 t=2: identity holds for all units k: False   <-- FALSE for s=0: [(p^t-k)] = p^t-k = (p^t-1-k)+1
+  p=5 s=1 t=1: identity holds for all units k: True
+  p=5 s=1 t=2: identity holds for all units k: True
+  p=5 s=2 t=1: identity holds for all units k: True
+  p=5 s=2 t=2: identity holds for all units k: True
+  p=7 s=0 t=1: identity holds for all units k: False   <-- FALSE for s=0: [(p^t-k)] = p^t-k = (p^t-1-k)+1
+  p=7 s=0 t=2: identity holds for all units k: False   <-- FALSE for s=0: [(p^t-k)] = p^t-k = (p^t-1-k)+1
+  p=7 s=1 t=1: identity holds for all units k: True
+  p=7 s=1 t=2: identity holds for all units k: True
+  p=7 s=2 t=1: identity holds for all units k: True
+  p=7 s=2 t=2: identity holds for all units k: True
+
+--- E.2 general-block error terms of the written proof (k = i p^{t'} + kbar) ---
+    eps1(kbar) := (H'_{n(k)} - H'_{i p^t} - H'_{nbar})/p^t,  eps2(kbar) := (1/k - 1/kbar)/p^{t'}
+    cross term X := p^{t+t'} * sum' eps2*eps1 ; proof claims only 'carries p^{t+t'}', need p^{t+2s}
+  p=5 s=1 t=1 i=1: v_p(cross term)=6  [claimed bound t+t'=3, needed t+2s=3];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=6 [needed 3]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=1,t=1,i=1)
+  p=5 s=1 t=1 i=2: v_p(cross term)=6  [claimed bound t+t'=3, needed t+2s=3];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=6 [needed 3]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=1,t=1,i=2)
+  p=5 s=2 t=1 i=1: v_p(cross term)=9  [claimed bound t+t'=4, needed t+2s=5];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=8 [needed 5]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=2,t=1,i=1)
+      NOTE: the stated bound p^{t+t'} = p^4 is weaker than the required p^5: proof gap (true, but not proved as written).
+  p=5 s=2 t=1 i=2: v_p(cross term)=8  [claimed bound t+t'=4, needed t+2s=5];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=9 [needed 5]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=2,t=1,i=2)
+      NOTE: the stated bound p^{t+t'} = p^4 is weaker than the required p^5: proof gap (true, but not proved as written).
+  p=5 s=2 t=2 i=1: v_p(cross term)=13  [claimed bound t+t'=6, needed t+2s=6];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=12 [needed 6]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=2,t=2,i=1)
+  p=5 s=2 t=2 i=2: v_p(cross term)=12  [claimed bound t+t'=6, needed t+2s=6];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=13 [needed 6]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=2,t=2,i=2)
+  p=5 s=1 t=2 i=1: v_p(cross term)=10  [claimed bound t+t'=5, needed t+2s=4];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=10 [needed 4]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=1,t=2,i=1)
+  p=5 s=1 t=2 i=2: v_p(cross term)=10  [claimed bound t+t'=5, needed t+2s=4];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=10 [needed 4]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=1,t=2,i=2)
+  p=5 s=3 t=1 i=1: v_p(cross term)=11  [claimed bound t+t'=5, needed t+2s=7];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=10 [needed 7]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=3,t=1,i=1)
+      NOTE: the stated bound p^{t+t'} = p^5 is weaker than the required p^7: proof gap (true, but not proved as written).
+  p=5 s=3 t=1 i=2: v_p(cross term)=10  [claimed bound t+t'=5, needed t+2s=7];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=11 [needed 7]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=5,s=3,t=1,i=2)
+      NOTE: the stated bound p^{t+t'} = p^5 is weaker than the required p^7: proof gap (true, but not proved as written).
+  p=7 s=1 t=1 i=1: v_p(cross term)=6  [claimed bound t+t'=3, needed t+2s=3];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=6 [needed 3]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=1,t=1,i=1)
+  p=7 s=1 t=1 i=2: v_p(cross term)=7  [claimed bound t+t'=3, needed t+2s=3];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=6 [needed 3]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=1,t=1,i=2)
+  p=7 s=2 t=1 i=1: v_p(cross term)=8  [claimed bound t+t'=4, needed t+2s=5];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=8 [needed 5]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=2,t=1,i=1)
+      NOTE: the stated bound p^{t+t'} = p^4 is weaker than the required p^5: proof gap (true, but not proved as written).
+  p=7 s=2 t=1 i=2: v_p(cross term)=9  [claimed bound t+t'=4, needed t+2s=5];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=8 [needed 5]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=2,t=1,i=2)
+      NOTE: the stated bound p^{t+t'} = p^4 is weaker than the required p^5: proof gap (true, but not proved as written).
+  p=7 s=2 t=2 i=1: v_p(cross term)=12  [claimed bound t+t'=6, needed t+2s=6];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=12 [needed 6]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=2,t=2,i=1)
+  p=7 s=2 t=2 i=2: v_p(cross term)=13  [claimed bound t+t'=6, needed t+2s=6];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=12 [needed 6]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=2,t=2,i=2)
+  p=7 s=1 t=2 i=1: v_p(cross term)=10  [claimed bound t+t'=5, needed t+2s=4];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=10 [needed 4]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=1,t=2,i=1)
+  p=7 s=1 t=2 i=2: v_p(cross term)=11  [claimed bound t+t'=5, needed t+2s=4];  v_p(p^t*sum'(1/kbar)(eps1+i S_2(nbar)))=10 [needed 4]
+  [OK  ] L2.5 cross term actually has v_p >= t+2s (p=7,s=1,t=2,i=2)
+  (section_E: 0.3s)
+
+=== F. Lemma 2.6 (strong form): sum'_{k in B_t(i)} (1/k) H'_{k p^s} == 0 mod p^{t+2s} ===
+  [OK  ] L2.6 p=5 s=0 t=0 i=0  -- v_p=inf need 0
+  [OK  ] L2.6 p=5 s=0 t=0 i=1  -- v_p=0 need 0
+  [OK  ] L2.6 p=5 s=0 t=0 i=2  -- v_p=0 need 0
+  [OK  ] L2.6 p=5 s=0 t=0 i=3  -- v_p=0 need 0
+  [OK  ] L2.6 p=5 s=0 t=1 i=0  -- v_p=1 need 1
+  [OK  ] L2.6 p=5 s=0 t=1 i=1  -- v_p=1 need 1
+  [OK  ] L2.6 p=5 s=0 t=1 i=2  -- v_p=1 need 1
+  [OK  ] L2.6 p=5 s=0 t=1 i=3  -- v_p=1 need 1
+  [OK  ] L2.6 p=5 s=0 t=2 i=0  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=0 t=2 i=1  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=0 t=2 i=2  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=0 t=2 i=3  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=1 t=0 i=0  -- v_p=inf need 2
+  [OK  ] L2.6 p=5 s=1 t=0 i=1  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=1 t=0 i=2  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=1 t=0 i=3  -- v_p=2 need 2
+  [OK  ] L2.6 p=5 s=1 t=1 i=0  -- v_p=3 need 3
+  [OK  ] L2.6 p=5 s=1 t=1 i=1  -- v_p=3 need 3
+  [OK  ] L2.6 p=5 s=1 t=1 i=2  -- v_p=4 need 3
+  [OK  ] L2.6 p=5 s=1 t=1 i=3  -- v_p=3 need 3
+  [OK  ] L2.6 p=5 s=1 t=2 i=0  -- v_p=5 need 4
+  [OK  ] L2.6 p=5 s=1 t=2 i=1  -- v_p=5 need 4
+  [OK  ] L2.6 p=5 s=1 t=2 i=2  -- v_p=6 need 4
+  [OK  ] L2.6 p=5 s=1 t=2 i=3  -- v_p=5 need 4
+  [OK  ] L2.6 p=5 s=2 t=0 i=0  -- v_p=inf need 4
+  [OK  ] L2.6 p=5 s=2 t=0 i=1  -- v_p=4 need 4
+  [OK  ] L2.6 p=5 s=2 t=0 i=2  -- v_p=4 need 4
+  [OK  ] L2.6 p=5 s=2 t=0 i=3  -- v_p=4 need 4
+  [OK  ] L2.6 p=5 s=2 t=1 i=0  -- v_p=5 need 5
+  [OK  ] L2.6 p=5 s=2 t=1 i=1  -- v_p=5 need 5
+  [OK  ] L2.6 p=5 s=2 t=1 i=2  -- v_p=6 need 5
+  [OK  ] L2.6 p=5 s=2 t=1 i=3  -- v_p=5 need 5
+  [OK  ] L2.6 p=5 s=2 t=2 i=0  -- v_p=7 need 6
+  [OK  ] L2.6 p=5 s=2 t=2 i=1  -- v_p=7 need 6
+  [OK  ] L2.6 p=5 s=2 t=2 i=2  -- v_p=8 need 6
+  [OK  ] L2.6 p=5 s=2 t=2 i=3  -- v_p=7 need 6
+  [OK  ] L2.6 p=7 s=0 t=0 i=0  -- v_p=inf need 0
+  [OK  ] L2.6 p=7 s=0 t=0 i=1  -- v_p=0 need 0
+  [OK  ] L2.6 p=7 s=0 t=0 i=2  -- v_p=0 need 0
+  [OK  ] L2.6 p=7 s=0 t=0 i=3  -- v_p=0 need 0
+  [OK  ] L2.6 p=7 s=0 t=1 i=0  -- v_p=1 need 1
+  [OK  ] L2.6 p=7 s=0 t=1 i=1  -- v_p=1 need 1
+  [OK  ] L2.6 p=7 s=0 t=1 i=2  -- v_p=1 need 1
+  [OK  ] L2.6 p=7 s=0 t=1 i=3  -- v_p=1 need 1
+  [OK  ] L2.6 p=7 s=0 t=2 i=0  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=0 t=2 i=1  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=0 t=2 i=2  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=0 t=2 i=3  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=1 t=0 i=0  -- v_p=inf need 2
+  [OK  ] L2.6 p=7 s=1 t=0 i=1  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=1 t=0 i=2  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=1 t=0 i=3  -- v_p=2 need 2
+  [OK  ] L2.6 p=7 s=1 t=1 i=0  -- v_p=3 need 3
+  [OK  ] L2.6 p=7 s=1 t=1 i=1  -- v_p=3 need 3
+  [OK  ] L2.6 p=7 s=1 t=1 i=2  -- v_p=3 need 3
+  [OK  ] L2.6 p=7 s=1 t=1 i=3  -- v_p=4 need 3
+  [OK  ] L2.6 p=7 s=1 t=2 i=0  -- v_p=5 need 4
+  [OK  ] L2.6 p=7 s=1 t=2 i=1  -- v_p=5 need 4
+  [OK  ] L2.6 p=7 s=1 t=2 i=2  -- v_p=5 need 4
+  [OK  ] L2.6 p=7 s=1 t=2 i=3  -- v_p=6 need 4
+  [OK  ] L2.6 p=7 s=2 t=0 i=0  -- v_p=inf need 4
+  [OK  ] L2.6 p=7 s=2 t=0 i=1  -- v_p=4 need 4
+  [OK  ] L2.6 p=7 s=2 t=0 i=2  -- v_p=4 need 4
+  [OK  ] L2.6 p=7 s=2 t=0 i=3  -- v_p=4 need 4
+  [OK  ] L2.6 p=7 s=2 t=1 i=0  -- v_p=5 need 5
+  [OK  ] L2.6 p=7 s=2 t=1 i=1  -- v_p=5 need 5
+  [OK  ] L2.6 p=7 s=2 t=1 i=2  -- v_p=5 need 5
+  [OK  ] L2.6 p=7 s=2 t=1 i=3  -- v_p=6 need 5
+  [OK  ] L2.6 p=7 s=2 t=2 i=0  -- v_p=7 need 6
+  [OK  ] L2.6 p=7 s=2 t=2 i=1  -- v_p=7 need 6
+  [OK  ] L2.6 p=7 s=2 t=2 i=2  -- v_p=7 need 6
+  [OK  ] L2.6 p=7 s=2 t=2 i=3  -- v_p=8 need 6
+  [OK  ] L2.6 p=11 s=0 t=0 i=0  -- v_p=inf need 0
+  [OK  ] L2.6 p=11 s=0 t=0 i=1  -- v_p=0 need 0
+  [OK  ] L2.6 p=11 s=0 t=0 i=2  -- v_p=0 need 0
+  [OK  ] L2.6 p=11 s=0 t=1 i=0  -- v_p=1 need 1
+  [OK  ] L2.6 p=11 s=0 t=1 i=1  -- v_p=1 need 1
+  [OK  ] L2.6 p=11 s=0 t=1 i=2  -- v_p=1 need 1
+  [OK  ] L2.6 p=11 s=0 t=2 i=0  -- v_p=2 need 2
+  [OK  ] L2.6 p=11 s=0 t=2 i=1  -- v_p=2 need 2
+  [OK  ] L2.6 p=11 s=0 t=2 i=2  -- v_p=2 need 2
+  [OK  ] L2.6 p=11 s=1 t=0 i=0  -- v_p=inf need 2
+  [OK  ] L2.6 p=11 s=1 t=0 i=1  -- v_p=2 need 2
+  [OK  ] L2.6 p=11 s=1 t=0 i=2  -- v_p=2 need 2
+  [OK  ] L2.6 p=11 s=1 t=1 i=0  -- v_p=3 need 3
+  [OK  ] L2.6 p=11 s=1 t=1 i=1  -- v_p=3 need 3
+  [OK  ] L2.6 p=11 s=1 t=1 i=2  -- v_p=3 need 3
+  [OK  ] L2.6 p=11 s=2 t=0 i=0  -- v_p=inf need 4
+  [OK  ] L2.6 p=11 s=2 t=0 i=1  -- v_p=4 need 4
+  [OK  ] L2.6 p=11 s=2 t=0 i=2  -- v_p=4 need 4
+  (section_F: 0.0s)
+
+=== G. Lemma 2.7 (Y) and (B), carry-restricted cells ===
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(0,0;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(0,0;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(1,0;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(1,0;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(0,1;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(0,1;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(1,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(1,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(2,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(2,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(1,2;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(1,2;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(2,2;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(2,2;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(3,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=0 cell(3,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(0,0;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(0,0;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(1,0;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(1,0;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(0,1;c=0)  -- v_p=4 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(0,1;c=1)  -- v_p=4 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(1,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(1,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(2,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(2,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(1,2;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(1,2;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(2,2;c=0)  -- v_p=4 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(2,2;c=1)  -- v_p=4 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(3,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=1 cell(3,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(0,0;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(0,0;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(1,0;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(1,0;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(0,1;c=0)  -- v_p=6 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(0,1;c=1)  -- v_p=6 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(1,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(1,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(2,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(2,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(1,2;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(1,2;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(2,2;c=0)  -- v_p=6 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(2,2;c=1)  -- v_p=6 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(3,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=5 t=1 s'=2 cell(3,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(B) p=5 t=1 cell(0,0;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(0,0;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(1,0;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(1,0;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(0,1;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(0,1;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(1,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(1,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(2,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(2,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(1,2;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(1,2;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(2,2;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(2,2;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(3,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=5 t=1 cell(3,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(0,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(0,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(1,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(1,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(0,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(0,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(1,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(1,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(2,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(2,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(1,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(1,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(2,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(2,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(3,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=0 cell(3,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(0,0;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(0,0;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(1,0;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(1,0;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(0,1;c=0)  -- v_p=6 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(0,1;c=1)  -- v_p=6 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(1,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(1,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(2,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(2,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(1,2;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(1,2;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(2,2;c=0)  -- v_p=6 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(2,2;c=1)  -- v_p=6 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(3,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=1 cell(3,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(0,0;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(0,0;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(1,0;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(1,0;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(0,1;c=0)  -- v_p=8 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(0,1;c=1)  -- v_p=8 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(1,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(1,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(2,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(2,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(1,2;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(1,2;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(2,2;c=0)  -- v_p=8 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(2,2;c=1)  -- v_p=8 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(3,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=5 t=2 s'=2 cell(3,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(B) p=5 t=2 cell(0,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(0,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(1,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(1,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(0,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(0,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(1,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(1,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(2,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(2,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(1,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(1,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(2,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(2,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(3,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=5 t=2 cell(3,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(0,0;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(0,0;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(1,0;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(1,0;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(0,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(0,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(1,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(1,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(2,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(2,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(1,2;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(1,2;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(2,2;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(2,2;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(3,1;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=0 cell(3,1;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(0,0;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(0,0;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(1,0;c=0)  -- v_p=4 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(1,0;c=1)  -- v_p=4 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(0,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(0,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(1,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(1,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(2,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(2,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(1,2;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(1,2;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(2,2;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(2,2;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(3,1;c=0)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=1 cell(3,1;c=1)  -- v_p=3 need 3
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(0,0;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(0,0;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(1,0;c=0)  -- v_p=6 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(1,0;c=1)  -- v_p=6 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(0,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(0,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(1,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(1,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(2,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(2,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(1,2;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(1,2;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(2,2;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(2,2;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(3,1;c=0)  -- v_p=5 need 5
+  [OK  ] L2.7(Y) p=7 t=1 s'=2 cell(3,1;c=1)  -- v_p=5 need 5
+  [OK  ] L2.7(B) p=7 t=1 cell(0,0;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(0,0;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(1,0;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(1,0;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(0,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(0,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(1,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(1,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(2,1;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(2,1;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(1,2;c=0)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(1,2;c=1)  -- v_p=1 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(2,2;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(2,2;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(3,1;c=0)  -- v_p=2 need 1
+  [OK  ] L2.7(B) p=7 t=1 cell(3,1;c=1)  -- v_p=2 need 1
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(0,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(0,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(1,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(1,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(0,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(0,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(1,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(1,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(2,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(2,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(1,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(1,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(2,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(2,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(3,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=0 cell(3,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(0,0;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(0,0;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(1,0;c=0)  -- v_p=6 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(1,0;c=1)  -- v_p=6 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(0,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(0,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(1,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(1,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(2,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(2,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(1,2;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(1,2;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(2,2;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(2,2;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(3,1;c=0)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=1 cell(3,1;c=1)  -- v_p=5 need 4
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(0,0;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(0,0;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(1,0;c=0)  -- v_p=8 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(1,0;c=1)  -- v_p=8 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(0,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(0,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(1,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(1,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(2,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(2,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(1,2;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(1,2;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(2,2;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(2,2;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(3,1;c=0)  -- v_p=7 need 6
+  [OK  ] L2.7(Y) p=7 t=2 s'=2 cell(3,1;c=1)  -- v_p=7 need 6
+  [OK  ] L2.7(B) p=7 t=2 cell(0,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(0,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(1,0;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(1,0;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(0,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(0,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(1,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(1,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(2,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(2,1;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(1,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(1,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(2,2;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(2,2;c=1)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(3,1;c=0)  -- v_p=2 need 2
+  [OK  ] L2.7(B) p=7 t=2 cell(3,1;c=1)  -- v_p=2 need 2
+  (section_G: 0.1s)
+
+=== H. Lemma 3.2: carry composition identity (brute force) ===
+  [OK  ] carry composition p=5 t=2 (all q,q'<2p^t, delta)
+  [OK  ] carry composition p=5 t=3 (all q,q'<2p^t, delta)
+  [OK  ] carry composition p=7 t=2 (all q,q'<2p^t, delta)
+  [OK  ] carry composition p=7 t=3 (all q,q'<2p^t, delta)
+  (section_H: 0.2s)
+
+=== I. Lemma 3.3: exact factorizations ===
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=5 m=1 r=1
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=5 m=1 r=1
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=5 m=1 r=1
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=5 m=1 r=2
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=5 m=1 r=2
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=5 m=1 r=2
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=5 m=2 r=1
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=5 m=2 r=1
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=5 m=2 r=1
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=5 m=2 r=2
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=5 m=2 r=2
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=5 m=2 r=2
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=7 m=1 r=1
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=7 m=1 r=1
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=7 m=1 r=1
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=7 m=1 r=2
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=7 m=1 r=2
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=7 m=1 r=2
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=7 m=2 r=1
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=7 m=2 r=1
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=7 m=2 r=1
+  [OK  ] L3.3 S~(N;k,j) = N/(N+k) Psi_r(k,j), p=7 m=2 r=2
+  [OK  ] L3.3 Psi_u(n,j) = (L/j) Xihat_u(n,j) (all j>=1), p=7 m=2 r=2
+  [OK  ] Section 6 exact decomposition of S~ for p∤k,p∤j, p=7 m=2 r=2
+  (section_I: 0.2s)
+
+=== J. Lemma 3.4 (a),(b),(c),(d) for p in {5,7}, m in {1,2}, u in {1,2} ===
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=5 m=1 u=1  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=5 m=1 u=1  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=5 m=1 u=2  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=5 m=1 u=2  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=5 m=2 u=1  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=5 m=2 u=1  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=5 m=2 u=2  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=5 m=2 u=2  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=7 m=1 u=1  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=7 m=1 u=1  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=7 m=1 u=2  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=7 m=1 u=2  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=7 m=2 u=1  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=7 m=2 u=1  -- min slack 4
+  [OK  ] L3.4(a) unscaled Psi_u(q,j)==0 mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(a) scaled Psi_u(q,pj1)==Psi_(u-1)([q/p],j1) mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(a) tower K_u(q)==K_(u-1)([q/p]) mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xi^(delta) tower mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(b) Xihat_u(n,j)==Xi^(delta)_(u-1) (p∤j) mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[1]_u(q)==0 mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[2]_u(q)==0 mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(c) moment kernel K^[3]_u(q)==0 mod p^u, p=7 m=2 u=2  -- min slack 0
+  [OK  ] L3.4(d) harmonic kernel K~^(1)_u(q)==K~^(2)_(u-1)([q/p]) mod p^u, p=7 m=2 u=2  -- min slack 2
+  [OK  ] L3.4(d) harmonic kernel K~^(2)_u(q)==K~^(3)_(u-1)([q/p]) mod p^u, p=7 m=2 u=2  -- min slack 4
+  (section_J: 0.4s)
+
+=== K. Lemma 3.5: exact factorization Psi_(u+1)(n,p j1) = Psi_u([n/p],j1) P_n^2 Pbar_n P_{n+pj1}^2 Pbar_{pj1}, and the mod p^{2u+2} model ===
+  [OK  ] L3.5 exact factorization p=5 m=1 u=0 (L=5, 5 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=5 m=1 u=0  -- min slack 0
+  [OK  ] L3.5 exact factorization p=5 m=1 u=1 (L=25, 75 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=5 m=1 u=1  -- min slack 0
+  [OK  ] L3.5 exact factorization p=5 m=1 u=2 (L=125, 1625 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=5 m=1 u=2  -- min slack 0
+  [OK  ] L3.5 exact factorization p=5 m=2 u=0 (L=10, 15 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=5 m=2 u=0  -- min slack 0
+  [OK  ] L3.5 exact factorization p=5 m=2 u=1 (L=50, 275 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=5 m=2 u=1  -- min slack 0
+  [OK  ] L3.5 exact factorization p=5 m=2 u=2 (L=250, 6375 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=5 m=2 u=2  -- min slack 0
+  [OK  ] L3.5 exact factorization p=7 m=1 u=0 (L=7, 7 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=7 m=1 u=0  -- min slack 0
+  [OK  ] L3.5 exact factorization p=7 m=1 u=1 (L=49, 196 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=7 m=1 u=1  -- min slack 0
+  [OK  ] L3.5 exact factorization p=7 m=1 u=2 (L=343, 8575 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=7 m=1 u=2  -- min slack 0
+  [OK  ] L3.5 exact factorization p=7 m=2 u=0 (L=14, 21 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=7 m=2 u=0  -- min slack 0
+  [OK  ] L3.5 exact factorization p=7 m=2 u=1 (L=98, 735 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=7 m=2 u=1  -- min slack 0
+  [OK  ] L3.5 exact factorization p=7 m=2 u=2 (L=686, 33957 nonzero pairs)
+  [OK  ] L3.5 congruence mod p^(2u+2) with rho = H'_n - H'_(pj1) + 2H'_(n+pj1), p=7 m=2 u=2  -- min slack 0
+  (section_K: 5.2s)
+
+=== SUMMARY ===
+All recorded checks passed.
+total time 7.4s

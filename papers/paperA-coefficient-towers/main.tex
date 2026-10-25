@@ -1,0 +1,383 @@
+\documentclass[11pt]{amsart}
+\input{../common/macros}
+\usepackage[margin=1.15in]{geometry}
+
+\title[{A cubic tower for $[x^{cN}]((1+x)^a(1-x)^b)^N$ and further conjectures of Bala}]{A cubic supercongruence tower for $[x^{cN}]\bigl((1+x)^a(1-x)^b\bigr)^N$, the prime $3$, and two further conjectures of Bala}
+
+\author{Mohamed Vadel Hadweni}
+\email{mvadel136@gmail.com}
+\urladdr{ORCID 0009-0000-0713-339X}
+
+\author{Ahmedou Yahye Gleiguem Kheyri}
+\email{ahmedouyahya2011@gmail.com}
+\urladdr{ORCID 0009-0006-6390-4420}
+
+\subjclass[2020]{Primary 11A07, 11B65; Secondary 05A15, 11B50, 11B73}
+\keywords{supercongruences, coefficient extraction, Cartier operator, Wolstenholme's theorem, Kazandzidis congruence, periodicity modulo $k$, Mahler coefficients}
+
+\begin{document}
+\begin{abstract}
+For integers $a,b$ and $c\ge1$ let $A(N)=[x^{cN}]\bigl((1+x)^a(1-x)^b\bigr)^N$. We give a complete proof that $A(np^r)\equiv A(np^{r-1})\pmod{p^{3r}}$ for every prime $p\ge5$; this was claimed earlier in unreviewed drafts. Our main new result concerns $p=3$: the tower holds modulo $3^{3r-1}$ for all $(a,b,c)$, and modulo $3^{3r}$ whenever $3\mid c$, or $a+b\equiv c\pmod3$, or $a\equiv b\equiv0\pmod3$; in every other class we give the leading $3$-adic digit of the difference explicitly. We also show, by an involution argument, that the residue classes do not tell the whole story: for even $c$ with $c=a+2b$ and $3\mid a$ (or $c=2a+b$ and $3\mid b$) the tower holds modulo $3^{3r}$, although most of these triples lie outside the classes above. As corollaries we prove Bala's conjectures for OEIS A333561, A333562 and A352373, his two general conjectures on A352373 and A333715 for $p\ge5$, and his conjecture for A333565 at every prime $p\ge3$. We also prove two further conjectures of Bala: $a(n)=[x^n]\bigl(\frac{1-x}{1-x+x^2}\bigr)^n$ (A386548) satisfies $a(np^k)\equiv a(np^{k-1})\pmod{p^{2k}}$ for $p\ge5$, with optimal exponent; and the sequence with e.g.f.\ $\frac{2e^x}{1+e^x+e^{2x}-e^{3x}}$ (A370092) is integral and, for every $k>2$, eventually periodic modulo $k$ with period dividing $\varphi(k)$, which is the minimal period for $k=2^\alpha$. Theorem~1.1, the corollaries for $p\ge5$, the case $p=3$ of A333565, and the theorems on A386548 and A370092 (except the minimality of the period) are formalised in Lean~4 with Mathlib.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+Fix $a,b\in\Z$ and $c\ge1$, put $\Phi(x)=(1+x)^a(1-x)^b\in\Z[[x]]$ and
+\[ A(N)=A_{(a,b,c)}(N):=[x^{cN}]\Phi(x)^N. \]
+For $b=0$ this is $\binom{aN}{cN}$, and the cubic tower is the Jacobsthal--Kazandzidis theorem \cite{jacobsthal1952,kazandzidis1968,robertzuber1995}; Straub \cite[Thm.~3.2]{straub2014} covers $c\in\{a,b\}$, and Me\v{s}trovi\'c's survey records the tower for $b=0$ \cite[eq.~(39)]{mestrovic2011}. For coefficients of powers of general Laurent polynomials, the theory of Dwork crystals gives congruences with smaller exponents \cite{mellitvlasenko2013,bv3}; the cubic exponent is not covered there. For $M\ge1$ we write $r:=1+\vp(M)$.
+
+\begin{theorem}\label{thm:F}
+Let $p\ge5$. For all $M\ge1$, $A(pM)\equiv A(M)\pmod{p^{3r}}$; equivalently $A(np^r)\equiv A(np^{r-1})\pmod{p^{3r}}$ for all $n,r\ge1$.
+\end{theorem}
+
+\begin{theorem}\label{thm:F3}
+Let $p=3$ and $N=3M$.
+\begin{enumerate}
+\item For all $(a,b,c)$: $A(3M)\equiv A(M)\pmod{3^{3r-1}}$.
+\item If $3\mid c$, or $a+b\equiv c\pmod3$, or $a\equiv b\equiv0\pmod3$, then $A(3M)\equiv A(M)\pmod{3^{3r}}$.
+\item In every other residue class modulo $3$, the leading digit of $(A(3M)-A(M))/3^{3r-1}$ is $-m^3\lambda_M(\bar L-(\bar\psi-\bar c)\bar g)\bmod3$ (notation of \Cref{sec:p3}, $M=3^{r-1}m$), and $\bar L-(\bar\psi-\bar c)\bar g$ is not a constant multiple of $\bar\psi-\bar c$.
+\item If $c$ is even and either $c=a+2b$ with $3\mid a$, or $c=2a+b$ with $3\mid b$, then $A(3M)\equiv A(M)\pmod{3^{3r}}$.
+\end{enumerate}
+\end{theorem}
+Part (4) shows that the residue classes of (2) do not describe all triples with the tower modulo $3^{3r}$: for instance $(a,b,c)=(-6,4,2)$ and $(12,-5,2)$ lie in the classes of (3), and in general the triples of (4) do so whenever $3\nmid b$ (resp.\ $3\nmid a$). Its proof (\Cref{sec:exceptional}) uses an involution of $\F_3[[y]]$ that preserves the functional $\lambda_M$. Besides the triples of (4) and the degenerate triples with $a,b\ge0$ and $a+b<c$ (for which $A(N)=0$ when $N\ge1$), we found in the classes of (3) only six triples for which the leading digit vanishes for every $M$ tested, namely $(-5,15,5)$, $(-8,18,8)$, $(-2,18,8)$ and their mirror images $(b,a,c)$; for every other triple tested the exponent $3r-1$ is attained (\Cref{sec:verifA}). A complete description of the triples with the tower modulo $3^{3r}$ remains open. In the class $a\equiv b\equiv0$ one more power of $3$ is observed.
+
+\begin{corollary}\label{cor:oeis}
+\emph{(i)} The sequences
+\begin{gather*} \text{A333561}(n)=\sum_{j=0}^{2n}\binom{n+j-1}{j}2^j=A_{(3,-1,2)}(n),\\ \text{A333562}(n)=\sum_{j=0}^{3n}\binom{n+j-1}j2^j=A_{(4,-1,3)}(n) \end{gather*}
+and $\text{A119259}=A_{(2,-1,1)}$ satisfy the cubic tower at every prime $p\ge3$.
+\emph{(ii)} $\text{A352373}(n)=[x^n]\bigl((1-x)^{-2}(1-x^2)^{-1}\bigr)^n=A_{(-1,-3,1)}(n)$ satisfies it for $p\ge5$; at $p=3$ only $3^{3r-1}$ holds in general.
+\emph{(iii)} The sequence A333565 with o.g.f.\ $\frac{1+4x}{(1+x)\sqrt{1-8x}}$ equals $2A_{(2,-1,1)}(n)-(-1)^n$, so it satisfies $a(np^r)\equiv a(np^{r-1})\pmod{p^{3r}}$ for all primes $p\ge3$, as conjectured by Bala.
+\emph{(iv)} For $p\ge5$ the cubic tower holds for $a(r,s;n)=[x^n]\bigl((1+x)^r(1-x)^s\bigr)^n$ for all $r,s\in\Z$, and for $a(r,s,n)=[x^{rn}]\bigl(\frac{1+x}{1-x}\bigr)^{sn}$ for all $r\ge1$, $s\in\Z$; these are the general conjectures stated by Bala on A352373 and A333715 \cite{bala}.
+\end{corollary}
+
+\subsection*{Two further conjectures of Bala}
+We also settle two further conjectures of Bala on sequences given by generating functions: a quadratic supercongruence, proved by comparing terms through the Kazandzidis congruence (\Cref{sec:386548}), and a periodicity theorem, proved through a Stirling expansion (\Cref{sec:370092}).
+
+\begin{theorem}\label{thm:386548}
+Let $a(n)=[x^n]\bigl(\frac{1-x}{1-x+x^2}\bigr)^n$ \emph{(A386548)}. For every prime $p\ge5$ and all $n,k\ge1$: $a(np^k)\equiv a(np^{k-1})\pmod{p^{2k}}$.
+\end{theorem}
+The Gauss congruences modulo $p^k$ hold for every prime. The exponent $2k$ is attained in every computed case ($p\le13$, $n\le6$, $k\le3$), and for $p=3$ the congruence fails: $v_3(a(3)-a(1))=1$.
+
+\begin{theorem}\label{thm:370092}
+Let $a(0)=1$ and $a(n)=(-1)^n+\frac12\sum_{j=1}^n\bigl(1-(-1)^j-(-2)^j\bigr)\binom nja(n-j)$ \emph{(A370092)}, with e.g.f.\ $2e^x/(1+e^x+e^{2x}-e^{3x})$. Then $a(n)\in\Z$ for all $n$, and for every $k\ge3$, $a(n+\varphi(k))\equiv a(n)\pmod k$ for all $n\ge\max_{q^\alpha\parallel k}(\alpha+1)$.
+\end{theorem}
+For $k=2^\alpha$ ($\alpha\ge3$) the minimal period is exactly $2^{\alpha-1}=\varphi(k)$ (Proposition~\ref{prop:minimal}), while $\lambda(k)=2^{\alpha-2}$. So $\varphi(k)$ cannot be replaced by $\lambda(k)$, in contrast to Kallat's theorem for exponential generating functions $G(e^x-1)$ with $G\in\Z[[u]]$ \cite{kallat2026}.
+
+\subsection*{Earlier claims and credit}
+Theorem~\ref{thm:F}, with the uniform weaker modulus $3^{3r-1}$ at $p=3$, together with the corollaries for $p\ge5$, was claimed in unreviewed drafts by rbajaj5 \cite{rbajaj5} (July--August 2026). Our proof of Theorem~\ref{thm:F} was written after reading those drafts and follows the same strategy (a reduced logarithm and a quadratic estimate), which is also the strategy of an accepted machine proof for A333096 in Epoch AI's OEIS Open evaluation \cite{adamczewski2026}. The classification at $p=3$ (Theorem~\ref{thm:F3}(2),(3)) and Bala's case $p=3$ of A333565 are new.
+
+The synchronisation argument of \Cref{sec:386548} is adapted, with signs, from an unreviewed draft of rbajaj5 on A246437 \cite{rbajaj5}, which does not cover A386548. The odd part of Theorem~\ref{thm:370092} extends Kallat's argument \cite{kallat2026}. Both theorems are formalised in Lean~4 \cite{lean4} with Mathlib \cite{mathlib2020}; the formal proof of Theorem~\ref{thm:370092} avoids Amice's theorem \cite{repo}.
+
+\subsection*{Notation} A prime on a sum restricts to indices prime to $p$; for $T\ge1$ put $H_T=\sumu_{0<i<T}\frac1i$ and $H_T^\pm=\sumu_{0<i<T}\frac{(-1)^{i+1}}i$; $R_e=\{0<u<p^e,\ p\nmid u\}$, $S_j=\sum_{u\in R_e}u^{-j}$.
+In Theorem~\ref{thm:370092} and \Cref{sec:370092}, $\varphi$ denotes Euler's function; the notation of Sections~\ref{sec:386548} and~\ref{sec:370092} is local to them.
+
+\section{The reduced logarithm}
+
+Let $U=\sumu_{j\ge1}x^j/j$ and $V=\sumu_{j\ge1}(-1)^{j+1}x^j/j$. Both lie in $\Z_{(p)}[[x]]$ and have no monomial $x^T$ with $p\mid T$.
+\begin{lemma}\label{lem:redlog}
+For odd $p$: $\Phi(x)^p=\Phi(x^p)\exp\bigl(pL(x)\bigr)$ with $L:=aV-bU$.
+\end{lemma}
+\begin{proof}
+In $p\log(1+x)-\log(1+x^p)$ the terms with $p\mid j$ of the first series cancel the second, since $(-1)^{pi+1}=(-1)^{i+1}$; what remains is $pV$. Likewise $p\log(1-x)-\log(1-x^p)=-pU$.
+\end{proof}
+Hence, for $N=pM$, writing $\Phi(y)^M=\sum_s\gamma_sy^s$ and $\exp(NL)-1=\sum_{T\ge1}\varepsilon_Tx^T$,
+\begin{equation}\label{eq:master}
+A(N)-A(M)=[x^0]\Bigl(\frac{\Phi(x^p)}{x^{pc}}\Bigr)^M\bigl(\exp(NL)-1\bigr)=\sum_{s=0}^{cM-1}\gamma_s\,\varepsilon_{p(cM-s)}.
+\end{equation}
+
+\begin{lemma}\label{lem:L2}
+For $p\mid T$: $[x^T]U^2=\frac{2H_T}T$, $[x^T]V^2=(-1)^T\frac{2H_T}T$ and $[x^T]UV=(1+(-1)^T)\frac{H_T^\pm}T$.
+\end{lemma}
+\begin{proof}
+$\sum_{i+j=T}\frac1{ij}=\frac1T\sum(\frac1i+\frac1j)$, and $p\nmid i\iff p\nmid T-i$; the signed versions are the same computation.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:F}}
+
+Let $p\ge5$.
+\begin{lemma}\label{lem:harm5}
+If $\vp(T)=e\ge1$ then $H_T\equiv0\pmod{p^{2e}}$, and if moreover $T$ is even then $H_T^\pm\equiv0\pmod{p^{2e}}$. Hence $\vp([x^T]L^2)\ge\vp(T)$.
+\end{lemma}
+\begin{proof}
+Recall $S_2\equiv0\pmod{p^e}$ (inversion permutes $R_e$, and $\sum_{u\in R_e}u^2\equiv0$ as $6$ is a unit) and $S_1\equiv0\pmod{p^{2e}}$ (pair $u$ with $p^e-u$). Write $T=\ell p^e$ and $i=\beta p^e+u$. Since $(\beta p^e+u)^{-1}\equiv u^{-1}-\beta p^eu^{-2}\pmod{p^{2e}}$, we get $H_T\equiv\sum_\beta(S_1-\beta p^eS_2)\equiv0$. For $H_T^\pm$ the block $\beta$ carries the sign $(-1)^\beta$. As $T$ is even, $\ell$ is even, so $\sum_{\beta<\ell}(-1)^\beta=0$ and $\sum_{\beta<\ell}(-1)^\beta\beta=-\ell/2$. What remains is $\frac\ell2p^eS_2^\pm$, and $S_2^\pm\equiv0$ because the even units are $2v$ with $v<p^e/2$. The last claim follows from Lemma~\ref{lem:L2}.
+\end{proof}
+
+\begin{lemma}\label{lem:frob}
+\emph{(i)} For $f\in\Z[[y]]$ and $k\ge t\ge0$: $f(y)^{p^k}\equiv f(y^{p^t})^{p^{k-t}}\pmod{p^{k-t+1}}$. \emph{(ii)} If $M=p^{r-1}m$ with $p\nmid m$, $s\ge1$ and $\sigma=\vp(s)\le r-2$, then $\vp(\gamma_s)\ge r-1-\sigma$.
+\end{lemma}
+\begin{proof}
+(i) $f(y)^p\equiv f(y^p)\pmod p$, and $X\equiv Y\pmod p$ implies $X^{p^u}\equiv Y^{p^u}\pmod{p^{u+1}}$. (ii) By (i), $\Phi^{p^{r-1}}\equiv\Psi(y^{p^{\sigma+1}})\pmod{p^{r-1-\sigma}}$, and $\Psi(y^{p^{\sigma+1}})^m$ has no monomial $y^s$ with $p^{\sigma+1}\nmid s$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:F}]
+For $T=pT'$ we have $\varepsilon_T=\sum_{j\ge1}\frac{N^j}{j!}[x^T]L^j$ with $\vp(N)=r$. The term $j=1$ vanishes because $[x^T]L=0$. The term $j=2$ has valuation $\ge2r+\vp(T)$ by Lemma~\ref{lem:harm5}. For $j\ge3$, $\vp(N^j/j!)=jr-\vp(j!)\ge3r$, using $p\nmid6$ and $\vp(j!)\le(j-1)/(p-1)$. Hence $\vp(\varepsilon_T)\ge\min(2r+\vp(T),3r)$. In \eqref{eq:master} put $\tau=\vp(cM-s)$. If $\tau\ge r-1$, the term has valuation $\ge3r$. If $\tau\le r-2$, then $\vp(s)=\tau$ since $\vp(cM)\ge r-1$, and Lemma~\ref{lem:frob}(ii) together with the bound on $\varepsilon$ gives $(r-1-\tau)+(2r+1+\tau)=3r$.
+\end{proof}
+
+\section{The prime \texorpdfstring{$3$}{3}}\label{sec:p3}
+
+From now on $p=3$, $N=3M$ and $r=1+v_3(M)$. Lemma~\ref{lem:redlog} holds for $p=3$, so
+\begin{equation}\label{eq:phi3}
+\Phi(x)^N=\Phi(x^3)^M\exp\bigl(NL(x)\bigr),\qquad L=aV-bU=\sumu_{i\ge1}\ell_i\frac{x^i}i,\quad \ell_i:=a(-1)^{i+1}-b.
+\end{equation}
+Put $\psi:=x\Phi'(x)/\Phi(x)=\frac{ax}{1+x}-\frac{bx}{1-x}=\sum_{i\ge1}\ell_ix^i\in\Z[[x]]$ (with the same $\ell_i$), and let $D=y\frac d{dy}$ act on $\Q[[y]]$ and on Laurent series.
+
+\emph{The Cartier operator.} For $f=\sum f_ix^i$ put $\mathcal C(f):=\sum_tf_{3t}y^t$. It is $\Q$-linear, and
+\begin{equation}\label{eq:cartier}
+\mathcal C\bigl(h(x^3)f(x)\bigr)=h(y)\,\mathcal C(f),\qquad f\in\Z_{(3)}[[x]]\implies\mathcal C(f^3)\equiv f(y)\pmod{3\Z_{(3)}[[y]]};
+\end{equation}
+the second statement holds because $f(x)^3\equiv f(x^3)\pmod 3$ by the multinomial theorem.
+
+\emph{The functional.} For $f\in\Q[[y]]$ put $\lambda_M(f):=[y^{cM}]\Phi(y)^Mf(y)$. It is $\Q$-linear, $\lambda_M(1)=A(M)$, it maps $\Z_{(3)}[[y]]$ to $\Z_{(3)}$, and for $f\in\Z_{(3)}[[y]]$ the residue $\lambda_M(f)\bmod 3$ depends only on $f\bmod3$.
+
+\begin{lemma}[exact forms]\label{lem:exact}
+For every $g\in\Q[[y]]$ and $M\ge1$, $\lambda_M(Dg)=-M\lambda_M\bigl((\psi-c)g\bigr)$. In particular $\lambda_M(\psi-c)=0$.
+\end{lemma}
+\begin{proof}
+Since $D(\Phi^M)=M\Phi^M\psi$ and $D(y^{-cM})=-cMy^{-cM}$,
+\[ D\bigl(\Phi^My^{-cM}g\bigr)=\Phi^My^{-cM}\bigl(M\psi g-cMg+Dg\bigr). \]
+The constant term of $D(\cdot)$ vanishes, and $[y^0]\Phi^My^{-cM}h=\lambda_M(h)$. For the last claim take $g=1$.
+\end{proof}
+
+\begin{lemma}[expansion and sizes]\label{lem:sizes}
+\emph{(i)} As an identity in $\Q$, $A(N)-A(M)=\sum_{j\ge2}\frac{N^j}{j!}\lambda_M\bigl(\mathcal C(L^j)\bigr)$, a finite sum with every $\lambda_M(\mathcal C(L^j))\in\Z_{(3)}$.
+\emph{(ii)} $v_3(N^2/2)=2r$, $v_3(N^3/6)=3r-1$, and $v_3(N^j/j!)\ge3r$ for $j\ge4$.
+\emph{(iii)} $\frac{N^3}6\lambda_M(\mathcal C(L^3))\equiv\frac{9M^3}2\lambda_M(L)\pmod{3^{3r}}$.
+\end{lemma}
+\begin{proof}
+(i) By \eqref{eq:phi3} and \eqref{eq:cartier}, $A(N)=[x^{3cM}]\Phi(x^3)^M\exp(NL)=[y^{cM}]\Phi(y)^M\mathcal C(\exp(NL))=\sum_{j\ge0}\frac{N^j}{j!}\lambda_M(\mathcal C(L^j))$. The term $j=0$ is $A(M)$, and the term $j=1$ vanishes because $L$ has no monomial $x^{3t}$. Only $j\le3cM$ contribute, and $L\in\Z_{(3)}[[x]]$.
+(ii) $v_3(N)=r$ and $v_3(j!)=(j-s_3(j))/2\le(j-1)/2$. For $j\ge5$, $jr-\frac{j-1}2-3r\ge(j-3)-\frac{j-1}2=\frac{j-5}2\ge0$; for $j=4$, $4r-v_3(24)=4r-1\ge3r$.
+(iii) $\frac{N^3}6=\frac{9M^3}2$, and by \eqref{eq:cartier} $\mathcal C(L^3)=L(y)+3R$ with $R\in\Z_{(3)}[[y]]$. The difference is $\frac{27M^3}2\lambda_M(R)$, of valuation $\ge3+3(r-1)=3r$.
+\end{proof}
+
+\begin{lemma}[harmonic sums at $p=3$]\label{lem:defect}
+Let $e\ge1$, $R_e=\{0<u<3^e,\ 3\nmid u\}$, $S_j=\sum_{u\in R_e}u^{-j}$ and $S_2^\pm=\sum_{u\in R_e}(-1)^{u+1}u^{-2}$.
+\begin{enumerate}
+\item $S_2\equiv-3^{e-1}\pmod{3^e}$, $2S_1\equiv3^{2e-1}\pmod{3^{2e}}$ and $S_2^\pm\equiv0\pmod{3^e}$.
+\item Let $T=\ell3^e$ with $3\nmid\ell$. Then $H_T\equiv-3^{2e-1}\pmod{3^{2e}}$; in particular $v_3(H_T)=2e-1$. If $T$ is even, then $H_T^\pm\equiv0\pmod{3^{2e}}$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) Inversion permutes $R_e$ modulo $3^e$, so with $X=3^e$,
+\begin{align*} S_2\equiv\sum_{u\in R_e}u^2&=\frac{X(X-1)(2X-1)}6-\frac{X(X-3)(2X-3)}{18}=\frac{X(2X^2-3)}9\\ &=2\cdot3^{3e-2}-3^{e-1}\equiv-3^{e-1}\pmod{3^e}. \end{align*}
+The map $u\mapsto3^e-u$ pairs off $R_e$ without fixed points, and $\frac1u+\frac1{3^e-u}\equiv-3^eu^{-2}\pmod{3^{2e}}$; summing over $R_e$ gives $2S_1\equiv-3^eS_2\equiv3^{2e-1}$. The even elements of $R_e$ are $2v$ with $v\in R_e$, $v<3^e/2$, and $v\mapsto3^e-v$ exchanges the two halves of $R_e$ while preserving $v^{-2}$ modulo $3^e$; so the even part of $S_2$ is $\equiv\frac14\cdot\frac12S_2$, the odd part is $\equiv\frac78S_2$, and $S_2^\pm\equiv\frac34S_2\equiv0\pmod{3^e}$ by the first congruence.
+(2) Write $i=\beta3^e+u$ with $0\le\beta<\ell$ and $u\in R_e$; then $(\beta3^e+u)^{-1}\equiv u^{-1}-\beta3^eu^{-2}\pmod{3^{2e}}$, and
+\[ H_T\equiv\ell S_1-3^eS_2\frac{\ell(\ell-1)}2\equiv3^{2e-1}\Bigl(\frac\ell2+\frac{\ell(\ell-1)}2\Bigr)=3^{2e-1}\frac{\ell^2}2\equiv-3^{2e-1}\pmod{3^{2e}}, \]
+using (1), $\ell^2\equiv1$ and $\frac12\equiv-1\pmod3$. For $H_T^\pm$, the block $\beta$ carries the sign $(-1)^\beta$ because $3^e$ is odd, so $H_T^\pm\equiv\sum_{\beta<\ell}(-1)^\beta(S_1^\pm-\beta3^eS_2^\pm)$ with $S_1^\pm=\sum_{u\in R_e}(-1)^{u+1}u^{-1}$. If $T$ is even, $\ell$ is even, $\sum_{\beta<\ell}(-1)^\beta=0$ and $\sum_{\beta<\ell}(-1)^\beta\beta=-\ell/2$, so $H_T^\pm\equiv\frac\ell2\,3^eS_2^\pm\equiv0\pmod{3^{2e}}$ by (1).
+\end{proof}
+
+\begin{lemma}[the series $g$]\label{lem:g}
+Put $g_t:=[x^{3t}]L^2/t$ for $t\ge1$ and $g:=\sum_{t\ge1}g_ty^t$. Then $g\in\Z_{(3)}[[y]]$, $Dg=\mathcal C(L^2)$, and $g_t\equiv a^2(-1)^t+b^2\pmod3$. Thus, in $\F_3[[y]]$,
+\[ \bar g=-\frac{a^2y}{1+y}+\frac{b^2y}{1-y}=\frac{y\bigl[(b^2-a^2)+(a^2+b^2)y\bigr]}{1-y^2}. \]
+\end{lemma}
+\begin{proof}
+$Dg=\sum_tt\,g_ty^t=\sum_t[x^{3t}]L^2\,y^t=\mathcal C(L^2)$, since $[x^0]L^2=0$. Let $T=3t=\ell3^e$ with $3\nmid\ell$, so $t=\ell3^{e-1}$. Since $L^2=a^2V^2-2abUV+b^2U^2$, Lemma~\ref{lem:L2} (whose proof uses only $3\mid T$) gives
+\[ g_t=\frac1{Tt}\Bigl[2H_T\bigl(a^2(-1)^T+b^2\bigr)-2ab\bigl(1+(-1)^T\bigr)H_T^\pm\Bigr],\qquad Tt=\ell^23^{2e-1}. \]
+By Lemma~\ref{lem:defect}(2), $H_T=-3^{2e-1}+3^{2e}\kappa$ with $\kappa\in\Z_{(3)}$, so $\frac{2H_T}{Tt}=\frac2{\ell^2}(-1+3\kappa)\equiv-2\equiv1\pmod 3$. The term with $H_T^\pm$ is present only for even $T$, where $H_T^\pm\in3^{2e}\Z_{(3)}$, so it is $\equiv0\pmod3$. Hence $g_t\in\Z_{(3)}$ and $g_t\equiv a^2(-1)^T+b^2=a^2(-1)^t+b^2\pmod3$. The closed form follows from $\sum_{t\ge1}(-1)^ty^t=-\frac y{1+y}$ and $\sum_{t\ge1}y^t=\frac y{1-y}$.
+\end{proof}
+
+\begin{proposition}[reduction]\label{prop:red}
+For all $(a,b,c)$,
+\[ A(3M)-A(M)\equiv\frac{9M^3}2\,\lambda_M\bigl(L-(\psi-c)g\bigr)\pmod{3^{3r}}, \]
+and $\lambda_M(L-(\psi-c)g)\in\Z_{(3)}$. In particular Theorem~\ref{thm:F3}(1) holds.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:sizes}(i),(ii), $A(N)-A(M)\equiv\frac{N^2}2\lambda_M(\mathcal C(L^2))+\frac{N^3}6\lambda_M(\mathcal C(L^3))\pmod{3^{3r}}$. By Lemmas~\ref{lem:g} and~\ref{lem:exact}, $\lambda_M(\mathcal C(L^2))=\lambda_M(Dg)=-M\lambda_M((\psi-c)g)$, and $\frac{N^2}2=\frac{9M^2}2$. By Lemma~\ref{lem:sizes}(iii) the cubic term is $\equiv\frac{9M^3}2\lambda_M(L)$. Finally $v_3(9M^3/2)=3r-1$, and $L$, $g$, $\psi$ have $3$-integral coefficients.
+\end{proof}
+
+Bars denote reduction modulo $3$. Put $\alpha:=a-b$ and $\beta:=-(a+b)$, so that $\ell_i\equiv\alpha$ for odd $i$ and $\ell_i\equiv\beta$ for even $i$. Then
+\[ \bar\psi=\frac{\alpha y+\beta y^2}{1-y^2}=\frac{y(\alpha+\beta y)}{1-y^2}. \]
+
+\begin{lemma}[an identity in $\F_3{[[y]]}$]\label{lem:F3id}
+\emph{(i)} $\bar L=D\bar\psi=\dfrac{y(\alpha+2\beta y+\alpha y^2)}{(1-y^2)^2}$.
+\emph{(ii)} If $3\nmid c$ and $a+b\equiv c\pmod3$, then $\bar L=(\bar\psi-\bar c)\bar g$.
+\emph{(iii)} If $3\mid c$, then $\bar L=\bar\psi(\bar g+K_0)$, with $K_0=1$ if $a\not\equiv b$ and $K_0=2$ if $a\equiv b\pmod 3$.
+\emph{(iv)} If $a\equiv b\equiv0\pmod3$, then $\bar L=\bar\psi=\bar g=0$.
+\end{lemma}
+\begin{proof}
+(i) For $3\nmid i$ we have $1/i\equiv i\pmod3$, so $\bar L=\sum_{3\nmid i}i\ell_iy^i=\sum_{i\ge1}i\ell_iy^i=D\bar\psi$ (the added terms have $i\ell_i\equiv0$), and
+\[ \frac d{dy}\frac{y(\alpha+\beta y)}{1-y^2}=\frac{(\alpha+2\beta y)(1-y^2)+2y^2(\alpha+\beta y)}{(1-y^2)^2}=\frac{\alpha+2\beta y+\alpha y^2}{(1-y^2)^2}. \]
+(ii) Here $\beta\equiv-c$, so $\bar\psi-\bar c=\frac{\alpha y-c}{1-y^2}$, and by (i) and Lemma~\ref{lem:g} we must show
+\[ (\alpha y-c)\bigl[(b^2-a^2)+(a^2+b^2)y\bigr]=\alpha+cy+\alpha y^2\quad\text{in }\F_3[y] \]
+(note $2\beta\equiv c$). The constant term is $-c(b^2-a^2)=c\alpha(a+b)\equiv c^2\alpha=\alpha$. The coefficient of $y^2$ is $\alpha(a^2+b^2)$, and the coefficient of $y$ is $\alpha(b^2-a^2)-c(a^2+b^2)\equiv-c(\alpha^2+a^2+b^2)$. Since $a+b\equiv c\not\equiv0$, either $\{a,b\}\equiv\{0,c\}$, where $\alpha^2\equiv a^2+b^2\equiv1$, or $a\equiv b\equiv2c$, where $\alpha=0$ and $a^2+b^2\equiv2$. In both cases the coefficient of $y^2$ is $\alpha$ and that of $y$ is $-2c\equiv c$.
+(iii) Now $\bar\psi(\bar g+K_0)=\frac{y(\alpha+\beta y)[K_0+(b^2-a^2)y+(a^2+b^2-K_0)y^2]}{(1-y^2)^2}$, so we must show
+\[ (\alpha+\beta y)\bigl[K_0+\alpha\beta y+(a^2+b^2-K_0)y^2\bigr]=\alpha+2\beta y+\alpha y^2, \]
+using $b^2-a^2=\alpha\beta$. If $a\not\equiv b$, then $\alpha^2=1$ and $K_0=1$: the constant term is $\alpha$; the coefficient of $y$ is $\alpha^2\beta+\beta=2\beta$; the coefficient of $y^2$ is $\alpha(a^2+b^2+\beta^2-1)$, and $a^2+b^2+(a+b)^2=2\bigl((a-b)^2+3ab\bigr)\equiv2\alpha^2=2$, so it equals $\alpha$; the coefficient of $y^3$ is $\beta(a^2+b^2-1)$, which vanishes since $a^2+b^2\equiv1$ when one of $a,b$ is $\equiv0$, and $\beta\equiv0$ when $\{a,b\}\equiv\{1,2\}$. If $a\equiv b\not\equiv0$, then $\alpha=0$, $a^2+b^2\equiv2=K_0$, and both sides equal $2\beta y$. (iv) Every $\ell_i\equiv0$, and $\bar g=0$ by Lemma~\ref{lem:g}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:F3}]
+Part (1) is Proposition~\ref{prop:red}. For (2) it suffices, by Proposition~\ref{prop:red}, to show $\lambda_M(L-(\psi-c)g)\equiv0\pmod3$, and this residue depends only on $\bar f$, $f:=L-(\psi-c)g$. By Lemma~\ref{lem:F3id}, $\bar f=K_0(\bar\psi-\bar c)$ in each case of (2), with $K_0=0$ in cases (ii) and (iv) (in case (iii), $\bar c=0$). Hence $\lambda_M(f)\equiv K_0\lambda_M(\psi-c)=0$ by Lemma~\ref{lem:exact}. For (3), Proposition~\ref{prop:red} gives, with $M=3^{r-1}m$ and $\frac{9M^3}2=3^{3r-1}\frac{m^3}2$,
+\[ \frac{A(3M)-A(M)}{3^{3r-1}}\equiv\frac{m^3}2\lambda_M(\bar f)\equiv-m^3\lambda_M(\bar f)\pmod3, \]
+and $\bar f$ depends only on $(a,b,c)\bmod3$. Table~\ref{tab:F3} lists, for each of the $27$ classes, the constants $K\in\F_3$ with $\bar f=K(\bar\psi-\bar c)$; there is none exactly in the classes not covered by (2).
+\end{proof}
+
+\begin{table}[ht]
+\centering
+\caption{The constants $K\in\F_3$ with $\bar L-(\bar\psi-\bar c)\bar g=K(\bar\psi-\bar c)$, for $(a,b,c)$ modulo $3$; ``--'' means that there is none. Computed by clearing the denominator $(1-y^2)^2$ and comparing polynomials over $\F_3$ (\texttt{numerics/scripts/theoremF3\_residue\_table.py} in \cite{repo}).}\label{tab:F3}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$(a,b)\bmod3$ & $c\equiv0$ & $c\equiv1$ & $c\equiv2$\\
+\midrule
+$(0,0)$ & $0,1,2$ & $0$ & $0$\\
+$(0,1)$ & $1$ & $0$ & --\\
+$(0,2)$ & $1$ & -- & $0$\\
+$(1,0)$ & $1$ & $0$ & --\\
+$(1,1)$ & $2$ & -- & $0$\\
+$(1,2)$ & $1$ & -- & --\\
+$(2,0)$ & $1$ & -- & $0$\\
+$(2,1)$ & $1$ & -- & --\\
+$(2,2)$ & $2$ & $0$ & --\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Exceptional triples}\label{sec:exceptional}
+We prove Theorem~\ref{thm:F3}(4). Write $\omega:=y^c/\bar\Phi(y)\in y^c\F_3[[y]]^\times$, so that $\lambda_M(f)\bmod3=[y^0]\,\omega^{-M}\bar f=\operatorname{res}\bigl(\omega^{-M}\bar f\,y^{-1}\bigr)$ for $f\in\Z_{(3)}[[y]]$.
+
+\begin{lemma}[change of variable]\label{lem:res}
+Let $R$ be a commutative ring and $\sigma\in zR[[z]]$ with $\sigma'(0)\in R^\times$. For every Laurent series $h\in R((y))$, $\operatorname{res}_z\bigl(h(\sigma(z))\sigma'(z)\bigr)=\operatorname{res}_y\bigl(h(y)\bigr)$.
+\end{lemma}
+\begin{proof}
+By linearity and continuity it suffices to take $h=y^n$, $n\in\Z$. The coefficient of $z^{-1}$ in $\sigma^n\sigma'$ is a polynomial with integer coefficients in $\sigma'(0)^{-1}$ and the coefficients of $\sigma$, so it suffices to prove $[z^{-1}]\sigma^n\sigma'=\delta_{n,-1}$ over $\Q$. For $n\ne-1$, $\sigma^n\sigma'=(\sigma^{n+1})'/(n+1)$ is a derivative and has no term $z^{-1}$; for $n=-1$, $\sigma'/\sigma=z^{-1}+(\text{power series})$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:F3}(4)]
+The substitution $x\mapsto-x$ gives $A_{(a,b,c)}(N)=(-1)^{cN}A_{(b,a,c)}(N)=A_{(b,a,c)}(N)$ for even $c$, so it suffices to treat $c=a+2b$ with $3\mid a$. If $3\mid b$, then $a\equiv b\equiv0$ and Theorem~\ref{thm:F3}(2) applies; so let $3\nmid b$. Then $c\equiv2b\equiv-b\pmod3$ and $b^2\equiv1$.
+
+Let $\sigma(y):=-y/(1-y)\in\F_3[[y]]$. Then $1-\sigma=(1-y)^{-1}$ and $1+\sigma=(1-2y)/(1-y)=(1+y)/(1-y)$ in $\F_3[[y]]$, so
+\[ \bar\Phi(\sigma(y))=(1+y)^a(1-y)^{-a-b},\qquad \omega(\sigma(y))=\frac{y^c(1-y)^{-c}}{(1+y)^a(1-y)^{-a-b}}=\omega(y)\,(1-y)^{a+2b-c}=\omega(y), \]
+where we used that $c$ is even. Since $y\sigma'(y)/\sigma(y)=1+\frac y{1-y}=\frac1{1-y}$, Lemma~\ref{lem:res} applied to $h=\omega^{-M}\bar f/y$ gives
+\[ \lambda_M(\bar f)=\operatorname{res}\Bigl(\omega^{-M}(\bar f\circ\sigma)\,\frac{1}{1-y}\,y^{-1}\Bigr)=\lambda_M\Bigl(\frac{\bar f\circ\sigma}{1-y}\Bigr)\qquad(M\ge1), \]
+with $f=L-(\psi-c)g$ as in Proposition~\ref{prop:red}. Now $\alpha=\beta=-b$, so $\bar\psi=-\frac{by}{1-y}$, $\bar L=-\frac{by}{(1-y)^2}$, $\bar g=\frac y{1-y}$ (Lemma~\ref{lem:g}) and $\bar\psi-\bar c=b\frac{1-2y}{1-y}$. Hence
+\[ \bar f=-\frac{by}{(1-y)^2}-\frac{b(1-2y)y}{(1-y)^2}=-\frac{2by(1-y)}{(1-y)^2}=\frac{by}{1-y}. \]
+Since $\sigma/(1-\sigma)=-y$, we get $(\bar f\circ\sigma)/(1-y)=-\frac{by}{1-y}=-\bar f$. Therefore $\lambda_M(\bar f)=-\lambda_M(\bar f)$, so $\lambda_M(\bar f)\equiv0\pmod3$, and Proposition~\ref{prop:red} gives $A(3M)\equiv A(M)\pmod{3^{3r}}$.
+\end{proof}
+
+The same computation in the other residue classes outside (2) does not give zero, which is consistent with the data: for $(a,b)\equiv(1,2)$ or $(2,1)$ with $c=a+2b$ even, $\omega$ is still preserved by $\sigma$, but $\bar f+(\bar f\circ\sigma)/(1-y)$ is not a constant multiple of $\bar\psi-\bar c$.
+
+\begin{remark}\label{rem:p3}
+At $p\ge5$ the quadratic and cubic terms of Lemma~\ref{lem:sizes}(i) are each $\equiv0\pmod{p^{3r}}$ (proof of Theorem~\ref{thm:F}). At $p=3$ both are one power of $3$ short, and Proposition~\ref{prop:red} shows that they combine: the exact-form identity of Lemma~\ref{lem:exact} turns the quadratic term into a term of the same shape as the cubic one, after which the obstruction is a statement modulo $3$. Exact-form arguments for coefficient functionals are classical in the theory of Dwork crystals \cite{bv3}.
+\end{remark}
+
+\section{The OEIS instances}\label{sec:instances}
+
+\begin{proof}[Proof of Corollary~\ref{cor:oeis}]
+(i) $S_c(n):=\sum_{j\le cn}\binom{n+j-1}j2^j=[x^{cn}](1-x)^{-1}(1-2x)^{-n}$. The substitution $x=z/(1+z)$ and the rule $[x^K]f(x)=[z^K]f(\frac z{1+z})(1+z)^{K-1}$ give $S_c(n)=[z^{cn}](1+z)^{(c+1)n}(1-z)^{-n}=A_{(c+1,-1,c)}(n)$; then apply Theorems~\ref{thm:F} and~\ref{thm:F3}, since $a+b=c$ for $(3,-1,2)$ and $(2,-1,1)$, and $3\mid c$ for $(4,-1,3)$. (ii) $1-x^2=(1-x)(1+x)$. (iii) Let $B=A_{(2,-1,1)}$ and $x(t)$ the solution of $x=t(1+x)^2/(1-x)$. Lagrange inversion gives $\sum_NB(N)t^N=\frac{\Phi}{\Phi-x\Phi'}\big|_{x=x(t)}=\frac{1-x^2}{1-3x}$, and a direct simplification shows $\frac{2(1-x^2)}{1-3x}-\frac1{1+t}=\frac{1+4t}{(1+t)\sqrt{1-8t}}$. Since $(-1)^{np^r}=(-1)^{np^{r-1}}$ for odd $p$ and $2$ is a unit, the tower transfers from $B$ to A333565. (iv) $a(r,s;n)=A_{(r,s,1)}(n)$ and $a(r,s,n)=A_{(s,-s,r)}(n)$; apply Theorem~\ref{thm:F}.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:386548}}\label{sec:386548}
+
+Since $(1+x)(1-x+x^2)=1+x^3$, we have $\frac{1-x}{1-x+x^2}=\frac{1-x^2}{1+x^3}$, and expanding both factors gives
+\begin{equation}\label{eq:386}
+a(N)=\sum_{2j+3k=N}(-1)^{j+k}\binom Nj\binom{N+k-1}k.
+\end{equation}
+Fix $p\ge5$ and $N=np^r$, and put $M=N/p$; replacing $r$ by $\vp(N)$ we may assume $\vp(N)=r$ and $\vp(M)=r-1$.
+
+\emph{Synchronisation.} As $p\nmid6$ and $p\mid N$, the relation $2j+3k=N$ gives $p\mid j\iff p\mid k$. The pairs with $j=pj'$, $k=pk'$ are in bijection with the pairs of level $M$.
+
+\emph{Unscaled pairs.} If $p\nmid j$ and $p\nmid k$, then $\binom Nj=\frac Nj\binom{N-1}{j-1}$ and $\binom{N+k-1}k=\frac Nk\binom{N+k-1}{k-1}$ give $\vp\ge2r$.
+
+\emph{Scaled pairs.} Put $D=M+k'$. Using $\binom{X-1}Y=\frac{X-Y}X\binom XY$ at both levels, the ratio of the level-$N$ term to the level-$M$ term is $Q_1Q_2$ with
+\[ Q_1=\binom{pM}{pj'}\Big/\binom M{j'},\qquad Q_2=\binom{pD}{pk'}\Big/\binom D{k'}, \]
+and the signs agree. Let $s=\min(\vp(j'),\vp(k'))$. If $s\ge r-1$, then $p^{r-1}$ divides $j'$, $k'$, $M$, $M-j'$, $D$ and $D-k'=M$, and the Kazandzidis congruence \cite{kazandzidis1968,robertzuber1995}, $\binom{pA}{pB}/\binom AB\in1+p^3AB(A-B)\Zp$, gives $Q_1,Q_2\equiv1\pmod{p^{3r}}$. If $s<r-1$, then $2j'+3k'=M$ with $\vp(M)>s$ forces $\vp(j')=\vp(k')=s$; Kazandzidis gives $Q_1Q_2\equiv1\pmod{p^{r+2+2s}}$, while the level-$M$ term has valuation $\ge2(r-1-s)$ by the same free-valuation identities. In both cases the scaled terms match modulo $p^{3r}$, and $a(N)-a(M)\equiv0\pmod{p^{2r}}$. \qed
+
+\begin{remark}
+The scaled part even matches modulo $p^{3r}$, so the exponent $2r$ comes only from the unscaled terms, each of which has valuation exactly $2r$ in the data. The same argument applies to $[x^{cN}]\bigl((1+\varepsilon x^u)/(1-\delta x^v)\bigr)^N$ for odd primes $p\nmid uv$.
+\end{remark}
+
+\section{Proof of Theorem~\ref{thm:370092}}\label{sec:370092}
+
+\subsection{Stirling expansion and integrality}
+With $u=e^x-1$ we have $1+e^x+e^{2x}-e^{3x}=2-2u^2-u^3$, so the e.g.f.\ is $G(e^x-1)$ with
+\[ G(u)=\frac{1+u}{1-u^2-u^3/2}=\sum_{k\ge0}g_ku^k,\qquad g_0=g_1=g_2=1,\quad g_k=g_{k-2}+\tfrac12g_{k-3}. \]
+Since $(e^x-1)^k=\sum_nk!\,S(n,k)\,x^n/n!$,
+\begin{equation}\label{eq:stir}
+a(n)=\sum_{k}c_kS(n,k),\qquad c_k:=k!\,g_k.
+\end{equation}
+Expanding $G=(1+u)\sum_m(u^2+u^3/2)^m$ shows $g_k\in\Z[\tfrac12]$ and $v_2(g_k)\ge-\fl{k/3}$. Since $v_2(k!)=k-s_2(k)\ge\fl{k/3}$ (for $k\ge16$ from $s_2(k)\le\log_2k+1$, directly for $k\le15$), each $c_k$ is an integer, and so is $a(n)$. For $P\ge1$,
+\begin{equation}\label{eq:diff}
+a(n+P)-a(n)=\sum_kg_kb_k(n,P),\qquad b_k(n,P)=\sum_{j=0}^{k}(-1)^{k-j}\binom kj\,j^n(j^P-1).
+\end{equation}
+
+\subsection{Odd prime powers}
+\begin{proposition}\label{prop:odd}
+For an odd prime $q$, $\alpha\ge1$ and $n\ge\alpha$: $a(n+\varphi(q^\alpha))\equiv a(n)\pmod{q^\alpha}$.
+\end{proposition}
+\begin{proof}
+With $P=\varphi(q^\alpha)$, every term of $b_k(n,P)$ is $\equiv0\pmod{q^\alpha}$: if $q\mid j$ then $j^n\equiv0$, and otherwise $j^P\equiv1$ by Euler's theorem. As $g_k\in\Z_{(q)}$, \eqref{eq:diff} gives the claim.
+\end{proof}
+
+\subsection{Powers of two}
+\begin{lemma}\label{lem:B}
+Let $m\ge2$, $P=2^m$ and $n\ge m+2$. Then $v_2\bigl(b_k(n,2^m)\bigr)\ge m+1+\fl{k/3}$ for all $k\ge0$.
+\end{lemma}
+\begin{proof}
+$b_k$ is the $k$-th Mahler coefficient $\Delta^kF(0)$ of $F(x)=x^n(x^{2^m}-1)$. On the even class, $F(2t)=2^nt^n((2t)^{2^m}-1)\in2^n\Z_2[t]$. On the odd class, $(1+2t)^{2^m}-1=\sum_{i\ge1}\binom{2^m}i2^it^i$ with $v_2\bigl(\binom{2^m}i2^i\bigr)=m-v_2(i)+i\ge m+1$, so $F(1+2t)\in2^{m+1}\Z_2[t]$. Thus $2^{-(m+1)}F$ is locally analytic on the classes modulo $2$, with integral coefficients in the variable $t=(x-a)/2$; that is, it lies in the unit ball of $\mathrm{LA}_1(\Z_2,\Q_2)$. By Amice's theorem \cite{amice1964}, \cite[Th.~I.4.7]{colmez2010}, the functions $\fl{k/2}!\binom xk$ form an orthonormal basis of this space, hence
+\begin{equation}\label{eq:amice}
+v_2(b_k)\ge m+1+v_2\bigl(\fl{k/2}!\bigr).
+\end{equation}
+Now $v_2(\fl{k/2}!)\ge\fl{k/3}$ for all $k\notin\{3,6,7,15\}$ (directly for $k\le400$, and for $k>400$ from $v_2(\fl{k/2}!)\ge\fl{k/2}-\log_2k-1$). For the four remaining $k$ we refine the odd class: $(1+2t)^{2^m}-1=2^{m+1}[t+(2^m-1)t^2]+2^{m+2}R_m(t)$ with $R_m\in\Z_2[t]$. Accordingly $b_k=E_k+2^{m+1}S_1+2^{m+2}S_2$, where $E_k$ (the even class) and $S_2$ are Mahler coefficients of locally analytic functions with integral coefficients, so $v_2(E_k)\ge m+2+v_2(\fl{k/2}!)$ and $v_2(S_2)\ge v_2(\fl{k/2}!)$. Since $v_2(\fl{k/2}!)+1=\fl{k/3}$ for these $k$, it remains to show $v_2(S_1)\ge d:=\fl{k/3}$ for the explicit finite sum
+\[ S_1=\sum_{t}(-1)^{k-1-2t}\binom k{2t+1}(1+2t)^n\,t\bigl(1+(2^m-1)t\bigr). \]
+Modulo $2^d$, $S_1$ depends on $n$ only through $(1+2t)^n\bmod 2^d$ (period dividing $\lambda(2^d)$) and on $m$ only through $2^m-1\bmod2^d$, so finitely many cases remain. For $k=3$, $S_1=2^m3^n$. For $k=6$, $S_1=-20\cdot3^n2^m-12\cdot5^n(2^{m+1}-1)\equiv0\pmod4$. For $k=7$, $S_1\equiv-2(21\cdot5^n+3\cdot7^n)\equiv0\pmod4$. For $k=15$ ($d=5$), the remaining cases ($m=2,\dots,5$ and one $m\ge5$, each for a full period of $n$) were checked by computer.
+\end{proof}
+
+\begin{proposition}\label{prop:two}
+For $\alpha\ge3$ and $n\ge\alpha+1$: $a(n+2^{\alpha-1})\equiv a(n)\pmod{2^\alpha}$. Moreover $a(n+2)\equiv a(n)$ modulo $4$ for $n\ge3$ and modulo $2$ for $n\ge2$.
+\end{proposition}
+\begin{proof}
+For $\alpha\ge3$ take $m=\alpha-1$ in \eqref{eq:diff} and use $v_2(g_k)\ge-\fl{k/3}$ with Lemma~\ref{lem:B}. For $\alpha\le2$: $v_2(c_k)\ge2$ for $k\ge4$ ($c_4=36$, $c_5=240$, and $v_2(k!)-\fl{k/3}\ge2$ for $k\ge6$). So modulo $4$, $a(n)\equiv1+2(2^{n-1}-1)+\frac92(3^{n-1}-2^n+1)$, which is $\equiv0$ for odd $n\ge3$ and $\equiv1$ for even $n\ge4$.
+\end{proof}
+
+\begin{proposition}[minimality modulo $2^\alpha$]\label{prop:minimal}
+Let $m\ge1$. For every odd $n\ge m+7$, $v_2\bigl(a(n+2^m)-a(n)\bigr)=m+1$. Consequently, for every $\alpha\ge3$ the minimal period of $a(n)\bmod2^\alpha$ (for large $n$) is $2^{\alpha-1}=\varphi(2^\alpha)$.
+\end{proposition}
+\begin{proof}
+Put $P=2^m$ and $b_k=b_k(n,P)$, so that $a(n+P)-a(n)=\sum_kg_kb_k$ by \eqref{eq:diff}. The proof of Lemma~\ref{lem:B} up to \eqref{eq:amice} uses only $m\ge1$ and $n\ge m+2$ (on the odd class, $v_2\bigl(\binom{2^m}i2^i\bigr)\ge m+1$ for all $i\ge1$ and $m\ge1$), so \eqref{eq:amice} holds here. We also use $v_2(j^{2^m}-1)\ge m+2$ for odd $j$, with equality for $j=3$: indeed $v_2(j^2-1)\ge3$, $v_2(3^2-1)=3$, and $x^2-1=(x-1)(x+1)$ with $v_2(x+1)=1$ for $x\equiv1\pmod4$. Let $E:=\{4,6,7,9,10,12,13,14,15\}$.
+
+\emph{The terms $k\le3$.} $b_0=b_1=0$ and $b_2=2^n(2^P-1)$, of valuation $n\ge m+2$. Next, $g_3=\frac32$ and $b_3=3^n(3^P-1)-3\cdot2^n(2^P-1)$, where the first term has valuation exactly $m+2$ and the second has valuation $n>m+2$. So $v_2(g_3b_3)=m+1$.
+
+\emph{The terms $k\ge4$, $k\notin E$.} Here $v_2(g_k)+v_2(\fl{k/2}!)\ge1$: for $k\le400$ by direct computation of the $g_k$, and for $k>400$ from $v_2(g_k)\ge-\fl{k/3}$ and $v_2(\fl{k/2}!)\ge\fl{k/2}-\log_2k-1\ge\fl{k/3}+1$. With \eqref{eq:amice}, $v_2(g_kb_k)\ge m+2$.
+
+\emph{The terms $k\in E$.} For $k\le15$ we have $v_2(g_k)\ge-5$ ($g_{15}=\frac{355}{32}$). In
+\[ b_k=\sum_{j\le k}(-1)^{k-j}\binom kj\,j^n(j^P-1) \]
+the terms with even $j$ have valuation $\ge n\ge m+7$, so they contribute $\equiv0\pmod{2^{m+2}}$ after multiplication by $g_k$. For odd $j$ write $j^P-1=2^{m+2}w_m(j)$ with $w_m(j)\in\Z_2$. Then
+\[ \sum_{k\in E}g_kb_k\equiv2^{m+2}\,W(n,m)\pmod{2^{m+2}}, \]
+where
+\[ W(n,m):=\sum_{k\in E}g_k\sum_{\substack{j\le k\\ j\text{ odd}}}(-1)^{k-j}\binom kj\,j^nw_m(j). \]
+We claim that $W(n,m)\in\Z_2$ for odd $n$. Since $2^5g_k\in\Z_2$ for $k\in E$, the class of $W(n,m)$ modulo $\Z_2$ depends only on $j^n$ and $w_m(j)$ modulo $32$, for odd $j\le15$. The first depends only on $n\bmod8$, because $(\Z/32)^\times$ has exponent $8$. For the second, $j^{2^{m+1}}-1=(j^{2^m}-1)(j^{2^m}+1)$ gives
+\[ w_{m+1}(j)=w_m(j)\bigl(1+2^{m+1}w_m(j)\bigr)\equiv w_m(j)\pmod{2^{m+1}}, \]
+so $w_m(j)\bmod32$ is the same for all $m\ge4$. It therefore suffices to check the claim for $n\equiv1,3,5,7\pmod8$ and $m\in\{1,2,3,4\}$; these $16$ cases were verified in exact arithmetic (\texttt{numerics/scripts/a370092\_minimal\_period\_check.py} in \cite{repo}).
+
+Adding up, $a(n+P)-a(n)\equiv g_3b_3\pmod{2^{m+2}}$, which has valuation $m+1$. For the consequence, let $\alpha\ge3$. By Proposition~\ref{prop:two}, $2^{\alpha-1}$ is a period of $a(n)\bmod2^\alpha$ for $n\ge\alpha+1$, so the minimal period divides $2^{\alpha-1}$. If it were smaller, $2^{\alpha-2}$ would be a period for large $n$; but with $m=\alpha-2$ we have $a(n+2^{\alpha-2})\not\equiv a(n)\pmod{2^\alpha}$ for every odd $n\ge\alpha+5$.
+\end{proof}
+
+\begin{remark}
+For even $n$ the sum $W(n,m)$ has valuation $-1$ in all computed cases, which cancels the term $k=3$; accordingly $2^{m+2}\mid a(n+2^m)-a(n)$ for even $n$ in the data. The data also show that the bound $n\ge m+7$ is not sharp: for $m\le7$, every odd $n\ge7$ works.
+\end{remark}
+
+\begin{proof}[Proof of Theorem~\ref{thm:370092}]
+Write $k=2^\alpha\prod q_i^{\alpha_i}$. By Propositions~\ref{prop:odd} and~\ref{prop:two}, $a(n)\bmod k$ has the period $\operatorname{lcm}\bigl(2^{\max(\alpha-1,1)}\ (\text{if }\alpha\ge1),\ \varphi(q_i^{\alpha_i})\bigr)$ from $n\ge\max(\alpha_i+1,\alpha+1)$. This divides $\varphi(k)$: if $\alpha=1$, then $k>2$ forces an odd prime factor and hence an even $\varphi(k)$.
+\end{proof}
+
+\section{Verification}\label{sec:verifA}
+\emph{Numerics.} Theorem~\ref{thm:F} was tested for $a,b\in[-4,6]$, $c\le3$ at $p=5$ ($r\le4$), $p=7,11$ ($r\le3$) and $p=13$ ($r\le2$); Theorem~\ref{thm:F3} for $a,b\in[-5,7]$, $c\le4$, $r\le5$. The minimal slack is $0$ in the classes of Theorem~\ref{thm:F3}(2) other than $a\equiv b\equiv0$ (where it is at least $1$), so the exponents are optimal. For the triples outside these classes we computed the leading digit $-m^3\lambda_M(\bar f)\bmod 3$ of Theorem~\ref{thm:F3}(3) directly in $\F_3[[y]]$, for all $5660$ non-degenerate triples with $|a|,|b|\le20$ and $c\le8$ and all $M\le40$ (\texttt{numerics/scripts/theoremF3\_exceptions\_search.py} in \cite{repo}). The digit is nonzero for some $M\le40$ except for the triples of Theorem~\ref{thm:F3}(4) and nineteen others. Thirteen of these have a nonzero digit for some $M\le103$, and the remaining six, listed after Theorem~\ref{thm:F3}, have none for $M\le900$ (\texttt{numerics/scripts/theoremF3\_late\_witnesses.py}; a triple and its mirror image $(b,a,c)$ have the same valuations, since $A_{(a,b,c)}(N)=(-1)^{cN}A_{(b,a,c)}(N)$). For $(-6,4,2)$, $(12,-5,2)$, $(-5,15,5)$, $(-8,18,8)$ and $(-2,18,8)$ the tower modulo $3^{3r}$ was also confirmed in exact integer arithmetic for small $M$.
+
+\emph{Lean.} The Formal Conjectures statements for A333561, A333562, A352373 and A333565 (at $p\ge3$), and Bala's two general conjectures of Corollary~\ref{cor:oeis}(iv), are proved in Lean~4 \cite{lean4} with Mathlib \cite{mathlib2020} \cite{repo}, using only the standard axioms. The formalisation reuses general power-series lemmas from an accepted proof of the OEIS Open evaluation of Epoch AI \cite{adamczewski2026,epoch}, included with attribution. Theorem~\ref{thm:F} itself is formalised for all integers $a,b$ and $c\ge0$. Theorem~\ref{thm:F3} is formalised only for $(a,b,c)=(2,-1,1)$, the instance needed for A333565; its other cases, including A333561 and A333562 at $p=3$, are written proofs only.
+
+Theorem~\ref{thm:386548} was checked for $p\le13$, $n\le6$, $k\le3$, and Theorem~\ref{thm:370092} for every $3\le k\le400$ (with $1500$ terms) and modulo $2^\alpha$ for $\alpha\le12$, in exact arithmetic. Both are formalised in Lean~4 with Mathlib exactly as stated in the Formal Conjectures benchmark, using only the standard axioms \cite{repo}. The A386548 formalisation uses a Kazandzidis lemma from an accepted proof of Epoch AI's OEIS Open evaluation \cite{adamczewski2026,epoch}, included with attribution; the A370092 formalisation is self-contained. Proposition~\ref{prop:minimal} is not formalised; besides its finite check, its statement was tested directly for $m\le7$ and $n\le410$ (\texttt{numerics/scripts/a370092\_minimal\_period\_check.py} in \cite{repo}).
+
+\section*{Acknowledgements}
+We thank Peter Bala for the conjectures.
+
+\section*{Declarations}
+\emph{Use of AI tools.} We used a large language model to help draft the text and proofs. The authors checked all of the work and are responsible for it.
+
+\emph{Funding.} The authors received no funding for this work.
+
+\emph{Competing interests.} The authors have no competing interests to declare.
+
+\emph{Data availability.} Scripts, outputs and Lean files are available at \cite{repo}.
+
+\bibliographystyle{amsplain}
+\bibliography{../common/refs}
+\end{document}

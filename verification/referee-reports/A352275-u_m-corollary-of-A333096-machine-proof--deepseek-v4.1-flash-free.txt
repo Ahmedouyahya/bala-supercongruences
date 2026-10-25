@@ -1,0 +1,135 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/deepseek-v4.1-flash-free via OpenCode CLI, read-only 'plan' agent, run locally (third attempt; two Nemotron attempts died with 'database is locked' / a sandbox permission rejection).
+Input: notes/A352275-u_m-corollary-of-A333096-machine-proof.md only. Prompt: notes/referee-reports/PROMPT.txt. AI output kept as evidence, not authority; disposition in DISPOSITIONS.md.
+===========================================================================
+I've read `PROOF.md` in full and checked it computationally. Note: the directory contains only `PROOF.md` (no second background file, contrary to the prompt). Below is my referee report.
+
+```
+REFEREE REPORT on PROOF.md (A352275 / u_m supercongruence)
+
+Preliminary: I re-derived every displayed identity by hand and re-computed the
+claims with exact integer arithmetic (generalized binomials
+C(n,k)=(-1)^k*binom(k-n-1,k) for n<0). I checked the sequence identifications
+against OEIS. Details are folded into the sections below.
+
+====================================================================
+SECTION 1 (Statement)
+====================================================================
+- Line 9 coefficient formula [x^k]c(x)^r = C(r+2k-1,k)-C(r+2k-1,k-1):
+  CORRECT. Verified as a rational identity (C(n,k)-C(n,k-1) =
+  (r/k)C(n,k-1) with n=r+2k-1), and each term is an integer for every
+  integer r. Matches OEIS values (A352275: 1,4,64,1429,35072;
+  A333093: 2,8,41,232,1377; A333096: 5,53,647).
+- Line 11 identification u_m(n)=T(n,mn), A352275=u_2, A333093=u_1,
+  A352276=u_3, A333093-A333097=a_m(n)=T(mn,n): CORRECT against OEIS
+  (A352275 sums k=0..2n of n/(n+2k)C(n+2k,k); A333096 = T(4n,n)).
+- Lines 13-15 Theorem: numerically confirmed broadly (p in {5,7},
+  v<=1, N<=40, all r in [-N,40]; spot checks v=2, p=5, N=25 and
+  r=+/-25; p=11,13). No counterexample found. My independent sweep found
+  0 failures.
+- Line 17 corollary: verified for p in {5,7,11}, m in {1,2,3}, n in
+  {1,2,3}, k in {1,2}. Matches Bala's conjecture verbatim.
+- Line 19 quantifier slip (GAP/UNCLEAR, cosmetic): the text says
+  "the n = 0 branch ... is never used since the theorem quantifies
+  n, r > 0." But the Theorem (line 13) quantifies N >= 1, r >= -N, i.e.
+  r can be 0 or negative; the Corollary only quantifies n >= 1. The
+  parenthetical is a statement about the corollary, not the theorem, and
+  its wording is inconsistent with line 13. Not mathematically harmful.
+
+====================================================================
+SECTION 2 (The verified lemma / reduction)
+====================================================================
+- Lines 27-35: the algebraic reduction is CORRECT, and the quoted lemma
+  (line 28) is applied WITHIN its hypotheses. I checked the mapping in
+  both directions: with B=N, Y=r+N one has A=B+Y=r+2N, so
+  FNat(pA,pB)=T(pA-2pB,pB)=T(pr,pN) and FNat(A,B)=T(r,N); the hypotheses
+  p^v|B=N and p^v|Y=r+N are exactly equivalent to p^v|N and p^v|r; the
+  side condition Y>=0 is exactly r>=-N. No hypothesis is violated. Note
+  the boundary case r=-N gives Y=0 (B,Y:NN includes 0), which is used and
+  numerically verified (e.g. p=5, N=25, r=-25 mod 5^9).
+- MAIN ISSUE (GAP, the central one): the entire result rests on
+  `FNat_scale_supercongruence` (line 28), which is NOT proved in this
+  document. Section 5(a) concedes "a human-readable proof of the lemma"
+  is not done. So PROOF.md does not prove the Theorem; it reduces it to
+  an external artifact (an unlicensed Lean file that the reader/referee
+  cannot inspect, whose exact statement must be taken on faith). Every
+  claim of "proved" in the header/status therefore holds only
+  conditionally. This is true-but-unproved here (GAP), not false.
+
+====================================================================
+SECTION 3 (Independent derivation that FNat is the truncated Catalan power)
+====================================================================
+- Line 39 change-of-variable formula: CORRECT. I re-derived it from
+  Lagrange-Buermann for w=x*psi(w) (here x=X/psi(X), psi=(1+X)^2) and
+  confirmed [t^k]F(t)psi(t)^k(1-t*psi'/psi) = (1/k)[t^{k-1}]F'(t)psi(t)^k.
+- Lines 41-46 algebra: CORRECT. (1-X)(1+X)^{r+2k-1} =
+  C(r+2k-1,k)-C(r+2k-1,k-1); the k->N-k shift and the replacement of the
+  partial geometric sum by 1/(1-U) are valid because U=X/(1+X)^2 has
+  order 1, so terms t>N cannot hit [X^N]. The final form
+  [X^N](1-X^2)/(1+X+X^2)(1+X)^{r+2N} = FNat(r+2N,N) matches the
+  definition of FNat (Qseries=(1-X^2)/(1+X+X^2)).
+- I verified T(r,N)=FNat(r+2N,N) numerically for r in [-8,12], N in [0,12]
+  (including negative r, which is needed by the Theorem): 0 failures.
+- Line 48 beta form and the identity T(r,N)=beta(r+N,N): CORRECT
+  (re-verified for r=1..8, N=0..8).
+- No issue found in this section.
+
+====================================================================
+SECTION 4 (Numerical confirmation)
+====================================================================
+- Line 52 (UNCLEAR / insufficiently justified): "v_p(beta(pS,pN) -
+  beta(S,N)) - 3(v+1) >= 0 always ..." never defines v. The claim is only
+  true under the reading v = v_p(gcd(N,S-N)) (i.e. the largest v with
+  p^v|N and p^v|(S-N), exactly the Theorem's hypothesis). Under the false
+  reading v = v_p(N) it fails: e.g. p=5, S=11, N=10 gives
+  v_5(beta(55,50)-beta(11,10)) = 4 < 6 = 3(v_5(N)+1). Since beta is only a
+  supporting check this is not fatal, but v must be defined.
+- Lines 53-54: verified; no issue.
+
+====================================================================
+SECTION 5 (What is and is not established)
+====================================================================
+- Line 58: the "Established" statement is honest but conditional; see the
+  Section 2 GAP. The header's unqualified "proved" (line 3) overstates it.
+- Line 59(a),(b): correct admissions; (b) in particular means the bridge
+  from the benchmark's floor/toNat definition of u to T is not formalized.
+  The informal argument in line 19 (floor of an integer is that integer)
+  is fine.
+- Line 60 sharpness: CORRECT. T(7,7)-T(1,1)=52136=2^3*7^3*19, exactly
+  v_7=3=3k (m=1,p=7,n=1,k=1); OEIS examples a(15)-a(3) (v_5=4) and
+  a(17)-a(1) (v_17=3) also reproduce.
+
+====================================================================
+SECTION 6 (Suggested OEIS comment)
+====================================================================
+- No issue found (cosmetic only).
+
+====================================================================
+SUMMARY OF FINDINGS
+====================================================================
+ERROR: none. I could not falsify any displayed formula, the reduction, or
+the theorem; all numerical searches (thousands of (p,v,N,r)) passed.
+GAP: (1) the key lemma FNat_scale_supercongruence is invoked but never
+proved here (Section 2 / Section 5a) — the document is a conditional
+reduction, not a self-contained proof; (2) Section 4 line 52 uses an
+undefined v.
+UNCLEAR: (3) the line 19 remark "the theorem quantifies n, r > 0"
+contradicts the actual quantifiers of line 13; (4) the benchmark-to-T
+identification is asserted, not verifiable from the text.
+
+VERDICT: CORRECT WITH FIXES
+
+Three steps I am least sure about, and why:
+1. The exact content and hypotheses of `FNat_scale_supercongruence`
+   (line 28). Everything downstream is correct IF the quoted statement is
+   the real one, but the Lean source is unavailable/unlicensed, so I
+   cannot confirm that A=B+Y, the modulus p^{3(lev+1)}, and the
+   hypotheses p^lev|B, p^lev|Y are quoted faithfully. A single sign or
+   index change there would invalidate the whole reduction.
+2. The reduction at the boundary r<=0 (in particular r=-N, i.e. Y=0).
+   It is algebraically fine and I verified it mod 5^9 for N=25, r=-25,
+   but the Lean lemma's treatment of B,Y:NN at Y=0 (whether FNat_scale
+   is really valid with a zero parameter) cannot be inspected.
+3. Section 4 line 52: the meaning of v. If the author intended v=v_p(N)
+   rather than v=v_p(gcd(N,S-N)), the stated inequality is false (I gave
+   the concrete counterexample p=5, S=11, N=10 above).
+```

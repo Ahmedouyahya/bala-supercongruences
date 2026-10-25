@@ -1,0 +1,19 @@
+PASS modular Stirling computation of a(n) mod 2^13 agrees with exact recurrence for n<=400
+PASS Prop. 2 for alpha=1..12: period 2^(alpha-1) (2 for alpha<=2) from the claimed start, N=7000
+PASS alpha=3..12: lambda(2^alpha) = 2^(alpha-2) is not an eventual period (failures up to n close to N)
+INFO (2^alpha, P, true preperiod, claimed start, #periods of data after preperiod, lambda, lambda-is-period, last n where lambda-shift fails): 
+INFO    (2, 2, 2, 2, 3499.0, 1, False, 6998)
+INFO    (4, 2, 3, 3, 3498.5, 2, True, 2)
+INFO    (8, 4, 4, 4, 1749.0, 2, False, 6997)
+INFO    (16, 8, 5, 5, 874.4, 4, False, 6995)
+INFO    (32, 16, 6, 6, 437.1, 8, False, 6991)
+INFO    (64, 32, 7, 7, 218.5, 16, False, 6983)
+INFO    (128, 64, 7, 8, 109.3, 32, False, 6967)
+INFO    (256, 128, 9, 9, 54.6, 64, False, 6935)
+INFO    (512, 256, 10, 10, 27.3, 128, False, 6871)
+INFO    (1024, 512, 11, 11, 13.7, 256, False, 6743)
+INFO    (2048, 1024, 11, 12, 6.8, 512, False, 6487)
+INFO    (4096, 2048, 13, 13, 3.4, 1024, False, 5975)
+INFO alpha where true preperiod == claimed start alpha+1: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12]
+INFO alpha where true preperiod < claimed start: [(7, 7), (11, 11)]
+TOTAL: 3 pass, 0 fail

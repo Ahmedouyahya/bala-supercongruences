@@ -1,0 +1,8 @@
+p=5 r=1 m=1: v(a(N-1)-a(M-1))-3r=0; matched(-1 classes) diff -3 termwise -3; other classes: (False, False):-2, (False, True):-3, (True, False):-2
+p=5 r=1 m=2: v(a(N-1)-a(M-1))-3r=0; matched(-1 classes) diff -2 termwise -3; other classes: (False, False):-2, (False, True):-2, (True, False):-2
+p=5 r=2 m=1: v(a(N-1)-a(M-1))-3r=0; matched(-1 classes) diff -6 termwise -6; other classes: (False, False):-3, (False, True):-6, (True, False):-3
+p=5 r=2 m=2: v(a(N-1)-a(M-1))-3r=0; matched(-1 classes) diff -5 termwise -6; other classes: (False, False):-3, (False, True):-5, (True, False):-3
+p=7 r=1 m=1: v(a(N-1)-a(M-1))-3r=1; matched(-1 classes) diff -3 termwise -3; other classes: (False, False):-2, (False, True):-3, (True, False):-2
+p=7 r=1 m=2: v(a(N-1)-a(M-1))-3r=2; matched(-1 classes) diff -3 termwise -3; other classes: (False, False):-2, (False, True):-3, (True, False):-2
+p=7 r=2 m=1: v(a(N-1)-a(M-1))-3r=1; matched(-1 classes) diff -6 termwise -6; other classes: (False, False):-3, (False, True):-6, (True, False):-3
+p=7 r=2 m=2: v(a(N-1)-a(M-1))-3r=2; matched(-1 classes) diff -6 termwise -6; other classes: (False, False):-3, (False, True):-6, (True, False):-3

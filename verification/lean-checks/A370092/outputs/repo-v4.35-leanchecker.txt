@@ -1,0 +1,5 @@
+leanchecker BalaProofs.A370092Formula exit=0 wall=226s
+leanchecker BalaProofs.A370092Odd exit=0 wall=62s
+leanchecker BalaProofs.A370092Two exit=0 wall=17s
+leanchecker BalaProofs.A370092Main exit=0 wall=255s
+leanchecker BalaProofs.A370092 exit=0 wall=244s

@@ -1,0 +1,11 @@
+Building Challenge
+⚠ [7885/7886] Replayed Challenge
+warning: run/Challenge.lean:15:8: declaration uses 'sorry'
+warning: run/Challenge.lean:20:8: declaration uses 'sorry'
+Build completed successfully (7886 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, BalaGeneral.bala_A352373_general, BalaGeneral.bala_A333715_general, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.BalaGeneralNegWeak
+✔ [8008/8008] Built Submission.BalaGeneralNegWeak (4.5s)
+Build completed successfully (8008 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, BalaGeneral.bala_A352373_general, BalaGeneral.bala_A333715_general, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.BalaGeneralNegWeak
+uncaught exception: Challenge and solution theorem statement do not match: 'BalaGeneral.bala_A352373_general'

@@ -1,0 +1,47 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally. RE-RUN with a length limit after the first run was truncated.
+Input: notes/A363983-proof.md only. Prompt: notes/referee-reports/PROMPT.txt plus a 1500-word limit. AI output kept as evidence, not authority.
+===========================================================================
+VERDICT: CORRECT WITH FIXES
+
+## Section 0 (Statement)
+no issue found
+
+## Section 1 (Tools)
+
+**Lemma 1**: no issue found (standard Kazandzidis/Robert–Zuber/OSS)
+
+**Lemma 2**: no issue found (standard unit permutation argument; p≥5 ensures λ²≢1 exists)
+
+**Lemma 3**: no issue found (OSS Lemma 2.4, correct)
+
+**Lemma 4**: no issue found (correctly derived from Lemma 3)
+
+## Section 2 (Scaled terms)
+
+**Lemma 5** — **GAP**: The valuation calculations implicitly assume p ∤ m (e.g., "v_p(M) = r−1", "3 + min(r−1,s−1) + … = r+s+min(r,s)"). The theorem states "all integers m,r ≥ 1". If p|m, v_p(M) = v_p(m)+r−1 > r−1 and v_p(M+K') ≥ min(v_p(m)+r−1, s−1). The congruences still hold (the moduli become larger, and v_p(A(M,K')) ≥ 2(v_p(m)+r−s) gives an even stronger bound), but the proof does not mention this reduction or adjust the equalities to inequalities. A sentence "we may assume p ∤ m without loss of generality because factors of p in m can be absorbed into r" would fix this.
+
+**Equation (1)**: no issue found (correct consequence of Lemma 5)
+
+## Section 3 (The unscaled sum)
+
+**Equation (2) & reduction to S**: no issue found
+
+**Lemma 6** — **UNCLEAR**: The step "since [[k/p^s]/p] = [k/p^{s+1}] and [[2k/p^s]/p] = [2k/p^{s+1}], the result is exactly Σ_{s+1}" is correct term-by-term but the grouped-sum justification is terse. One must check that after replacing D blockwise, the double sum over n and the half-blocks re-assembles exactly to Σ_{s+1} with the same k^{-2} weights. The floor identities hold (ε/p < 1 for p≥5), so it is valid, but the exposition skips the re-grouping verification.
+
+**Final chain S ≡ −Σ_1 ≡ −Σ_r ≡ 0 (mod p^r)**: no issue found (correct induction)
+
+## Section 4 (Computer verification)
+no issue found (numerics support tightness)
+
+## Section 5 (Remarks)
+no issue found (remarks are separate from the proof)
+
+---
+
+### Three steps I am least sure about
+
+1. **Lemma 5 valuation equalities assuming p ∤ m** — The proof writes exact equalities for v_p(M) and v_p(M+K') that only hold when p ∤ m. While the final congruence is true for all m (extra p-powers only strengthen it), the proof does not state the reduction or use inequalities, leaving a gap in the written valuation bookkeeping.
+
+2. **Lemma 6 re-grouping to Σ_{s+1}** — The claim that replacing D blockwise yields "exactly Σ_{s+1}" relies on [[2k/p^s]/p] = [2k/p^{s+1}] and the half-block sums matching. This is true (ε/p < 1 for p≥5), but the proof does not show the re-grouping explicitly; a skeptical reader must verify that the sum over n of D(mp^{r-s-1}, [n/p], [2n/p])·(S_{n,0}+S_{n,1}) equals the definition of Σ_{s+1} with its own block decomposition.
+
+3. **Lemma 5, Q_2 identity C(N+K-1,K)/C(M+K'-1,K') = C(N+K,K)/C(M+K',K')** — The parenthetical justification "because C(X-1,Y)=((X-Y)/X)C(X,Y) and (N/(N+K))/(M/(M+K'))=1" is correct but compressed; one must check that N+K = p(M+K') and K = pK' to invoke Lemma 1 in the form C(pA,pB)/C(A,B). This holds, but the step is dense and easy to misread.

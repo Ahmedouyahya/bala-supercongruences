@@ -1,0 +1,35 @@
+Re-review (a): exact identities of the shifted-congruence note
+
+Lemma 1.1 (i),(ii): any integer m (negative included), s=1,2
+  6480 identities tested
+Lemma 1.3: e_1, e_2 formulas and integrality of every e_d
+  80 random products tested
+Lemma 3.3: S~(N;k,j) = (N/(N+k)) Psi_r(k,j); Psi_u(n,j) = (L_u/j) Xi^_u(n,j)
+  8008 identities tested
+Lemma 3.5 exact: Psi_{u+1}(n,p j1) = Psi_u([n/p],j1) P_n^2 Pbar_n P_{n+pj1}^2 Pbar_{pj1}
+Section 5(ii) exact: Phi_{u+1}(p k1,j) = Phi_u(k1,[j/p]) Pbar_{pk1} P_{pk1}^2 P_{pk1+j}^2 Pbar_j
+  65592 identities tested
+Lemma 3.5 / sec 5(ii): first-order coefficients rho, rho' (E - 1 + L rho) / L^2 integral
+  5416 identities tested
+Class decomposition: Sigma_S + Sigma_K + Sigma_J + Sigma_B = a(N-1)
+  done
+Lemma 2.3 proof: exact expansions with integral remainders
+  446 checks
+Lemma 2.5 proof: (alpha),(beta) exact with integral eta, theta; tau_s = 0 mod p^s
+  3440 checks
+Lemma 2.6 proof: H'_{kp^s} = H'_{ip^{t+s}} + H'_{kbar p^s} - i p^{t+s} S_2(kbar p^s) + p^{2(t+s)} (integral)
+  408 checks
+sigma additivity: sum_{n in B_u(l)} sigma_t(n) = sigma_{t+u}(l)
+  done
+Section 4 (4.1) and section 6 algebra
+  done
+Section 7: S~(N;pk',pj') = S~(M;k',j') E ; Step 2 identity ; Z integral, v(Z) >= 1+b
+  1108 checks
+X^_3 expansion: H'_{k+pj1} - H'_{pj1} = sum_t (-p)^t j1^t S_{t+1}(k); truncation error valuation
+  done
+Section 7 Step 3: C(M+k'-1,k') = (m p^{r-sigma}/kappa) (-1)^{k'-1} C(-M-1,k'-1)
+  done
+
+== rereview_shifted_exact: 96408 pass, 0 fail ==
+minimal slack per item (observed - claimed valuation):
+  sec7 Step2 v(Z) >= 1+b                           min slack    0   (v=1, claimed 1) at p=5 N=10 k'=0 j'=1

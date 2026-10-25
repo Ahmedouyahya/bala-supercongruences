@@ -1,0 +1,36 @@
+Building Challenge
+⚠ [8000/8001] Replayed Challenge
+warning: run/Challenge.lean:40:8: declaration uses 'sorry'
+warning: run/Challenge.lean:47:8: declaration uses 'sorry'
+Build completed successfully (8001 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a352373_supercongruence, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.A352373NegWeak
+⚠ [8009/8010] Replayed Submission.A352373Full
+warning: Submission/A352373Full.lean:14:15: unused variable `hp_prime`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/A352373Full.lean:14:36: unused variable `hp_ge_5`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/A352373Full.lean:15:13: unused variable `hn_pos`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/A352373Full.lean:16:13: unused variable `hk_pos`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8010/8010] Replayed Submission.A352373NegWeak
+warning: Submission/A352373NegWeak.lean:7:15: unused variable `hp_prime`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/A352373NegWeak.lean:7:36: unused variable `hp_ge_5`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/A352373NegWeak.lean:8:13: unused variable `hn_pos`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/A352373NegWeak.lean:9:13: unused variable `hk_pos`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (8010 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a352373_supercongruence, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.A352373NegWeak
+uncaught exception: Challenge and solution theorem statement do not match: 'oeis_a352373_supercongruence'

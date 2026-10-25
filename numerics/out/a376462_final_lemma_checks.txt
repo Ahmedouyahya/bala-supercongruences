@@ -1,0 +1,43 @@
+(1) p=5 t=1: sum_{n<p^t} H'_n mod p^t = 1  (p^(t-1)=1)
+(1) p=5 t=2: sum_{n<p^t} H'_n mod p^t = 5  (p^(t-1)=5)
+(2) p=5: tau_s(n)≡0 mod p^s: True; reflection identity mod p^2t: True
+(3) p=5 r=2 m=1: v(P2-2P1+2P3)-2r = +0;  v(3P1-P3)-2r = +1
+(3) p=5 r=2 m=2: v(P2-2P1+2P3)-2r = +1;  v(3P1-P3)-2r = +0
+(3) p=5 r=3 m=1: v(P2-2P1+2P3)-2r = +0;  v(3P1-P3)-2r = +1
+(4) p=5 v=1 d=1: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=5 v=1 d=2: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=5 v=1 d=3: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=5 v=1 d=4: v_p(sum u^-d) = 0 >= v-e(d) = 0: True
+(4) p=5 v=1 d=5: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=5 v=1 d=6: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=5 v=1 d=8: v_p(sum u^-d) = 0 >= v-e(d) = 0: True
+(4) p=5 v=1 d=12: v_p(sum u^-d) = 0 >= v-e(d) = 0: True
+(4) p=5 v=2 d=1: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=5 v=2 d=2: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=5 v=2 d=3: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=5 v=2 d=4: v_p(sum u^-d) = 1 >= v-e(d) = 1: True
+(4) p=5 v=2 d=5: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=5 v=2 d=6: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=5 v=2 d=8: v_p(sum u^-d) = 1 >= v-e(d) = 1: True
+(4) p=5 v=2 d=12: v_p(sum u^-d) = 1 >= v-e(d) = 1: True
+(1) p=7 t=1: sum_{n<p^t} H'_n mod p^t = 1  (p^(t-1)=1)
+(1) p=7 t=2: sum_{n<p^t} H'_n mod p^t = 7  (p^(t-1)=7)
+(2) p=7: tau_s(n)≡0 mod p^s: True; reflection identity mod p^2t: True
+(3) p=7 r=2 m=1: v(P2-2P1+2P3)-2r = +0;  v(3P1-P3)-2r = +0
+(3) p=7 r=2 m=2: v(P2-2P1+2P3)-2r = +0;  v(3P1-P3)-2r = +0
+(4) p=7 v=1 d=1: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=7 v=1 d=2: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=7 v=1 d=3: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=7 v=1 d=4: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=7 v=1 d=5: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=7 v=1 d=6: v_p(sum u^-d) = 0 >= v-e(d) = 0: True
+(4) p=7 v=1 d=8: v_p(sum u^-d) = 99 >= v-e(d) = 1: True
+(4) p=7 v=1 d=12: v_p(sum u^-d) = 0 >= v-e(d) = 0: True
+(4) p=7 v=2 d=1: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=7 v=2 d=2: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=7 v=2 d=3: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=7 v=2 d=4: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=7 v=2 d=5: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=7 v=2 d=6: v_p(sum u^-d) = 1 >= v-e(d) = 1: True
+(4) p=7 v=2 d=8: v_p(sum u^-d) = 99 >= v-e(d) = 2: True
+(4) p=7 v=2 d=12: v_p(sum u^-d) = 1 >= v-e(d) = 1: True

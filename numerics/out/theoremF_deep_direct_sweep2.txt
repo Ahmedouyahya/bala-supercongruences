@@ -1,0 +1,17 @@
+p=3 (r,m)=(5,4) N=972 done; worst slack so far {(3, 'good'): 0, (3, 'other'): 0}; 11s
+p=3 (r,m)=(6,1) N=729 done; worst slack so far {(3, 'good'): 0, (3, 'other'): 0}; 16s
+p=3 (r,m)=(6,2) N=1458 done; worst slack so far {(3, 'good'): 0, (3, 'other'): 0}; 46s
+p=3 (r,m)=(7,1) N=2187 done; worst slack so far {(3, 'good'): 0, (3, 'other'): 0}; 121s
+p=5 (r,m)=(3,2) N=250 done; worst slack so far {(5, 'all'): 0}; 122s
+p=5 (r,m)=(4,1) N=625 done; worst slack so far {(5, 'all'): 0}; 126s
+p=5 (r,m)=(4,2) N=1250 done; worst slack so far {(5, 'all'): 0}; 149s
+p=7 (r,m)=(2,2) N=98 done; worst slack so far {(7, 'all'): 0}; 149s
+p=7 (r,m)=(2,3) N=147 done; worst slack so far {(7, 'all'): 0}; 149s
+p=7 (r,m)=(3,1) N=343 done; worst slack so far {(7, 'all'): 0}; 150s
+p=7 (r,m)=(3,2) N=686 done; worst slack so far {(7, 'all'): 0}; 155s
+p=11 (r,m)=(2,1) N=121 done; worst slack so far {(11, 'all'): 0}; 156s
+p=11 (r,m)=(2,2) N=242 done; worst slack so far {(11, 'all'): 0}; 156s
+p=11 (r,m)=(3,1) N=1331 done; worst slack so far {(11, 'all'): 0}; 182s
+p=13 (r,m)=(2,1) N=169 done; worst slack so far {(13, 'all'): 0}; 183s
+p=13 (r,m)=(2,2) N=338 done; worst slack so far {(13, 'all'): 0}; 184s
+FAILURES: 0

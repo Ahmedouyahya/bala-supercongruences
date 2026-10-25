@@ -1,0 +1,142 @@
+Fact-only re-review report (verbatim final message of a fresh same-model referee agent). Date: 2026-10-15 (night).
+Protocol: no access to earlier referee reports or status lines; a mistake may be reported only after the agent reproduced it with its own exact test; every 'checked for ...' sentence audited against numerics/out/. Scripts: numerics/rereview_*.py. Disposition of every finding: DISPOSITIONS.md.
+===========================================================================
+All testing is complete (4 scripts, 373 checks). Final report follows.
+
+# Re-review of the two Theorem F notes
+
+Scripts: `<working folder>/numerics/rereview_theoremF_*.py`, outputs in `numerics/out/` (same basename, `.txt`). Everything is exact arithmetic (Fractions / sympy / integers). No note or status file was edited; `notes/referee-reports/`, STATUS.md, README.md, VERIFY.md were not read.
+
+---
+
+## Note 1: `notes/TheoremF-coefficient-framing-proof.md` (p ≥ 5)
+
+### (1) CONFIRMED ERRORS
+No error in the theorem, any lemma, or the proof. Two remark-level misstatements, both reproducible:
+
+**E1. §6, bullet 1 — wrong description of what the p = 3 note proves.** It says the p = 3 tower is proved "whenever 3 | c or a + b ≡ c (mod 3) … in all other classes the proof gives 3^{3r−1} exactly." The p = 3 note's Theorem F₃(ii) also covers the class a ≡ b ≡ 0 (mod 3), and there the valuation is ≥ 3r + 1, not 3r − 1.
+Test: `numerics/out/rereview_theoremF_p3_lemmas.txt`
+```
+[PASS] F_3 (3,0,1) [good a=b=0] min slack +1 (need >= 0) -- r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 ... r4m7:+2
+[PASS] F_3 (0,3,2) [good a=b=0] min slack +1 ...     [PASS] F_3 (9,0,1) [good a=b=0] min slack +3 ...
+```
+((3,0,1) has 3 ∤ c and a + b = 3 ≢ 1, so it is an "other class" per §6.)
+
+**E2. §0 "Sharpness": "for A352373 at p = 3 the valuation is 3r − 1".** True for n = 1, 4, 7, false for n = 2, 5, 8 (v₃ = 3r or 3r + 1). Same file:
+```
+[PASS] F_3 (-1,-3,1) [BAD] min slack -1 -- r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r1m8:+1 r2m1:-1 r2m2:+0 ... r4m7:-1
+```
+The logical point ("p ≥ 5 cannot be dropped in general") stands; the universal wording does not. (Also a citation mismatch, see (4).)
+
+### (2) SUSPECTED THEN CLEARED
+- Lemma 1 (reduced logarithm): exact to order 60 for p = 3, 5, 7, 11 and 13 sign-mixed (a,b) (`p5_identities`, 4 PASS).
+- Lemma 4 coefficient formulas: exact for all T ≡ 0 (mod p) up to 30p, p = 3, 5, 7, 11; [x^T]UV = 0 for odd T confirmed.
+- Lemma 5: exact for random integer f, p = 3, 5, 7, all t ≤ k ≤ 3; bound attained (fails mod p^{k−t+2}) whenever t ≥ 1.
+- Lemma 2: S₂ ≡ 0 mod p^e, S₁ ≡ 0 mod p^{2e} for p = 5 (e ≤ 4), 7 (e ≤ 3), 11, 13; valuations exactly e and 2e (tight). The §4 parenthetical "v₃(S₂) = e − 1, v₃(S₁) = 2e − 1" confirmed for e ≤ 6.
+- Lemma 3: H_T and H_T^± (even T) for all T ≤ 1000 (p=5, e ≤ 4), 700 (p=7), 605, 507: min slack 0 at every e. For odd T, v_p(H_T^±) = 0 occurs, so the parity hypothesis is genuinely needed and is used only through the (1+(−1)^T) factor.
+- Lemma 6 (the suspected weak point — applied only for σ ≤ r−2): min slack exactly 0 at p = 5 up to r = 4 (M = 125, 250) and p = 7 up to r = 3, 10 pairs incl. negative; never negative.
+- j ≥ 3 factorial estimate and the chain v_p(j!) ≤ (j−1)/(p−1) ≤ (j−1)/4 ≤ (j−3)r: verified j < 300, r ≤ 7; slack 0 at j = 3 only.
+- Estimate (2) on ε_T, including T with large v_p (T = 125, 250 at p = 5): min slack 0, never negative (`p5_valuations`, 10 PASS).
+- Identity (1): exact for p = 3, 5, 7, six (a,b,c), M up to 2p (66 PASS).
+- Term-by-term check of (1) at p = 5, r = 2 and r = 3 (M = 25, 50): every term has v_p ≥ 3r, both branches (τ ≥ r−1 / τ ≤ r−2, with σ = τ) hold in all terms (19 PASS).
+- Theorem F: 18 triples (negative a, b; c = 1; b = 0) × p ∈ {5,7,11,13} × r ≤ 3 × n ≤ 4, cN ≤ 600: global min slack 0, no violation (72 PASS); r = 3 at p = 5 and 7 included.
+- §5: change-of-variables formula (random f, four ψ), S_c(n) = A_{(c+1,−1,c)}(n) for c ≤ 5, n ≤ 25, Lagrange-inversion series, and the sympy identity 2(1−x²)/(1−3x) − 1/(1+t) = (1+4t)/((1+t)√(1−8t)) (simplify → 0, series → 0, numeric 1e−164): all PASS.
+- Instances vs `statements/STATEMENTS.md`: A333561 (12 terms), A333562 (11), A352373 (15), A333565 (15) all match; implied A119259 matches. Against OEIS b-files fetched today (external data, `rereview_theoremF_oeis_extra`): A119259 = A_(2,−1,1) (n ≤ 30), A103885 = A_(1,−1,2) (n ≤ 30), A002003 = A_(1,−1,1) for 1 ≤ n ≤ 45 with A002003(0) = 0 ≠ 1 as stated.
+
+### (3) UNVERIFIED CONCERNS
+- Status line: "an independent referee … re-tested them, including a term-by-term check at r = 3 (p = 5)". There is no referee script or output for this note anywhere in `numerics/` (only `referee_theoremF_p3.py` and `referee_A/B_*` for A376462). The report presumably sits in `notes/referee-reports/`, which I was told not to read. The mathematics of that check is confirmed by my own run; only the provenance claim is unverifiable here.
+- Claims about OEIS conjecture wording (A119259 has a p ≥ 5 tower conjecture; A103885/A002003 carry only a(p) ≡ 2 mod p³): consistent with the OEIS pages fetched today, but web-sourced, not from STATEMENTS.md.
+- External citations (rbajaj5 drafts, Adamczewski, Meštrović): nothing is imported; every lemma is proved in the note. Not a concern.
+
+### (4) CITATION AUDIT
+| Sentence | File | Result |
+|---|---|---|
+| Status: "tested in `numerics/theoremF_framing_tests.py` (all bounds attained)" | exists; out shows min slack 0 in Q1/Q2/Q3 | match |
+| §0 Sharpness "(`numerics/out/theoremF_framing_tests.txt`)" | file has the +0 cells, but its only p = 3 line is `p=3 check for A333561: [0, 0, 0]`; the A352373 p = 3 data are in `theoremF_p3_sweep.txt` | **wrong file for the A352373 clause** (and see E2) |
+| §5(a) "Checked exactly for n ≤ 12, c = 2, 3" | framing_tests last line | match |
+| §5(a) "independent series computation for n ≤ 15" | no script/output in numerics/ | **no artifact** (claim true: my n ≤ 25) |
+| §5(c) "direct symbolic simplification (sympy)" | no theoremF script uses sympy | **no artifact** (claim true: reproduced) |
+| §5(c) "checked termwise for n ≤ 12" | framing_tests last line | match |
+| §5(d) "verified for 1 ≤ n ≤ 40" (A002003) | no artifact | **no artifact** (true to n = 45 vs b-file) |
+| §6 A002003 "(`numerics/out/theoremF_p3_sweep.txt`)" | file shows (1,−1,1) slack −1 | match |
+| §6 "slack 0 for C(2N,N)" | framing_tests row (2,0,1) all +0 | match |
+| §7 Lemma 3 (T ≤ 60p), Lemma 6 (r ≤ 3), Theorem (10 triples × 4 primes × r ≤ 2 × n ≤ 2) | match (r ∈ {2,3}; a few cells skipped for cN > 900) | match |
+| §7 "Independent series-based recomputation of A333561 and A352373 (sympy)" | no artifact | **no artifact** |
+| Refs: `literature/rbajaj5-drafts/CoefficientFramingCubicTower.md`, `BalaAugustCoefficientPacket.md` | exist | match |
+
+### (5) EXPOSITION
+- §4 parenthetical "we expect, but have not written out, that the weakened bounds give 3^{3r−1}" is stale: §6 and the p = 3 note (Theorem F₃(i)) now prove it.
+- §6 bullet 1 should list the third class a ≡ b ≡ 0 (E1).
+- `theoremF_framing_tests.py` labels (2,−2,1) as "2*A103885" (consistent with Bala's formula a(n) = ½[xⁿ]((1+x)/(1−x))^{2n}) while the note uses (1,−1,2); harmless.
+
+### (6) Verdict
+Proof correct and complete; all lemmas, the ε_T estimate, the case split and the theorem verified exactly with zero slack violations through r = 3; only two remark-level overstatements and four "checked/verified" sentences without a backing file.
+
+---
+
+## Note 2: `notes/TheoremF-p3-proof.md` (Theorem F₃)
+
+### (1) CONFIRMED ERRORS
+No error in Lemmas A–J, Proposition I or Theorem F₃. Two misstatements in Remark 1 (both reproduced in the note's own output files as well):
+
+**E3. Remark 1: "the data show the digit is nonzero for suitable m …, e.g. for A352373 at every tested (r, m)."** False: the digit is 0 at m = 2, 5, 8 for every r, including the note's own V1 grid (m ∈ {1,2}; `theoremF_p3_proof_checks.txt`: `(a,b,c)=(-1,-3,1) ... r1m2:+0/+0`).
+`numerics/out/rereview_theoremF_p3_lemmas.txt` lines 188–189:
+```
+A352373 = A_(-1,-3,1): r1m1:v3=2 digit=2; r1m2:v3=3 digit=0; r1m4:v3=2 digit=1; r1m5:v3=3 digit=0; ... r3m2:v3=9 digit=0; ...
+[FAIL] Remark 1 claim 'A352373 digit nonzero at every tested (r,m)' -- (r,m) with ZERO digit: [(1, 2), (1, 5), (1, 8), (2, 2), (2, 5), (2, 8), (3, 2), (3, 5)]
+```
+
+**E4. Remark 1 parenthetical "for a ≡ b ≡ 0 every constant works because both sides vanish" (repeated in Remark 4 (V3): "the class a ≡ b ≡ 0, where both sides vanish").** For 3 ∤ c the right side (ψ̄ − c)(ḡ + K) = −cK vanishes only for K = 0; every constant works only in the class (0,0,0). The note's own V3 output shows it (`(0,0,1): identity holds with K0=0`, `(0,0,2): ... K0=0`, vs `K0=2` i.e. all, for (0,0,0)). Line 92:
+```
+[FAIL] Remark 1 parenthetical ... -- classes where only some constants work: [((0, 0, 1), [0]), ((0, 0, 2), [0])]
+```
+The proof of (ii) is unaffected: it uses K₀ := 0 in that case.
+
+### (2) SUSPECTED THEN CLEARED
+- Lemma A: exact in 324 random-g instances (6 pairs × c ≤ 3 × M ∈ {1,2,3,4,6,9}); λ_M(ψ − c) = 0 exactly.
+- Lemma B: expansion exact, C(L) = 0, all λ_M(C(L^j)) 3-integral, 8 cases incl. M = 9 (8 PASS).
+- Lemma C: exact (r ≤ 7, j < 250); slack 0 only at j = 4, r = 1; digit-sum formula to j < 2000.
+- Lemma D: congruence slack ≥ 0 (often exactly 0) in 6 pairs × c ≤ 3 × (r,m) ≤ (3,1); C(L³) ≡ L mod 3.
+- Lemma E exact leading digits for e = 1..6 (−3^{e−1}, 3^{2e−1}/2, 0 mod 3^e); S₁^± is a unit at every e, confirming the cancellation remark.
+- Lemma F(a) exact digit −3^{2e−1} and v₃(H_T) = 2e − 1 for all 900 values T ≡ 0 (mod 3) up to 2700 (e ≤ 7, both residues of ℓ); F(b) for all 450 even T, min slack 0 at every e ≤ 6; fails for odd T (hypothesis needed).
+- Lemma G at p = 3 (direct convolution): exact to T = 300.
+- Lemma H: g_t integrality and g_t ≡ a²(−1)^t + b² for t ≤ 400 (t = 3, 9, 27, 81, 243 included), 14 pairs incl. multiples of 3 and negatives, computed by direct convolution (no Lemma G); the three ingredients separately; closed form of ḡ.
+- Lemma J: (a),(b),(c) and K₀ := 0 for a ≡ b ≡ 0 hold in F₃[[y]] in all 27 classes; outside (ii) no constant works (Remark 1's main claim) — PASS.
+- Proposition I as an exact congruence mod 3^{3r}: 480 cases, 16 pairs (negative, multiples of 3), c ≤ 3, r ≤ 4 (N up to 162), 0 failures; Remark 1's digit formula (A(3M)−A(M))/3^{3r−1} ≡ −m³λ_M(…) (mod 3) exact in all 480.
+- Theorem F₃: 36 triples, r ≤ 4, m ≤ 8: min slack 0 in classes a+b ≡ c and 3 | c, +1 in a ≡ b ≡ 0 (incl. 3 ∤ c, a+b ≢ c cases (3,0,1), (0,3,2), (6,−3,2)), −1 and never lower in the bad classes.
+- Corollary inputs: A333564(n) = (A119259(n) − (−1)ⁿ)/2 for n ≤ 22 and the p = 3 towers read directly off the b-files of A119259 and A333564 (r ≤ 3): all slack ≥ 0.
+- Observation / Remark 3: four sweep triples outside (ii) — (−3,−2,2), (−2,−3,2), (3,4,2), (4,3,2) — pass the whole sweep range but fail at m = 5 (as Remark 3 says for the first); every residue class outside (ii) with c ∈ {1,2} has failing members. Cleared.
+
+### (3) UNVERIFIED CONCERNS
+- Status line statements about the referee's corrections being incorporated refer to `notes/referee-reports/` (not read by instruction). Content independently re-verified; provenance not.
+- Beukers–Vlasenko reference: nothing imported; not a concern.
+
+### (4) CITATION AUDIT
+| Sentence | Result |
+|---|---|
+| `theoremF_p3_proof_checks.py` / `.txt`; `referee_theoremF_p3.py` / `.txt` "0 failing checks" | exist; referee file ends `SUMMARY: 0 failing checks` — match |
+| Observation: sweep range (−4 ≤ a,b ≤ 5, c ≤ 3, r ≤ 3) | matches script header (m ∈ {1,2,4}) — match |
+| Observation: v₃(A(3)−A(1)) = 2 for (−1,−3,1), (1,−1,1), (1,−1,2) | 72, 36, 144 — match |
+| Remark 1: "27 residue triples, part V3 and the referee's T9" | V3 has 27 lines; `[T9]` present — match; parenthetical wrong (E4) |
+| Remark 1: "A352373 at every tested (r,m)" | contradicted by V1 itself (E3) — **mismatch** |
+| Remark 3: "(−3,−2,2) fails at m = 5" | referee line 166 and my test — match |
+| Remark 4 (V1) "288 triples … 0 failures", (V2) t ≤ 200, (V3) three MISMATCH lines = class a≡b≡0, (V4) | match ("both sides vanish" inaccurate, E4) |
+| Remark 4: referee "T0–T12, 0 failures … 17 + 11 + 9 good triples and 10 bad ones, r ≤ 3, m ≤ 7" | T12 present, 0 failures, m ∈ {1,2,4,5,7}; tag counts in the file are **18** [good:a+b=c] (lines 117–133 + 163), 11, 9, 10 — minor miscount |
+| Remark 4: `theoremF_p3_conjecture_check.py` (r ≤ 4, m ≤ 8), `theoremF_p3_sweep.py` | match |
+| §1 Imports (Lemma 1 at p = 3, Lemma G uses only 3 | T, §5 identities) | all re-tested at p = 3 — match |
+
+### (5) EXPOSITION
+- Title "(and A333564, A119259, A333561, A333562)": on OEIS those carry p ≥ 5 conjectures (A119259 per its entry; A333561/2 per STATEMENTS.md); only A333565 is Bala's "p ≥ 3". Reads as if all five had p ≥ 3 conjectures.
+- Remark 3 names one sweep survivor; there are four (two residue classes (0,1,2), (1,0,2)), all first failing at m = 5.
+- Remark 4's "slack exactly 0 in the two main classes" glosses over degenerate triples with A(N) − A(M) = 0 (e.g. (0,2,2), (1,1,2), and the "bad" (0,1,2) listed with min slack inf).
+
+### (6) Verdict
+Proof correct: every lemma, the F₃[[y]] identities, Proposition I (as an exact congruence) and Theorem F₃(i)/(ii) verified exactly through r = 4; the only defects are two false sentences in Remark 1 and a miscount in Remark 4.
+
+---
+
+## Scripts (all under `<working folder>/numerics/`, outputs in `out/` with the same basename)
+- `rereview_theoremF_p5_identities.py` — Lemma 1, 4, 5, identity (1), change of variables, S_c identity, OEIS data (STATEMENTS.md), Lagrange inversion + sympy: **129 pass / 0 fail**.
+- `rereview_theoremF_p5_valuations.py` — Lemma 2, 3, 6, factorial bound (p ≥ 5 and Lemma C), estimate (2), Theorem F (r ≤ 3, 4 primes, 18 triples), termwise (1) at p = 5 r ≤ 3: **144 pass / 0 fail**.
+- `rereview_theoremF_p3_lemmas.py` — Lemmas A–J, Proposition I (480 cases), Theorem F₃ (36 triples, r ≤ 4), Remarks 1/3/Observation: **87 pass / 2 fail** (the two fails are E3 and E4, both remark-level).
+- `rereview_theoremF_oeis_extra.py` — A119259, A103885, A002003, A333564 against OEIS b-files (external data): **13 pass / 0 fail**.

@@ -1,0 +1,23 @@
+PASS   build exit 0: exit 0
+PASS   no sorry in build log
+PASS   no error in build log
+PASS   audit file exit 0: exit 0
+PASS   axioms of A352373_from_target: Classical.choice, Quot.sound, propext
+PASS   axioms of TF.theoremF: Classical.choice, Quot.sound, propext
+PASS   axioms of TF.tower_int: Classical.choice, Quot.sound, propext
+PASS   axioms of TF.A_sub: Classical.choice, Quot.sound, propext
+PASS   axioms of TF.eps_bound: Classical.choice, Quot.sound, propext
+PASS   axioms of TF.lemma6: Classical.choice, Quot.sound, propext
+GREP modules: BalaCheck.A352373, BalaCheck.TFInst, BalaCheck.TFSetup, BalaCheck.EpochExp, BalaCheck.TFMain, BalaCheck.TFLift, BalaCheck.TFEps, BalaCheck.TFHarmonic, BalaCheck.TFFrob
+GREP hits: 16 | approved in GREP-ALLOW.txt: 16
+PASS   tamper grep: every hit reviewed and approved: 0 unapproved of 16
+PASS   lean4checker BalaCheck.A352373: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFInst: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFSetup: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.EpochExp: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFMain: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFLift: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFEps: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFHarmonic: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.TFFrob: exit 0; Found 1 modules to check
+VERDICT: ACCEPT 

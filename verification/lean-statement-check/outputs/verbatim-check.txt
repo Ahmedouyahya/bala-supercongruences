@@ -1,0 +1,15 @@
+A333561: OK; checked definition a, statement oeis_333561_conjecture
+A333562: OK; checked definition a, statement oeis_333562_conjecture_0_congruence
+A333565: OK; checked definition A333565, statement oeis_A333565_conjecture_strong_gauss_congruence
+A352275: OK; checked definition a, definition u, statement u_m_supercongruence_conjecture
+A352373: OK; checked definition a, statement oeis_a352373_supercongruence
+A361711: OK; checked definition A361711, statement A361711_conjecture
+A363983: OK; checked definition A363983, statement oeis_A363983_conjecture_supercongruence
+A364175: OK; checked definition a, statement oeis_364175_conjecture_0
+A364178: OK; checked definition a, statement oeis_364178_conjecture_0
+A370092: OK; checked definition a, definition eventually_periodic, definition a_mod_k, statement oeis_370092_conjecture_0
+A376462: OK; checked definition a108625_aux, definition A376462, statement oeis_376462_conjecture_0
+A386548: OK; checked definition a, statement oeis_A386548_supercongruence_conjecture
+all verbatim
+
+Control (2026-10-16), on a scratch copy of the repository: with the modulus of oeis_333561_conjecture changed from p ^ (3 * k) to p ^ (3 * k - 1) in lean/BalaProofs/A333561.lean, and one space added inside the definition in lean/BalaProofs/A363983Defs.lean, the script reports "A333561: MISMATCH ... not verbatim: statement oeis_333561_conjecture" and "A363983: MISMATCH ... not verbatim: definition A363983", and exits with code 1.

@@ -1,0 +1,585 @@
+\documentclass[11pt]{amsart}
+\input{../common/macros}
+\usepackage[margin=1.15in]{geometry}
+
+\title[Supercongruences for a Dixon-type sum, factorial ratios and Ap\'ery-like sequences]{Cubic supercongruences for a Dixon-type sum, fractional factorial ratios and two Ap\'ery-like sequences}
+
+\author{Ahmedou Yahye Gleiguem Kheyri}
+\email{ahmedouyahya2011@gmail.com}
+\urladdr{ORCID 0009-0006-6390-4420}
+
+\author{Mohamed Vadel Hadweni}
+\email{mvadel136@gmail.com}
+\urladdr{ORCID 0009-0000-0713-339X}
+
+\subjclass[2020]{Primary 11A07, 11B65; Secondary 05A10, 05A19}
+\keywords{supercongruences, Wolstenholme's theorem, Ap\'ery-like numbers, Kazandzidis congruence, factorial ratios, Landau's criterion, block induction}
+
+\begin{document}
+\begin{abstract}
+We prove several supercongruences of the form $a(np^r)\equiv a(np^{r-1})\pmod{p^{3r}}$, $p\ge5$, conjectured by P.~Bala on the OEIS. For the Dixon-type sum $a(n)=\sum_k(-1)^k\binom nk^2\binom{n-2}{k}$ (A361711) we prove the tower for every odd $n$, from an exact product identity over the units below $np^k/2$, and show that it fails for even $n$. We prove that the fractional factorial ratios A364172, A364178 and A364179 are integers, which was conjectural, and, through a unit-product principle that reduces the towers for A364172--A364184 to integrality, that these and A364175 satisfy the tower. For the Ap\'ery-like sequence A363983 we prove the tower by the method of Osburn, Sahu and Straub. For the two-index sum A376462 we prove both the tower and the shifted congruence $A(np^r-1)\equiv A(np^{r-1}-1)\pmod{p^{3r}}$; the latter extends Beukers' 1985 block induction with carry labels, carry-restricted harmonic sums and moment kernels. Along the way we repair two steps of Beukers' printed argument. The main theorems are formalised in Lean~4 with Mathlib.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+For a sequence of integers $a(n)$ and a prime $p$, congruences of the form
+\begin{equation}\label{eq:tower}
+a(np^r)\equiv a(np^{r-1})\pmod{p^{3r}}\qquad(n,r\ge1)
+\end{equation}
+are called \emph{(cubic) supercongruences}. The model case is $a(n)=\binom{2n}{n}$, for which \eqref{eq:tower} holds for $p\ge5$ by the theorem of Jacobsthal and Kazandzidis \cite{jacobsthal1952,kazandzidis1968,robertzuber1995}; for $n=r=1$ it is Wolstenholme's $\binom{2p}{p}\equiv2\pmod{p^3}$ \cite{wolstenholme1862}. Many such congruences were recorded as conjectures on the OEIS \cite{oeis} by P.~Bala \cite{bala}. This paper settles several of them and a related integrality question.
+
+\subsection*{A Dixon-type sum} Let $a(1)=1$ and
+\[ a(n)=\sum_{k=0}^{n-2}(-1)^k\binom nk^2\binom{n-2}{k}\qquad(n\ge2), \]
+so $(a(n))_{n\ge1}=1,1,-8,5,126,-168,-2400,4125,\dots$ (A361711). Bala conjectured $a(p^k)\equiv a(p^{k-1})\pmod{p^{3k}}$ for $p\ge5$.
+
+\begin{theorem}\label{thm:A}
+Let $p\ge5$ be prime and $k\ge1$.
+\begin{enumerate}
+\item For every odd $n\ge1$: $a(np^k)\equiv a(np^{k-1})\pmod{p^{3k}}$. More precisely, if $p\nmid n$, $M=np^k$ and $U=\{u\in\Z:0<u<M/2,\ p\nmid u\}$, then
+\begin{equation}\label{eq:collapse}
+\frac{a(np^k)}{a(np^{k-1})}=\prod_{u\in U}\Bigl(1-\frac{M^2}{u^2}\Bigr).
+\end{equation}
+\item The congruence in (1) is false in general for even $n$: $a(10)-a(2)=-98099\not\equiv0\pmod5$.
+\end{enumerate}
+\end{theorem}
+The case $n=1$ is Bala's conjecture. The exponent $3k$ is optimal: $\vp(a(p^k)-a(p^{k-1}))=2k+\vp(H)$ with $H=\sum_{u\in U}u^{-2}$, and in all computed cases $\vp(H)=k$, except $p=7$, where $v_7(H)=k+1$ (\Cref{sec:verification}).
+
+\subsection*{Fractional factorial ratios} With $x!:=\Gamma(1+x)$ consider
+\[ \text{A364175}(n)=\frac{(6n)!\,(2n/3)!}{(3n)!\,(2n)!\,(5n/3)!},\qquad \text{A364178}(n)=\frac{(10n)!\,(3n)!\,(n/2)!}{(6n)!\,(5n)!\,(3n/2)!\,n!}, \]
+\begin{gather*}
+\text{A364172}(n)=\frac{(6n)!\,(n/3)!}{(3n)!\,(2n)!\,(4n/3)!},\qquad \text{A364179}(n)=\frac{(10n)!\,(n/2)!}{(5n)!\,(4n)!\,(3n/2)!}.
+\end{gather*}
+On the OEIS these are listed as ``only conjecturally'' integer sequences; Radcliffe \cite{radcliffe2026} proved that A364175 is integral. For even $n=2m$, A364178$(2m)$ is the Vasyunin ratio
+\[ \frac{(20m)!\,(6m)!\,m!}{(12m)!\,(10m)!\,(3m)!\,(2m)!} \]
+studied by Bober \cite{bober2009} (A295470).
+
+\begin{theorem}\label{thm:B}
+A364178, A364172 and A364179 are integer sequences.
+\end{theorem}
+
+\begin{theorem}\label{thm:C}
+For every prime $p\ge5$ and all $n,r\ge1$, each of A364175, A364178, A364172 and A364179 satisfies \eqref{eq:tower}.
+\end{theorem}
+
+Theorem~\ref{thm:C} is a special case of a ratio tower for a whole family of fractional factorial ratios (Theorem~\ref{thm:U}), which reduces Bala's conjectures on the thirteen entries A364172--A364184 to integrality.
+
+\subsection*{Two Ap\'ery-like sequences}
+The Ap\'ery numbers $\sum_k\binom nk^2\binom{n+k}k$ satisfy, for $p\ge5$, both
+\begin{equation}\label{eq:pair}
+a(mp^r)\equiv a(mp^{r-1})\quad\text{and}\quad a(mp^r-1)\equiv a(mp^{r-1}-1)\pmod{p^{3r}};
+\end{equation}
+the second, \emph{shifted} form is due to Beukers \cite{beukers1985} and the first to Coster \cite{coster1988} (see also Gessel \cite{gessel1982}). Osburn, Sahu and Straub \cite{oss2016} proved the first congruence for several sporadic sequences, and Straub \cite{straub2014} explained both forms for a multivariate family through negative indices. P.~Bala \cite{bala} conjectured the first congruence for A363983 and the pair \eqref{eq:pair} for A376462.
+
+\begin{theorem}\label{thm:363983}
+Let $a(n)=\sum_{k=\fl{(n+1)/2}}^{n}(-1)^{n+k}\binom nk\binom{n+k-1}k\binom{2k}n$ \emph{(A363983)}. For every prime $p\ge5$ and all $m,r\ge1$, $a(mp^r)\equiv a(mp^{r-1})\pmod{p^{3r}}$.
+\end{theorem}
+
+\begin{theorem}\label{thm:376462}
+Let $A(n)=\sum_{k=0}^{n}\binom nk^2\binom{n+k}{k}T(n,n-k)$ with $T(n,j)=\sum_{i}\binom ni^2\binom{n+j-i}{j-i}$ \emph{(A376462, A108625)}. For every prime $p\ge5$ and all $m,r\ge1$,
+\[ A(mp^r)\equiv A(mp^{r-1})\pmod{p^{3r}}\qquad\text{and}\qquad A(mp^r-1)\equiv A(mp^{r-1}-1)\pmod{p^{3r}}. \]
+\end{theorem}
+
+A363983 is not an instance of \cite[Thm.~1.2]{oss2016}: its summand contains $\binom nk$ only once, a factor $\binom{n+k-1}k$ instead of $\binom{n+k}k^B$, and a sign. The point is that $\binom{n+k-1}k=\frac nk\binom{n+k-1}{k-1}$ supplies the second power of $p$ that OSS obtain from $\binom nk^2$. The signed analogue $\sum_k(-1)^{n+k}\binom nk^2\binom{2k}n$ \emph{fails} the tower ($v_5(f(5)-f(1))=2$), so the choice of weights matters.
+
+$A(n)$ is the constant term of $\Lambda^n$ for the Laurent polynomial
+\[ \Lambda=\frac{(1+u+v)(1+z)(1+u+z)(1+w)(1+v+w)}{uvzw}, \]
+whose Newton polytope has a unique interior lattice point. General theory then gives the Gauss congruences and Dwork-type congruences \cite{mellitvlasenko2013,bv3}, but not the exponent $3r$. No identity of the type $A(-n)=A(n-1)$ holds, and A376462 is not in Straub's family, so the shifted congruence needs a direct proof. We give one by extending Beukers' method (\Cref{sec:shifted}). The unshifted congruences follow the template of \cite{oss2016} (\Cref{sec:363983,sec:first}).
+
+\emph{Beukers' printed argument.} Our proof re-proves two lemmas of \cite{beukers1985}. Checked against the published text, the printed proof of his Lemma~4(i) reduces it to an auxiliary congruence that is false, and his Lemma~4(ii) is stated modulo $p^{t+s}$, which is too weak for its use on p.~154 (\Cref{sec:beukers}). His theorem is unaffected; the repairs are Lemmas~\ref{lem:dh1} and~\ref{lem:dh2}.
+
+\subsection*{Method} All proofs follow one pattern. The indices of a sum, or the factors of a product, are split into multiples of $p$ and units. The part indexed by multiples of $p$ is compared with the same sequence at the lower level $np^{r-1}$, and the unit part is controlled by Wolstenholme-type congruences for sums over units (\Cref{sec:tools}). The comparison is an exact product identity for A361711 (Lemma~\ref{lem:prod}), a unit-product principle for the factorial ratios (\Cref{sec:unitprod}), and the digit-dropping identities of Lemma~\ref{lem:digit} for the Ap\'ery-like sequences. For the shifted congruence of A376462 the unit part no longer carries enough powers of $p$ by itself, and the block inductions of \Cref{sec:shifted} take its place.
+
+\subsection*{Earlier claims} Unreviewed drafts by rbajaj5 \cite{rbajaj5} claim the tower of A364175 given Radcliffe's integrality (1 August 2026), the reduction of the towers of A364172--A364184 to integrality by a rational gamma-ratio transfer (same date, our Theorem~\ref{thm:U}), and the integrality and towers of A364178 and A364179 as half-index cases of A295470 and A295471 (13 August 2026). Our proofs were written independently of these drafts, are complete, and for A364175 and A364178 are machine-checked. Theorem~\ref{thm:A}, the integrality of A364172, and the failure for even $n$ are not claimed there.
+
+\subsection*{Machine verification} Theorem~\ref{thm:A} for $n=1$, Theorem~\ref{thm:C} for A364175 and A364178 (including the integrality of A364178), and Theorems~\ref{thm:363983} and~\ref{thm:376462} are formalised in Lean~4 \cite{lean4} with Mathlib \cite{mathlib2020}; the formal statements are those of the Formal Conjectures benchmark, verbatim, and the proofs use only the standard axioms (\Cref{sec:verification}).
+
+\subsection*{Notation} $p$ is a prime, $\vp$ the $p$-adic valuation on $\Q$, and congruences between rationals with denominators prime to $p$ are understood in $\Z_{(p)}$. A prime on a sum or product ($\sumu$, $\produ$) restricts the index to integers prime to $p$. Binomials are generalised: $\binom ab=a(a-1)\cdots(a-b+1)/b!$ for $a\in\Z$, $b\ge0$, and $\binom ab=0$ for $b<0$. Two identities are used throughout: $\binom ab=\frac ab\binom{a-1}{b-1}$ ($b\ge1$) and $\binom{n+b-1}b=(-1)^b\binom{-n}b$. For $t,l\ge0$ the \emph{block} is $B_t(l)=\{k\ge0:\fl{k/p^t}=l\}$. $\Hp_n=\sumu_{\lambda\le n}1/\lambda$, $\sigma_t(n)=\sumu_{k\in B_t(n)}1/k$ and $S_d(x)=\sumu_{\mu\le x}\mu^{-d}$. For $e\ge1$ let $R_e=\{u:0<u<p^e,\ p\nmid u\}$; we write $S_j$ for $S_j(p^e)=\sum_{u\in R_e}u^{-j}$ when $e$ is clear from the context. From \Cref{sec:363983} on, $p\ge5$.
+
+\section{Sums over units and binomial tools}\label{sec:tools}
+\begin{lemma}\label{lem:wolst}
+Let $p\ge5$ and $e\ge1$. Then $S_2\equiv0\pmod{p^e}$ and $S_1\equiv0\pmod{p^{2e}}$. Moreover, for every integer $N=np^e$ with $n\ge1$,
+\[ \sumu_{0<k\le N}\frac1k\equiv0\pmod{p^{2e}},\qquad \sumu_{0<k\le N}\frac1{k^2}\equiv0\pmod{p^{e}}. \]
+\end{lemma}
+\begin{proof}
+Since $u\mapsto u^{-1}\bmod p^e$ permutes $R_e$,
+\[ S_2\equiv\sum_{u\in R_e}u^2=\frac{(p^e-1)p^e(2p^e-1)}6-p^2\,\frac{(p^{e-1}-1)p^{e-1}(2p^{e-1}-1)}6\equiv0\pmod{p^e}, \]
+as $6$ is a unit. Pairing $u$ with $p^e-u$ gives $\frac1u+\frac1{p^e-u}=\frac{p^e}{u(p^e-u)}\equiv-\frac{p^e}{u^2}\pmod{p^{2e}}$, hence $2S_1\equiv-p^eS_2\equiv0\pmod{p^{2e}}$. For the sums up to $N$ write $k=\beta p^e+u$ with $0\le\beta<n$, $u\in R_e$, and use $\frac1{\beta p^e+u}\equiv\frac1u-\frac{\beta p^e}{u^2}\pmod{p^{2e}}$ and $\frac1{(\beta p^e+u)^2}\equiv\frac1{u^2}\pmod{p^e}$.
+\end{proof}
+
+\begin{lemma}\label{lem:half}
+Let $p\ge5$, $k\ge1$, $n$ odd with $p\nmid n$, $M=np^k$ and $U$ as in Theorem~\ref{thm:A}. Then $H:=\sum_{u\in U}u^{-2}\equiv0\pmod{p^k}$.
+\end{lemma}
+\begin{proof}
+$M$ is odd, so $u\mapsto M-u$ maps $U$ bijectively onto the units in $(M/2,M)$, and $(M-u)^{-2}\equiv u^{-2}\pmod{p^k}$. Hence $2H\equiv\sumu_{0<v<M}v^{-2}\equiv0\pmod{p^k}$ by Lemma~\ref{lem:wolst}.
+\end{proof}
+
+Lemmas~\ref{lem:power} and~\ref{lem:block} below extend Lemma~\ref{lem:wolst} to sums over blocks; Sections~\ref{sec:dixon}--\ref{sec:unitprod} need only Lemma~\ref{lem:wolst}.
+
+\begin{lemma}[Kazandzidis; Robert--Zuber \cite{robertzuber1995}]\label{lem:kaz}
+For $p\ge5$ and integers $A>B>0$: $\binom{pA}{pB}\big/\binom AB\in1+p^3AB(A-B)\Zp$.
+\end{lemma}
+Consequently \cite[Lemma 2.1]{oss2016}, if $p\nmid ab$ and $r,s\ge1$, then $\binom{p^ra}{p^sb}\big/\binom{p^{r-1}a}{p^{s-1}b}\equiv1\pmod{p^{r+s+\min(r,s)}}$ whenever the binomials are nonzero.
+
+\begin{lemma}[power sums over units]\label{lem:power}
+Let $v,d\ge1$ and $e(d)=0$ if $(p-1)\nmid d$, $e(d)=1+\vp(d)$ otherwise. Then $\sum_{u\in(\Z/p^v)^\times}u^{-d}\equiv0\pmod{p^{v-e(d)}}$. In particular $S_2(x)\equiv0\pmod{p^v}$ whenever $p^v\mid x$, and the sum of $u^{-2}$ over the units of any block $B_v(l)$, or of either half of it, is $\equiv0\pmod{p^v}$.
+\end{lemma}
+\begin{proof}
+Let $g$ generate $(\Z/p^v)^\times$. Then $(g^{-d}-1)\sum u^{-d}\equiv0$. If $(p-1)\nmid d$, $g^{-d}-1$ is a unit. Otherwise $\vp(g^{-d}-1)=e(d)$ by lifting the exponent. For the halves, $k\mapsto(2l+1)p^v-k$ exchanges them and preserves $k^{-2}$ modulo $p^v$.
+\end{proof}
+
+\begin{lemma}[block Wolstenholme; Beukers' Lemma 1]\label{lem:block}
+$\sigma_t(l)\equiv0\pmod{p^{2t}}$ for all $t,l\ge0$. Hence $\Hp_x\equiv0\pmod{p^{2v}}$ whenever $p^v\mid x$.
+\end{lemma}
+\begin{proof}
+For $t\ge1$, $k\mapsto(2l+1)p^t-k$ is a fixed-point-free involution of the units of $B_t(l)$, and $\frac1k+\frac1{(2l+1)p^t-k}\equiv-\frac{(2l+1)p^t}{k^2}\pmod{p^{2t}}$; apply Lemma~\ref{lem:power}.
+\end{proof}
+
+\begin{lemma}[digit dropping]\label{lem:digit}
+Let $m\in\Z$, $s\ge1$, $L=mp^s$, $L'=L/p$, $n\ge0$, $P_n=\produ_{\lambda\le n}(1-L/\lambda)$. Then exactly
+\[ \binom{L-1}n=(-1)^{n-\fl{n/p}}\binom{L'-1}{\fl{n/p}}P_n,\qquad \binom{L}{n}=\binom{L'}{n/p}P_n\ \ (p\mid n). \]
+Consequently $(-1)^n\binom{mp^s-1}{n}\equiv(-1)^{\fl{n/p}}\binom{mp^{s-1}-1}{\fl{n/p}}$ and $\binom{mp^s}{pn}\equiv\binom{mp^{s-1}}{n}\pmod{p^s}$; also $\binom{mp^s+n}{n}\equiv\binom{mp^{s-1}+\fl{n/p}}{\fl{n/p}}$ and $\binom{j}{mp^s}\equiv\binom{\fl{j/p}}{mp^{s-1}}\pmod{p^s}$.
+\end{lemma}
+\begin{proof}
+Split $\prod_{\lambda\le n}(L-\lambda)/\lambda$ into $\lambda=p\mu$, whose product is $\binom{L'-1}{\fl{n/p}}$, and $p\nmid\lambda$. Each of the latter factors is $\equiv-1\pmod{p^s}$. The other statements follow by $m\mapsto-m$ and the identities of the notation section.
+\end{proof}
+
+\section{The Dixon-type sum A361711}\label{sec:dixon}
+
+\subsection{Closed forms}
+\begin{lemma}\label{lem:closed}
+For $m\ge0$ and $m\ge1$ respectively,
+\[ a(2m+1)=(-1)^m\binom{3m+1}{m}\binom{2m}{m},\qquad a(2m)=\frac{(-1)^m(2m-3)}{6(2m-1)}\binom{3m}{m}\binom{2m}m. \]
+\end{lemma}
+\begin{proof}
+Put $F(n,k)=(-1)^k\binom nk^2\binom{n-2}k$, so that $a(n)=\sum_{k=0}^nF(n,k)$ for $n\ge2$. Zeilberger's algorithm \cite{pwz1996} produces the recurrence
+\begin{equation}\label{eq:zeil}
+c_0(n)F(n,k)+c_1(n)F(n+1,k)+c_2(n)F(n+2,k)=G(n,k+1)-G(n,k)
+\end{equation}
+with $c_0=-3n(n-1)(3n+1)(3n+2)(3n^2+4n+2)$, $c_1=-6n(6n^3+12n^2+5n+1)$, $c_2=-n^2(n+2)^2(3n^2-2n+1)$ and $G=RF$, $R(n,k)=\frac{k^3(n-1)P(n,k)}{(n-k-1)(n-k)(n-k+1)^2(n-k+2)^2}$, where $P$ is the polynomial of Appendix~\ref{app:cert}. Because $R$ has poles at $k\in\{n-1,\dots,n+2\}$, we do not divide by $F$; instead put
+\[ \Phi(n,k)=\frac{(-1)^kn!^2(n-2)!}{k!^3(n-k+2)!^2(n-k)!}\qquad(2\le n,\ 0\le k\le n), \]
+finite and nonzero. As exact identities of rational numbers for $0\le k\le n$,
+$F(n,k)=\Phi\,(n-k+2)^2(n-k+1)^2(n-k)(n-k-1)$, $F(n+1,k)=\Phi\,(n+1)^2(n-1)(n-k+2)^2(n-k)$, $F(n+2,k)=\Phi\,(n+2)^2(n+1)^2n(n-1)$, $G(n,k)=\Phi\,k^3(n-1)P(n,k)$ and $G(n,k+1)=-\Phi\,(n-1)(n-k+2)^2(n-k)P(n,k+1)$ (with $G(n,n+1):=0$). Thus \eqref{eq:zeil} for $0\le k\le n$ is $\Phi$ times a polynomial identity in $(n,k)$, which is verified by expansion. Summing over $0\le k\le n$, which covers the supports of $F(n,\cdot)$, $F(n+1,\cdot)$, $F(n+2,\cdot)$, gives $c_0a(n)+c_1a(n+1)+c_2a(n+2)=G(n,n+1)-G(n,0)=0$ for $n\ge2$. Both closed forms satisfy the same recurrence (a rational-function identity in $n$), $c_2(n)\ne0$ for $n\ge1$, and the initial values $a(2)=1$, $a(3)=-8$ agree.
+\end{proof}
+
+\subsection{An exact product identity}
+\begin{lemma}\label{lem:prod}
+Let $p$ be an odd prime, $n$ odd with $p\nmid n$, $k\ge1$, $M=np^k$, $M'=np^{k-1}$, $\nu=(M-1)/2$, $\nu'=(M'-1)/2$ and $U$ as above. Then
+\[ \frac{\binom{2\nu}{\nu}}{\binom{2\nu'}{\nu'}}=(-1)^{\frac{p-1}2}\prod_{u\in U}\Bigl(1-\frac Mu\Bigr),\qquad \frac{\binom{3\nu+1}{\nu}}{\binom{3\nu'+1}{\nu'}}=\prod_{u\in U}\Bigl(1+\frac Mu\Bigr). \]
+\end{lemma}
+\begin{proof}
+As $2\nu=M-1$ and $3\nu+1=M+\nu$,
+\[ \binom{2\nu}\nu=(-1)^\nu\prod_{i=1}^\nu\Bigl(1-\frac Mi\Bigr),\qquad\binom{M+\nu}{\nu}=\prod_{i=1}^\nu\Bigl(1+\frac Mi\Bigr). \]
+Write $i=p^au$ with $p\nmid u$; the factor is $1\mp p^{k-a}n/u$, and for fixed $a$ the index $u$ runs over $1\le u\le\fl{\nu/p^a}$. We claim $\fl{\nu/p^a}=\fl{\nu'/p^{a-1}}$ for $a\ge1$. Indeed $\nu=p\nu'+\frac{p-1}2$; write $p\nu'=p^aQ+R$ with $0\le R<p^a$; then $p\mid R$, so $R\le p^a-p$ and $R+\frac{p-1}2<p^a$, whence both floors equal $Q$. Consequently the factors with $a\ge1$ at level $k$ are exactly the factors of the corresponding product at level $k-1$, and the factors with $a=0$ are those indexed by $U$. Finally $\nu-\nu'=\frac{p-1}2np^{k-1}$ has the parity of $\frac{p-1}2$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:A}]
+(1) If $p\mid n$, write $n=p^en'$ with $p\nmid n'$; the claim for $(n,k)$ is weaker than the claim for $(n',k+e)$. So let $p\nmid n$. The arguments $M$ and $M'$ are odd, so Lemma~\ref{lem:closed} gives $a(M)/a(M')$ as $(-1)^{\nu-\nu'}$ times the product of the two quotients of Lemma~\ref{lem:prod}; the signs cancel and \eqref{eq:collapse} follows. Expanding the product, $a(M)/a(M')=1-M^2H+M^4e_2-M^6e_3+\cdots$, where $e_j$ are elementary symmetric functions of the $u^{-2}$, $u\in U$, and are $p$-integral. By Lemma~\ref{lem:half}, $\vp(M^2H)\ge3k$, so $a(M)/a(M')\equiv1\pmod{p^{3k}}$. As $a(M')$ is a nonzero integer, $a(M)-a(M')=a(M')\bigl(a(M)/a(M')-1\bigr)\equiv0\pmod{p^{3k}}$.
+
+(2) $a(2)=1$ and $a(10)=-98098$ by Lemma~\ref{lem:closed}.
+\end{proof}
+
+\begin{remark}
+(i) For $p=3$ the statement fails: $v_3(H)=k-1$ and $a(3)-a(1)=-9$. (ii) In the even case the factor $\frac{2m-3}{2m-1}$ of Lemma~\ref{lem:closed} does not scale, and in our computations ($p\in\{5,7,11,13\}$, even $n\le12$, $k\le2$) the congruence fails in every case. (iii) Put $X=\prod_U(1-M/u)$, $Y=\prod_U(1+M/u)$ for $n=1$. Then $XY\equiv1\pmod{p^{3k}}$, and Cai's prime-power form of Morley's congruence \cite{cai2002,morley1895} gives $X\equiv4^{\varphi(p^k)}$; hence
+\[ \binom{(3p^k-1)/2}{(p^k-1)/2}\equiv4^{-(p^k-p^{k-1})}\binom{(3p^{k-1}-1)/2}{(p^{k-1}-1)/2}\pmod{p^{3k}}. \]
+This congruence is the case of modulus $n=p^k$ and parameter $3$ (their $k=3$) of Theorem~1.4 of Zhong, Chern and Cai \cite{zhongcherncai2019}; the argument above gives a different proof of this case.
+\end{remark}
+
+\section{Integrality}
+
+\subsection{Integer forms} Since $\Gamma(1+x+m)/\Gamma(1+x)=\prod_{j=1}^m(x+j)$,
+\[ \frac{\Gamma(1+\frac n2)}{\Gamma(1+\frac{3n}2)}=\frac{2^n}{\prod_{j=1}^n(n+2j)},\quad \frac{\Gamma(1+\frac n3)}{\Gamma(1+\frac{4n}3)}=\frac{3^n}{\prod_{j=1}^n(n+3j)},\quad \frac{\Gamma(1+\frac{2n}3)}{\Gamma(1+\frac{5n}3)}=\frac{3^n}{\prod_{j=1}^n(2n+3j)}, \]
+so that
+\begin{align*}
+b(n):=\text{A364178}(n)&=\frac{2^n(10n)!(3n)!}{(6n)!(5n)!\,n!\prod_{j\le n}(n+2j)}, \\
+\text{A364179}(n)&=\frac{2^n(10n)!}{(5n)!(4n)!\prod_{j\le n}(n+2j)},\\
+\text{A364172}(n)&=\frac{3^n(6n)!}{(3n)!(2n)!\prod_{j\le n}(n+3j)}, \\
+a(n):=\text{A364175}(n)&=\frac{3^n(6n)!}{(3n)!(2n)!\prod_{j\le n}(2n+3j)}.
+\end{align*}
+
+\subsection{A Landau-type criterion with a correction term}
+Let $q$ be a prime, $d\in\{2,3\}$ with $q\nmid d$, and $x\ge1$. For $k\ge1$ write $n=t_kq^k+\rho_k$ with $0\le\rho_k<q^k$. Since $d$ is invertible modulo $q^k$, the $j\in[1,n]$ with $q^k\mid xn+dj$ form a single residue class modulo $q^k$; hence
+\[ N_k:=\#\{1\le j\le n:\ q^k\mid xn+dj\}=t_k+\varepsilon_k,\qquad \varepsilon_k\in\{0,1\}, \]
+and $\varepsilon_k=1$ only if $q^k\mid x\rho_k+ds$ for some $s\in[1,\rho_k]$. By Legendre's formula, for a ratio $\frac{d^n\prod_i(a_in)!^{\epsilon_i}}{\prod_{j\le n}(xn+dj)}$ with $\sum_i\epsilon_ia_i=1$,
+\begin{equation}\label{eq:landau}
+v_q\Bigl(\frac{d^n\prod_i(a_in)!^{\epsilon_i}}{\prod_{j\le n}(xn+dj)}\Bigr)=\sum_{k\ge1}\Bigl(F\bigl(\rho_k/q^k\bigr)-\varepsilon_k\Bigr),\qquad F(y):=\sum_i\epsilon_i\fl{a_iy},
+\end{equation}
+because $\fl{a_in/q^k}=a_it_k+\fl{a_i\rho_k/q^k}$ and the $t_k$ cancel. This is Landau's criterion \cite{landau1900} with a correction $\varepsilon_k$ coming from the linear factors.
+
+\begin{proof}[Proof of Theorem~\ref{thm:B}]
+\emph{A364178 at odd $q$} ($d=2$, $x=1$; here $\prod_i(a_in)!^{\epsilon_i}=\frac{(10n)!(3n)!}{(6n)!(5n)!n!}$). Then $F(y)=\fl{10y}+\fl{3y}-\fl{6y}-\fl{5y}-\fl y$ vanishes on $[0,\frac1{10})\cup[\frac16,\frac3{10})$ and is $\ge1$ elsewhere on $[0,1)$. If $\varepsilon_k=1$ then $0<\rho_k+2s\le3\rho_k<3q^k$ forces $q^k\le3\rho_k$, i.e.\ $\rho_k/q^k\ge\frac13$, where $F\ge1$. Every summand of \eqref{eq:landau} is $\ge0$.
+
+\emph{A364178 at $q=2$.} With $v_2(X!)=X-s_2(X)$: for odd $n$ every $n+2j$ is odd and $v_2(b(n))=2n+s_2(n)$; for $n=2m$, $\prod_{j\le n}(n+2j)=2^n(3m)!/m!$ and $v_2(b(n))=s_2(3m)$.
+
+\emph{A364172 at $q\ne3$} ($d=3$, $x=1$, $F(y)=\fl{6y}-\fl{3y}-\fl{2y}$, which is $0$ on $[0,\frac16)$ and $\ge1$ on $[\frac16,1)$). If $\varepsilon_k=1$ then $0<\rho_k+3s\le4\rho_k<4q^k$ forces $\rho_k/q^k\ge\frac14>\frac16$. This includes $q=2$.
+
+\emph{A364172 at $q=3$.} With $v_3(X!)=(X-s_3(X))/2$ and $s_3(3X)=s_3(X)$: \[ v_3\Bigl(\frac{3^n(6n)!}{(3n)!(2n)!}\Bigr)=\frac{3n+s_3(n)}2. \] If $3\nmid n$, every $n+3j$ is prime to $3$. If $n=3m$, $\prod_{j\le n}(n+3j)=3^n(4m)!/m!$, and $v_3(\text{A364172}(n))=s_3(4m)/2\ge0$.
+
+\emph{A364179 at odd $q$} ($d=2$, $x=1$, $F(y)=\fl{10y}-\fl{5y}-\fl{4y}$, zero exactly on $[0,\frac1{10})\cup[\frac14,\frac3{10})$). As for A364178, $\varepsilon_k=1$ forces $\rho_k/q^k\ge\frac13>\frac3{10}$, where $F\ge1$.
+
+\emph{A364179 at $q=2$.} For odd $n$, $v_2=2n+s_2(n)$; for $n=2m$, $v_2=s_2(3m)$.
+\end{proof}
+
+\section{The unit-product principle and the towers}\label{sec:unitprod}
+
+Let $p\ge5$. For $X\ge0$ put $U(X)=\produ_{1\le k\le X}k$ and $W_r=U(p^r)$.
+\begin{lemma}\label{lem:units}
+\begin{enumerate}
+\item $X!=p^{\fl{X/p}}\fl{X/p}!\,U(X)$ for every $X\ge0$.
+\item If $N=np^r$ and $c\ge1$, then $U(cN)\equiv W_r^{cn}\pmod{p^{3r}}$.
+\item If $N=np^r$, $c\in\Z$ and $p\nmid d$, then $\produ_{1\le k\le N}\bigl(1+\frac{cN}{dk}\bigr)\equiv1\pmod{p^{3r}}$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) Split the factors of $X!$ into multiples of $p$ and units. (2) The units up to $cN$ are $\beta p^r+u$ with $0\le\beta<cn$, $u\in R_r$, so $U(cN)=W_r^{cn}\prod_\beta P_\beta$ with $P_\beta=\prod_{u\in R_r}(1+\beta p^r/u)=1+\beta p^re_1+\beta^2p^{2r}e_2+\cdots$, where the $e_j$ are the elementary symmetric functions of the $u^{-1}$. By Lemma~\ref{lem:wolst}, $\vp(e_1)=\vp(S_1)\ge2r$ and $\vp(e_2)=\vp\bigl((S_1^2-S_2)/2\bigr)\ge r$; all terms beyond $1$ are divisible by $p^{3r}$. (3) All factors lie in $1+p\Zp$, and $\log$ is an isometry there ($p$ odd). The logarithm of the product is $\sum_{j\ge1}\frac{(-1)^{j+1}}j\bigl(\frac{cN}d\bigr)^jH^{(j)}$ with $H^{(j)}=\sumu_{k\le N}k^{-j}$; by Lemma~\ref{lem:wolst} the term $j=1$ has valuation $\ge r+2r$, the term $j=2$ has valuation $\ge2r+r$, and for $j\ge3$ the valuation is $\ge jr-\vp(j)\ge3r$.
+\end{proof}
+
+\begin{theorem}\label{thm:U}
+Let
+\[ R(n)=\prod_i(a_in)!^{\epsilon_i}\cdot\prod_t\frac{(x_tn/d_t)!}{(y_tn/d_t)!}\qquad(a_i,x_t,d_t\ge1,\ \epsilon_i=\pm1,\ y_t=x_t+c_td_t,\ c_t\ge1) \]
+be balanced, $\sum_i\epsilon_ia_i=\sum_tc_t$. Then for every prime $p\ge5$ with $p\nmid\prod_td_t$ and all $n,r\ge1$, $R(np^r)/R(np^{r-1})\equiv1\pmod{p^{3r}}$.
+\end{theorem}
+\begin{proof}
+Let $N=np^r$, $M=N/p$. Each quotient of fractional factorials equals $d_t^{c_tn}/\prod_{j=1}^{c_tn}(x_tn+d_tj)$. In $\prod_{j\le c_tN}(x_tN+d_tj)$ the factors with $p\mid j=pj'$ are $p(x_tM+d_tj')$ and reproduce $p^{c_tM}\prod_{j'\le c_tM}(x_tM+d_tj')$; the factors with $p\nmid j$ are $d_tj(1+x_tN/(d_tj))$, with product $d_t^{c_tN-c_tM}\,U(c_tN)\produ_{j\le c_tN}\bigl(1+\frac{x_tN}{d_tj}\bigr)$. By Lemma~\ref{lem:units}(1) the integer factorials contribute $p^{M\sum\epsilon_ia_i}\cdot(\text{level-}M\text{ value})\cdot\prod_iU(a_iN)^{\epsilon_i}$. The powers of $p$ and of the $d_t$ cancel by balance, so
+\[ \frac{R(N)}{R(M)}=\frac{\prod_iU(a_iN)^{\epsilon_i}}{\prod_tU(c_tN)}\prod_t\produ_{j\le c_tN}\Bigl(1+\frac{x_tN}{d_tj}\Bigr)^{-1}. \]
+By Lemma~\ref{lem:units}(2) the first factor is $\equiv W_r^{n(\sum\epsilon_ia_i-\sum c_t)}=1$, and by Lemma~\ref{lem:units}(3), applied with $c_tN=(c_tn)p^r$ in place of $N$, so is each product.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:C}]
+The four sequences are balanced ratios of the shape of Theorem~\ref{thm:U} with $d_t\in\{2,3\}$, so $p\ge5$ is admissible. They are integers (Theorem~\ref{thm:B} and \cite{radcliffe2026}), hence $a(N)-a(M)=a(M)\bigl(a(N)/a(M)-1\bigr)\equiv0\pmod{p^{3r}}$.
+\end{proof}
+
+\begin{remark}
+The proof shows $\vp(a(np^r))=\vp(a(n))$ for $p\ge5$, without any integrality assumption. For the other nine entries of A364172--A364184 Bala's conjecture is therefore equivalent to integrality, which the criterion of \eqref{eq:landau} does not settle for them (the correction terms are not dominated by $F$ on an interval).
+\end{remark}
+
+\section{Proof of Theorem~\ref{thm:363983}}\label{sec:363983}
+
+Let $N=mp^r$, $M=N/p$, and assume $p\nmid m$ (the case $p\mid m$ follows from the case $(m/p^e,r+e)$). Write $a(n)=\sum_{k=1}^nT_k(n)$ with $T_k(n)=(-1)^{n+k}\binom nk\binom{n+k-1}k\binom{2k}n$ for $n\ge1$.
+
+\begin{lemma}[scaled terms]\label{lem:363-scaled}
+For $p\nmid k$ and $s\ge1$: $T_{kp^s}(N)\equiv T_{kp^{s-1}}(M)\pmod{p^{3r}}$.
+\end{lemma}
+\begin{proof}
+Put $K=kp^s$, $K'=K/p$. The signs agree since $p$ is odd. The three quotients are $\binom NK/\binom M{K'}$, $\binom{N+K-1}K/\binom{M+K'-1}{K'}=\binom{N+K}K/\binom{M+K'}{K'}$ (the factors $\frac N{N+K}$ and $\frac M{M+K'}$ coincide), and $\binom{2K}N/\binom{2K'}M$. By Lemma~\ref{lem:kaz} each is $\equiv1\pmod{p^{r+s+\min(r,s)}}$, and the vanishing conditions agree at both levels. If $s\ge r$ we are done. If $s<r$, the product is $\equiv1\pmod{p^{r+2s}}$, while $\binom M{K'}=\frac M{K'}\binom{M-1}{K'-1}$ and $\binom{M+K'-1}{K'}=\frac M{K'}\binom{M+K'-1}{K'-1}$ give $\vp(T_{K'}(M))\ge2(r-s)$.
+\end{proof}
+Summing over the scaled indices, $a(N)-a(M)\equiv G_0:=\sumu_kT_k(N)\pmod{p^{3r}}$. For $p\nmid k$ the two free factors $N/k$ give
+\[ G_0=(-1)^NN^2S,\qquad S=\sumu_{k}\frac{(-1)^k}{k^2}\binom{N-1}{k-1}\binom{N+k-1}{k-1}\binom{2k}N, \]
+and it remains to show $S\equiv0\pmod{p^r}$. Put $D(n,k,j)=(-1)^k\binom{n-1}k\binom{n+k}k\binom jn$. Lemma~\ref{lem:digit}, with $\fl{(k-1)/p}=\fl{k/p}$ for $p\nmid k$, gives $S\equiv-\Sigma_1\pmod{p^r}$, where
+\[ \Sigma_s=\sumu_{1\le k\le N}k^{-2}\,D\bigl(mp^{r-s},\fl{k/p^s},\fl{2k/p^s}\bigr)\qquad(1\le s\le r). \]
+\begin{lemma}\label{lem:363-chain}
+$\Sigma_s\equiv\Sigma_{s+1}\pmod{p^r}$ for $1\le s<r$, and $\Sigma_r\equiv0\pmod{p^r}$.
+\end{lemma}
+\begin{proof}
+Group $k$ by $n=\fl{k/p^s}$ and by the half of $B_s(n)$ containing $k$; this decides $\fl{2k/p^s}\in\{2n,2n+1\}$ (as $p^s$ is odd). On each half-block the kernel $D$ is constant and $\sum k^{-2}\equiv0\pmod{p^s}$ (Lemma~\ref{lem:power}), since $N$ is a multiple of $p^s$ and all blocks are complete. For $s=r$ this proves $\Sigma_r\equiv0$. For $s<r$, Lemma~\ref{lem:digit} at level $r-s$ gives $D(mp^{r-s},n,j)\equiv D(mp^{r-s-1},\fl{n/p},\fl{j/p})\pmod{p^{r-s}}$; the replacement costs $p^{r-s}\cdot p^s$, and since $\fl{\fl{k/p^s}/p}=\fl{k/p^{s+1}}$ and $\fl{\fl{2k/p^s}/p}=\fl{2k/p^{s+1}}$, the result is $\Sigma_{s+1}$.
+\end{proof}
+Hence $S\equiv0\pmod{p^r}$ and Theorem~\ref{thm:363983} follows. \qed
+
+\section{The first congruence of Theorem~\ref{thm:376462}}\label{sec:first}
+
+Substituting $j=n-k$ and $\binom{2n-k-i}{n-k-i}=\binom{2n-k-i}n$,
+\[ A(n)=\sum_{k,i\ge0}\binom nk^2\binom{n+k}k\binom ni^2\binom{2n-k-i}{n}. \]
+Let $N=mp^r$, $M=N/p$, $p\nmid m$, and split the pairs $(k,i)$ into classes S ($p\mid k$, $p\mid i$), K ($p\nmid k$, $p\mid i$), I ($p\mid k$, $p\nmid i$), B ($p\nmid k$, $p\nmid i$).
+
+\emph{Class B} carries $\binom Nk^2\binom Ni^2$, hence $p^{4r}$.
+
+\emph{Class S.} For $k=pK'$, $i=pI'$ the ratio of the terms at levels $N$ and $M$ is $Q_1^2Q_2Q_3^2Q_4$ with Kazandzidis quotients $Q_1=\binom N{pK'}/\binom M{K'}$, $Q_2=\binom{N+pK'}{pK'}/\binom{M+K'}{K'}$, $Q_3=\binom N{pI'}/\binom M{I'}$, $Q_4=\binom{p(2M-K'-I')}{pM}/\binom{2M-K'-I'}{M}$. With $\mu=\min(\vp(k),\vp(i))$, Lemma~\ref{lem:kaz} gives every quotient $\equiv1\pmod{p^{r+2\mu}}$ if $\mu<r$ (and $\pmod{p^{3r}}$ if $\mu\ge r$). Also $\vp$ of the level-$M$ term is $\ge2(r-\mu)$ by free valuation of $\binom M{K'}^2\binom M{I'}^2$. So $\Sigma_S\equiv A(M)\pmod{p^{3r}}$.
+
+\emph{Class K.} The factor $\binom Nk^2=\frac{N^2}{k^2}\binom{N-1}{k-1}^2$ gives $\Sigma_K=N^2S_K$, and Lemma~\ref{lem:digit} together with Lemma~\ref{lem:kaz} (in the form $\binom{N}{pi'}\equiv\binom M{i'}\pmod{p^r}$) gives
+\begin{gather*} S_K\equiv\sumu_kk^{-2}\Psi_1\bigl(M,\fl{k/p}\bigr)\pmod{p^r},\\ \Psi_1(M',n')=\binom{M'-1}{n'}^2\binom{M'+n'}{n'}\sum_{i'}\binom{M'}{i'}^2\binom{2M'-n'-1-i'}{M'}, \end{gather*}
+using $\fl{(2N-k-pi')/p}=2M-i'-\fl{k/p}-1$ for $p\nmid k$.
+
+\begin{lemma}[self-similarity]\label{lem:selfsim}
+For $t\ge1$ and $n'\ge0$: $\Psi_1(mp^t,n')\equiv\Psi_1(mp^{t-1},\fl{n'/p})\pmod{p^t}$.
+\end{lemma}
+\begin{proof}
+The outer factors reduce by Lemma~\ref{lem:digit}. In the inner sum the terms with $p\nmid i'$ carry $\binom{mp^t}{i'}^2\equiv0\pmod{p^{2t}}$. For $i'=pi''$, Lemma~\ref{lem:kaz} gives $\binom{mp^t}{pi''}\equiv\binom{mp^{t-1}}{i''}$ with exponent $\ge t+2$, and Lemma~\ref{lem:digit} gives $\binom{2mp^t-n'-1-pi''}{mp^t}\equiv\binom{2mp^{t-1}-i''-\fl{n'/p}-1}{mp^{t-1}}$, using $\lceil(n'+1)/p\rceil=\fl{n'/p}+1$.
+\end{proof}
+Now set $\Sigma_s=\sumu_{k\le N}k^{-2}\Psi_1(mp^{r-s},\fl{k/p^s})$. On every full block $B_s(n)$ the kernel is constant and the weights sum to $\equiv0\pmod{p^s}$; Lemma~\ref{lem:selfsim} turns $\Sigma_s$ into $\Sigma_{s+1}$ at cost $p^{r-s}p^s$, and $\Sigma_r\equiv0$. Hence $S_K\equiv0\pmod{p^r}$ and $\Sigma_K\equiv0\pmod{p^{3r}}$. \emph{Class I} is identical, with the kernel $\Psi_2(M',n')=\binom{M'-1}{n'}^2\sum_{k'}\binom{M'}{k'}^2\binom{M'+k'}{k'}\binom{2M'-k'-n'-1}{M'}$. This proves the first congruence. \qed
+
+\section{The shifted congruence}\label{sec:shifted}
+
+\subsection{Set-up}
+With $j=n-k-i$, the summand becomes $\binom nk^2\binom{n+k}k\binom n{k+j}^2\binom{n+j}j$, so for $N\ge1$
+\[ A(N-1)=\sum_{k,j\ge0}\tilde S(N;k,j),\qquad \tilde S(N;k,j)=\binom{N-1}k^2\binom{N+k-1}k\binom{N-1}{k+j}^2\binom{N+j-1}j. \]
+Let $N=mp^r$ with $m,r\ge1$, $M=N/p$ and $L_u=mp^u$ ($u\ge0$). In this section ``integral'' means ``in $\Zp$'', and we do not assume $p\nmid m$. Split the pairs $(k,j)$ into the classes S ($p\mid k$, $p\mid j$), K ($p\nmid k$, $p\mid j$), J ($p\mid k$, $p\nmid j$) and B ($p\nmid k$, $p\nmid j$), and let $\Sigma_S,\Sigma_K,\Sigma_J,\Sigma_B$ be the corresponding partial sums of $\tilde S(N;k,j)$. We prove $\Sigma_S\equiv A(M-1)$ and $\Sigma_K\equiv\Sigma_J\equiv\Sigma_B\equiv0\pmod{p^{3r}}$. Here $\binom{N-1}{\cdot}$ carries no free power of $p$, so classes K and J have only one explicit factor $N$ and require a cancellation modulo $p^{2r}$.
+
+\subsection{A first-order expansion}
+
+\begin{lemma}[first-order expansion]\label{lem:firstorder}
+Let $L\in p\Zp$ and, for $x\ge0$, $P_x:=\produ_{\lambda\le x}(1-L/\lambda)$ and $\bar P_x:=\produ_{\lambda\le x}(1+L/\lambda)$. Let $E=\prod_iP_{x_i}^{a_i}\bar P_{y_i}^{b_i}$ be a finite product with $a_i,b_i\ge0$. Then $E=\sum_{d\ge0}L^de_d$ with $e_0=1$, every $e_d$ integral,
+\[ e_1=-\sum_ia_i\Hp_{x_i}+\sum_ib_i\Hp_{y_i},\qquad e_2=\tfrac12e_1^2-\tfrac12\sum_i\bigl(a_iS_2(x_i)+b_iS_2(y_i)\bigr). \]
+\end{lemma}
+\begin{proof}
+Group the factors by $\lambda$. The factor belonging to $\lambda$ is $(1-y)^{\alpha_\lambda}(1+y)^{\beta_\lambda}$ with $y=L/\lambda$, where $\alpha_\lambda,\beta_\lambda\ge0$ count the products $P_{x_i}$, $\bar P_{y_i}$ (with multiplicity) whose range contains $\lambda$. Its expansion is $1+c_\lambda y+d_\lambda y^2+\cdots$ with integer coefficients, $c_\lambda=\beta_\lambda-\alpha_\lambda$ and $d_\lambda=\binom{\alpha_\lambda}2+\binom{\beta_\lambda}2-\alpha_\lambda\beta_\lambda$. Hence $e_d$ is a $\Z$-combination of products of $d$ factors $1/\lambda$ with $p\nmid\lambda$, so it is integral, and $e_1=\sum_\lambda c_\lambda/\lambda$ is the stated expression. Finally $e_2=\sum_{\lambda<\mu}\frac{c_\lambda c_\mu}{\lambda\mu}+\sum_\lambda\frac{d_\lambda}{\lambda^2}=\frac12e_1^2+\sum_\lambda\frac{d_\lambda-c_\lambda^2/2}{\lambda^2}$ and $d_\lambda-\frac12c_\lambda^2=-\frac12(\alpha_\lambda+\beta_\lambda)$.
+\end{proof}
+
+With $L=mp^s$, the products $P_n$ are those of Lemma~\ref{lem:digit}, and replacing $m$ by $-m$ there gives the analogous identities with $\bar P_n$.
+
+\subsection{Harmonic lemmas}
+
+\begin{lemma}[reflection]\label{lem:refl}
+Let $t\ge1$. For $0\le n<p^t$,
+\[ \Hp_{p^t-1-n}-\Hp_n\equiv-p^t\sumu_{n<\mu<p^t}\mu^{-2}\pmod{p^{2t}}; \]
+in particular $\Hp_{p^t-1-n}\equiv\Hp_n\pmod{p^t}$. For $s\ge1$ and $0\le k\le p^t$, $\Hp_{(p^t-k)p^s}\equiv\Hp_{kp^s}\pmod{p^{t+2s}}$.
+\end{lemma}
+\begin{proof}
+With $\mu=p^t-\lambda$,
+\[ \Hp_{p^t-1-n}=\sumu_{n<\mu<p^t}\frac1{p^t-\mu}=-\sumu_{n<\mu<p^t}\frac1\mu\Bigl(1-\frac{p^t}\mu\Bigr)^{-1}=-(\Hp_{p^t-1}-\Hp_n)-p^t\sumu_{n<\mu<p^t}\mu^{-2}+p^{2t}(\text{integral}), \]
+and $\Hp_{p^t-1}=\Hp_{p^t}\equiv0\pmod{p^{2t}}$ by Lemma~\ref{lem:block}. The same computation with $\mu=p^{t+s}-\lambda$ gives
+\[ \Hp_{(p^t-k)p^s}=-(\Hp_{p^{t+s}}-\Hp_{kp^s})-p^{t+s}\sumu_{kp^s<\mu<p^{t+s}}\mu^{-2}+p^{2(t+s)}(\text{integral}). \]
+The middle sum runs over full blocks of length $p^s$, so it is $\equiv0\pmod{p^s}$ by Lemma~\ref{lem:power}, and $\Hp_{p^{t+s}}\equiv0\pmod{p^{2t+2s}}$ by Lemma~\ref{lem:block}.
+\end{proof}
+
+\begin{lemma}[block shift]\label{lem:shift}
+Let $t\ge1$, $i\ge0$ and $n=ip^t+\bar n$ with $0\le\bar n<p^t$. Then $\Hp_n\equiv\Hp_{ip^t}+\Hp_{\bar n}\pmod{p^t}$, and $(ip^t+\lambda)^{-d}\equiv\lambda^{-d}\pmod{p^t}$ for $p\nmid\lambda$ and $d\ge1$.
+\end{lemma}
+\begin{proof}
+$\Hp_n-\Hp_{ip^t}=\sumu_{\lambda\le\bar n}(ip^t+\lambda)^{-1}$, and $(ip^t+\lambda)^{-1}\equiv\lambda^{-1}\pmod{p^t}$.
+\end{proof}
+
+\begin{lemma}[Beukers' Lemma 4(i)]\label{lem:dh1}
+For $s,t,i\ge0$: $\sum_{n\in B_t(i)}\sigma_s(n)\Hp_n\equiv0\pmod{p^{t+2s}}$.
+\end{lemma}
+\begin{proof}
+For $t=0$ the sum is $\sigma_s(i)\Hp_i\equiv0\pmod{p^{2s}}$ by Lemma~\ref{lem:block}. Let $t\ge1$ and $t'=t+s$. Interchanging the summations, the sum equals $\Sigma(i):=\sumu_{k\in B_{t'}(i)}\frac1k\Hp_{\fl{k/p^s}}$.
+
+\emph{Base block $i=0$, $s\ge1$.} The involution $k\mapsto p^{t'}-k$ of the units below $p^{t'}$ satisfies $\fl{(p^{t'}-k)/p^s}=p^t-1-\fl{k/p^s}$, since $p^s\nmid k$. With $n(k)=\fl{k/p^s}$,
+\[ 2\Sigma(0)=\sumu_{k<p^{t'}}\Bigl(\frac1k+\frac1{p^{t'}-k}\Bigr)\Hp_{n(k)}+\sumu_{k<p^{t'}}\frac{\Hp_{p^t-1-n(k)}-\Hp_{n(k)}}{p^{t'}-k}. \]
+In the first sum, $\frac1k+\frac1{p^{t'}-k}\equiv-p^{t'}k^{-2}\pmod{p^{2t'}}$ and $\sumu_kk^{-2}\Hp_{n(k)}=\sum_{n<p^t}\Hp_n\sumu_{k\in B_s(n)}k^{-2}\equiv0\pmod{p^s}$ by Lemma~\ref{lem:power}, so the first sum is $\equiv0\pmod{p^{t+2s}}$. In the second sum, group $k$ by $n=n(k)$: the numerator is $p^t$ times an integer by Lemma~\ref{lem:refl}, and $\sumu_{k\in B_s(n)}\frac1{p^{t'}-k}=\sigma_s(p^t-1-n)\equiv0\pmod{p^{2s}}$ by Lemma~\ref{lem:block}. As $2$ is a unit, $\Sigma(0)\equiv0\pmod{p^{t+2s}}$.
+
+\emph{Base block, $s=0$.} Here $n(k)=k$ and $\Hp_{p^t-k}=\Hp_{p^t-1-k}+\frac1{p^t-k}$, so
+\[ 2\sumu_{k<p^t}\frac{\Hp_k}k=\sumu_{k<p^t}\frac{p^t\Hp_k}{k(p^t-k)}+\sumu_{k<p^t}\frac{\Hp_{p^t-1-k}-\Hp_k}{p^t-k}+\sumu_{k<p^t}\frac1{(p^t-k)^2}. \]
+The three sums are $\equiv0\pmod{p^t}$: the first has the factor $p^t$, the second by Lemma~\ref{lem:refl}, the third by Lemma~\ref{lem:power}.
+
+\emph{General block, $i\ge1$.} Write $n=ip^t+\bar n$ with $0\le\bar n<p^t$. Exactly, with integral $\eta,\theta$,
+\begin{align*}
+\Hp_{ip^t+\bar n}&=\Hp_{ip^t}+\Hp_{\bar n}-ip^tS_2(\bar n)+p^{2t}\eta(\bar n),\\
+\sigma_s(ip^t+\bar n)&=\sigma_s(\bar n)-ip^{t'}\tau_s(\bar n)+p^{2t'}\theta(\bar n),\qquad \tau_s(\bar n):=\sumu_{k\in B_s(\bar n)}k^{-2},
+\end{align*}
+from $\frac1{x+\lambda}=\frac1\lambda-\frac x{\lambda^2}+\frac{x^2}{\lambda^2(x+\lambda)}$. Here $\tau_s(\bar n)\equiv0\pmod{p^s}$ (Lemma~\ref{lem:power}; empty for $s=0$) and $\sigma_s(ip^t+\bar n)\equiv0\pmod{p^{2s}}$ (Lemma~\ref{lem:block}). Multiply the first expansion by $\sigma_s(ip^t+\bar n)$ and sum over $\bar n<p^t$. The term with $\Hp_{ip^t}$ gives $\Hp_{ip^t}\sigma_{t'}(i)\equiv0\pmod{p^{2t+2t'}}$. The term with $\Hp_{\bar n}$ gives, by the second expansion, $\Sigma(0)-ip^{t'}\sum_{\bar n}\tau_s(\bar n)\Hp_{\bar n}+p^{2t'}(\cdots)\equiv0\pmod{p^{t+2s}}$. The terms with $ip^tS_2(\bar n)$ and $p^{2t}\eta$ carry $p^t$ and $p^{2t}$ times $\sigma_s\equiv0\pmod{p^{2s}}$. Hence $\Sigma(i)\equiv0\pmod{p^{t+2s}}$.
+\end{proof}
+
+\begin{lemma}[Beukers' Lemma 4(ii), strong form]\label{lem:dh2}
+For $s,t,i\ge0$,
+\[ \sumu_{k\in B_t(i)}\frac1k\Hp_{kp^s}\equiv0\pmod{p^{t+2s}}. \]
+\end{lemma}
+\begin{proof}
+For $s=0$ this is Lemma~\ref{lem:dh1} with $s=0$; for $t=0$ it follows from $\Hp_{kp^s}\equiv0\pmod{p^{2s}}$ (Lemma~\ref{lem:block}). Let $s,t\ge1$. For the block $i=0$, the involution $k\mapsto p^t-k$ gives
+\[ 2\sumu_{k<p^t}\frac{\Hp_{kp^s}}k=\sumu_{k<p^t}\frac{p^t\Hp_{kp^s}}{k(p^t-k)}+\sumu_{k<p^t}\frac{\Hp_{(p^t-k)p^s}-\Hp_{kp^s}}{p^t-k}; \]
+the first sum is $\equiv0\pmod{p^{t+2s}}$ because $\Hp_{kp^s}\equiv0\pmod{p^{2s}}$, and the second by Lemma~\ref{lem:refl}. For a general block write $k=ip^t+\bar k$; then $\frac1k=\frac1{\bar k}-\frac{ip^t}{\bar k^2}+p^{2t}(\text{integral})$ and
+\[ \Hp_{kp^s}=\Hp_{ip^{t+s}}+\Hp_{\bar kp^s}-ip^{t+s}S_2(\bar kp^s)+p^{2(t+s)}(\text{integral}), \]
+with $\Hp_{ip^{t+s}}\equiv0\pmod{p^{2(t+s)}}$ and $S_2(\bar kp^s)\equiv0\pmod{p^s}$ (Lemmas~\ref{lem:block} and~\ref{lem:power}). Multiplying out, every term other than the base-block sum $\sumu_{\bar k}\frac1{\bar k}\Hp_{\bar kp^s}$ is $\equiv0\pmod{p^{t+2s}}$: the corrections to $1/k$ carry $p^t$ and meet $\Hp_{\bar kp^s}\equiv0\pmod{p^{2s}}$, and the correction $-ip^{t+s}S_2$ carries $p^{t+2s}$.
+\end{proof}
+
+\begin{lemma}[carry-restricted sums]\label{lem:carry}
+For $t\ge1$, $i,i'\ge0$ and $c\in\{0,1\}$, with bars denoting residues modulo $p^t$, let
+\[ \mathrm{Cell}_t(i,i';c):=\bigl\{(n,j):n\in B_t(i),\,j\in B_t(i'),\,p\nmid j,\,[\bar n+\bar j\ge p^t]=c\bigr\}. \]
+Then
+\[ \text{(Y)}\ \sum_{(n,j)\in\mathrm{Cell}_t(i,i';c)}\frac{\sigma_{s'}(n)}j\equiv0\pmod{p^{2s'+t}}\ \ (s'\ge0),\qquad\text{(B)}\ \sum_{\substack{(n,j)\in\mathrm{Cell}_t(i,i';c)\\ p\nmid n}}\frac1{nj}\equiv0\pmod{p^t}. \] The condition $[\bar n+\bar j\ge p^t]=c$ is symmetric in $n$ and $j$, so both statements also hold with the roles of the two indices exchanged.
+\end{lemma}
+\begin{proof}
+(Y) The sum over both values of $c$ is $\sigma_{s'+t}(i)\,\sigma_t(i')\equiv0\pmod{p^{2s'+4t}}$ by Lemma~\ref{lem:block}, so it suffices to take $c=1$, that is $\bar j\ge p^t-\bar n$. By Lemma~\ref{lem:shift}, $1/j=1/\bar j+p^t(\text{integral})$, and the correction contributes $\equiv0\pmod{p^{t+2s'}}$ because $\sigma_{s'}(n)\equiv0\pmod{p^{2s'}}$. The main part is
+\[ \sum_{n\in B_t(i)}\sigma_{s'}(n)\bigl(\Hp_{p^t-1}-\Hp_{p^t-1-\bar n}\bigr). \]
+Here $\Hp_{p^t-1}\sum_n\sigma_{s'}(n)=\Hp_{p^t-1}\sigma_{s'+t}(i)\equiv0\pmod{p^{2s'+4t}}$, and $\Hp_{p^t-1-\bar n}=\Hp_n-\Hp_{ip^t}+p^t(\text{integral})$ by Lemmas~\ref{lem:refl} and~\ref{lem:shift}; the corrections again meet $\sigma_{s'}(n)\equiv0\pmod{p^{2s'}}$. What remains is $-\sum_{n\in B_t(i)}\sigma_{s'}(n)\Hp_n+\Hp_{ip^t}\sigma_{s'+t}(i)\equiv0\pmod{p^{2s'+t}}$ by Lemmas~\ref{lem:dh1} and~\ref{lem:block}.
+(B) Both values of $c$ together give $\sigma_t(i)\sigma_t(i')\equiv0\pmod{p^{4t}}$; take $c=1$. Replacing $1/n$, $1/j$ by $1/\bar n$, $1/\bar j$ costs multiples of $p^t$, and
+\[ \sumu_{\bar n<p^t}\frac1{\bar n}\sumu_{p^t-\bar n\le\bar j<p^t}\frac1{\bar j}=\sumu_{\bar n<p^t}\frac{\Hp_{p^t-1}-\Hp_{p^t-1-\bar n}}{\bar n}\equiv-\sumu_{\bar n<p^t}\frac{\Hp_{\bar n}}{\bar n}\equiv0\pmod{p^t} \]
+by Lemma~\ref{lem:refl} and Lemma~\ref{lem:dh2} with $s=0$, $i=0$.
+\end{proof}
+
+\subsection{Block inductions}
+A family $(T_u)_{u\ge0}$ of functions $\Z_{\ge0}\to\Zp$ is a \emph{tower} if $T_u(k)\equiv T_{u-1}(\fl{k/p})\pmod{p^u}$ for all $u\ge1$ and $k\ge0$. The functions may change their form from level to level; only this property is used.
+
+\begin{lemma}[one-index block induction; Beukers' Lemma 3, Straub's Lemma 5.6]\label{lem:ind1}
+Let $(T_u)$ be a tower and let $a_k\in\Zp$ satisfy $\sum_{k\in B_t(l)}a_k\equiv0\pmod{p^t}$ for all $t,l\ge0$. Then $\sum_{k\in B_s(l)}a_kT_s(k)\equiv0\pmod{p^s}$ for all $s,l\ge0$, and hence $\sum_{k<mp^s}a_kT_s(k)\equiv0\pmod{p^s}$. If $a_k=0$ whenever $p\mid k$, the tower property at the top level $s$ is needed only for $p\nmid k$.
+\end{lemma}
+\begin{proof}
+Induction on $s$; $s=0$ is trivial. By the tower property,
+\[ \sum_{k\in B_s(l)}a_kT_s(k)\equiv\sum_{q\in B_{s-1}(l)}\Bigl(\sum_{k\in B_1(q)}a_k\Bigr)T_{s-1}(q)\pmod{p^s}. \] The numbers $\bar a_q:=p^{-1}\sum_{k\in B_1(q)}a_k$ are integral, and $\sum_{q\in B_t(l')}\bar a_q=p^{-1}\sum_{k\in B_{t+1}(l')}a_k\equiv0\pmod{p^t}$, so the induction hypothesis applies to them. For the last statement, redefine $T_s(k):=T_{s-1}(\fl{k/p})$ on the multiples of $p$; this does not change the sum.
+\end{proof}
+
+\begin{lemma}[two-index block induction with carries]\label{lem:ind2}
+Let $T^{(\delta)}_u:\Z_{\ge0}^2\to\Zp$ ($u\ge0$, $\delta\in\{0,1\}$) satisfy
+\[ T^{(\delta)}_u(q,q')\equiv T^{(\delta')}_{u-1}\bigl(\fl{q/p},\fl{q'/p}\bigr)\pmod{p^u},\qquad\delta':=[(q\bmod p)+(q'\bmod p)+\delta\ge p]. \]
+For $t\ge1$ let the cells be $\{(q,q',\delta):q\in B_t(i),\ q'\in B_t(i'),\ [(q\bmod p^t)+(q'\bmod p^t)+\delta\ge p^t]=c\}$, and let $a^{(\delta)}_{q,q'}\in\Zp$ have cell sums $\equiv0\pmod{p^t}$ for all $t\ge1$, $i,i'\ge0$ and $c\in\{0,1\}$. Then $\sum_{q\in B_s(l),\,q'\in B_s(l'),\,\delta}a^{(\delta)}_{q,q'}T^{(\delta)}_s(q,q')\equiv0\pmod{p^s}$ for all $s,l,l'\ge0$.
+\end{lemma}
+\begin{proof}
+As for Lemma~\ref{lem:ind1}, now collecting the terms by $(\fl{q/p},\fl{q'/p},\delta')$; each coefficient is a cell sum at level $1$. The carries compose:
+\begin{multline*} (q\bmod p^t)+(q'\bmod p^t)+\delta\\ =p\bigl[(q_1\bmod p^{t-1})+(q_1'\bmod p^{t-1})+\delta'\bigr]+\bigl((q\bmod p)+(q'\bmod p)+\delta-p\delta'\bigr) \end{multline*}
+with $q_1=\fl{q/p}$, $q_1'=\fl{q'/p}$ and the last bracket in $[0,p-1]$. So the level-$t$ carry of $(q,q',\delta)$ is the level-$(t-1)$ carry of $(q_1,q_1',\delta')$, and the collected weights satisfy the hypothesis one level lower.
+\end{proof}
+
+In the applications the top-level weights carry the label $\delta=0$ only and vanish unless one index is prime to $p$. With these restrictions the top-level cells of Lemma~\ref{lem:ind2} are the cells of Lemma~\ref{lem:carry}, and, as in Lemma~\ref{lem:ind1}, the tower property at the top level is needed only where the weights are nonzero. The lower levels use the full tower property, which holds in every application.
+
+\subsection{Kernels}
+For $u\ge0$, $n,j,q,q'\ge0$ and $\delta\in\{0,1\}$ put
+\begin{align*}
+\Psi_u(n,j)&:=\binom{L_u-1}n^2(-1)^n\binom{-L_u-1}n\binom{L_u-1}{n+j}^2(-1)^j\binom{-L_u}j,\qquad K_u(n):=\sum_{j\ge0}\Psi_u(n,j),\\
+\Xi^{(\delta)}_u(q,q')&:=\binom{L_u-1}q^2(-1)^q\binom{-L_u-1}q\binom{L_u-1}{q+q'+\delta}^2(-1)^{q'}\binom{-L_u-1}{q'},\\
+\hat\Xi_u(n,j)&:=\binom{L_u-1}n^2(-1)^n\binom{-L_u-1}n\binom{L_u-1}{n+j}^2(-1)^{j-1}\binom{-L_u-1}{j-1}\quad(j\ge1).
+\end{align*}
+All are integers, and $\Psi_u(n,j)=0$ unless $n+j<L_u$, so $K_u(n)$ is a finite sum.
+
+\begin{lemma}[how the terms factor]\label{lem:factor}
+$\tilde S(N;k,j)=\frac N{N+k}\Psi_r(k,j)$ for all $k,j\ge0$, and $\Psi_u(n,j)=\frac{L_u}j\hat\Xi_u(n,j)$ for $p\nmid j$.
+\end{lemma}
+\begin{proof}
+$\binom{N+k-1}k=(-1)^k\binom{-N}k$ and $\binom{-N}k=\binom{-N-1}k\frac N{N+k}$, from $\binom ak=\binom{a-1}k\frac a{a-k}$; likewise $\binom{N+j-1}j=(-1)^j\binom{-N}j$. For the second claim, $(-1)^j\binom{-L}j=\frac Lj(-1)^{j-1}\binom{-L-1}{j-1}$.
+\end{proof}
+
+\begin{lemma}[towers]\label{lem:towers}
+Let $u\ge1$.
+\begin{enumerate}
+\item $\Psi_u(q,j)\equiv0\pmod{p^u}$ for $p\nmid j$, and $\Psi_u(q,pj_1)\equiv\Psi_{u-1}(\fl{q/p},j_1)\pmod{p^u}$. Hence $(K_u)$ is a tower.
+\item $\Xi^{(\delta)}_u(q,q')\equiv\Xi^{(\delta')}_{u-1}(\fl{q/p},\fl{q'/p})\pmod{p^u}$, with $\delta'$ as in Lemma~\ref{lem:ind2}. For $p\nmid j$, $\hat\Xi_u(n,j)\equiv\Xi^{(\delta)}_{u-1}(\fl{n/p},\fl{j/p})\pmod{p^u}$ with $\delta=[(n\bmod p)+(j\bmod p)\ge p]$.
+\item \emph{(moments)} $K^{[t]}_u(q):=\sum_jj^t\Psi_u(q,j)\equiv0\pmod{p^u}$ for $t\ge1$ (and all $u\ge0$).
+\item \emph{(harmonic weights)} For $d\ge1$, $\tilde K^{(d)}_u(q):=\sum_j\Psi_u(q,j)\Hp_{p^dj}$ satisfies
+\[ \tilde K^{(d)}_u(q)\equiv\tilde K^{(d+1)}_{u-1}(\fl{q/p})\pmod{p^u}. \] So for $s_0\ge0$, $d_0\ge1$ the functions $T_u:=\tilde K^{(d_0+s_0-u)}_u$ ($0\le u\le s_0$) form a tower.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Put $L=L_u$, $L'=L_{u-1}$. (1) For $p\nmid j$ the last factor of $\Psi_u$ is $\frac Lj(-1)^{j-1}\binom{-L-1}{j-1}$, divisible by $p^u$. For $j=pj_1$, Lemma~\ref{lem:digit} with $m$ and with $-m$ gives, modulo $p^u$, $\binom{L-1}q^2\equiv\binom{L'-1}{\fl{q/p}}^2$, $(-1)^q\binom{-L-1}q\equiv(-1)^{\fl{q/p}}\binom{-L'-1}{\fl{q/p}}$, $\binom{L-1}{q+pj_1}^2\equiv\binom{L'-1}{\fl{q/p}+j_1}^2$ and $(-1)^{pj_1}\binom{-L}{pj_1}\equiv(-1)^{j_1}\binom{-L'}{j_1}$. Summing over $j$ gives the tower property of $K_u$. (2) The same factor-by-factor reduction, with $\fl{(q+q'+\delta)/p}=\fl{q/p}+\fl{q'/p}+\delta'$. For $\hat\Xi_u$ use in addition $(-1)^{j-1}\binom{-L-1}{j-1}\equiv(-1)^{\fl{j/p}}\binom{-L'-1}{\fl{j/p}}$, which is Lemma~\ref{lem:digit} with $\fl{(j-1)/p}=\fl{j/p}$ for $p\nmid j$, and $\fl{(n+j)/p}=\fl{n/p}+\fl{j/p}+\delta$. (3) Induction on $u$, the case $u=0$ being empty. The unscaled $j$ contribute $\equiv0\pmod{p^u}$ by (1), and the scaled $j=pj_1$ contribute $p^t\sum_{j_1}j_1^t\Psi_u(q,pj_1)\equiv p^tK^{[t]}_{u-1}(\fl{q/p})\pmod{p^{u+t}}$, which is divisible by $p^{t+u-1}$. (4) The unscaled $j$ vanish modulo $p^u$ by (1), and for $j=pj_1$, $\Hp_{p^d\cdot pj_1}=\Hp_{p^{d+1}j_1}$.
+\end{proof}
+
+\begin{lemma}[first-order model]\label{lem:model}
+Let $u\ge0$, $L=L_{u+1}$ and $P_x,\bar P_x$ as in Lemma~\ref{lem:firstorder}. Then exactly
+\[ \Psi_{u+1}(n,pj_1)=\Psi_u(\fl{n/p},j_1)\,P_n^2\bar P_nP_{n+pj_1}^2\bar P_{pj_1}, \]
+and hence $\Psi_{u+1}(n,pj_1)\equiv\Psi_u(\fl{n/p},j_1)\bigl(1-L\rho_u(n,j_1)\bigr)\pmod{p^{2u+2}}$ with $\rho_u(n,j_1):=\Hp_n-\Hp_{pj_1}+2\Hp_{n+pj_1}$.
+\end{lemma}
+\begin{proof}
+With $q=\fl{n/p}$ and $L'=L_u$, the exact identities of Lemma~\ref{lem:digit} (with $m$ and $-m$) give $\binom{L-1}n=(-1)^{n-q}\binom{L'-1}qP_n$, $(-1)^n\binom{-L-1}n=(-1)^q\binom{-L'-1}q\bar P_n$, $\binom{L-1}{n+pj_1}^2=\binom{L'-1}{q+j_1}^2P_{n+pj_1}^2$ and $(-1)^{pj_1}\binom{-L}{pj_1}=(-1)^{j_1}\binom{-L'}{j_1}\bar P_{pj_1}$. Multiply. The congruence is Lemma~\ref{lem:firstorder} with $e_1=-2\Hp_n+\Hp_n-2\Hp_{n+pj_1}+\Hp_{pj_1}=-\rho_u(n,j_1)$ and $L^2\in p^{2u+2}\Zp$.
+\end{proof}
+
+\subsection{Class K}
+Put $\hat K_r(k):=\sum_{j_1\ge0}\Psi_r(k,pj_1)$. By Lemma~\ref{lem:factor}, for $p\nmid k$ the class-K terms with this $k$ sum to $\frac N{N+k}\hat K_r(k)=\bigl(\frac Nk-\frac{N^2}{k^2}+\frac{N^3}{k^3}(1+\frac Nk)^{-1}\bigr)\hat K_r(k)$, so
+\begin{equation}\label{eq:K1}
+\Sigma_K\equiv N\sumu_{k<N}\frac{\hat K_r(k)}k-N^2\sumu_{k<N}\frac{\hat K_r(k)}{k^2}\pmod{p^{3r}}.
+\end{equation}
+
+\emph{The term with $1/k^2$.} By Lemma~\ref{lem:towers}(1) we have $\hat K_r(k)\equiv K_{r-1}(\fl{k/p})$ modulo $p^r$, so $(\hat K_r,K_{r-1},K_{r-2},\dots)$ is a tower. The weights $k^{-2}$ ($p\nmid k$; $0$ otherwise) have block sums $\equiv0\pmod{p^t}$ by Lemma~\ref{lem:power}, and Lemma~\ref{lem:ind1} gives $\sumu_{k<N}k^{-2}\hat K_r(k)\equiv0\pmod{p^r}$.
+
+\emph{The term with $1/k$.} For $0\le s\le r-1$ put $A_s:=\sum_{n<L_s}\sigma_{r-s}(n)K_s(n)$. By Lemma~\ref{lem:model} with $u=r-1$, $\hat K_r(k)\equiv\sum_{j_1}\Psi_{r-1}(\fl{k/p},j_1)\bigl(1-N\rho_{r-1}(k,j_1)\bigr)\pmod{p^{2r}}$. Grouping $k$ by $\fl{k/p}$ and using $\sumu_{k\in B_1(n')}1/k=\sigma_1(n')$,
+\[ \sumu_{k<N}\frac{\hat K_r(k)}k\equiv A_{r-1}-N\hat X\pmod{p^{2r}},\qquad\hat X:=\sumu_{k<N}\frac1k\sum_{j_1}\Psi_{r-1}(\fl{k/p},j_1)\rho_{r-1}(k,j_1). \]
+So it suffices to show $\hat X\equiv0\pmod{p^r}$ and $A_{r-1}\equiv0\pmod{p^{2r}}$.
+
+\emph{Proof that $\hat X\equiv0\pmod{p^r}$.} Write $n'=\fl{k/p}$ and split $\hat X=\hat X_1-\hat X_2+2\hat X_3$ according to the three terms of $\rho_{r-1}$.
+\begin{itemize}
+\item $\hat X_1=\sum_{n'}c_{n'}K_{r-1}(n')$ with $c_{n'}=\sumu_{k\in B_1(n')}\Hp_k/k$. By Lemma~\ref{lem:dh2} ($s=0$, level $t+1$), $\sum_{n'\in B_t(i)}c_{n'}\equiv0\pmod{p^{t+1}}$. So the weights $c_{n'}/p$ are integral with block sums $\equiv0\pmod{p^t}$, and Lemma~\ref{lem:ind1} with the tower $(K_u)$ gives $\hat X_1\equiv0\pmod{p^r}$.
+\item $\hat X_2=\sum_{n'}\sigma_1(n')\tilde K^{(1)}_{r-1}(n')$. The weights $\sigma_1(n')/p^2$ are integral, with block sums $\sigma_{t+1}(i)/p^2$ divisible by $p^{2t}$ (Lemma~\ref{lem:block}), so Lemma~\ref{lem:ind1} with the tower of Lemma~\ref{lem:towers}(4) gives $\hat X_2\equiv0\pmod{p^{r+1}}$.
+\item For $\hat X_3$, exactly $\Hp_{k+pj_1}=\Hp_{pj_1}+\sumu_{\lambda\le k}\frac1{pj_1+\lambda}$, and $\frac1{pj_1+\lambda}=\sum_{t\ge0}(-pj_1)^t\lambda^{-t-1}$ in $\Zp$. Hence $\hat X_3=\hat X_2+\sum_{t\ge0}(-p)^t\sumu_k\frac1kS_{t+1}(k)K^{[t]}_{r-1}(n')$ with $K^{[0]}=K$. The term $t=0$ is $\hat X_1$, and for $t\ge1$ the term is $\equiv0\pmod{p^{t+r-1}}$ by Lemma~\ref{lem:towers}(3). So $\hat X_3\equiv0\pmod{p^r}$.
+\end{itemize}
+
+\emph{Proof that $A_{r-1}\equiv0\pmod{p^{2r}}$.} First, $A_0=\sum_{n<m}\sigma_r(n)K_0(n)\equiv0\pmod{p^{2r}}$ by Lemma~\ref{lem:block}. Let $0\le s\le r-2$, $s'=r-s-1\ge1$, $L=L_{s+1}$ and $q=\fl{n/p}$. Splitting the $j$-sum of $K_{s+1}(n)$ into scaled and unscaled $j$ and using Lemmas~\ref{lem:model} and~\ref{lem:factor},
+\[ K_{s+1}(n)=\sum_{j_1}\Psi_s(q,j_1)\bigl(1-L\rho_s(n,j_1)\bigr)+L\sumu_j\frac1j\hat\Xi_{s+1}(n,j)+p^{2s+2}(\text{integral}). \]
+Multiply by $\sigma_{s'}(n)\equiv0\pmod{p^{2s'}}$ and sum over $n<L_{s+1}$; the error is $\equiv0\pmod{p^{2s'+2s+2}}=\pmod{p^{2r}}$. Since $\sum_{n\in B_1(q)}\sigma_{s'}(n)=\sigma_{s'+1}(q)$,
+\begin{gather*} A_{s+1}\equiv A_s-LX_s+LY_s\pmod{p^{2r}},\\ X_s:=\sum_n\sigma_{s'}(n)\sum_{j_1}\Psi_s(q,j_1)\rho_s(n,j_1),\qquad Y_s:=\sum_n\sigma_{s'}(n)\sumu_j\frac{\hat\Xi_{s+1}(n,j)}j. \end{gather*}
+It remains to show $X_s\equiv Y_s\equiv0\pmod{p^{2r-s-1}}$, since $v_p(L)=s+1$.
+\begin{itemize}
+\item $X_s=X_{s,1}-X_{s,2}+2X_{s,3}$ according to $\rho_s$. First, $X_{s,1}=\sum_qc_qK_s(q)$ with $c_q=\sum_{n\in B_1(q)}\sigma_{s'}(n)\Hp_n$, whose block sums are $\equiv0\pmod{p^{t+1+2s'}}$ by Lemma~\ref{lem:dh1}; Lemma~\ref{lem:ind1} applied to $c_q/p^{2s'+1}$ gives $X_{s,1}\equiv0\pmod{p^{2s'+1+s}}=\pmod{p^{2r-s-1}}$. Next, $X_{s,2}=\sum_q\sigma_{s'+1}(q)\tilde K^{(1)}_s(q)$, and the weights $\sigma_{s'+1}(q)/p^{2s'+2}$ have block sums $\equiv0\pmod{p^{2t}}$, so $X_{s,2}\equiv0\pmod{p^{2s'+2+s}}$ by Lemmas~\ref{lem:ind1} and~\ref{lem:towers}(4). Finally, as for $\hat X_3$, $X_{s,3}=X_{s,2}+\sum_{t\ge0}(-p)^t\sum_n\sigma_{s'}(n)S_{t+1}(n)K^{[t]}_s(q)$; the term $t=0$ is $X_{s,1}$, and for $t\ge1$ the term is $\equiv0\pmod{p^{t+2s'+s}}$ by Lemmas~\ref{lem:block} and~\ref{lem:towers}(3).
+\item For $Y_s$ apply Lemma~\ref{lem:ind2} at level $s+1$ to the tower $\hat\Xi_{s+1};\Xi^{(\cdot)}_s;\Xi^{(\cdot)}_{s-1};\dots$ of Lemma~\ref{lem:towers}(2), with the top weights $a^{(0)}_{n,j}=p^{-2s'}\sigma_{s'}(n)/j$ for $p\nmid j$ ($0$ otherwise, and $a^{(1)}=0$). They are integral, and their cell sums are $\equiv0\pmod{p^t}$ by Lemma~\ref{lem:carry}(Y). Hence $\sum a^{(0)}_{n,j}\hat\Xi_{s+1}(n,j)\equiv0\pmod{p^{s+1}}$, that is $Y_s\equiv0\pmod{p^{2s'+s+1}}=\pmod{p^{2r-s-1}}$.
+\end{itemize}
+By induction $A_{r-1}\equiv0\pmod{p^{2r}}$, and with \eqref{eq:K1} this proves $\Sigma_K\equiv0\pmod{p^{3r}}$.
+
+\subsection{Class J}
+Class J is class K with the roles of the two indices exchanged; we give the argument in full, since the kernels are not symmetric. For $p\nmid j$ and $k=pk_1$, the identity $\binom{N+j-1}j=(-1)^j\binom{-N-1}j\frac N{N+j}$ of Lemma~\ref{lem:factor} gives $\tilde S(N;pk_1,j)=\frac N{N+j}\Phi_r(pk_1,j)$, where
+\[ \Phi_u(k,j):=\binom{L_u-1}k^2(-1)^k\binom{-L_u}k\binom{L_u-1}{k+j}^2(-1)^j\binom{-L_u-1}j,\qquad K'_u(j):=\sum_{k\ge0}\Phi_u(k,j). \]
+Put $\hat K'_r(j):=\sum_{k_1}\Phi_r(pk_1,j)$. The following properties are proved exactly as Lemmas~\ref{lem:factor}, \ref{lem:towers} and~\ref{lem:model}, by Lemma~\ref{lem:digit} applied factor by factor.
+\begin{enumerate}[label=(J\arabic*)]
+\item For $p\nmid k$, $\Phi_u(k,j)=\frac{L_u}k\hat\Xi'_u(k,j)$ with
+\[ \hat\Xi'_u(k,j):=\binom{L_u-1}k^2(-1)^{k-1}\binom{-L_u-1}{k-1}\binom{L_u-1}{k+j}^2(-1)^j\binom{-L_u-1}j, \]
+and $\hat\Xi'_u(k,j)\equiv\Xi^{(\delta)}_{u-1}(\fl{k/p},\fl{j/p})\pmod{p^u}$ with $\delta=[(k\bmod p)+(j\bmod p)\ge p]$. Indeed the four factors reduce to $\binom{L'-1}{\fl{k/p}}^2$, $(-1)^{\fl{k/p}}\binom{-L'-1}{\fl{k/p}}$, $\binom{L'-1}{\fl{k/p}+\fl{j/p}+\delta}^2$ and $(-1)^{\fl{j/p}}\binom{-L'-1}{\fl{j/p}}$, which are the factors of $\Xi^{(\delta)}_{u-1}$ with the arguments in this order.
+\item $\Phi_u(pk_1,j)\equiv\Phi_{u-1}(k_1,\fl{j/p})\pmod{p^u}$. Hence $\hat K'_r(j)\equiv K'_{r-1}(\fl{j/p})\pmod{p^r}$, and $(K'_u)$ is a tower, the unscaled $k$ vanishing modulo $p^u$ by (J1).
+\item The moments $K'^{[t]}_u(j):=\sum_kk^t\Phi_u(k,j)$ are $\equiv0\pmod{p^u}$ for $t\ge1$, and $\tilde K'^{(d)}_u(j):=\sum_k\Phi_u(k,j)\Hp_{p^dk}$ satisfies $\tilde K'^{(d)}_u(j)\equiv\tilde K'^{(d+1)}_{u-1}(\fl{j/p})\pmod{p^u}$ for $d\ge1$.
+\item With $L=L_{u+1}$, exactly $\Phi_{u+1}(pk_1,j)=\Phi_u(k_1,\fl{j/p})\,\bar P_{pk_1}P_{pk_1}^2P_{pk_1+j}^2\bar P_j$, so
+\[ \Phi_{u+1}(pk_1,j)\equiv\Phi_u(k_1,\fl{j/p})\bigl(1-L\rho'_u(j,k_1)\bigr)\pmod{p^{2u+2}} \]
+with $\rho'_u(j,k_1):=-\Hp_j+\Hp_{pk_1}+2\Hp_{j+pk_1}$.
+\end{enumerate}
+As in \eqref{eq:K1}, $\Sigma_J\equiv N\sumu_{j<N}\hat K'_r(j)/j-N^2\sumu_{j<N}\hat K'_r(j)/j^2\pmod{p^{3r}}$. The second sum is $\equiv0\pmod{p^r}$ by (J2) and Lemmas~\ref{lem:power} and~\ref{lem:ind1}. For the first, put $A'_s:=\sum_{j<L_s}\sigma_{r-s}(j)K'_s(j)$; by (J4),
+\[ \sumu_{j<N}\frac{\hat K'_r(j)}j\equiv A'_{r-1}-N\hat X'\pmod{p^{2r}},\qquad\hat X':=\sumu_{j<N}\frac1j\sum_{k_1}\Phi_{r-1}(k_1,\fl{j/p})\rho'_{r-1}(j,k_1). \]
+Split $\hat X'=-\hat X'_1+\hat X'_2+2\hat X'_3$ according to $\rho'$. Then $\hat X'_1=\sum_{j'}c_{j'}K'_{r-1}(j')$ with $c_{j'}=\sumu_{j\in B_1(j')}\Hp_j/j$, which is $\equiv0\pmod{p^r}$ by Lemmas~\ref{lem:dh2} and~\ref{lem:ind1}; $\hat X'_2=\sum_{j'}\sigma_1(j')\tilde K'^{(1)}_{r-1}(j')\equiv0\pmod{p^{r+1}}$ by Lemmas~\ref{lem:block} and~\ref{lem:ind1} and (J3); and $\Hp_{j+pk_1}=\Hp_{pk_1}+\sum_{t\ge0}(-pk_1)^tS_{t+1}(j)$ gives $\hat X'_3=\hat X'_2+\hat X'_1+\sum_{t\ge1}(-p)^t\sumu_j\frac1jS_{t+1}(j)K'^{[t]}_{r-1}(\fl{j/p})\equiv0\pmod{p^r}$ by (J3). The signs in $\rho'$ play no role.
+
+For $A'_{r-1}$: $A'_0\equiv0\pmod{p^{2r}}$ by Lemma~\ref{lem:block}, and for $0\le s\le r-2$, with $s'=r-s-1$, $L=L_{s+1}$ and $q=\fl{j/p}$, (J4) and (J1) give
+\begin{gather*} A'_{s+1}\equiv A'_s-LX'_s+LY'_s\pmod{p^{2r}},\\ X'_s:=\sum_j\sigma_{s'}(j)\sum_{k_1}\Phi_s(k_1,q)\rho'_s(j,k_1),\qquad Y'_s:=\sum_j\sigma_{s'}(j)\sumu_k\frac{\hat\Xi'_{s+1}(k,j)}k. \end{gather*}
+$X'_s\equiv0\pmod{p^{2r-s-1}}$ follows piece by piece exactly as for $X_s$, using Lemmas~\ref{lem:dh1}, \ref{lem:block}, \ref{lem:ind1} and (J3). For $Y'_s$ apply Lemma~\ref{lem:ind2} at level $s+1$ with $(q,q')=(k,j)$, to the tower $\hat\Xi'_{s+1};\Xi^{(\cdot)}_s;\dots$ of (J1) and Lemma~\ref{lem:towers}(2), with top weights $p^{-2s'}\sigma_{s'}(j)/k$ for $p\nmid k$. Their cell sums are the sums of Lemma~\ref{lem:carry}(Y) with the two indices exchanged, hence $\equiv0\pmod{p^t}$; so $Y'_s\equiv0\pmod{p^{2s'+s+1}}$. This proves $\Sigma_J\equiv0\pmod{p^{3r}}$.
+
+\subsection{Class B}
+For $p\nmid k$ and $p\nmid j$, Lemma~\ref{lem:factor} twice gives
+\[ \tilde S(N;k,j)=\frac N{N+k}\cdot\frac Nj\hat\Xi_r(k,j)=\frac{N^2}{kj}\hat\Xi_r(k,j)-\frac{N^3}{k^2j}\Bigl(1+\frac Nk\Bigr)^{-1}\hat\Xi_r(k,j), \]
+so $\Sigma_B\equiv N^2\sumu_{k,j}\hat\Xi_r(k,j)/(kj)\pmod{p^{3r}}$. Lemma~\ref{lem:ind2} at level $r$, with the tower $\hat\Xi_r;\Xi^{(\cdot)}_{r-1};\dots$ and the weights $1/(kj)$ for $p\nmid kj$, whose cell sums vanish modulo $p^t$ by Lemma~\ref{lem:carry}(B), gives $\Sigma_B\equiv0\pmod{p^{3r}}$.
+
+\subsection{Class S}
+For $k=pk'$, $j=pj'$, Lemma~\ref{lem:digit} (with $m$ and $-m$) gives exactly $\tilde S(N;pk',pj')=\tilde S(M;k',j')E$ with $E=P_{pk'}^2\bar P_{pk'}P_{p(k'+j')}^2\bar P_{pj'}$ for $L=N$; the signs cancel since $pk'-k'$ is even. Hence $\Sigma_S-A(M-1)=\sum_{k',j'}\tilde S(M;k',j')(E-1)$. Let $a=v_p(k')$ and $b=v_p(j')$ (with $v_p(0)=\infty$).
+
+\emph{Step 1: second and higher order.} By Lemma~\ref{lem:firstorder}, $E-1=-N\rho_S+N^2e_2+\sum_{d\ge3}N^de_d$ with integral $e_d$ and $\rho_S=\Hp_{pk'}+2\Hp_{p(k'+j')}-\Hp_{pj'}$. For $x\in\{k',k'+j',j'\}$ with $x\ge1$ we have $v_p(px)\ge1+\min(a,b)$, so $S_2(px)\equiv0\pmod{p^{1+\min(a,b)}}$ and $\rho_S\equiv0\pmod{p^{2+2\min(a,b)}}$ (Lemmas~\ref{lem:power} and~\ref{lem:block}); hence $v_p(N^2e_2)\ge2r+1+\min(a,b)$. On the other hand $\binom{M+k'-1}{k'}=\frac M{k'}\binom{M+k'-1}{k'-1}$ is divisible by $p^{(r-1-a)^+}$, and likewise for $j'$, so $v_p(\tilde S(M;k',j'))\ge(r-1-a)^++(r-1-b)^+\ge(r-1-\min(a,b))^+$. Thus the terms of order $\ge2$ are $\equiv0\pmod{p^{3r}}$ (if $k'=j'=0$ then $E=1$), and
+\[ \Sigma_S-A(M-1)\equiv-NT_S\pmod{p^{3r}},\qquad T_S:=\sum_{k',j'}\tilde S(M;k',j')\rho_S(k',j'). \]
+It remains to show $T_S\equiv0\pmod{p^{2r}}$.
+
+\emph{Step 2: decoupling.} Exactly, $\Hp_{p(k'+j')}-\Hp_{pk'}=\sumu_{\mu\le pj'}\frac1{pk'+\mu}=\Hp_{pj'}-pk'Z$ with $Z:=\sumu_{\mu\le pj'}\frac1{\mu(\mu+pk')}$, so $\rho_S=3\Hp_{pk'}+\Hp_{pj'}-2pk'Z$. We have $v_p(Z)\ge1+b$: indeed $Z=\sum_{t\ge0}(-pk')^tS_{t+2}(pj')$, and $S_{t+2}(pj')\equiv0\pmod{p^{1+b-e(t+2)}}$ by Lemma~\ref{lem:power}, since $pj'$ consists of full blocks of length $p^{1+b}$. The $t$-th term thus has valuation $\ge1+b+t-e(t+2)\ge1+b$, because $e(t+2)=0$ unless $(p-1)\mid t+2$, which forces $t+2\ge4$ and then $e(t+2)=1+v_p(t+2)\le t$. Consequently $v_p\bigl(N\cdot pk'Z\cdot\tilde S(M;k',j')\bigr)\ge r+(1+a)+(1+b)+(r-1-a)^++(r-1-b)^+\ge3r$, and
+\[ T_S\equiv3T_1+T_2\pmod{p^{2r}},\qquad T_1:=\sum_{k',j'}\tilde S(M;k',j')\Hp_{pk'},\quad T_2:=\sum_{k',j'}\tilde S(M;k',j')\Hp_{pj'}. \]
+
+\emph{Step 3: $T_1\equiv0\pmod{p^{2r}}$.} Write $T_1=\sum_{k'\ge1}\Hp_{pk'}\binom{M-1}{k'}^2\binom{M+k'-1}{k'}G_1(k')$ with $G_1(k'):=\sum_{j'}\binom{M-1}{k'+j'}^2\binom{M+j'-1}{j'}$, and stratify by $\sigma:=v_p(pk')\ge1$, $k'=p^{\sigma-1}\kappa$ with $p\nmid\kappa$. If $\sigma\ge r$, then $\Hp_{pk'}\equiv0\pmod{p^{2r}}$ by Lemma~\ref{lem:block}. Let $1\le\sigma\le r-1$. Then $\binom{M+k'-1}{k'}=\frac{mp^{r-\sigma}}\kappa(-1)^{k'-1}\binom{-M-1}{k'-1}$. Reducing the remaining factors $\sigma-1$ times by Lemma~\ref{lem:digit}, modulo $p^{r-\sigma+1}$,
+\begin{gather*} \binom{M-1}{k'}^2\equiv\binom{mp^{r-\sigma}-1}\kappa^2,\qquad(-1)^{k'-1}\binom{-M-1}{k'-1}\equiv(-1)^{\kappa-1}\binom{-mp^{r-\sigma}-1}{\kappa-1},\\ G_1(k')\equiv G_1^{(r-\sigma)}(\kappa), \end{gather*}
+where $G_1^{(u)}(x):=\sum_j\binom{mp^u-1}{x+j}^2\binom{mp^u+j-1}j$. The last congruence holds because $(G_1^{(u)})_u$ is a tower: for $p\nmid j$, $\binom{mp^u+j-1}j=\frac{mp^u}j\binom{mp^u+j-1}{j-1}\equiv0\pmod{p^u}$, and for $j=pj_1$, Lemma~\ref{lem:digit} gives $\binom{mp^u-1}{x+pj_1}^2\equiv\binom{mp^{u-1}-1}{\fl{x/p}+j_1}^2$ and $\binom{mp^u+pj_1-1}{pj_1}\equiv\binom{mp^{u-1}+j_1-1}{j_1}\pmod{p^u}$. The reduction errors are multiples of $p^{r-\sigma+1}$ and meet the explicit factor $p^{r-\sigma}$ and $\Hp_{pk'}\equiv0\pmod{p^{2\sigma}}$, so they are $\equiv0\pmod{p^{2r}}$. The stratum is therefore
+\[ \equiv mp^{r-\sigma}\sumu_{\kappa<mp^{r-\sigma}}\frac{\Hp_{p^\sigma\kappa}}\kappa R^{(r-\sigma)}(\kappa)\pmod{p^{2r}}, \]
+where
+\[ R^{(u)}(\kappa):=\binom{mp^u-1}\kappa^2(-1)^{\kappa-1}\binom{-mp^u-1}{\kappa-1}G_1^{(u)}(\kappa). \]
+The weights $a_\kappa:=p^{-2\sigma}\Hp_{p^\sigma\kappa}/\kappa$ ($p\nmid\kappa$; $0$ otherwise) are integral by Lemma~\ref{lem:block}, and their block sums are $\equiv0\pmod{p^t}$ by Lemma~\ref{lem:dh2} with $s=\sigma$. For $p\nmid\kappa$, Lemma~\ref{lem:digit} gives $R^{(u)}(\kappa)\equiv\hat R^{(u-1)}(\fl{\kappa/p})\pmod{p^u}$ with
+\[ \hat R^{(w)}(q):=\binom{mp^w-1}q^2(-1)^q\binom{-mp^w-1}qG_1^{(w)}(q), \]
+and $(\hat R^{(w)})_w$ is a tower by Lemma~\ref{lem:digit} and the tower property of $G_1$. Lemma~\ref{lem:ind1} (with the top function needed only on units) gives $\sumu_\kappa a_\kappa R^{(r-\sigma)}(\kappa)\equiv0\pmod{p^{r-\sigma}}$, so the stratum is $\equiv0\pmod{p^{(r-\sigma)+2\sigma+(r-\sigma)}}=\pmod{p^{2r}}$.
+
+\emph{Step 4: $T_2\equiv0\pmod{p^{2r}}$.} Write $T_2=\sum_{j'\ge1}\Hp_{pj'}\binom{M+j'-1}{j'}G_2(j')$ with
+\[ G_2(j'):=\sum_{k'}\binom{M-1}{k'}^2\binom{M+k'-1}{k'}\binom{M-1}{k'+j'}^2, \]
+and stratify by $\sigma=v_p(pj')$, $j'=p^{\sigma-1}\iota$. The strata with $\sigma\ge r$ vanish as before. For $\sigma\le r-1$, $\binom{M+j'-1}{j'}=\frac{mp^{r-\sigma}}\iota(-1)^{j'-1}\binom{-M-1}{j'-1}$, the last factor reduces to $(-1)^{\iota-1}\binom{-mp^{r-\sigma}-1}{\iota-1}$, and $G_2(j')\equiv G_2^{(r-\sigma)}(\iota)\pmod{p^{r-\sigma}}$ with $G_2^{(u)}(y):=\sum_k\binom{mp^u-1}k^2\binom{mp^u+k-1}k\binom{mp^u-1}{k+y}^2$, a tower in $y$ (the unscaled $k$ vanish modulo $p^u$ through $\binom{mp^u+k-1}k$, and the scaled $k=pk_1$ reduce by Lemma~\ref{lem:digit} with $\fl{(pk_1+y)/p}=k_1+\fl{y/p}$). The rest is as in Step 3.
+
+Hence $T_S\equiv0\pmod{p^{2r}}$ and $\Sigma_S\equiv A(M-1)\pmod{p^{3r}}$.
+
+\subsection{Conclusion}
+$A(N-1)-A(M-1)=(\Sigma_S-A(M-1))+\Sigma_K+\Sigma_J+\Sigma_B\equiv0\pmod{p^{3r}}$. For $r=1$ the inductions over $s$ are empty (only $A_0\equiv A'_0\equiv0\pmod{p^2}$ and $\hat X\equiv\hat X'\equiv0\pmod p$ are used), every stratum of Steps~3 and~4 has $\sigma\ge r$, and Lemma~\ref{lem:ind2} is used at level~$1$. Nothing used $p\nmid m$. \qed
+
+\begin{remark}
+Lemma~\ref{lem:dh2} is needed in its strong form: modulo $p^{t+s}$ only, Step~3 would give $p^{2r-\sigma}$.
+\end{remark}
+
+\section{On the printed proof of Beukers (1985)}\label{sec:beukers}
+We compared \cite{beukers1985} with the publisher's scan (pp.~148--154).
+\begin{enumerate}
+\item On p.~149 the proof of Lemma~4(i) reduces it to $\sum_{n=0}^{p^t-1}n^k\sumu_{\lambda\le n}\frac1\lambda\equiv0\pmod{p^t}$ for all $k\ge0$. This congruence is false: for $k=0$ the sum equals $p^t\Hp_{p^t-1}-(p^t-p^{t-1})\equiv p^{t-1}\pmod{p^t}$ (for instance $\frac{77}{12}\equiv1\pmod5$), and for $k=1,2$ it has valuation $t-1$ in all cases we computed. The Abel summation that follows drops the condition $p\nmid n+1$. Lemma~4(i) itself is true (Lemma~\ref{lem:dh1}).
+\item Lemma~4(ii) is stated modulo $p^{t+s}$ and proved for the block $i=0$ only. On p.~154 it is applied with the weights $p^{-s}k^{-1}\sumu_{\lambda\le kp^s}\lambda^{-1}$; this gives the term (13) modulo $p^{2r-s}$, whereas $p^{2r}$ is required. With the normalisation $p^{-2s}$ and Lemma~\ref{lem:dh2} the count is $(r-s)+2s+(r-s)=2r$.
+\end{enumerate}
+Beukers' theorem is unaffected (it also follows from \cite{coster1988,straub2014}).
+
+\section{Verification}\label{sec:verification}\label{sec:verif}
+\subsection*{The Dixon-type sum and the factorial ratios}
+\emph{Numerics.} All statements were tested in exact arithmetic directly from the OEIS definitions; the exponents are attained (Theorem~\ref{thm:A}: $\vp(a(p^k)-a(p^{k-1}))=3k$ for $p\in\{5,11,13,\dots,43\}$ and $3k+1$ for $p=7$; Theorem~\ref{thm:C}: slack $0$ or $1$ for $p\in\{5,7,11,13\}$). The identity \eqref{eq:collapse} was checked exactly for $p\le13$, odd $n\le11$, $k\le2$.
+
+\emph{Lean.} The Lean~4/Mathlib project accompanying this paper \cite{repo} proves the Formal Conjectures statements of A361711 (Theorem~\ref{thm:A} for $n=1$), A364175 and A364178 (Theorem~\ref{thm:C}, including the integrality of A364178, which in the benchmark is defined through the real $\Gamma$ function and rounding). Each benchmark file was copied verbatim into a separate check file whose only \texttt{sorry} is replaced by our theorem; all compile, and \texttt{\#print axioms} reports only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The extension to odd $n>1$ and the integrality of A364172 and A364179 are not yet formalised.
+
+\subsection*{The Ap\'ery-like sequences}
+\emph{Numerics.} Both theorems were tested in exact arithmetic from the OEIS definitions. For A376462, both congruences were checked up to $r=2$ for $p\le31$, $r=3$ for $p\le13$, $r=4$ for $p=7$ and $r=5$ for $p=5$ ($N=3125$); the exponent $3r$ is attained. Every lemma of \Cref{sec:shifted} was also checked separately, and the bounds are attained (slack $0$) at every stage.
+
+\emph{Lean.} The Lean~4/Mathlib project \cite{repo} proves the Formal Conjectures statements of A363983 and A376462 (the latter with both congruences). Each benchmark file was copied verbatim into a check file whose only \texttt{sorry} is replaced by our theorem; it compiles, and \texttt{\#print axioms} reports only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The A363983 definition uses \texttt{Int.toNat}, and the formal proof establishes positivity. The formalisation uses a Kazandzidis lemma from an accepted proof of the OEIS Open evaluation of Epoch AI \cite{adamczewski2026,epoch}, included with attribution.
+
+\section*{Acknowledgements}
+We thank Peter Bala for the conjectures.
+
+\section*{Declarations}
+\emph{Use of AI tools.} We used a large language model to help draft the text and proofs. The authors checked all of the work and are responsible for it.
+
+\emph{Funding.} The authors received no funding for this work.
+
+\emph{Competing interests.} The authors have no competing interests to declare.
+
+\emph{Data availability.} Scripts, outputs and Lean files are available at \cite{repo}.
+
+\appendix
+\section{The certificate polynomial}\label{app:cert}
+\begin{multline*}
+P(n,k)=84n^8-234kn^7+520n^7+261k^2n^6-1215kn^6+1306n^6-135k^3n^5+1101k^2n^5-2590kn^5\\
++1772n^5+27k^4n^4-441k^3n^4+1934k^2n^4-3042kn^4+1454n^4+63k^4n^3-606k^3n^3+1870k^2n^3\\
+-2183kn^3+752n^3+60k^4n^2-434k^3n^2+1062k^2n^2-1000kn^2+268n^2+26k^4n-160k^3n\\
++344k^2n-296kn+80n+4k^4-24k^3+52k^2-48k+16.
+\end{multline*}
+
+\bibliographystyle{amsplain}
+\bibliography{../common/refs}
+\end{document}

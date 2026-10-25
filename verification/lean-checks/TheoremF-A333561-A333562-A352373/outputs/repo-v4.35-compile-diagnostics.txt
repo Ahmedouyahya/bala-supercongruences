@@ -1,0 +1,539 @@
+== EpochA333042.lean
+BalaProofs/EpochA333042.lean:783:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:932:61: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:935:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1140:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1147:15: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1193:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1193:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1194:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1194:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1225:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1225:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1225:32: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1250:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1250:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1251:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1251:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:1628:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:1748:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:1789:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:1906:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:2116:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2138:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:2165:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2270:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2270:27: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2270:37: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2271:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2271:27: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2271:46: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2272:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2272:27: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2272:46: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2415:28: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2416:73: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2423:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2444:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2480:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2503:30: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2555:49: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2565:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2565:20: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2565:78: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2567:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2572:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2573:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2596:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2633:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2658:2: warning: Try this: 
+  haveI̵
+
+--
+BalaProofs/EpochA333042.lean:2697:4: warning: Try this: 
+  haveI̵
+
+--
+BalaProofs/EpochA333042.lean:2745:50: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2759:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2759:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2760:18: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2761:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2765:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2765:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2766:37: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2772:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2772:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2789:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2847:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2856:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2948:50: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2955:50: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:2977:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:3038:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:3188:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:3293:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3293:22: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3295:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3295:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3335:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3424:8: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/EpochA333042.lean:3540:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3543:39: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3562:69: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3694:54: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3698:40: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3809:23: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3843:33: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3899:40: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3904:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:3917:4: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4056:49: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4115:2: warning: Try this: 
+  haveI̵
+
+--
+BalaProofs/EpochA333042.lean:4120:14: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4120:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4165:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4165:18: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4166:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4166:18: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4201:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4201:18: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4202:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/EpochA333042.lean:4202:18: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TFSetup.lean
+BalaProofs/TFSetup.lean:63:73: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFSetup.lean:64:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFSetup.lean:65:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFSetup.lean:81:73: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFSetup.lean:82:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFSetup.lean:83:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TFFrob.lean
+BalaProofs/TFFrob.lean:33:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFFrob.lean:33:36: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFFrob.lean:39:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFFrob.lean:39:50: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFFrob.lean:45:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFFrob.lean:45:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TFHarmonic.lean
+BalaProofs/TFHarmonic.lean:30:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:30:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:36:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:36:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:107:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:107:41: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:107:54: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:107:66: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFHarmonic.lean:143:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+== TFEps.lean
+BalaProofs/TFEps.lean:19:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFEps.lean:33:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TFLift.lean
+BalaProofs/TFLift.lean:45:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFLift.lean:156:63: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFLift.lean:161:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+== TFMain.lean
+BalaProofs/TFMain.lean:49:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/TFMain.lean:70:2: warning: Try this: 
+  haveI̵
+
+== TFInst.lean
+BalaProofs/TFInst.lean:57:14: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TFInst.lean:59:44: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+== A333562Ident.lean
+== A333561Defs.lean
+== A333561Main.lean
+== A333561.lean
+== A333562Defs.lean
+== A333562Main.lean
+== A333562.lean
+== A352373Defs.lean
+== A352373Main.lean
+== A352373.lean
+BalaProofs/A352373.lean:19:20: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/A352373.lean:10:13: warning: Variable name `hp_prime` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp_prime
+
+--
+BalaProofs/A352373.lean:10:34: warning: Variable name `hp_ge_5` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp_ge_5
+
+--
+BalaProofs/A352373.lean:11:13: warning: Variable name `hn_pos` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn_pos
+
+--
+BalaProofs/A352373.lean:12:13: warning: Variable name `hk_pos` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hk_pos
+
+== BinomIdent.lean
+== A333561Oeis.lean

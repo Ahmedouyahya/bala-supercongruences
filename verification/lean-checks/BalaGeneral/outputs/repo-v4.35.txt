@@ -1,0 +1,6 @@
+Repository version (Lean v4.35.0), working project with the files of lean/BalaProofs: BalaGeneral.lean and BalaGeneralCheck.lean compile with exit 0, no sorry, no error.
+'aRS_neg_one_neg_three_eq_A352373' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BalaGeneral.bala_A352373_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BalaGeneral.bala_A333715_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+lake env leanchecker BalaProofs.BalaGeneral: exit 0
+lake env leanchecker BalaProofs.BalaGeneralCheck: exit 0

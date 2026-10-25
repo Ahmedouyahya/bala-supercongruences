@@ -1,0 +1,115 @@
+== A333565Defs.lean
+== A333565Bridge.lean
+BalaProofs/A333565Bridge.lean:247:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/A333565Bridge.lean:250:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/A333565Bridge.lean:259:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/A333565Bridge.lean:262:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TF3Harm.lean
+BalaProofs/TF3Harm.lean:137:63: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Harm.lean:140:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+== TF3G.lean
+BalaProofs/TF3G.lean:26:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TF3Exp.lean
+BalaProofs/TF3Exp.lean:48:36: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== TF3Main.lean
+BalaProofs/TF3Main.lean:63:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:64:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:65:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:68:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:68:44: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:99:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:101:14: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:104:16: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:104:42: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:108:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:114:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:116:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:120:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:120:27: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:138:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:140:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:142:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:142:27: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:164:52: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/TF3Main.lean:164:71: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+== A333565Main.lean
+== A333565.lean

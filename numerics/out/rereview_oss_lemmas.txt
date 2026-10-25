@@ -1,0 +1,174 @@
+== Lemma 1 (Kazandzidis quotient form, Robert-Zuber): v_p(C(pA,pB)/C(A,B) - 1) >= 3 + v_p(A)+v_p(B)+v_p(A-B), p>=5, A>B>0
+PASS Lemma1 p=5 A<=70  2415 pairs, failures 0, min slack 0 at (A,B,got,need)=(2, 1, 3, 3)
+PASS Lemma1 p=7 A<=56  1540 pairs, failures 0, min slack 0 at (A,B,got,need)=(2, 1, 3, 3)
+PASS Lemma1 p=11 A<=44  946 pairs, failures 0, min slack 0 at (A,B,got,need)=(2, 1, 3, 3)
+PASS Lemma1 p=13 A<=39  741 pairs, failures 0, min slack 0 at (A,B,got,need)=(2, 1, 3, 3)
+   control p=3: failures 741 of 741, min slack -1 (expected negative: p>=5 hypothesis is needed)
+== Lemma 1 consequence: C(p^r a, p^s b)/C(p^{r-1}a, p^{s-1}b) == 1 mod p^{r+s+min(r,s)} (a,b>=1; incl. p|a, p|b; =1 when A=B; both 0 when B>A)
+PASS Lemma1-consequence p=5  149 nontrivial cases, failures 0, min slack 0 at (r,s,a,b,got,need)=(1, 1, 2, 1, 3, 3); trivial cases consistent True
+PASS Lemma1-consequence p=7  149 nontrivial cases, failures 0, min slack 0 at (r,s,a,b,got,need)=(1, 1, 2, 1, 3, 3); trivial cases consistent True
+PASS Lemma1-consequence p=11  149 nontrivial cases, failures 0, min slack 0 at (r,s,a,b,got,need)=(1, 1, 2, 1, 3, 3); trivial cases consistent True
+== Lemma 2 (OSS 2.2, n=-2): full sum, lower half (k<p^s/2) and upper half (k>p^s/2) of k^{-2} over p∤k are == 0 mod p^s
+PASS Lemma2 p=5 s=1  slack (full, lower, upper) = (0, 0, 1)
+PASS Lemma2 p=5 s=2  slack (full, lower, upper) = (0, 0, 1)
+PASS Lemma2 p=5 s=3  slack (full, lower, upper) = (0, 0, 1)
+PASS Lemma2 p=7 s=1  slack (full, lower, upper) = (0, 1, 0)
+PASS Lemma2 p=7 s=2  slack (full, lower, upper) = (0, 1, 0)
+PASS Lemma2 p=7 s=3  slack (full, lower, upper) = (0, 1, 0)
+PASS Lemma2 p=11 s=1  slack (full, lower, upper) = (0, 0, 0)
+PASS Lemma2 p=11 s=2  slack (full, lower, upper) = (0, 0, 0)
+PASS Lemma2 p=11 s=3  slack (full, lower, upper) = (0, 0, 0)
+PASS Lemma2 p=13 s=1  slack (full, lower, upper) = (0, 0, 0)
+PASS Lemma2 p=13 s=2  slack (full, lower, upper) = (0, 0, 0)
+PASS Lemma2 p=13 s=3  slack (full, lower, upper) = (0, 0, 0)
+   control p=3 s=1: slack full -1, lower half -1
+   control p=3 s=2: slack full -1, lower half -1
+   control p=3 s=3: slack full -1, lower half -1
+== Lemma 3 (OSS 2.4): (-1)^k C(mp^r-1,k) == (-1)^[k/p] C(mp^{r-1}-1,[k/p]) mod p^r, incl. m<=0 (generalized binomials) and p|m
+PASS Lemma3 p=5 r=1 m=-2 k<=23  failures 0, min slack 0
+PASS Lemma3 p=5 r=1 m=-1 k<=13  failures 0, min slack 0
+PASS Lemma3 p=5 r=1 m=0 k<=18  failures 0, min slack all equal
+PASS Lemma3 p=5 r=1 m=1 k<=13  failures 0, min slack 0
+PASS Lemma3 p=5 r=1 m=2 k<=23  failures 0, min slack 0
+PASS Lemma3 p=5 r=1 m=3 k<=33  failures 0, min slack 0
+PASS Lemma3 p=5 r=1 m=5 k<=53  failures 0, min slack 1
+PASS Lemma3 p=5 r=1 m=10 k<=103  failures 0, min slack 1
+PASS Lemma3 p=5 r=2 m=-2 k<=103  failures 0, min slack 0
+PASS Lemma3 p=5 r=2 m=-1 k<=53  failures 0, min slack 0
+PASS Lemma3 p=5 r=2 m=0 k<=78  failures 0, min slack all equal
+PASS Lemma3 p=5 r=2 m=1 k<=53  failures 0, min slack 0
+PASS Lemma3 p=5 r=2 m=2 k<=103  failures 0, min slack 0
+PASS Lemma3 p=5 r=2 m=3 k<=153  failures 0, min slack 0
+PASS Lemma3 p=5 r=2 m=5 k<=253  failures 0, min slack 1
+PASS Lemma3 p=5 r=2 m=10 k<=503  failures 0, min slack 1
+PASS Lemma3 p=5 r=3 m=-2 k<=503  failures 0, min slack 0
+PASS Lemma3 p=5 r=3 m=-1 k<=253  failures 0, min slack 0
+PASS Lemma3 p=5 r=3 m=0 k<=378  failures 0, min slack all equal
+PASS Lemma3 p=5 r=3 m=1 k<=253  failures 0, min slack 0
+PASS Lemma3 p=5 r=3 m=2 k<=503  failures 0, min slack 0
+PASS Lemma3 p=5 r=3 m=3 k<=753  failures 0, min slack 0
+PASS Lemma3 p=5 r=3 m=5 k<=1253  failures 0, min slack 1
+PASS Lemma3 p=5 r=3 m=10 k<=2503  failures 0, min slack 1
+PASS Lemma3 p=7 r=1 m=-2 k<=31  failures 0, min slack 0
+PASS Lemma3 p=7 r=1 m=-1 k<=17  failures 0, min slack 0
+PASS Lemma3 p=7 r=1 m=0 k<=24  failures 0, min slack all equal
+PASS Lemma3 p=7 r=1 m=1 k<=17  failures 0, min slack 0
+PASS Lemma3 p=7 r=1 m=2 k<=31  failures 0, min slack 0
+PASS Lemma3 p=7 r=1 m=3 k<=45  failures 0, min slack 0
+PASS Lemma3 p=7 r=1 m=7 k<=101  failures 0, min slack 1
+PASS Lemma3 p=7 r=1 m=14 k<=199  failures 0, min slack 1
+PASS Lemma3 p=7 r=2 m=-2 k<=199  failures 0, min slack 0
+PASS Lemma3 p=7 r=2 m=-1 k<=101  failures 0, min slack 0
+PASS Lemma3 p=7 r=2 m=0 k<=150  failures 0, min slack all equal
+PASS Lemma3 p=7 r=2 m=1 k<=101  failures 0, min slack 0
+PASS Lemma3 p=7 r=2 m=2 k<=199  failures 0, min slack 0
+PASS Lemma3 p=7 r=2 m=3 k<=297  failures 0, min slack 0
+PASS Lemma3 p=7 r=2 m=7 k<=689  failures 0, min slack 1
+PASS Lemma3 p=7 r=2 m=14 k<=1375  failures 0, min slack 1
+PASS Lemma3 p=7 r=3 m=-2 k<=1375  failures 0, min slack 0
+PASS Lemma3 p=7 r=3 m=-1 k<=689  failures 0, min slack 0
+PASS Lemma3 p=7 r=3 m=0 k<=1032  failures 0, min slack all equal
+PASS Lemma3 p=7 r=3 m=1 k<=689  failures 0, min slack 0
+PASS Lemma3 p=7 r=3 m=2 k<=1375  failures 0, min slack 0
+PASS Lemma3 p=7 r=3 m=3 k<=2061  failures 0, min slack 0
+PASS Lemma3 p=7 r=3 m=7 k<=4805  failures 0, min slack 1
+PASS Lemma3 p=7 r=3 m=14 k<=9607  failures 0, min slack 1
+PASS Lemma3 p=11 r=1 m=-2 k<=47  failures 0, min slack 0
+PASS Lemma3 p=11 r=1 m=-1 k<=25  failures 0, min slack 0
+PASS Lemma3 p=11 r=1 m=0 k<=36  failures 0, min slack all equal
+PASS Lemma3 p=11 r=1 m=1 k<=25  failures 0, min slack 0
+PASS Lemma3 p=11 r=1 m=2 k<=47  failures 0, min slack 0
+PASS Lemma3 p=11 r=1 m=3 k<=69  failures 0, min slack 0
+PASS Lemma3 p=11 r=1 m=11 k<=245  failures 0, min slack 1
+PASS Lemma3 p=11 r=1 m=22 k<=487  failures 0, min slack 1
+PASS Lemma3 p=11 r=2 m=-2 k<=487  failures 0, min slack 0
+PASS Lemma3 p=11 r=2 m=-1 k<=245  failures 0, min slack 0
+PASS Lemma3 p=11 r=2 m=0 k<=366  failures 0, min slack all equal
+PASS Lemma3 p=11 r=2 m=1 k<=245  failures 0, min slack 0
+PASS Lemma3 p=11 r=2 m=2 k<=487  failures 0, min slack 0
+PASS Lemma3 p=11 r=2 m=3 k<=729  failures 0, min slack 0
+PASS Lemma3 p=11 r=2 m=11 k<=2665  failures 0, min slack 1
+PASS Lemma3 p=11 r=2 m=22 k<=5327  failures 0, min slack 1
+PASS Lemma3 p=11 r=3 m=-1 k<=2665  failures 0, min slack 0
+PASS Lemma3 p=11 r=3 m=0 k<=3996  failures 0, min slack all equal
+PASS Lemma3 p=11 r=3 m=1 k<=2665  failures 0, min slack 0
+PASS Lemma3 p=11 r=3 m=11 k<=20000  failures 0, min slack 1
+== Lemma 4(i) (OSS (27)): C(mp^r+k,k) == C(mp^{r-1}+[k/p],[k/p]) mod p^r
+PASS Lemma4(i) p=5 r=1 m=1 k<=13  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=1 m=2 k<=23  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=1 m=3 k<=33  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=1 m=5 k<=53  failures 0, min slack 1
+PASS Lemma4(i) p=5 r=2 m=1 k<=53  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=2 m=2 k<=103  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=2 m=3 k<=153  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=2 m=5 k<=253  failures 0, min slack 1
+PASS Lemma4(i) p=5 r=3 m=1 k<=253  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=3 m=2 k<=503  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=3 m=3 k<=753  failures 0, min slack 0
+PASS Lemma4(i) p=5 r=3 m=5 k<=1253  failures 0, min slack 1
+PASS Lemma4(i) p=7 r=1 m=1 k<=17  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=1 m=2 k<=31  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=1 m=3 k<=45  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=1 m=7 k<=101  failures 0, min slack 1
+PASS Lemma4(i) p=7 r=2 m=1 k<=101  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=2 m=2 k<=199  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=2 m=3 k<=297  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=2 m=7 k<=689  failures 0, min slack 1
+PASS Lemma4(i) p=7 r=3 m=1 k<=689  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=3 m=2 k<=1375  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=3 m=3 k<=2061  failures 0, min slack 0
+PASS Lemma4(i) p=7 r=3 m=7 k<=4805  failures 0, min slack 1
+PASS Lemma4(i) p=11 r=1 m=1 k<=25  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=1 m=2 k<=47  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=1 m=3 k<=69  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=1 m=11 k<=245  failures 0, min slack 1
+PASS Lemma4(i) p=11 r=2 m=1 k<=245  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=2 m=2 k<=487  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=2 m=3 k<=729  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=2 m=11 k<=2665  failures 0, min slack 1
+PASS Lemma4(i) p=11 r=3 m=1 k<=2665  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=3 m=2 k<=5327  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=3 m=3 k<=7989  failures 0, min slack 0
+PASS Lemma4(i) p=11 r=3 m=11 k<=20000  failures 0, min slack 1
+== Lemma 4(ii) (OSS (28)): C(j,mp^r) == C([j/p],mp^{r-1}) mod p^r, for all j>=0 (both sides 0 when j<mp^r)
+PASS Lemma4(ii) p=5 r=1 m=1 j<=18  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=1 m=2 j<=33  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=1 m=3 j<=48  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=1 m=5 j<=78  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=5 r=2 m=1 j<=78  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=2 m=2 j<=153  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=2 m=3 j<=228  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=2 m=5 j<=378  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=5 r=3 m=1 j<=378  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=3 m=2 j<=753  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=3 m=3 j<=1128  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=5 r=3 m=5 j<=1878  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=7 r=1 m=1 j<=24  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=1 m=2 j<=45  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=1 m=3 j<=66  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=1 m=7 j<=150  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=7 r=2 m=1 j<=150  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=2 m=2 j<=297  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=2 m=3 j<=444  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=2 m=7 j<=1032  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=7 r=3 m=1 j<=1032  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=3 m=2 j<=2061  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=3 m=3 j<=3090  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=7 r=3 m=7 j<=7206  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=11 r=1 m=1 j<=36  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=1 m=2 j<=69  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=1 m=3 j<=102  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=1 m=11 j<=366  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=11 r=2 m=1 j<=366  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=2 m=2 j<=729  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=2 m=3 j<=1092  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=2 m=11 j<=3996  failures 0, min slack 1, j<n both zero True
+PASS Lemma4(ii) p=11 r=3 m=1 j<=3996  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=3 m=2 j<=7989  failures 0, min slack 0, j<n both zero True
+PASS Lemma4(ii) p=11 r=3 m=3 j<=11982  failures 0, min slack 0, j<n both zero True
+== Identities used in both notes: C(N,k) = (N/k) C(N-1,k-1); C(N+k-1,k) = (N/k) C(N+k-1,k-1); C(X-1,Y) = ((X-Y)/X) C(X,Y)
+PASS identity C(N,k)=(N/k)C(N-1,k-1)
+PASS identity C(N+k-1,k)=(N/k)C(N+k-1,k-1)
+PASS identity C(X-1,Y)=((X-Y)/X)C(X,Y)
+
+SUMMARY rereview_oss_lemmas: PASS 161, FAIL 0

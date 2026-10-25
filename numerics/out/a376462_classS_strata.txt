@@ -1,0 +1,6 @@
+p=5 r=2 m=1: v(T_S)-2r=+0;  strata (piece: {sigma: slack vs p^2r}): P1: {1:+0}; P2: {1:+0}; P3: {1:+0}
+p=5 r=2 m=2: v(T_S)-2r=+0;  strata (piece: {sigma: slack vs p^2r}): P1: {1:+0, 2:+0}; P2: {1:+0, 2:+0}; P3: {1:+0, 2:+0}
+p=7 r=2 m=1: v(T_S)-2r=+0;  strata (piece: {sigma: slack vs p^2r}): P1: {1:+0}; P2: {1:+0}; P3: {1:+0}
+p=5 r=3 m=1: v(T_S)-2r=+0;  strata (piece: {sigma: slack vs p^2r}): P1: {1:+1, 2:+0}; P2: {1:+2, 2:+0}; P3: {1:+1, 2:+0}
+p=7 r=2 m=2: v(T_S)-2r=+0;  strata (piece: {sigma: slack vs p^2r}): P1: {1:+0, 2:+0}; P2: {1:+0, 2:+0}; P3: {1:+0, 2:+0}
+p=11 r=2 m=1: v(T_S)-2r=+0;  strata (piece: {sigma: slack vs p^2r}): P1: {1:+0}; P2: {1:+0}; P3: {1:+0}

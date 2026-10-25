@@ -1,0 +1,12 @@
+A119259/A333565    r=1: min over T of v3(Q_T)-(2r+e) = -1 (at T=6); min of v3(tail)-min(2r+e,3r) = -1
+A119259/A333565    r=2: min over T of v3(Q_T)-(2r+e) = -1 (at T=6); min of v3(tail)-min(2r+e,3r) = -1
+A333561            r=1: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+A333561            r=2: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+A333562            r=1: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+A333562            r=2: min over T of v3(Q_T)-(2r+e) = -1 (at T=6); min of v3(tail)-min(2r+e,3r) = -1
+A352373            r=1: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+A352373            r=2: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+A002003            r=1: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+A002003            r=2: min over T of v3(Q_T)-(2r+e) = -1 (at T=6); min of v3(tail)-min(2r+e,3r) = -1
+generic            r=1: min over T of v3(Q_T)-(2r+e) = -1 (at T=3); min of v3(tail)-min(2r+e,3r) = -1
+generic            r=2: min over T of v3(Q_T)-(2r+e) = -1 (at T=6); min of v3(tail)-min(2r+e,3r) = -1

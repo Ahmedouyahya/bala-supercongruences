@@ -1,0 +1,20 @@
+# Lean build directory (several GB; recreated by lake)
+lean/.lake/
+
+# Python
+**/__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# PDFs under paper/ are tracked on purpose; do not add them here.
+
+# LaTeX build files of the papers (PDFs are kept)
+papers/**/*.aux
+papers/**/*.log
+papers/**/*.fls
+papers/**/*.fdb_latexmk
+papers/**/*.out
+papers/**/*.blg
+papers/**/build.log

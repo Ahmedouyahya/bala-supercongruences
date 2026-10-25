@@ -1,0 +1,9 @@
+fresh A370092Defs exit=0 wall=347s errors=0
+fresh A370092Formula exit=0 wall=365s errors=0
+fresh A370092Odd exit=0 wall=283s errors=0
+fresh A370092Two exit=0 wall=354s errors=0
+fresh A370092Main exit=0 wall=241s errors=0
+fresh A370092 exit=0 wall=244s errors=0
+'oeis_370092_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound] 
+
+

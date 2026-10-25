@@ -1,0 +1,6 @@
+CT[Lambda^n] vs A376462, n=0..6: [(1, 1), (5, 5), (109, 109), (3317, 3317), (121501, 121501), (4954505, 4954505), (216867925, 216867925)] ALL EQUAL
+support size 55 ; coefficient of uvzw: 5
+Newton polytope: dim 4 ; #facets 133 ; lattice points 55 ; interior lattice points [(1, 1, 1, 1)]
+p=5: a(p-1) mod p = 1 (Hasse-Witt invertible iff nonzero)
+p=7: a(p-1) mod p = 1 (Hasse-Witt invertible iff nonzero)
+p=11: a(p-1) mod p = 1 (Hasse-Witt invertible iff nonzero)

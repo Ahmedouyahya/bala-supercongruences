@@ -1,0 +1,93 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally on the authors' machine.
+Input: notes/TheoremF-p3-proof.md (plus one background note). Prompt: notes/referee-reports/PROMPT.txt. The report is AI output and is kept as evidence, not as authority.
+===========================================================================
+I'll analyze PROOF.md section by section as an adversarial referee, checking p-adic valuations, lemma hypotheses, sign conventions, index ranges, and logical closure.
+
+---
+
+## Section 0: Statement
+**no issue found** — Clear theorem statement with precise conditions and equivalence.
+
+## Section 1: Set-up (p = 3)
+**no issue found** — Definitions of U, V, L, ψ, Cartier operator C, and functional λ_M are standard and correctly stated. Lemma 1 from p≥5 note lifts verbatim to p=3 (verified: odd p makes (−1)^{pi+1}=(−1)^{i+1}). The properties (C1), (C2) of the Cartier operator hold.
+
+## Section 2: Four Lemmas
+
+### Lemma A (exact forms)
+**no issue found** — The derivation D(φ^M y^{−cM} g) = φ^M y^{−cM}(Mψg − cMg + Dg) in the Laurent ring is correct (Dφ = ψφ, D(y^{−cM}) = −cMy^{−cM}). Constant term of D vanishes because D multiplies y^k by k. λ_M(ψ−c)=0 follows from g=1 (M≠0 in ℤ_(3)).
+
+### Lemma B (expansion)
+**no issue found** — A(N)=[x^{3cM}]φ(x³)^M exp(NL) = Σ (N^j/j!)λ_M(C(L^j)) by (C1). C(L⁰)=1 gives A(M); C(L)=0 because L has no x^{3t} terms. Finiteness: [x^{3cM}]L^j=0 for j>3cM since L has no constant term.
+
+### Lemma C (sizes)
+**no issue found** — v₃(N)=r. v₃(N²/2)=2r, v₃(N³/6)=3r−1 correct. For j≥4: v₃(j!)=(j−s₃(j))/2 ≤ (j−1)/2 (Legendre). Then jr−(j−1)/2−3r = (j−3)r−(j−1)/2 ≥ (j−3)−(j−1)/2 = (j−5)/2 ≥ 0 for j≥5. j=4: 4r−1 ≥ 3r since r≥1. All bounds tight.
+
+### Lemma D (cubic term)
+**no issue found** — N³/6 = 9M³/2. (C2) gives C(L³) = L(y) + 3R, R∈ℤ_(3)[[y]] because L∈ℤ_(3)[[x]] (coefficients 1/j with 3∤j are 3-adic units). Difference (27M³/2)λ_M(R) has valuation 3+3(r−1)=3r.
+
+## Section 3: Harmonic sums and series g
+
+### Lemma E
+**no issue found** — 
+- (a) S₂ ≡ Σ_{R_e} u² = X(X−1)(2X−1)/6 − X(X−3)(2X−3)/18 = X(2X²−3)/9 = 2·3^{3e−2}−3^{e−1} ≡ −3^{e−1} (mod 3^e). Check e=1: 5/4≡2≡−1.
+- (b) Pairing u↔3^e−u gives 2S₁ ≡ −3^e S₂ ≡ 3^{2e−1} (mod 3^{2e}).
+- (c) Even/odd splitting: Σ_{even} ≡ S₂/8, Σ_{odd} ≡ 7S₂/8, S₂^± ≡ 3S₂/4 ≡ 0 (mod 3^e). All algebra in ℤ_(3) correct.
+
+### Lemma F
+**no issue found** — 
+- (a) i=β3^e+u expansion: H_T ≡ ℓS₁ − 3^e S₂·ℓ(ℓ−1)/2. Using E: S₁ ≡ 3^{2e−1}/2, 3^e S₂ ≡ −3^{2e−1} ⇒ H_T ≡ 3^{2e−1}ℓ²/2 ≡ −3^{2e−1} (mod 3^{2e}) since ℓ²≡1, 1/2≡−1.
+- (b) T even ⇒ ℓ even. (−1)^{β3^e+u+1}=(−1)^β(−1)^{u+1}. Σ(−1)^β=0, Σ(−1)^β β = −ℓ/2. H_T^± ≡ (ℓ/2)3^e S₂^± ≡ 0 (mod 3^{2e}) by E(c).
+
+### Lemma G
+**no issue found** — Coefficient formulas [x^T]U²=2H_T/T etc. are pure algebraic identities for T≡0(mod 3); the proof from p≥5 note uses only 3|T, not p≥5.
+
+### Lemma H (series g)
+**no issue found** — 
+- (a) Dg = Σ t g_t y^t = Σ [x^{3t}]L² y^t = C(L²). g_t ∈ ℤ_(3) verified by explicit formula: g_t = 2/(3t²)[(a²(−1)^t+b²)H_{3t} − ab(1+(−1)^t)H_{3t}^±]. With T=3t=ℓ3^e, t=ℓ3^{e−1}, 3t²=ℓ²3^{2e−1} divides the 3-adic valuation of the numerator.
+- (b) g_t ≡ a²(−1)^t+b² (mod 3) via Lemma F: H_T = −3^{2e−1}+3^{2e}κ, H_T^± = 0 (t odd) or 3^{2e}κ' (t even). Closed form Σ a²(−1)^t y^t + b² y^t = −a²y/(1+y)+b²y/(1−y) = y[(b²−a²)+(a²+b²)y]/(1−y²).
+
+## Section 4: The reduction and the proof
+
+### Proposition I (reduction)
+**no issue found** — By B+C: A(N)−A(M) ≡ (N²/2)λ_M(C(L²)) + (N³/6)λ_M(C(L³)) (mod 3^{3r}). N²/2=9M²/2. H(a)+A: λ_M(C(L²))=λ_M(Dg)=−Mλ_M((ψ−c)g). D: cubic term ≡ (9M³/2)λ_M(L(y)). Sum = (9M³/2)[λ_M(L)−λ_M((ψ−c)g)]. v₃(9M³/2)=3r−1, λ_M(…)∈ℤ_(3). Hence A(3M)−A(M) ≡ (9M³/2)λ_M(L−(ψ−c)g) (mod 3^{3r}), giving Theorem F₃(i) (valuation ≥3r−1).
+
+### Lemma J (identity in F₃[[y]])
+**no issue found** — 
+- (a) For 3∤i, 1/i≡i (mod 3), so L̄ = Σ_{3∤i} iℓ_i y^i = Dψ̄ (terms 3|i vanish). Rational form: ψ̄ = y(α+βy)/(1−y²), Dψ̄ = y(α+2βy+αy²)/(1−y²)².
+- (b) 3∤c, a+b≡c ⇒ β≡−c. ψ̄−c = (αy−c)/(1−y²). (ψ̄−c)ḡ = y(αy−c)[(b²−a²)+(a²+b²)y]/(1−y²)². Expand and verify equals L̄ = y(α+cy+αy²)/(1−y²)² (since 2β≡c). Two cases: a≢b ⇒ {a,b}≡{0,c}, α²≡1, a²+b²≡1, y² coeff α, y coeff −2c≡c; a≡b≡2c ⇒ α=0, a²+b²≡2, both sides 0 for y², y coeff −2c≡c.
+- (c) 3|c ⇒ c̄=0. ψ̄(ḡ+K₀) = y(α+βy)[K₀+(b²−a²)y+(a²+b²−K₀)y²]/(1−y²)². Need = y(α+2βy+αy²)/(1−y²)². With b²−a²=αβ:
+  - a≢b (α²≡1), K₀=1: const α; y: α²β+β=2β; y²: α(a²+b²−1+β²) = α (since a²+b²+β²≡2); y³: β(a²+b²−1)=0 (either a²+b²=1 or β=0).
+  - a≡b≢0 (α=0, a²=b²=1), K₀=2: LHS=βy·2=2βy=RHS.
+  - a≡b≡0: both sides 0.
+
+### Proof of Theorem F₃(ii)
+**no issue found** — By Prop I, need λ_M(L−(ψ−c)g)≡0 (mod 3). λ_M mod 3 depends only on f̄.
+- Case 3∤c, a+b≡c: J(b) ⇒ L̄−(ψ̄−c)ḡ=0.
+- Case 3|c: c̄=0, J(c) ⇒ L̄−ψ̄ḡ = ψ̄K₀ = (ψ̄−c̄)K₀ ⇒ λ_M(…)≡K₀λ_M(ψ−c)=0 by Lemma A.
+- Case a≡b≡0: ℓ_i≡0 ⇒ L̄=0, ψ̄=0, ḡ=0 (H(b)) ⇒ difference 0.
+All cases give λ_M(…)≡0 (mod 3), so A(3M)≡A(M) (mod 3^{3r}).
+
+## Section 5: Remarks
+**no issue found** — Remarks are explanatory/computational, not part of the logical proof. Remark 1 correctly extracts the leading digit from Prop I. Remark 2 contextualizes p=3 vs p≥5. Remark 3 describes empirical sharpness. Remark 4 lists numerical verification scripts.
+
+## Section 6: References
+**no issue found** — Proper attribution.
+
+---
+
+## VERDICT: CORRECT
+
+The proof is complete and rigorous. Every lemma is properly justified, p-adic valuations are correctly tracked at each step, all lemma invocations satisfy their hypotheses, sign conventions are consistent, index ranges in block decompositions are exact, and the final deduction closes without gaps. The two new ingredients for p=3 (Lemma A's exact-form identity and Lemma J's F₃[[y]] identity) correctly handle the one-power deficiency that prevents the p≥5 argument from working directly.
+
+---
+
+### Three steps I am least sure about and why:
+
+1. **Lemma H(b) — the mod-3 reduction of g_t**  
+   The computation g_t ≡ a²(−1)^t + b² (mod 3) relies on H_T = −3^{2e−1} + 3^{2e}κ and H_T^± = 3^{2e}κ' (t even), which come from Lemma F. Lemma F's proof uses S₁ ≡ 3^{2e−1}/2 (mod 3^{2e}) from Lemma E(b), where the division by 2 is valid in ℤ_(3) but the intermediate congruence 2S₁ ≡ 3^{2e−1} (mod 3^{2e}) is only established for the sum over R_e, not for the full H_T sum over β blocks. The step "H_T ≡ ℓ S₁ − 3^e S₂·ℓ(ℓ−1)/2 (mod 3^{2e})" is correct, but the derivation of the exact constant −3^{2e−1} (rather than just valuation 2e−1) requires checking that the error terms in S₁ and S₂ do not conspire to change the unit part. The numerical verification (V2) confirms it for t≤200, but the analytic proof's "ℓ²/2 ≡ 1/2 ≡ −1 (mod 3)" step assumes the unit part of S₁ is exactly 1/2 mod 3, which Lemma E(b) only gives as 2S₁ ≡ 3^{2e−1} ⇒ S₁ ≡ 3^{2e−1}/2 in ℤ_(3). This is sound but the most computationally delicate part.
+
+2. **Lemma J(b) — the polynomial identity in F₃[y]**  
+   The verification that (αy−c)[(b²−a²)+(a²+b²)y] = α+cy+αy² splits into two subcases (a≢b and a≡b≡2c). In the a≢b subcase, the proof claims {a,b}≡{0,c} because a+b≡c≢0 and a≢b. This is correct mod 3 (the only pairs of distinct non-zero residues sum to 0), but it implicitly assumes c≢0 (which is given by 3∤c). The y² coefficient becomes α(a²+b²) and the proof states a²+b²≡1; this holds because one of a,b is 0 and the other is ±c, so squares sum to c²≡1. The y coefficient simplification −α²(a+b)−c(a²+b²) ≡ −c(α²+a²+b²) uses a+b≡c. With α²≡1, a²+b²≡1, this gives −2c≡c. All correct, but the case analysis is dense and a misclassification of residue triples would break the identity.
+
+3. **Lemma D — the application of (C2) to L³**  
+   (C2) states: if f∈ℤ_(3)[[x]] then f(x)³ ≡ f(x³) (mod 3), hence C(f³) ≡ f(y) (mod 3ℤ_(3)[[y]]). Here f=L= aV−bU. U=Σ_{3∤j} x^j/j has coefficients 1/j which are 3-adic units (since 3∤j), so U,V∈ℤ_(3

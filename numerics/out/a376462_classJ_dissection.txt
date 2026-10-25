@@ -1,0 +1,9 @@
+p=5 r=2 m=1: A'_s slack: [0, 1]; top err +1; v(Xhat')-r +0; classJ slack +0
+   step 0->1: identity err +0; pieces: X1' +0 X2' +96 X3' +0 Y0' +0 Y1' +96
+p=5 r=2 m=2: A'_s slack: [0, 2]; top err +1; v(Xhat')-r +0; classJ slack +0
+   step 0->1: identity err +0; pieces: X1' +0 X2' +3 X3' +0 Y0' +0 Y1' +0
+p=7 r=2 m=1: A'_s slack: [0, 1]; top err +1; v(Xhat')-r +0; classJ slack +0
+   step 0->1: identity err +0; pieces: X1' +0 X2' +96 X3' +0 Y0' +0 Y1' +96
+p=5 r=3 m=1: A'_s slack: [0, 1, 2]; top err +2; v(Xhat')-r +0; classJ slack +0
+   step 0->1: identity err +0; pieces: X1' +0 X2' +94 X3' +0 Y0' +0 Y1' +94
+   step 1->2: identity err +1; pieces: X1' +2 X2' +5 X3' +1 Y0' +0 Y1' +0

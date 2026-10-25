@@ -1,0 +1,94 @@
+Fact-only re-review report (verbatim final message of a fresh same-model referee agent). Date: 2026-10-15 (night).
+Protocol: no access to earlier referee reports or status lines; a mistake may be reported only after the agent reproduced it with its own exact test; every 'checked for ...' sentence audited against numerics/out/. Scripts: numerics/rereview_*.py. Disposition of every finding: DISPOSITIONS.md.
+===========================================================================
+All testing is complete; nothing further to request. Final report follows.
+
+# Re-review report: A386548 and A364175/A364178 notes
+
+Scope and method: both notes read in full; Lemma 2 of `notes/TheoremF-coefficient-framing-proof.md` read (statement + proof + the notation line 26 it depends on). No referee reports, STATUS/README/VERIFY or status lines of other notes were read. The rbajaj5 draft was opened only for the attribution sentence. External sources checked locally (Robert–Zuber page images `literature/papers/pages/rz_p-02.png`, Radcliffe txt, Bober pdf via pdftotext) and, for OEIS-only claims, online (oeis.org A364178, A364175, A386548, A295470).
+
+---
+
+## Note 1: `notes/A386548-quadratic-tower-proof.md`
+
+### (1) CONFIRMED ERRORS
+None.
+
+### (2) SUSPECTED THEN CLEARED
+- Formula (1) at N = 0 involves C(−1,0); my first run crashed there (math.comb). With the standard convention C(−1,0)=1 the formula gives a(0)=1, and for N ≤ 60 formula (1) equals both the direct series coefficient and the OEIS formula; first ten terms 1,0,−2,−3,6,25,1,−147,−218,591 match OEIS data exactly. (`rereview_quad_A386548_identities.py`, I1–I3.)
+- Case s < r−1 valuation chain: suspected the bookkeeping v_p(D−k') = r−1 and v_p(T_M) ≥ 2(r−1−s) might fail when p | n (R > r). Tested with R := v_p(N) as the note prescribes, including n = p: all four bookkeeping claims and v_p(Q₁Q₂−1) ≥ R+2+2s hold; minimal slacks are (0,0) at p ≥ 7 and (1,0) at p = 5, i.e. the bounds are sharp. (`..._congruences.py`, C4 lines, e.g. `p=7 n=7 r=1 (R=2): ... case1 slack (Q,T_M)=(0,0)`.)
+- Boundary pairs j'=0 / k'=0: confirmed s = v_p(M) so they land in case s ≥ r−1, and Q = 1 there (I7/I10, 0 failures).
+- Theorem claim "n ≤ 3, r ≤ 2, p ∈ {5,7,11,13}, valuation exactly 2r": the cited sweep output omits (p,n,r) = (13,3,2); I computed it: v = 4 = 2r. Extended: p ∈ {5,7,11,13}, n ∈ {1..6, p}, r ≤ 3, N ≤ 1600 — v_p(a(N)−a(M)) = 2R exactly in every case (`C5/C6 exactness: cases with v(a(N)-a(M)) != 2R: []`), unscaled terms all ≥ 2R, scaled differences all ≥ 3R (remark (i) confirmed).
+- Remark (ii) sketch (general (u,v,ε,δ,c) family, odd p ∤ uv, including p = 3): 12 parameter sets × p ∈ {3,5,7,11} × n,r ≤ 2 — no failure (`family failures: 0`). Note the proof as written relies on (JK) at p ≥ 5; for p = 3 it would need Robert–Zuber's 3² form (which still gives 3r−1 ≥ 2r), so the remark is numerically consistent but the p = 3 case is not covered by the text's (JK).
+
+### (3) UNVERIFIED CONCERNS
+- "the referee extended this to n ≤ 6, r ≤ 3, and to p | n" (§4): the referee report is off-limits to me; I independently reproduced those ranges (above), so the mathematical content stands, the citation itself is unchecked.
+- rbajaj5 draft dated "Aug 2026": the local snapshot (`literature/rbajaj5-drafts/README.md.SOURCE`) records only the fetch date 2026-10-15; no draft date is in the file.
+
+### (4) CITATION AUDIT
+- §1 "Formula (1) agrees with the OEIS formula ... (checked numerically, `numerics/sweep_2026-10-15.py`)" — MISMATCH. That script defines A386548 only via the OEIS formula (`def A386548(n): return sum((-1)**k*comb(n+k-1,k)*comb(n-k-1,n-2*k) ...`) and never computes formula (1). `grep -l "2\*j\s*\+\s*3\*k"` over `numerics/` finds no script at all computing formula (1). The claim is true (my I1/I2), but no project artifact supports it.
+- §4 "Formula (1) against the OEIS values and the OEIS binomial-sum formula (n ≤ 20)" — same: no file in `numerics/` or `numerics/out/` performs this check; no OEIS data file exists in the repo.
+- §4 "(JK) quotient form, 5310 pairs per prime, p ∈ {5,7,11}" — MISMATCH. `numerics/out/jk_ratio_form_and_closed_forms.txt` lines: `p=5: 1770 pairs, ...`, `p=7: 1770 pairs, ...`, `p=11: 1770 pairs, ...`. It is 1770 per prime (5310 in total); §2 of the same note correctly says 1770.
+- §2 "1770 pairs per prime, min slack 0" — matches script and output. "level form (checked separately, min slack 0)" — output has `level form min slack = 0` for p = 5, 7 only (note does not state primes; fine).
+- §1 numerics "n ≤ 3, r ≤ 2, p ∈ {5,7,11,13}" — sweep output lacks (13, n=3, r=2) (script skips N > 400). Covered by my run.
+- §4 p = 3 values 1, 3, 7 — match `sweep_2026-10-15.txt` line `p=3 check: [(1, 1, 1), (2, 1, 1), (1, 2, 3), (2, 2, 3), (1, 3, 7), (2, 3, 6)]` and my C7.
+- §5 Robert–Zuber: abstract (page image) reads exactly `C(np,kp) ≡ C(n,k) mod p³·n·k·(n−k)·C(n,k)·ℤ_p (p ≥ 5)` and `3²·…·ℤ_3 (p = 3)`; eq. (1) is the Γ_p quotient; Numdam id matches. The note's (JK) is this statement divided by C(n,k). Confirmed. Meštrović survey: eq. (37) is the Jacobsthal–Kazandzidis congruence and Remark 17 exists (txt lines 639, 686). Jacobsthal 1952 is cited in Meštrović (line 634); Robert–Zuber's own bibliography lists Kazandzidis 1948/1968/1969/1970, not Jacobsthal — harmless.
+- rbajaj5 attribution: draft is about A246437, family [x^{cN}]((1+x^u)/(1−x^v))^N, section titled "Divisibility synchronization", same D = M+k' reduction; A386548 = (1−x²)/(1+x³) is indeed outside that family. Confirmed.
+- OEIS A386548: name, data, formula and "Conjecture ... mod p^(2k) ... p ≥ 5", author Peter Bala Jul 25 2025 — all as cited.
+
+### (5) EXPOSITION
+- §2 says the level form "p^s | A, p^s | B ⇒ ≡ 1 mod p^{3(s+1)}" is "the form actually used below", but case s < r−1 uses the full asymmetric form (v(A−B) = r−1 ≠ s). Only case s ≥ r−1 uses the level form.
+- Formula (1) at N = 0 needs the C(−1,0) = 1 convention (not stated).
+
+### (6) Verdict
+no confirmed error.
+
+---
+
+## Note 2: `notes/A364175-A364178-factorial-ratio-towers.md`
+
+### (1) CONFIRMED ERRORS
+None.
+
+### (2) SUSPECTED THEN CLEARED
+- Integer forms vs Γ definitions: exact equality for n ≤ 60; stated first terms correct (F1/F2).
+- v₂ bookkeeping (core = 2n + s₂(n); even n: Π(n+2j) = 2ⁿ(3m)!/m!, v₂(b) = s₂(3m); odd n: 2n + s₂(n)): all exact for n ≤ 120 (F3).
+- Odd q: N_k = ⌊n/qᵏ⌋ + ε_k with ε_k ∈ {0,1}; ε_k = 1 ⇔ ∃ s ≤ ρ with qᵏ | ρ+2s; then ρ+2s ∈ {qᵏ, 2qᵏ} and 3ρ ≥ qᵏ; per-k Legendre summand equals F(ρ/qᵏ) − ε_k; the F table (0 on [0,1/10)∪[1/6,3/10), 1 on [1/10,1/6)∪[3/10,7/10)∪[5/6,9/10), 2 on [7/10,5/6)∪[9/10,1)) verified on a 6000-point grid; min summand 0 (sharp). q ∈ {3,5,7,11,13}, n ≤ 300 (F4–F6). Smallest prime q = 3 included.
+- Radcliffe's shape: G = ⌊6x⌋−⌊3x⌋−⌊2x⌋ ∈ {0,1,2}, zero only on [0,1/6); ε = 1 ⇒ ρ/qᵏ ≥ 1/5 for q ∈ {2,5,7,11,13} (F7) — matches his paper's Lemma 1 exactly.
+- a(3m) = (18m)!(2m)!/((9m)!(6m)!(5m)!) and b(2m) = (20m)!(6m)!m!/((12m)!(10m)!(3m)!(2m)!) exact for m ≤ 30 (F8); these are Bober Table 2 entries 15 and 40 respectively (pdftotext lines 1200ff and 1399–1405). A295470 data 1, 83980, 29966636700 = b(0), b(2), b(4).
+- Lemma 2 (cited): S₁ ≡ 0 mod p^{2e}, S₂ ≡ 0 mod p^e, slack 0 for p ∈ {5,7,11,13}, e ≤ 4; at p = 3 both fail by exactly one (G1), consistent with the lemma's p ≥ 5 hypothesis and the note's exclusion of p = 3.
+- Lemma A: slack 0 for p ∈ {5,7,11,13}, r ≤ 3, n ∈ {1..4, p}, a ∈ {1,2,3,5,6,10}; each P_b ≡ 1 mod p^{3r} with slack 0; at p = 3 the lemma fails by one (G2).
+- Lemma B: slack 0 over c ∈ {−3,−1,1,2,3,5}, d ∈ {1,2,3,4,7} (p ∤ d), r ≤ 3, N ≤ 1400; H⁽¹⁾ ≡ 0 mod p^{2r}, H⁽²⁾ ≡ 0 mod p^r; jr − v_p(j) ≥ 3r for 3 ≤ j < 60 (G3). No zero factor occurs (as argued: a zero factor would force p | k).
+- Theorem 3 exact ratio identities, including the three intermediate derivation steps (Lemma C split of the factorial block, the p|j / p∤j split of Π(N+2j) and Π(2N+3j)): exact in 42 cases incl. p | n (n = p) and p = 13, r = 3 for p = 5 (F9/F10). Towers: ratio slack a = 1 at p = 5, 0 otherwise; b slack 0; all differences ≥ 3r (G4). Remark 4 (v_p(a(npʳ)) constant) and the b-tower data at p = 3 (v₃ = 5,4,8,7,11,10 ≥ 3r) confirmed; a-tower fails at p = 3 as the note says (G6). Balanced-ratio remark: C(2N,N) and the Bober ratio, slack 0 (G5). Remark 3 generic shape identity (F11).
+
+### (3) UNVERIFIED CONCERNS
+- "the referee added (11,2,3), p = 13 and p = 5, r = 3" (§3): referee report off-limits; the cases themselves are reproduced in my F10/G4.
+- The Theorem 2 argument is complete as written; no gap found. The "Jacobsthal's classical method" attribution for Lemma A/B is a historical claim I did not trace to a specific page of Jacobsthal 1952 (Granville 1997 txt mentions Jacobsthal at lines 233, 1771; Robert–Zuber use Γ_p, not unit products, as the note itself says).
+
+### (4) CITATION AUDIT
+- "17 cases in `numerics/out/unit_product_principle.txt`" — exactly 17 rows (p=5: 6, p=7: 6, p=11: 5). Match.
+- "b(n) ∈ ℤ for n ≤ 1500 ... 1.4·10⁶ pairs ... exact rationals n ≤ 120; a(n) likewise" — output `n<=1500, 1401732 (n,q) pairs checked, violations: [] (count 0)`, `exact integers for n<=120: True` for both. Minor imprecision: for a(n) the valuation sweep excludes q = 3 (`A364175 valuations (q != 3) ...`), so for 120 < n ≤ 1500 the prime 3 is not checked by computer; and the b-sweep's pair count includes q = 2 for n ≤ 400 (brute force), not only odd primes.
+- "(Both formulas checked for n ≤ 40.)" — script range is n = 1..39. Trivial.
+- "ratio-form slack 0 or 1 ... Lemmas A and B attained (slack 0)" — matches output rows.
+- `sweep_2026-10-15.txt` A364175/A364178 valuations ≥ 3r for p ∈ {5,7,11,13} — matches (p = 11, 13 only n ≤ 2, r ≤ 2 there).
+- Lemma 2 citation: statement in the TheoremF note (line 28) is "p ≥ 5, e ≥ 1: S₂ ≡ 0 (mod p^e), S₁ ≡ 0 (mod p^{2e})" with R_e, S_j defined on line 26 — identical to the recall (e = r). Its proof checks line by line (unit-inversion permutation, 6 invertible, pairing u ↔ p^e−u).
+- Radcliffe: local PDF dated July 19 2026, title "Integrality of a Ratio of Fractional Factorials", proof shape as described (F = ⌊6x⌋−⌊3x⌋−⌊2x⌋, ρ/q ≥ 1/5, q = 3 via Vasyunin (18m)!(2m)!/((9m)!(6m)!(5m)!) when 3 | n, 3ⁿ factor otherwise). Match.
+- OEIS A364175: Bala formula with 3ⁿ(6n)!/((3n)!(2n)!)·1/Π(2n+3k) signed Peter Bala Jun 14 2026; Radcliffe comment "The integrality conjecture is true" Jul 19 2026; "only conjecturally an integer sequence"; conjecture mod p^{3r}, p ≥ 5; author Jul 13 2023. All match. OEIS A364178: "only conjecturally an integer sequence", "{A295470(n/2)}" comment, Bober Table 2 Entry 40, conjecture mod p^{3r} p ≥ 5, author Jul 13 2023. All match. A295470 name = (20n)!(6n)!n!/((12n)!(10n)!(3n)!(2n)!). Match. Bober reference (J. LMS 79 (2009), arXiv:0709.1977) matches.
+
+### (5) EXPOSITION
+- §1 "a(n) likewise" hides that the q = 3 valuations for a(n) were not swept (only exact n ≤ 120); worth one clause.
+- Lemma B proof: "H^{(1)} ≡ Σ_b (S₁ − bp^r S₂)" — the sum is over 0 ≤ b < n; fine, but the Σ_b range is only implicit.
+
+### (6) Verdict
+no confirmed error.
+
+---
+
+## Scripts written (all run with `~/venvs/general/bin/python -I`; outputs in `numerics/out/` with the same basename)
+
+- `<working folder>/numerics/rereview_quad_A386548_identities.py` — formula (1) vs direct series vs OEIS formula (N ≤ 60), (T1)/(T2) identities and general valuation forms (p ∈ {2,3,5,7}), the C(pD−1,pk') and C(D−1,k') identities, identity (2) incl. boundary pairs, synchronisation (and its failure at p = 3), signs, case-split bookkeeping with R = v_p(N) incl. p | n. PASS 197209 / FAIL 0.
+- `.../numerics/rereview_quad_A386548_congruences.py` — (JK) quotient form p ∈ {5,7,11,13}, 2415 pairs each (min slack 0 at (2,1)); p = 3 with 2 (slack 0) and 3 (slack −1); level form; unscaled ≥ 2R, scaled ≥ 3R, per-case Q/T_M slacks, theorem for n ∈ {1..6,p}, r ≤ 3, N ≤ 1600 with exactness 2R; p = 3 data; remark (ii) family. PASS 18247 / FAIL 0.
+- `.../numerics/rereview_quad_factorial_identities.py` — integer vs Γ forms, v₂ formulas, N_k/ε_k structure, Legendre reduction to F(ρ/qᵏ)−ε_k, F and Radcliffe's G tables, Vasyunin/Bober reductions, Lemma C, Theorem 3 ratio identities with derivation steps (42 cases incl. p | n), Remark 3 generic shape. PASS 54484 / FAIL 0.
+- `.../numerics/rereview_quad_factorial_congruences.py` — Lemma 2 (S₁, S₂, incl. p = 3), Lemma A (incl. per-b P_b and p = 3 failure), Lemma B (negative c, several d, H⁽¹⁾/H⁽²⁾, j ≥ 3 bound), Theorem 3 towers (ratio and difference slacks), balanced ratios, Remark 4 and p = 3 data. PASS 5284 / FAIL 0.
+
+No note, STATUS.md, README.md or VERIFY.md was edited.

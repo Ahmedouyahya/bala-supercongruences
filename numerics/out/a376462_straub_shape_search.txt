@@ -1,0 +1,3 @@
+Straub-shape target polynomials (max block 2, >=2 blocks): 1664
+distinct determinants: 120 ; hits: none
+example determinant: #terms 17 ; max degree 5 ; contains degree-5 term True

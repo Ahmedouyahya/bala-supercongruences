@@ -1,0 +1,7 @@
+certificate rational identity: 0
+identity at all integer points 0<=k<=n+2, 2<=n<40, with factorial-form G: True
+boundary G(n,0)=G(n,n+1)=0: True
+recurrence on a(n), n=2..150: True
+closed form satisfies recurrence (odd N): 0
+closed form satisfies recurrence (even N): 0
+initial values a(2),a(3): 1 -8 ; closed: 1 -8

@@ -1,0 +1,79 @@
+Fact-only re-review report (verbatim final message of a fresh same-model referee agent). Date: 2026-10-15 (night).
+Protocol: no access to earlier referee reports or status lines; a mistake may be reported only after the agent reproduced it with its own exact test; every 'checked for ...' sentence audited against numerics/out/. Scripts: numerics/rereview_*.py. Disposition of every finding: DISPOSITIONS.md.
+===========================================================================
+# Re-review of `notes/A370092-periodicity-proof.md`
+
+Project root: `<working folder>`. All tests exact (int/Fraction), scripts in `numerics/rereview_a370092_*.py`, outputs in `numerics/out/` with the same basename. I did not read `notes/referee-reports/`, `STATUS.md`, `README.md`, `VERIFY.md` or other notes. No note was edited.
+
+## (1) CONFIRMED ERRORS
+
+Both are bookkeeping/numerical-remark errors. **No step of the proof itself failed any test.**
+
+**E1. Lemma B parenthetical misstates the numerics.** The note says (§3, after Lemma B): "the minimum over n of v_2(b_k) − m is independent of m: 2, 4, 2, 3, 3, 6, 5, 6, 6, 8, … for k = 3, 4, 5, …". Over the lemma's own range n ≥ m+2 this is false at k = 4 (minimum is 3, not 4, attained at n = m+2 for every m) and the minimum is not independent of m at k = 8, 12. The committed data file `numerics/out/lemmaB_stirling_2adic.txt` minimised over n ∈ [40, 200] and only m ∈ {5, 8}; the note omits that restriction.
+- Script: `numerics/rereview_a370092_profile_k4.py` → `numerics/out/rereview_a370092_profile_k4.txt`:
+  ```
+  k=4: v2(b_4(n,2^m)) - m at n=m+2, m=2..9: [3, 3, 3, 3, 3, 3, 3, 3]
+  k=4: min over n in [40,200] of v2(b_4)-m, m=5,8 (the range used by lemmaB_stirling_2adic.py): [4, 4]
+  k=8: min over n in [m+2, m+200) of v2(b_8)-m, m=2..9: [5, 6, 5, 6, 5, 6, 5, 6]
+  k=12: min over n in [m+2, m+200) of v2(b_12)-m, m=2..9: [8, 7, 6, 6, 7, 7, 6, 6]
+  ```
+  and `numerics/rereview_a370092_lemmaB.py` line `FAIL NOTE'S PARENTHETICAL (Lemma B) ... {2: [2, 3, 2, 3, 3, 5, 5, 6, 6, 8], 3: [2, 3, 2, 3, 3, 6, 5, 5, 5, 7], 5: [...], 8: [2, 3, 2, 3, 3, 5, 5, 5, 5, 6]}`.
+- Impact: none on the proof (Lemma B needs ≥ 2, 3, 5 at k = 4, 8, 12; measured minima 3, 5, 6).
+
+**E2. Missing cited output file.** §6 says "scripts in `numerics/`, outputs in `numerics/out/`" and lists `a370092_periodicity.py` (periods mod 3..40). `numerics/out/a370092_periodicity.txt` does not exist (`ls` → `*** FILE DOES NOT EXIST ***`). The script runs fine (re-run into scratchpad: all 38 moduli `ok=True`), so the content is reproducible, but the citation is unbacked.
+
+## (2) SUSPECTED THEN CLEARED
+
+- **Theorem start index** "n ≥ max_{p^α∥k} α+1": verified for every 3 ≤ k ≤ 400 with 1500 exact terms; true preperiod never exceeds the claim and equals it for 176 moduli (all even). `rereview_a370092_periods.py`: `PASS Theorem ... violations []`.
+- **Prop. 2 start α+1 (α ≥ 3)**: verified α ≤ 12 with a(n) mod 2^13 for n ≤ 7000 (cross-checked against the exact recurrence for n ≤ 400). True preperiod = α+1 for α ∈ {3,4,5,6,8,9,10,12} and = α for α ∈ {7, 11} — valid, not always sharp. `rereview_a370092_pow2_deep.py`.
+- **Prop. 1 start α** (odd p^α, p ≤ 13, α ≤ 6): holds; sharp for 3, 9, 81, 729, 5, 7, 49, 343, 11, 121, 13, 169. Minimal period = φ(p^α) in every case tested.
+- **Sharpness vs λ**: 2^{α−2} is not an eventual period mod 2^α for α = 3..12 (failures occur up to n ≈ N); minimal period = 2^{α−1}. Mod 4: period 2 from n = 3 exactly; mod 2: from n = 2 exactly.
+- **Lemma B**: no violation for m = 2..8, k ≤ 60, 100 values of n ≥ m+2; at n = m+2 exactly for m ≤ 12, k < 45. Slack 0 at k ∈ {3, 5, 6, 7, 15}. "Fails for some k at every n ≤ m+1": true (k = 3 fails at every such n; at n = m+1 only exceptional k fail, consistent with bound (2) covering the others from n ≥ m+1). Start n ≥ m+2 is sharp.
+- **Bound (2)** for n ≥ m+1: holds (min slack 0 at (m,k,n) = (2,2,3)); fails at n = m for k = 2, so the hypothesis is needed.
+- **Unit-ball membership / normalisation**: F(2t) ∈ 2^n ℤ[t], F(1+2t) ∈ 2^{m+1}ℤ[t] with minimal coefficient valuation exactly m+1, so v_{LA_1}(2^{−(m+1)}F) = min(n−m−1, 0) exactly; Colmez's Rem. I.4.4 uses precisely the variable (x−a)/p^h. The basis functions ⌊k/2⌋!C(x,k) have valuation exactly 0 for k ≤ 70 (and C(x,k) alone is outside the unit ball for 67 of them). Control: half-integral t-coefficients break the bound in 530/4099 cases, so the normalisation is load-bearing and correct. `rereview_a370092_amice.py`.
+- **Decomposition** b_k = E_k + 2^{m+1}S_1 + 2^{m+2}S_2: exact in 1680 cases incl. k = 0, 1, 2, n = 0; R_m ∈ ℤ[t] with v_2 = i−2−v_2(i); Kummer valuations as stated.
+- **Finite reduction for k ∈ {3,6,7,15}**: S_1 mod 2^d is purely periodic in n with period λ(2^d) = 1, 2, 2, 8 and depends on m only via (2^m−1) mod 2^d (verified m ≤ 12); the note's case set (49 cases) passes; direct check v_2(S_1) ≥ d for all n ∈ [0,200), m ≤ 14. By-hand formulas for k = 3, 6, 7 exact. Coverage of all (n, m) is complete.
+- **b_3 closed form**: my first run flagged a FAIL; it was my test including n = 0 where the j = 0 term contributes 0^0 = 1. Exact for all n ≥ 1 (the note uses it for n ≥ m+2). Cleared.
+- **§0–§1 identities**: e.g.f., both recurrences, 2−2u²−u³, G(u) expansion, identity (1), c_0..c_7 = 1,1,2,9,36,240,1620,13860, (P1), (P2) incl. v_2(c_k) ≥ 2 for k ≥ 4, (P3) incl. k = 0,1 edge cases, and every congruence in the α ≤ 2 argument (43/43 pass).
+
+## (3) UNVERIFIED CONCERNS
+
+- Colmez's Th. I.4.7 is taken as published; I checked only its "easy half" (basis in the unit ball) numerically, not Lemme I.4.9(ii).
+- The Lemma B numerical claim "m ≤ 10, k ≤ 70, n ≤ 260" is supported by the committed file but I re-verified only m ≤ 8, k ≤ 60, 100 n-values (not needed for the proof).
+- Lengyel reference: note says FPSAC 2009; the local PDF header reads "FPSAC 2008 / DMTCS proc. (subm.)" (a submission template). Marked "not used"; not settled offline.
+- Schreyer "JIS 28 (2025)" and Colmez "Astérisque 330 (2010)" are not stated in the local copies (only arXiv 2409.03799v2; Colmez PDF has no volume info). Consistent with my knowledge; peripheral.
+
+## (4) CITATION AUDIT
+
+**Colmez, Th. I.4.7 (PDF p. 15, rendered and read):** "Les [n/p^h]! (x choose n) pour n ∈ N forment une base orthonormale de LA_h(Z_p, L)." Standing conventions: v_p(p) = 1; L any closed subfield of C_p; B(a,r) = {x ∈ C_p : v_p(x−a) ≥ r}; LA_h(Z_p, L) = functions whose restriction to a+p^hZ_p is the restriction of an L-analytic function on B(a,h), with v_{LA_h}(φ) = inf_a v_{B(a,h)}(φ_{a,h}); **Rem. I.4.4**: φ(x) = Σ a_k(φ,a)((x−a)/p^h)^k and v_{LA_h}(φ) = inf_{a∈S} inf_k v_p(a_k(φ,a)); **Prop. I.4.3**: v_{B(a,r)}(φ) = inf_{x∈B(a,r)} v_p(φ(x)) (so LA_h-convergence implies uniform convergence); **Déf. I.1.3**: orthonormal basis = unique convergent expansion with a_i → 0 and v_B(x) = inf v_p(a_i); **Prop. I.1.5** requires L discretely valued and is used in Colmez's proof (Cor. I.4.6 extends scalars). With p = 2, h = 1, L = Q_2 the note's use (basis ⌊k/2⌋!C(x,k); unit ball = integral coefficients in t = (x−a)/2; v_2(β_k) ≥ v_{LA_1}(f); uniform convergence; Mahler uniqueness) matches the source exactly.
+
+**Kallat, Prop. 2.1 (local txt, lines 132–174):** "Let G(y) ∈ Z[[y]], and let b(n) be defined by (3) [G(e^t−1) = Σ b(n)t^n/n!]. For every k ≥ 2, λ(k) is an eventual period of b(n) modulo k." Proof truncates mod k and uses j^{n+λ(k)} ≡ j^n (mod k) for n ≥ N_0 = max α; Remark 2.2 gives preperiod n ≥ max_{p^α∥k} α. The note's Prop. 1 (start α, G only p-integral) is faithfully "Kallat's proof with G ∈ Z[[y]] weakened"; the claim that A370092 lies outside Kallat's class is right (v_2(g_3) = −1).
+
+**Other:** Kallat arXiv 2609.07238v1 and Schreyer 2409.03799v2 match the local PDFs. OEIS A370092: Bala's comment dated Feb 16 2024, "k > 2", "See A000670 for a more general conjecture", recurrence and e.g.f. all match the note.
+
+**File-by-file:** `lemmaB_k15_residue_check.txt` matches the note verbatim and a scratchpad re-run reproduces it byte-identically; `lemmaB_finite_checks.txt` (200 random functions, k<45, min 0; direct m=2..10, 70 n each) matches; `a370092_termwise_2adic.txt` (slack 0 at k=3) matches; `lemmaB_amice_parts.txt` (exceptional set, k<400) matches; `a370092_powers_of_two.txt` (N=1200, α=2..9 minimal period 2^{α−1}; odd prime powers listed in §2 are exactly those the script resolved) matches, though its starts 3,4,5,6,7,7,9,10 are α+1 (not "≈ α"); `lemmaB_stirling_2adic.txt` matches the ranges stated but see E1; `a370092_periodicity.txt` missing (E2). §6 omits `lemmaB_k15_residue_check.py` from its script list although §3 cites it.
+
+## (5) EXPOSITION
+
+- Theorem start max α + 1 is one more than needed for odd k (Prop. 1 gives α); §4 even writes max(α_i+1, α+1) right after saying Prop. 1 gives α_i.
+- "Since n ≥ m+2, f lies in the unit ball" — n ≥ m+1 suffices and (2) is then correctly stated for n ≥ m+1; minor inconsistency.
+- (P2): the chain k − ⌊log₂k⌋ − 1 ≥ ⌊k/3⌋ holds for all k ≥ 1 (the "k ≥ 16" is merely conservative); the "≥ 2" version holds from k = 7.
+- §5 "preperiod ≈ α" should read α+1 (with α for α = 7, 11). "Slack 0 at k = 3": Lemma B slack is also 0 at k = 5, 6, 7, 15 (termwise slack including g_k is 0 at k = 3 only).
+- k = 3 by hand: at n = m+2 one actually has v_2(b_3) ≥ m+3 (two terms of equal valuation cancel); "≥ m+2" is true but weaker.
+
+## (6) Verdict
+
+No mathematical error found: every identity, valuation bound, start index, sharpness claim and citation reproduces; the only defects are an inaccurate numerical parenthetical in Lemma B (E1) and one missing cited output file (E2).
+
+## Scripts
+
+| Script (`numerics/`) | Covers | Pass/Fail |
+|---|---|---|
+| `rereview_a370092_identities.py` | §0–§1 identities, (P1)–(P3), α ≤ 2 clause | 43 / 0 |
+| `rereview_a370092_lemmaB.py` | Lemma B, bound (2), expansions, decomposition, finite reduction, by-hand cases | 33 / 1 (the FAIL is E1) |
+| `rereview_a370092_amice.py` | Colmez/Amice step: unit ball, normalisation, bound tightness, controls | 11 / 0 |
+| `rereview_a370092_periods.py` | Theorem k ≤ 400, Props 1–2 starts, minimal periods, λ-sharpness (N=1500) | 12 / 0 |
+| `rereview_a370092_pow2_deep.py` | mod 2^α up to α = 12, N = 7000 | 3 / 0 |
+| `rereview_a370092_profile_k4.py` | exact valuations behind E1 | evidence file |
+
+Outputs: `numerics/out/rereview_a370092_{identities,lemmaB,amice,periods,pow2_deep,profile_k4}.txt`. Scratchpad only: byte-identical re-run of `lemmaB_k15_residue_check.py`, and the re-run of `a370092_periodicity.py` (N=400, k ≤ 40, all ok).

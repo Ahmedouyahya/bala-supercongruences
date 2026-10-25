@@ -1,0 +1,7 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Submission.BalaGeneralNegWeak",
+  "theorem_names": ["BalaGeneral.bala_A352373_general", "BalaGeneral.bala_A333715_general"],
+  "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "enable_nanoda": false
+}

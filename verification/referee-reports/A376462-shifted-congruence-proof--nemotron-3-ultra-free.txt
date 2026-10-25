@@ -1,0 +1,752 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally on the authors' machine.
+Input: notes/A376462-shifted-congruence-proof.md (plus one background note). Prompt: notes/referee-reports/PROMPT.txt. The report is AI output and is kept as evidence, not as authority.
+===========================================================================
+Let me analyze the PROOF.md thoroughly, checking each lemma and step for errors, gaps, and valuation issues.
+### §0: Statement, conventions, reduction
+
+**Claim**: Theorem: a(N−1) ≡ a(M−1) (mod p^{3r}) where N = mp^r, M = mp^{r-1}, and a(n) = Σ_{k,j≥0} C(n,k)² C(n+k,k) C(n,k+j)² C(n+j,j).
+
+**Conventions check**:
+- Line 10: C(a,b) := a(a−1)⋯(a−b+1)/b! for b ≥ 0, and C(a,b) := 0 for b < 0. This is standard.
+- Line 10: H'_n := Σ′_{λ≤n} 1/λ (H'_0 = 0). For n=0, empty sum = 0. OK.
+- Line 10: σ_t(n) := Σ′_{k∈B_t(n)} 1/k. σ_0(n) = 1/n if p∤n else 0. OK.
+- Line 10: Σ_{n∈B_u(l)} σ_t(n) = σ_{t+u}(l). This is a key identity. B_u(l) = {k: [k/p^u] = l} = {lp^u, ..., lp^u+p^u-1}. The blocks B_t(n) for n∈B_u(l) partition B_{t+u}(l) because [k/p^t] ∈ B_u(l) iff [k/p^{t+u}] = l. So the sum over n∈B_u(l) of Σ′_{k∈B_t(n)} 1/k equals Σ′_{k∈B_{t+u}(l)} 1/k = σ_{t+u}(l). **Correct.**
+
+**Reduction (line 16)**: "if p | m, the claim for (m, r) is implied by the claim for (m/p, r+1), which is modulo p^{3r+3}." Wait: if m = p·m', then N = p·m'·p^r = m'·p^{r+1}, M = p·m'·p^{r-1} = m'·p^r. The claim for (m,r) is a(m'p^{r+1} - 1) ≡ a(m'p^r - 1) (mod p^{3r}). The claim for (m/p, r+1) = (m', r+1) would be a(m'p^{r+1} - 1) ≡ a(m'p^r - 1) (mod p^{3(r+1)}). The latter is stronger (modulo p^{3r+3} vs p^{3r}), so yes it implies the former. **Correct.**
+
+**Four classes**: Split by (p|k?, p|j?). The theorem follows from Σ_S ≡ a(M-1), Σ_K ≡ Σ_J ≡ Σ_B ≡ 0 all mod p^{3r}. This decomposition is exact since every (k,j) falls into exactly one class. **Correct.**
+
+**No issue found in §0.**
+
+---
+### §1: Lemmas 1.1–1.3
+
+**Lemma 1.1** (exact product identities):
+- (i) C(L−1, n) = C(L'−1, [n/p]) · Π'_{λ≤n} (L−λ)/λ = (−1)^{n−[n/p]} C(L'−1,[n/p]) · Π'_{λ≤n} (1 − L/λ).
+- (ii) If p|n: C(L, n) = C(L', n/p) · Π'_{λ≤n} (L−λ)/λ = C(L', n/p) · Π'_{λ≤n} (1 − L/λ).
+
+Proof: In C(L−1,n) = Π_{λ=1}^n (L−λ)/λ, factors with p|λ are Π_{μ≤[n/p]} (L'−μ)/μ = C(L'−1, [n/p]). The remaining factors are Π'_{λ≤n} (L−λ)/λ. For the sign: C(L−1,n) = (-1)^n C(-L,n)? Wait, C(a,b) with negative a: C(-L,n) = (-L)(-L-1)...(-L-n+1)/n! = (-1)^n L(L+1)...(L+n-1)/n!. But C(L-1,n) = (L-1)...(L-n)/n! = (-1)^n (n-L+1)...L/n! ... Actually the sign identity C(n+b-1,b) = (-1)^b C(-n,b) is stated. Let me check: C(L-1,n) = (L-1)(L-2)...(L-n)/n!. C(-L,n) = (-L)(-L-1)...(-L-n+1)/n! = (-1)^n L(L+1)...(L+n-1)/n!. These are not directly related. But the sign factor given is (-1)^{n-[n/p]}. Let's verify: Π'_{λ≤n} (1 - L/λ) = Π'_{λ≤n} (λ-L)/λ = (-1)^{n-[n/p]} Π'_{λ≤n} (L-λ)/λ. And C(L-1,n) = C(L'-1,[n/p]) · Π'_{λ≤n} (L-λ)/λ. So C(L-1,n) = C(L'-1,[n/p]) · (-1)^{n-[n/p]} Π'_{λ≤n} (1-L/λ). **Correct.**
+
+For (ii): C(L,n) = (L/n)C(L-1,n-1). If p|n, n = p·n/p. [ (n-1)/p ] = n/p - 1. C(L-1,n-1) = C(L'-1, n/p-1) · Π'_{λ≤n-1} (L-λ)/λ = C(L'-1, n/p-1) · Π'_{λ≤n} (L-λ)/λ (since p|n, the factor for λ=n is excluded from the product and p|n anyway). Then C(L,n) = (L/n) C(L'-1, n/p-1) Π'_{λ≤n} (L-λ)/λ = (L'/(n/p)) C(L'-1, n/p-1) Π'_{λ≤n} (L-λ)/λ = C(L', n/p) Π'_{λ≤n} (L-λ)/λ. The number of λ≤n prime to p is n - n/p, which is even for p odd. **Correct.**
+
+**Lemma 1.2** (congruences):
+- (a) (-1)^n C(mp^s-1, n) ≡ (-1)^{[n/p]} C(mp^{s-1}-1, [n/p]) (mod p^s)
+- (b) C(mp^s, pn) ≡ C(mp^{s-1}, n) (mod p^s)
+
+Proof uses (1-X)^p = 1 - X^p + pW. (1-X)^{mp^s} = (1-X^p)^{mp^{s-1}} (1 + pW/(1-X^p))^{mp^{s-1}} ≡ (1-X^p)^{mp^{s-1}} (mod p^s). The coefficient of X^{pn} gives (b). For (a), divide by 1-X = (1-X^p)/(1+X+...+X^{p-1}). Then (1-X)^{mp^s-1} = (1-X)^{mp^s}/(1-X) ≡ (1-X^p)^{mp^{s-1}-1} (1+X+...+X^{p-1}) (mod p^s). The coefficient of X^n on RHS is (-1)^{[n/p]} C(mp^{s-1}-1, [n/p]). LHS has coefficient (-1)^n C(mp^s-1, n). **Correct.**
+
+Consequences: C(mp^s-1,n)^2 ≡ C(mp^{s-1}-1,[n/p])^2 (mod p^s) since (-1)^{2n}=1. For p∤n, [(n-1)/p] = [n/p], so (-1)^{n-1}C(mp^s-1,n-1) ≡ (-1)^{[n/p]}C(mp^{s-1}-1,[n/p]) (mod p^s). **Correct.**
+
+**Lemma 1.3** (first-order expansion):
+E = Π_i P_{x_i}^{a_i} P̄_{y_i}^{b_i} with P_x = Π'_{λ≤x} (1 - L/λ), P̄_x = Π'_{λ≤x} (1 + L/λ).
+Then E = Σ_{d≥0} L^d e_d with e_0 = 1,
+e_1 = -Σ_i a_i H'_{x_i} + Σ_i b_i H'_{y_i},
+e_2 = ½ e_1² - ½ Σ_i (a_i S_2(x_i) + b_i S_2(y_i)).
+
+Proof: Group by λ. Factor for λ is (1 - y)^{α_λ}(1 + y)^{β_λ} with y = L/λ. Expansion: 1 + (β_λ - α_λ)y + [C(α_λ,2) + C(β_λ,2) - α_λβ_λ]y² + ... So c_λ = β_λ - α_λ, d_λ = C(α_λ,2) + C(β_λ,2) - α_λβ_λ. Then e_1 = Σ_λ c_λ/λ = Σ_i (-a_i H'_{x_i} + b_i H'_{y_i}). e_2 = Σ_{λ<μ} c_λ c_μ/(λμ) + Σ_λ d_λ/λ² = ½(Σ_λ c_λ/λ)^2 - ½ Σ_λ c_λ²/λ² + Σ_λ d_λ/λ² = ½ e_1² + Σ_λ (d_λ - ½c_λ²)/λ². Compute d_λ - ½c_λ² = C(α,2)+C(β,2)-αβ - ½(β-α)² = (α(α-1)+β(β-1)-2αβ - (β²-2αβ+α²))/2 = (α²-α+β²-β-2αβ-β²+2αβ-α²)/2 = (-α-β)/2 = -½(α_λ+β_λ). This counts the number of products whose range contains λ. So e_2 = ½ e_1² - ½ Σ_i (a_i S_2(x_i) + b_i S_2(y_i)). **Correct.**
+
+The claim that v(e_2) ≥ min(2v(e_1), min_i v(S_2(x_i)), min_i v(S_2(y_i))) is true but needs justification: e_2 is a sum of terms each of which is either a product of two c_λ/λ (valuation ≥ 2v(e_1)?) or a S_2 term. Actually, e_2 = ½ e_1² - ½ Σ(a_i S_2 + b_i S_2). So v(e_2) ≥ min(v(e_1²), min_i v(a_i S_2(x_i)), min_i v(b_i S_2(y_i))) = min(2v(e_1), min_i v(S_2(x_i)), min_i v(S_2(y_i))) since a_i,b_i are non-negative integers (so their valuations are ≥0). **Correct.**
+
+**No issue found in §1.**
+
+---
+### §2: Lemmas 2.1–2.7
+
+**Lemma 2.1** (power sums over full blocks):
+Let e(d) := 0 if (p-1)∤d, e(d) := 1 + v_p(d) if (p-1)|d.
+Claim: Σ_{u∈(ℤ/p^v)^×} u^{-d} ≡ 0 (mod p^{v-e(d)}) (read as no condition if v ≤ e(d)).
+Then S_d(x) ≡ 0 (mod p^{v-e(d)}) for x = p^v y. For d=2: S_2(x) ≡ 0 (mod p^v). And Σ'_{μ∈B_v(l)} μ^{-2} ≡ 0 (mod p^v) for every block.
+
+Proof: (ℤ/p^v)^× is cyclic (p odd prime). Let g generate it. Σ u^{-d} = Σ (gu)^{-d} = g^{-d} Σ u^{-d}, so (g^{-d}-1)Σ ≡ 0 (mod p^v).
+- If (p-1)∤d: g^{-d} ≢ 1 (mod p) so g^{-d}-1 is a unit mod p, hence a unit mod p^v. So Σ ≡ 0 (mod p^v). Here e(d)=0, so v-e(d)=v. **Correct.**
+- If (p-1)|d: g^{p-1} ≡ 1 (mod p). For v=1: e(d)≥1 so v≤e(d), no condition. For v≥2: g generates (ℤ/p^v)^×, so g^{p-1} = 1 + pz with p∤z. Then g^{-d} = (1+pz)^{-d'} where d = (p-1)d'. v_p((1+pz)^{-d'}-1) = 1 + v_p(d') by LTE (lifting the exponent). Since e(d) = 1 + v_p(d), this gives v-e(d). **Correct.**
+
+S_d(x) for x = p^v y: each block B_v(l) maps bijectively to (ℤ/p^v)^× mod p^v, and μ^{-d} ≡ (μ mod p^v)^{-d} (mod p^v) for p∤μ. So S_d(x) ≡ y · Σ_{u∈(ℤ/p^v)^×} u^{-d} ≡ 0 (mod p^{v-e(d)}). **Correct.**
+
+For d=2, p≥5 so (p-1)∤2, so S_2(x) ≡ 0 (mod p^v). **Correct.**
+
+Σ'_{μ∈B_v(l)} μ^{-2} ≡ 0 (mod p^v) because it's the sum over one block. **Correct.**
+
+**Lemma 2.2** (block Wolstenholme):
+For t≥0, l≥0: σ_t(l) = Σ'_{k∈B_t(l)} 1/k ≡ 0 (mod p^{2t}).
+Hence H'_x ≡ 0 (mod p^{2v}) whenever p^v | x.
+
+Proof: t=0: B_0(l) = {l}, but p∤l so σ_0(l) = 1/l. Wait, the definition says B_0(l) = {l}, and σ_0(l) = Σ'_{k∈B_0(l)} 1/k. But if p|l, then the sum is empty (0), and 0 ≡ 0 (mod 1) is fine. If p∤l, σ_0(l) = 1/l, and the claim is 1/l ≡ 0 (mod p^0) i.e. mod 1, which is trivially true (any integer is ≡ 0 mod 1). The proof says "t=0 is empty" - that's slightly imprecise but the claim mod p^0 is vacuous. **OK.**
+
+For t≥1: k ↦ (2l+1)p^t - k is an involution on units in B_t(l). B_t(l) = {lp^t, ..., (l+1)p^t - 1}. The units are those not divisible by p. The map k ↦ (2l+1)p^t - k: if k is a unit, p∤k, then p∤(2l+1)p^t - k since p|(2l+1)p^t. It's an involution. Fixed points? k = (2l+1)p^t/2. Since p is odd, (2l+1)p^t is odd, so no integer fixed point. Good.
+
+1/k + 1/((2l+1)p^t - k) = (2l+1)p^t / (k((2l+1)p^t - k)). Mod p^{2t}: denominator k((2l+1)p^t - k) ≡ k(-k) = -k^2 (mod p^t). Actually more precisely: (2l+1)p^t - k ≡ -k (mod p^t). But we need mod p^{2t} for the sum to be ≡ 0 mod p^{2t}. The claim: 1/k + 1/((2l+1)p^t - k) ≡ -(2l+1)p^t k^{-2} (mod p^{2t}).
+
+Let's check: 1/k + 1/(A - k) = A/(k(A-k)) where A = (2l+1)p^t. Write A-k = -k + A. Then 1/(A-k) = -1/k * 1/(1 - A/k) = -1/k (1 + A/k + A^2/k^2 + ...) = -1/k - A/k^2 - ... So 1/k + 1/(A-k) = -A/k^2 + O(A^2). Since A = O(p^t), A^2 = O(p^{2t}). So 1/k + 1/(A-k) ≡ -A/k^2 (mod p^{2t}) with A = (2l+1)p^t. **Correct.**
+
+Then 2σ_t(l) ≡ -A Σ'_{k∈B_t(l)} k^{-2} (mod p^{2t}). By Lemma 2.1, the sum Σ' k^{-2} ≡ 0 (mod p^t). And A = (2l+1)p^t. So A · (sum) ≡ p^t · p^t = p^{2t} (mod p^{2t}). Wait: Σ' k^{-2} ≡ 0 (mod p^t), so it's p^t × integer. Then A × that = (2l+1)p^t × p^t × integer = (2l+1)p^{2t} × integer ≡ 0 (mod p^{2t}). **Correct.**
+
+H'_{p^v y} is sum of y block sums σ_v(l), each ≡ 0 (mod p^{2v}). **Correct.**
+
+**Lemma 2.3** (reflection):
+For t≥1, 0≤n≤p^t-1: H'_{p^t-1-n} - H'_n ≡ -p^t Σ'_{n<μ<p^t} μ^{-2} (mod p^{2t}).
+In particular H'_{p^t-1-n} ≡ H'_n (mod p^t).
+For s≥1, t≥1, 0≤k≤p^t: H'_{(p^t-k)p^s} - H'_{kp^s} ≡ 0 (mod p^{t+2s}).
+
+Proof: μ = p^t - λ. H'_{p^t-1-n} = Σ'_{λ≤p^t-1-n} 1/λ = Σ'_{μ=n+1}^{p^t-1} 1/(p^t-μ). Wait, the sum is over μ such that n < μ < p^t (since λ = p^t - μ, λ ≤ p^t-1-n ⇔ p^t-μ ≤ p^t-1-n ⇔ μ ≥ n+1). And p∤λ ⇔ p∤μ. So H'_{p^t-1-n} = Σ'_{n<μ<p^t} 1/(p^t-μ) = -Σ'_{n<μ<p^t} 1/μ (1 - p^t/μ)^{-1}.
+
+(1 - p^t/μ)^{-1} = 1 + p^t/μ + p^{2t}/μ^2 + ... So 1/(p^t-μ) = -1/μ (1 + p^t/μ + p^{2t}/μ^2 + ...) = -1/μ - p^t/μ^2 - p^{2t}/μ^3 - ...
+
+Sum over μ: -Σ' 1/μ - p^t Σ' 1/μ^2 - p^{2t}(integral) = -(H'_{p^t-1} - H'_n) - p^t Σ'_{n<μ<p^t} μ^{-2} - p^{2t}(integral).
+
+H'_{p^t-1} = H'_{p^t} ≡ 0 (mod p^{2t}) by Lemma 2.2 (since p^t | p^t). So H'_{p^t-1-n} ≡ H'_n - p^t Σ' μ^{-2} (mod p^{2t}). Rearranged: H'_{p^t-1-n} - H'_n ≡ -p^t Σ' μ^{-2} (mod p^{2t}). **Correct.**
+
+Second claim: μ = p^{t+s} - λ. H'_{(p^t-k)p^s} = Σ'_{λ≤(p^t-k)p^s} 1/λ. Let μ = p^{t+s} - λ. Then λ ≤ (p^t-k)p^s ⇔ μ ≥ kp^s. The sum becomes Σ'_{μ=kp^s+1}^{p^{t+s}-1} 1/(p^{t+s}-μ) = -Σ'_{kp^s<μ<p^{t+s}} 1/μ (1 - p^{t+s}/μ)^{-1} = -(H'_{p^{t+s}-1} - H'_{kp^s}) - p^{t+s} Σ' μ^{-2} - p^{2(t+s)}(integral).
+
+H'_{p^{t+s}} ≡ 0 (mod p^{2t+2s}) by Lemma 2.2. The middle sum Σ'_{kp^s<μ<p^{t+s}} μ^{-2} runs over full p^s-blocks (since the range is from kp^s to p^{t+s}, which is exactly (p^t-k) blocks of size p^s). By Lemma 2.1, each block sum is ≡ 0 (mod p^s), so the total sum is ≡ 0 (mod p^s). Thus p^{t+s} times it is ≡ 0 (mod p^{t+2s}). **Correct.**
+
+**Lemma 2.4** (block shift):
+t≥1, i≥0, n = ip^t + n̄, 0≤n̄<p^t.
+H'_n ≡ H'_{ip^t} + H'_{n̄} (mod p^t).
+For d≥1, 1/(ip^t+λ)^d ≡ λ^{-d} (mod p^t) for p∤λ.
+
+Proof: H'_n - H'_{ip^t} = Σ'_{λ≤n̄} 1/(ip^t+λ). 1/(ip^t+λ) = 1/λ · 1/(1+ip^t/λ) ≡ 1/λ (mod p^t). So H'_n ≡ H'_{ip^t} + H'_{n̄} (mod p^t). The second claim is the same expansion. **Correct.**
+
+**Lemma 2.5** (double harmonic sums, first kind):
+For s≥0, t≥0, i≥0: Σ_{n∈B_t(i)} σ_s(n) H'_n ≡ 0 (mod p^{t+2s}).
+
+Proof: t=0: σ_s(i)H'_i ≡ 0 (mod p^{2s}) by Lemma 2.2 (σ_s(i) ≡ 0 mod p^{2s}). **Correct.**
+
+t≥1: put t' = t+s. Interchange sums: Σ_{n∈B_t(i)} σ_s(n) H'_n = Σ'_{k∈B_{t'}(i)} (1/k) H'_{[k/p^s]} =: Σ(i).
+
+Base block i=0, s≥1: Involution k ↦ p^{t'} - k on units of [1, p^{t'}). Need to check: [(p^{t'}-k)/p^s] = p^t - 1 - [k/p^s]? Since p∤k and s≥1, p^s ∤ k. Write k = qp^s + r, 1≤r<p^s. Then p^{t'} - k = p^{t+s} - qp^s - r = (p^t - q - 1)p^s + (p^s - r). Since 1≤r<p^s, 0 < p^s - r < p^s. So [(p^{t'}-k)/p^s] = p^t - q - 1 = p^t - 1 - [k/p^s]. **Correct.**
+
+Then 2Σ(0) = Σ' (1/k + 1/(p^{t'}-k)) H'_{n(k)} + Σ' 1/(p^{t'}-k) (H'_{p^t-1-n(k)} - H'_{n(k)}).
+
+First sum: 1/k + 1/(p^{t'}-k) = p^{t'}/(k(p^{t'}-k)) ≡ -p^{t'} k^{-2} (mod p^{2t'}). Σ' k^{-2} H'_{n(k)} = Σ_{n<p^t} H'_n Σ'_{k∈B_s(n)} k^{-2}. By Lemma 2.1, the inner sum ≡ 0 (mod p^s). So the first sum ≡ 0 (mod p^{t'+s}) = (mod p^{t+2s}). **Correct.**
+
+Second sum: By Lemma 2.3, H'_{p^t-1-n} - H'_n ≡ -p^t Σ'_{n<μ<p^t} μ^{-2} (mod p^{2t}). And Σ'_{k∈B_s(n)} 1/(p^{t'}-k) = Σ'_{κ'<p^s} 1/((p^t-1-n)p^s + κ') = σ_s(p^t-1-n) ≡ 0 (mod p^{2s}) by Lemma 2.2. So the second sum ≡ 0 (mod p^{t+2s})? Wait: the bracket is O(p^t), and the sum over k is O(p^{2s}), so product is O(p^{t+2s}). But the bracket also has a p^{2t} term which gives O(p^{2t+2s}) ⊂ p^{t+2s} since t≥1. **Correct.**
+
+Since 2 is a unit, Σ(0) ≡ 0 (mod p^{t+2s}). **Correct.**
+
+Base block i=0, s=0: Now n(k)=k. Involution gives n(p^t-k) = p^t - k = (p^t - 1 - k) + 1. So H'_{p^t-k} = H'_{p^t-1-k} + 1/(p^t-k). Then 2Σ'_{k<p^t} (1/k)H'_k = Σ' (p^t/(k(p^t-k))) H'_k + Σ' 1/(p^t-k) (H'_{p^t-1-k} - H'_k) + Σ' 1/(p^t-k)^2.
+
+First sum: p^t/(k(p^t-k)) is integral? k(p^t-k) is not divisible by p since p∤k, p∤(p^t-k). So p^t/(k(p^t-k)) has valuation ≥ t. H'_k is integral. So sum ≡ 0 (mod p^t). **Correct.**
+
+Second sum: 1/(p^t-k) ≡ 1/k (mod p^t)? Wait, the bracket H'_{p^t-1-k} - H'_k. By Lemma 2.3 (first part), H'_{p^t-1-k} - H'_k ≡ -p^t Σ'_{k<μ<p^t} μ^{-2} (mod p^{2t}). So the bracket is ≡ 0 (mod p^t). 1/(p^t-k) is integral. So sum ≡ 0 (mod p^t). **Correct.**
+
+Third sum: Σ'_{k<p^t} 1/(p^t-k)^2 = Σ'_{k<p^t} k^{-2} ≡ 0 (mod p^t) by Lemma 2.1 (d=2). **Correct.**
+
+So Σ(0) ≡ 0 (mod p^t). **Correct.**
+
+General block (i≥1), any s≥0: Start from Σ(i) = Σ_{n∈B_t(i)} σ_s(n) H'_n. Write n = ip^t + n̄, 0≤n̄<p^t.
+
+Two expansions:
+(α) H'_{ip^t+n̄} = H'_{ip^t} + Σ'_{λ≤n̄} 1/(ip^t+λ) = H'_{ip^t} + H'_{n̄} - ip^t S_2(n̄) + p^{2t}η(n̄). 
+Derivation: 1/(ip^t+λ) = 1/λ - ip^t/λ^2 + (ip^t)^2/(λ^2(ip^t+λ)). Sum over λ≤n̄, p∤λ: Σ 1/λ = H'_{n̄}, Σ 1/λ^2 = S_2(n̄), and the remainder is Σ (ip^t)^2/(λ^2(ip^t+λ)) which is p^{2t} times an integral sum. **Correct.**
+
+(β) σ_s(ip^t+n̄) = Σ'_{κ<p^s} 1/((ip^t+n̄)p^s + κ). Let k̄ = n̄ p^s + κ? Wait: σ_s(n) = Σ'_{k∈B_s(n)} 1/k. If n = ip^t + n̄, then B_s(n) = {n p^s + κ : 0≤κ<p^s, p∤(n p^s + κ)}. Since p∤κ, this is {(ip^t+n̄)p^s + κ : 0≤κ<p^s, p∤κ}. So σ_s(ip^t+n̄) = Σ'_{κ<p^s} 1/((ip^t+n̄)p^s + κ).
+
+Expand: 1/((ip^t+n̄)p^s + κ) = 1/(n̄ p^s + κ) - ip^{t+s}/(n̄ p^s + κ)^2 + ... Wait, the proof says: σ_s(ip^t+n̄) = σ_s(n̄) - ip^{t'} τ_s(n̄) + p^{2t'} θ(n̄), where τ_s(n̄) := Σ'_{k̄∈B_s(n̄)} k̄^{-2}, and t' = t+s.
+
+Let's check: σ_s(n̄) = Σ'_{κ<p^s} 1/(n̄ p^s + κ). The difference is Σ' [1/((ip^t+n̄)p^s+κ) - 1/(n̄ p^s+κ)] = Σ' [ -ip^{t+s} / ((n̄ p^s+κ)((ip^t+n̄)p^s+κ)) ].
+
+For the first-order term: -ip^{t+s} Σ' 1/(n̄ p^s+κ)^2 = -ip^{t'} τ_s(n̄) where τ_s(n̄) = Σ'_{k̄∈B_s(n̄)} k̄^{-2}. **Correct.** (Note: k̄ = n̄ p^s + κ runs over B_s(n̄).)
+
+The remainder is p^{2(t+s)} times an integral sum = p^{2t'} θ(n̄). **Correct.**
+
+τ_s(n̄) ≡ 0 (mod p^s) by Lemma 2.1 (since Σ'_{k̄∈B_s(n̄)} k̄^{-2} ≡ 0 mod p^s). For s=0, τ_0(n̄) = n̄^{-2} and the congruence is empty (mod p^0). **Correct.**
+
+σ_s(ip^t+n̄) ≡ 0 (mod p^{2s}) by Lemma 2.2. **Correct.**
+
+Now multiply (α) by σ_s(ip^t+n̄) and sum over n̄ < p^t:
+
+1. H'_{ip^t} · σ_s(ip^t+n̄) sum: H'_{ip^t} Σ_{n̄} σ_s(ip^t+n̄) = H'_{ip^t} σ_{t'}(i). By Lemma 2.2, H'_{ip^t} ≡ 0 (mod p^{2t}) and σ_{t'}(i) ≡ 0 (mod p^{2t'}). So product ≡ 0 (mod p^{2t+2t'}). But we need mod p^{t+2s} = p^{t'+t}. Since t' = t+s ≥ t, 2t+2t' ≥ t+2s? 2t+2t' - (t+2s) = t+2t' - 2s = t+2(t+s)-2s = 3t ≥ t > 0. So yes, ≡ 0 (mod p^{t+2s}). The proof says "mod p^{2t+2t'}" which is stronger. **Correct.**
+
+2. Σ_{n̄} σ_s(ip^t+n̄) H'_{n̄} = Σ(0) - ip^{t'} Σ_{n̄} τ_s(n̄) H'_{n̄} + p^{2t'}(integral). 
+- Σ(0) ≡ 0 (mod p^{t+2s}) by base block.
+- ip^{t'} τ_s(n̄) ≡ 0 (mod p^{t'+s}) = (mod p^{t+2s}) because τ_s(n̄) ≡ 0 (mod p^s).
+- p^{2t'} ≥ p^{t+2s} since 2t' = 2t+2s ≥ t+2s. **Correct.**
+
+3. -ip^t Σ_{n̄} σ_s(ip^t+n̄) S_2(n̄): σ_s(ip^t+n̄) ≡ 0 (mod p^{2s}), S_2(n̄) is integral. So this is O(p^{t+2s}). **Correct.**
+
+4. p^{2t} Σ σ_s(ip^t+n̄) η(n̄): σ_s ≡ 0 (mod p^{2s}), so this is O(p^{2t+2s}) ⊂ O(p^{t+2s}). **Correct.**
+
+Thus Σ(i) ≡ 0 (mod p^{t+2s}). **Correct.**
+
+**Lemma 2.6** (double harmonic sums, second kind):
+For s≥0, t≥0, i≥0: Σ'_{k∈B_t(i)} (1/k) H'_{kp^s} ≡ 0 (mod p^{t+2s}).
+
+Proof: s=0 is Lemma 2.5 with s=0. s≥1, t=0 is Lemma 2.2 (since Σ'_{k<p} H'_{kp^s}/k, and H'_{kp^s} ≡ 0 mod p^{2s} by Lemma 2.2 because p^s | kp^s, so 2s? Wait: H'_{kp^s} with k<p. kp^s is divisible by p^s but not necessarily by higher powers. Lemma 2.2 says H'_x ≡ 0 (mod p^{2v}) when p^v | x. Here p^s | kp^s, so v=s, so H'_{kp^s} ≡ 0 (mod p^{2s}). So each term is O(p^{2s}), and the sum has p-1 terms, so total O(p^{2s}) ⊂ O(p^{t+2s}) since t=0. **Correct.** (Actually the proof says "t=0 is Lemma 2.2" - a bit terse but correct.)
+
+Base block i=0, t≥1: Involution k ↦ p^t - k. 2Σ'_{k<p^t} (1/k) H'_{kp^s} = Σ' (p^t/(k(p^t-k))) H'_{kp^s} + Σ' 1/(p^t-k) (H'_{(p^t-k)p^s} - H'_{kp^s}).
+
+First sum: p^t/(k(p^t-k)) has valuation ≥ t (denominator not divisible by p). H'_{kp^s} ≡ 0 (mod p^{2s}) by Lemma 2.2. So each term is O(p^{t+2s}). Sum is O(p^{t+2s}). **Correct.**
+
+Second sum: By Lemma 2.3 (second part with k=0?), H'_{(p^t-k)p^s} - H'_{kp^s} ≡ 0 (mod p^{t+2s}). 1/(p^t-k) is integral. So sum ≡ 0 (mod p^{t+2s}). **Correct.**
+
+General block: k = ip^t + k̄. 1/k = 1/k̄ - ip^t k̄^{-2} + p^{2t}(integral). H'_{kp^s} = H'_{ip^{t+s}} + Σ'_{λ≤k̄ p^s} 1/(ip^{t+s}+λ) = H'_{ip^{t+s}} + H'_{k̄ p^s} - ip^{t+s} S_2(k̄ p^s) + p^{2(t+s)}(integral).
+
+H'_{ip^{t+s}} ≡ 0 (mod p^{2(t+s)}) by Lemma 2.2. S_2(k̄ p^s) ≡ 0 (mod p^s) by Lemma 2.1.
+
+Multiplying out: every term except Σ'_{k̄} (1/k̄) H'_{k̄ p^s} (the base block) has:
+- Correction to 1/k carries p^t, meets H'_{k̄ p^s} ≡ 0 (mod p^{2s}) → O(p^{t+2s}).
+- Correction -ip^{t+s} S_2 carries p^{t+2s} → O(p^{t+2s}).
+- Higher order terms even smaller. **Correct.**
+
+So Σ'_{k∈B_t(i)} (1/k) H'_{kp^s} ≡ Σ'_{k̄<p^t} (1/k̄) H'_{k̄ p^s} ≡ 0 (mod p^{t+2s}) by base case. **Correct.**
+
+**Lemma 2.7** (carry-restricted sums):
+For t≥1, blocks i,i'≥0, c∈{0,1}, cell Cell_t(i,i';c) = {(n,j) : n∈B_t(i), j∈B_t(i'), p∤j, [n̄+j̄ ≥ p^t] = c}.
+
+(Y) For s'≥0: Σ_{(n,j)∈Cell_t(i,i';c)} σ_{s'}(n)/j ≡ 0 (mod p^{2s'+t}).
+(B) Σ_{(k,j)∈Cell_t(i,i';c), p∤k} 1/(kj) ≡ 0 (mod p^t).
+
+Proof of (Y): Summing over both c gives Σ_{n∈B_t(i)} σ_{s'}(n) · Σ'_{j∈B_t(i')} 1/j = σ_{s'+t}(i) σ_t(i') ≡ 0 (mod p^{2s'+2t+2t}) by Lemma 2.2 (each σ ≡ 0 mod p^{2·}). Wait: σ_{s'+t}(i) ≡ 0 (mod p^{2(s'+t)}) = mod p^{2s'+2t}. σ_t(i') ≡ 0 (mod p^{2t}). Product ≡ 0 (mod p^{2s'+4t}). The proof says "mod p^{2s'+2t+2t}" which is the same. So it suffices to treat c=1.
+
+c=1 means j̄ ≥ p^t - n̄ (so n̄ ≥ 1). By Lemma 2.4, 1/j = 1/j̄ + p^t (integral). The correction p^t meets σ_{s'}(n) ≡ 0 (mod p^{2s'}), so contributes ≡ 0 (mod p^{t+2s'}). The main part: Σ_{n∈B_t(i)} σ_{s'}(n) · (H'_{p^t-1} - H'_{p^t-1-n̄}).
+
+H'_{p^t-1} ≡ 0 (mod p^{2t}) by Lemma 2.2. Σ_n σ_{s'}(n) = σ_{s'+t}(i) ≡ 0 (mod p^{2s'+2t}). So first piece ≡ 0 (mod p^{2t+2s'+2t})? Wait: H'_{p^t-1} is O(p^{2t}), and Σ σ = O(p^{2s'+2t}), so product is O(p^{2s'+4t}). The proof says "mod p^{2t+2s'+2t}" which is p^{2s'+4t}. **Correct.**
+
+By Lemma 2.3, H'_{p^t-1-n̄} = H'_{n̄} + p^t (integral) = H'_n - H'_{ip^t} + p^t (integral) (using Lemma 2.4: H'_n = H'_{ip^t+n̄} = H'_{ip^t} + H'_{n̄} + p^t(integral)). The p^t corrections again meet σ_{s'}(n) ≡ 0 (mod p^{2s'}). What remains: -Σ σ_{s'}(n) H'_n + H'_{ip^t} σ_{s'+t}(i).
+
+-Σ σ_{s'}(n) H'_n ≡ 0 (mod p^{t+2s'}) by Lemma 2.5.
+H'_{ip^t} σ_{s'+t}(i) ≡ 0 (mod p^{2t+2s'+2t})? H'_{ip^t} ≡ 0 (mod p^{2t}), σ_{s'+t}(i) ≡ 0 (mod p^{2s'+2t}), product ≡ 0 (mod p^{2s'+4t}) ⊂ p^{t+2s'} (since t≥1). **Correct.**
+
+Wait, the claim is ≡ 0 (mod p^{2s'+t}). The proof concludes ≡ 0 (mod p^{2s'+t}) by Lemma 2.5 and Lemma 2.2. Let's check the valuation: Lemma 2.5 gives Σ σ_{s'}(n) H'_n ≡ 0 (mod p^{t+2s'}). H'_{ip^t} σ_{s'+t}(i) is O(p^{2t} · p^{2s'+2t}) = O(p^{2s'+4t}) which is ≥ p^{t+2s'} since 2s'+4t ≥ t+2s' ⇔ 4t ≥ t ⇔ 3t ≥ 0. So yes, ≡ 0 mod p^{t+2s'}. But the claim is mod p^{2s'+t} — same thing. **Correct.**
+
+Proof of (B): Both carries together give σ_t(i) σ_t(i') ≡ 0 (mod p^{4t})? Wait, Lemma 2.2 gives σ_t(i) ≡ 0 (mod p^{2t}), so product is mod p^{4t}. The proof says "mod p^{4t}" which is correct.
+
+Take c=1. Replace 1/k, 1/j by 1/k̄, 1/j̄ (corrections ≡ 0 mod p^t, all sums integral). Then Σ'_{k̄<p^t} (1/k̄) Σ'_{j̄≥p^t-k̄} 1/j̄ = Σ'_{k̄} (1/k̄) (H'_{p^t-1} - H'_{p^t-1-k̄}) ≡ -Σ'_{k̄} H'_{k̄}/k̄ (mod p^t) by Lemmas 2.3 and 2.6 (s=0, i=0). 
+
+Let's check: H'_{p^t-1} ≡ 0 (mod p^{2t}) by Lemma 2.2. So H'_{p^t-1} - H'_{p^t-1-k̄} ≡ -H'_{p^t-1-k̄} (mod p^{2t}). By Lemma 2.3, H'_{p^t-1-k̄} ≡ H'_{k̄} (mod p^t). So the difference ≡ -H'_{k̄} (mod p^t). Then Σ' (1/k̄)(-H'_{k̄}) = -Σ' H'_{k̄}/k̄. By Lemma 2.6 with s=0, t=p^t? Wait, Lemma 2.6: Σ'_{k∈B_t(i)} (1/k) H'_{kp^s} ≡ 0 (mod p^{t+2s}). For base block i=0, t=p^t? No, Lemma 2.6 is for block size t, and here the block is B_t(0) = [0, p^t-1]? Actually Lemma 2.6 has B_t(i) = {k: [k/p^t] = i}. For i=0, B_t(0) = {0, 1, ..., p^t-1}. The sum is over units k<p^t. So Σ'_{k<p^t} (1/k) H'_{kp^s} with s=0 is Σ'_{k<p^t} H'_k/k. Lemma 2.6 with t (the block parameter), s=0 gives this ≡ 0 (mod p^{t+0}) = mod p^t. But our sum here is Σ'_{k̄<p^t} H'_{k̄}/k̄ where the block parameter is t (same t as in Lemma 2.7). So by Lemma 2.6 with that t and s=0, this sum ≡ 0 (mod p^t). **Correct.**
+
+**No issue found in §2.** These lemmas are solid.
+
+---
+### §3: Lemmas 3.1–3.5
+
+**Lemma 3.1** (one-index block induction; Beukers Lemma 3; Straub Lemma 5.6):
+Let (T_u) be functions with tower property: T_u(k) ≡ T_{u-1}([k/p]) (mod p^u) for all u≥1, k≥0.
+Let a_k ∈ ℤ_p satisfy Σ_{k∈B_t(l)} a_k ≡ 0 (mod p^t) for all t≥0, l≥0.
+Then Σ_{k∈B_s(l)} a_k T_s(k) ≡ 0 (mod p^s) for all s≥0, l≥0; hence Σ_{k<mp^s} a_k T_s(k) ≡ 0 (mod p^s).
+
+Proof by induction on s. s=0 trivial. Assume true for s-1.
+Σ_{k∈B_s(l)} a_k T_s(k) ≡ Σ_{q∈B_{s-1}(l)} (Σ_{k∈B_1(q)} a_k) T_{s-1}(q) (mod p^s).
+The hypothesis at t=1 makes ā_q := p^{-1} Σ_{k∈B_1(q)} a_k integral, and Σ_{q∈B_t(l')} ā_q = p^{-1} Σ_{k∈B_{t+1}(l')} a_k ≡ 0 (mod p^t).
+By induction, Σ_{q∈B_{s-1}(l)} ā_q T_{s-1}(q) ≡ 0 (mod p^{s-1}).
+Then Σ_{k∈B_s(l)} a_k T_s(k) ≡ p · Σ_{q} ā_q T_{s-1}(q) ≡ 0 (mod p^s). **Correct.**
+
+Important note: The tower property is only needed where weights are nonzero. If a_k=0 for p|k, it suffices that T_s(k) ≡ T_{s-1}([k/p]) (mod p^s) for p∤k, since T_s can be redefined on multiples of p. **Correct.**
+
+**Lemma 3.2** (two-index block induction with carries):
+Let (T_u^{(δ)})_{u≥0, δ∈{0,1}} be functions with tower property:
+T_u^{(δ)}(q,q') ≡ T_{u-1}^{(δ')}([q/p],[q'/p]) (mod p^u), where δ' = [(q mod p) + (q' mod p) + δ ≥ p].
+
+For t≥1, define cells Cell_t(i,i';c) = {(q,q',δ) : q∈B_t(i), q'∈B_t(i'), [(q mod p^t)+(q' mod p^t)+δ ≥ p^t] = c}.
+Let a^{(δ)}_{q,q'} satisfy Σ_{(q,q',δ)∈Cell_t(i,i';c)} a^{(δ)}_{q,q'} ≡ 0 (mod p^t) for all t≥1, i,i'≥0, c∈{0,1}.
+Then for all s≥0, l,l'≥0: Σ_{q∈B_s(l), q'∈B_s(l'), δ} a^{(δ)}_{q,q'} T_s^{(δ)}(q,q') ≡ 0 (mod p^s).
+
+Proof by induction on s. s=0 trivial.
+Replace T_s^{(δ)}(q,q') by T_{s-1}^{(δ')}(q_1,q_1') modulo p^s, where q_1=[q/p], q_1'=[q'/p], δ' = [(q mod p)+(q' mod p)+δ ≥ p].
+Collect terms with same (q_1,q_1',δ'): coefficient is Σ over level-1 cell {(q,q',δ) : [q/p]=q_1, [q'/p]=q_1', [(q mod p)+(q' mod p)+δ ≥ p] = δ'}. This is exactly Cell_1(q_1,q_1';δ'), which by hypothesis is ≡ 0 (mod p). So ā^{(δ')}_{q_1,q_1'} := p^{-1}·(that sum) is integral.
+
+Carries compose: (q mod p^t)+(q' mod p^t)+δ = p[(q_1 mod p^{t-1})+(q_1' mod p^{t-1})+δ'] + ((q mod p)+(q' mod p)+δ - pδ') with the last bracket in [0,p-1]. So the carry bit at level t equals the carry bit at level t-1 for the reduced indices. Hence cell sums of ā at level t-1 are p^{-1} times cell sums of a at level t, ≡ 0 (mod p^{t-1}). Induction applies. **Correct.**
+
+The remark: top-level weights carry δ=0 only and vanish unless p∤j. The cells at top level coincide with Lemma 2.7's cells (for pairs (n,j) with p∤j). So Lemma 2.7 supplies the hypothesis. Tower property only needed where weights nonzero (e.g. p∤j). **Correct.**
+
+**Kernels definitions** (lines 93-98):
+L_u = mp^u.
+Ψ_u(n,j) := C(L_u-1,n)² · (-1)^n C(-L_u-1,n) · C(L_u-1,n+j)² · (-1)^j C(-L_u,j).
+K_u(n) := Σ_{j≥0} Ψ_u(n,j).
+Ξ_u^{(δ)}(q,q') := C(L_u-1,q)² · (-1)^q C(-L_u-1,q) · C(L_u-1,q+q'+δ)² · (-1)^{q'} C(-L_u-1,q').
+Ξ̂_u(n,j) := C(L_u-1,n)² · (-1)^n C(-L_u-1,n) · C(L_u-1,n+j)² · (-1)^{j-1} C(-L_u-1,j-1) for j≥1.
+
+All are integers; Ψ_u(n,j)=0 unless n+j ≤ L_u-1 (from C(L_u-1,n+j)), so K_u(n) is finite sum and K_u(n)=0 for n≥L_u. **Correct.**
+
+**Lemma 3.3** (how the terms factor):
+For k,j≥0: S̃(N;k,j) = (N/(N+k)) · Ψ_r(k,j).
+For p∤j and any n: Ψ_u(n,j) = (L_u/j) · Ξ̂_u(n,j).
+
+Proof: C(N+k-1,k) = (-1)^k C(-N,k) (by C(a,b)=C(a-1,b)·a/(a-b)? Wait: C(-N,k) = (-N)(-N-1)...(-N-k+1)/k! = (-1)^k N(N+1)...(N+k-1)/k! = (-1)^k C(N+k-1,k). Yes.)
+C(-N,k) = C(-N-1,k) · (-N)/(-N-k) = C(-N-1,k) · N/(N+k). So C(N+k-1,k) = (-1)^k C(-N-1,k) · N/(N+k).
+Similarly C(N+j-1,j) = (-1)^j C(-N,j).
+Then S̃(N;k,j) = C(N-1,k)² C(N+k-1,k) C(N-1,k+j)² C(N+j-1,j)
+= C(N-1,k)² [(-1)^k C(-N-1,k) N/(N+k)] C(N-1,k+j)² [(-1)^j C(-N,j)]
+= (N/(N+k)) · [C(N-1,k)² (-1)^k C(-N-1,k) C(N-1,k+j)² (-1)^j C(-N,j)]
+But Ψ_r(k,j) = C(L_r-1,k)² (-1)^k C(-L_r-1,k) C(L_r-1,k+j)² (-1)^j C(-L_r,j) with L_r = N.
+Wait: C(-N,j) vs C(-N-1,j)? The definition of Ψ_u has C(-L_u, j) for the last factor, but here we have C(-N,j) = C(-L_r, j). But the proof says "C(-N,j) = C(-N-1,j)·(-N)/(-N-j)"? Let me re-read Lemma 3.3 proof: "C(N+k−1,k) = (−1)^kC(−N,k) and C(−N,k) = C(−N−1,k)·(−N)/(−N−k) (from C(a,k) = C(a−1,k)·a/(a−k)); similarly C(N+j−1,j) = (−1)^jC(−N,j)."
+
+Wait: C(N+k-1,k) = (-1)^k C(-N,k). Check: C(-N,k) = (-N)(-N-1)...(-N-k+1)/k! = (-1)^k N(N+1)...(N+k-1)/k!. C(N+k-1,k) = (N+k-1)...N/k! = N(N+1)...(N+k-1)/k!. So C(N+k-1,k) = (-1)^k C(-N,k). Correct.
+
+C(-N,k) = C(-N-1,k) · (-N)/(-N-k) = C(-N-1,k) · N/(N+k). Because C(a,k) = a/(a-k) C(a-1,k). Here a=-N, a-k = -N-k, so a/(a-k) = (-N)/(-N-k) = N/(N+k). Correct.
+
+So C(N+k-1,k) = (-1)^k C(-N-1,k) · N/(N+k).
+
+Similarly, C(N+j-1,j) = (-1)^j C(-N,j). (Wait, same formula: C(-N,j) = (-1)^j C(N+j-1,j)? Let's check: C(-N,j) = (-N)(-N-1)...(-N-j+1)/j! = (-1)^j N(N+1)...(N+j-1)/j! = (-1)^j C(N+j-1,j). So C(N+j-1,j) = (-1)^j C(-N,j). Correct.)
+
+Then S̃ = C(N-1,k)² · [(-1)^k C(-N-1,k) N/(N+k)] · C(N-1,k+j)² · [(-1)^j C(-N,j)]
+= (N/(N+k)) · C(N-1,k)² (-1)^k C(-N-1,k) C(N-1,k+j)² (-1)^j C(-N,j)
+= (N/(N+k)) Ψ_r(k,j). **Correct.**
+
+Second claim: For p∤j, Ψ_u(n,j) = (L_u/j) Ξ̂_u(n,j).
+Ψ_u(n,j) has factor (-1)^j C(-L_u, j). Ξ̂_u has factor (-1)^{j-1} C(-L_u-1, j-1).
+C(-L_u, j) = (-L_u/j) C(-L_u-1, j-1). So (-1)^j C(-L_u, j) = (-1)^j (-L_u/j) C(-L_u-1, j-1) = (L_u/j) (-1)^{j-1} C(-L_u-1, j-1). **Correct.**
+
+**Lemma 3.4** (towers):
+(a) For p∤j: Ψ_u(q,j) ≡ 0 (mod p^u). For j=pj₁: Ψ_u(q,pj₁) ≡ Ψ_{u-1}([q/p], j₁) (mod p^u). Hence K_u(q) ≡ K_{u-1}([q/p]) (mod p^u): (K_u) is a tower.
+
+Proof: For p∤j, factor (-1)^j C(-L,j) = (L/j)(-1)^{j-1} C(-L-1,j-1) is divisible by p^u (since L=mp^u). So Ψ_u(q,j) ≡ 0 (mod p^u). **Correct.**
+
+For j=pj₁: Apply Lemma 1.2 factor by factor:
+- C(L-1,q)² ≡ C(L'-1,q')² (mod p^u) by Lemma 1.2(a) consequence? Wait, Lemma 1.2(a) is for C(mp^s-1, n). Here L=mp^u, so C(L-1,q) ≡? Lemma 1.2(a): (-1)^q C(mp^u-1,q) ≡ (-1)^{q'} C(mp^{u-1}-1,q') (mod p^u). Since we have squares, the sign disappears: C(L-1,q)² ≡ C(L'-1,q')² (mod p^u). **Correct.**
+- (-1)^q C(-L-1,q) ≡ (-1)^{q'} C(-L'-1,q') (mod p^u) by Lemma 1.2(a) with -m. Since L=mp^u, -L = (-m)p^u. Lemma 1.2(a) applies with m replaced by -m. **Correct.**
+- C(L-1,q+pj₁)²: [(q+pj₁)/p] = q' + j₁. By Lemma 1.2(a), C(L-1,q+pj₁) ≡ C(L'-1,q'+j₁) (mod p^u) up to sign, square removes sign. **Correct.**
+- (-1)^{pj₁} C(-L,pj₁) ≡ (-1)^{j₁} C(-L',j₁) (mod p^u) by Lemma 1.2(b) with -m (since pj₁ is multiple of p). (-1)^{pj₁} = (-1)^{j₁} since p is odd. **Correct.**
+
+Summing over j: unscaled j vanish mod p^u; scaled j = pj₁ give Ψ_{u-1}(q',j₁). So K_u(q) ≡ K_{u-1}(q') (mod p^u). **Correct.**
+
+(b) Ξ_u^{(δ)}(q,q') ≡ Ξ_{u-1}^{(δ')}([q/p],[q'/p]) (mod p^u) with δ' = [(q mod p)+(q' mod p)+δ ≥ p].
+And for p∤j, Ξ̂_u(n,j) ≡ Ξ_{u-1}^{(δ)}([n/p],[j/p]) (mod p^u) with δ = [(n mod p)+(j mod p) ≥ p].
+So (Ξ̂_u at top, then Ξ_{u-1}^{(·)}, ...) is a two-index tower.
+
+Proof: Same factor-by-factor reduction. For the coupled factor C(L-1, q+q'+δ): [(q+q'+δ)/p] = [q/p] + [q'/p] + δ' by definition of δ'. For Ξ̂: use (-1)^{j-1} C(-L-1,j-1) ≡ (-1)^{[j/p]} C(-L'-1,[j/p]) (the consequence after Lemma 1.2: for p∤n, [(n-1)/p] = [n/p], so (-1)^{n-1}C(mp^s-1,n-1) ≡ (-1)^{[n/p]}C(mp^{s-1}-1,[n/p]) (mod p^s). Here s=u, m is the multiplier, and the binomial is C(-L-1,j-1) with -L = (-m)p^u. So yes, (-1)^{j-1}C(-L-1,j-1) ≡ (-1)^{[j/p]} C(-L'-1,[j/p]) (mod p^u). And [(n+j)/p] = [n/p]+[j/p]+δ. **Correct.**
+
+(c) Moment kernels: K_u^{[t]}(q) := Σ_{j≥0} j^t Ψ_u(q,j) ≡ 0 (mod p^u) for t≥1.
+Proof by induction on u. u=0 empty (or trivial). u≥1: unscaled j contribute ≡ 0 (mod p^u) by (a). Scaled j=pj₁: contribute Σ_{j₁} (pj₁)^t Ψ_u(q,pj₁) ≡ p^t Σ j₁^t Ψ_{u-1}(q',j₁) = p^t K_{u-1}^{[t]}(q') (mod p^{u+t}). By induction, K_{u-1}^{[t]}(q') ≡ 0 (mod p^{u-1}), so p^t · p^{u-1} = p^{u+t-1} ∈ p^u ℤ_p? Wait, we need the sum to be ≡ 0 (mod p^u). The scaled contribution is p^t K_{u-1}^{[t]}(q'). If t≥1, p^t K_{u-1}^{[t]} ≡ 0 (mod p^{t+u-1}) ⊂ p^u ℤ_p since t≥1. **Correct.** But what if t=1? Then p^1 · p^{u-1} = p^u, so it's exactly divisible by p^u. Good. The induction base u=0: K_0^{[t]}(q) is a sum over j, but L_0 = m, and there's no p-adic structure. The statement "u=0 is empty" might mean t≥1 makes it 0 mod 1 (trivial). **OK.**
+
+(d) Harmonically weighted kernels: K̃_u^{(d)}(q) := Σ_{j≥0} Ψ_u(q,j) H'_{p^d j}. Then K̃_u^{(d)}(q) ≡ K̃_{u-1}^{(d+1)}([q/p]) (mod p^u).
+So for any s₀≥0, d₀≥1, the functions T_u := K̃_u^{(d₀+s₀-u)} (0≤u≤s₀) form a tower in the sense of Lemma 3.1.
+
+Proof: Unscaled j: Ψ_u(q,j) ≡ 0 (mod p^u), H' is integral, so contribution ≡ 0 (mod p^u).
+Scaled j = pj₁: Ψ_u(q,pj₁) ≡ Ψ_{u-1}(q',j₁) (mod p^u) and H'_{p^d · pj₁} = H'_{p^{d+1} j₁} exactly. So scaled contribution ≡ Σ_{j₁} Ψ_{u-1}(q',j₁) H'_{p^{d+1} j₁} = K̃_{u-1}^{(d+1)}(q') (mod p^u). **Correct.**
+
+The tower T_u = K̃_u^{(d₀+s₀-u)}: T_u(q) = K̃_u^{(d₀+s₀-u)}(q). Then T_u(q) ≡ K̃_{u-1}^{(d₀+s₀-u+1)}([q/p]) = T_{u-1}([q/p]) (mod p^u). **Correct.**
+
+**Lemma 3.5** (the one-level first-order model):
+For u≥0, L = L_{u+1} = mp^{u+1}, P_x = Π'_{λ≤x}(1 - L/λ), P̄_x = Π'_{λ≤x}(1 + L/λ).
+Exactly: Ψ_{u+1}(n, pj₁) = Ψ_u([n/p], j₁) · P_n² P̄_n P_{n+pj₁}² P̄_{pj₁}.
+And Ψ_{u+1}(n,pj₁) ≡ Ψ_u([n/p],j₁) · (1 - L ρ_u(n,j₁)) (mod p^{2u+2}), with ρ_u(n,j₁) = H'_n - H'_{pj₁} + 2H'_{n+pj₁}.
+
+Proof: Lemma 1.1(i) with m and -m, Lemma 1.1(ii) with -m:
+C(L-1,n) = (-1)^{n-q} C(L'-1,q) P_n (q=[n/p]).
+(-1)^n C(-L-1,n) = (-1)^n · (-1)^{n-q} C(-L'-1,q) P̄_n = (-1)^q C(-L'-1,q) P̄_n.
+C(L-1,n+pj₁)² = C(L'-1,q+j₁)² P²_{n+pj₁} (sign disappears in square).
+(-1)^{pj₁} C(-L,pj₁) = (-1)^{j₁} C(-L',j₁) P̄_{pj₁}.
+Multiply: Ψ_{u+1}(n,pj₁) = Ψ_u(q,j₁) · P_n² P̄_n P_{n+pj₁}² P̄_{pj₁}. **Correct.**
+
+The congruence is Lemma 1.3: E = P_n² P̄_n P_{n+pj₁}² P̄_{pj₁}. Then e_1 = -2H'_n + H'_n - 2H'_{n+pj₁} + H'_{pj₁} = -H'_n - 2H'_{n+pj₁} + H'_{pj₁} = -ρ_u(n,j₁) where ρ_u = H'_n - H'_{pj₁} + 2H'_{n+pj₁}. Wait: ρ_u = H'_n - H'_{pj₁} + 2H'_{n+pj₁}. Then -ρ_u = -H'_n + H'_{pj₁} - 2H'_{n+pj₁}. But e_1 = -2H'_n + H'_n - 2H'_{n+pj₁} + H'_{pj₁} = -H'_n + H'_{pj₁} - 2H'_{n+pj₁} = -ρ_u. So E ≡ 1 + L e_1 = 1 - L ρ_u (mod L²). L = mp^{u+1}, so L² ∈ p^{2u+2} ℤ_p. **Correct.**
+
+**No issue found in §3.** The kernel towers and induction lemmas are correctly established.
+
+---
+### §4: Class K
+
+**Setup** (lines 117-122):
+K̂_r(k) := Σ_{j₁≥0} Ψ_r(k,pj₁) (only scaled j). By Lemma 3.3, for p∤k:
+Σ_{j: p|j} S̃(N;k,j) = (N/(N+k)) K̂_r(k) = (N/k)·(1 + N/k)^{-1} K̂_r(k) = (N/k) K̂_r(k) - (N²/k²) K̂_r(k) + (N³/k³)(1+N/k)^{-1} K̂_r(k).
+The last term is in p^{3r} ℤ_p. Hence
+Σ_K ≡ N·Σ'_{k<N} (1/k) K̂_r(k) - N²·Σ'_{k<N} (1/k²) K̂_r(k) (mod p^{3r}). (4.1)
+
+Check: (1 + N/k)^{-1} = k/(N+k) = 1 - N/k + N²/k² - N³/k³(1+N/k)^{-1}. Wait:
+k/(N+k) = 1 - N/(N+k) = 1 - N/k · k/(N+k) = 1 - N/k + N²/k² · k/(N+k) = ...
+Better: k/(N+k) = 1/(1+N/k) = 1 - N/k + N²/k² - N³/k³ + ... So (N/k) * k/(N+k) = N/k * (1 - N/k + N²/k² - ...) = N/k - N²/k² + N³/k³ - ...
+The series is in ℤ_p since N/k has positive valuation (N=mp^r, p∤k, so v(N/k)=r). So the remainder after N/k - N²/k² is N³/k³ times a unit. Since v(N³/k³) = 3r, the last term is in p^{3r} ℤ_p. **Correct.**
+
+**(4.a) The 1/k² term** (lines 124-125):
+K̂_r(k) = Σ_{j₁} Ψ_r(k,pj₁) ≡ Σ_{j₁} Ψ_{r-1}([k/p],j₁) = K_{r-1}([k/p]) (mod p^r) by Lemma 3.4(a) termwise in j₁. So (K̂_r, K_{r-1}, K_{r-2}, ...) is a tower.
+With a_k := k^{-2} for p∤k and 0 otherwise, Σ_{k∈B_t(l)} a_k ≡ 0 (mod p^t) by Lemma 2.1.
+Lemma 3.1 gives Σ'_{k<N} (1/k²) K̂_r(k) ≡ 0 (mod p^r), so the second term of (4.1) is ≡ 0 (mod p^{3r}).
+
+Check: Lemma 3.4(a) says for j=pj₁, Ψ_u(q,pj₁) ≡ Ψ_{u-1}([q/p],j₁) (mod p^u). Here u=r, q=k. So Ψ_r(k,pj₁) ≡ Ψ_{r-1}([k/p],j₁) (mod p^r). Sum over j₁: K̂_r(k) ≡ K_{r-1}([k/p]) (mod p^r). This holds for each k with p∤k. So (K̂_r, K_{r-1}, ...) is indeed a tower (the tower property is exactly K̂_r(k) ≡ K_{r-1}([k/p]) (mod p^r)). **Correct.**
+
+Lemma 2.1: Σ_{k∈B_t(l)} k^{-2} ≡ 0 (mod p^t) for p∤k. This is exactly S_2 over the block, which Lemma 2.1 says ≡ 0 (mod p^t). **Correct.**
+
+Lemma 3.1 requires a_k ∈ ℤ_p and Σ_{k∈B_t(l)} a_k ≡ 0 (mod p^t) for all t,l. Here a_k = k^{-2} for p∤k, 0 for p|k. The block sums are exactly the S_2 sums, which are ≡ 0 mod p^t. **Correct.**
+
+Then Σ_{k<mp^r} a_k K̂_r(k) ≡ 0 (mod p^r). Multiply by N² = m²p^{2r} gives p^{3r}. **Correct.**
+
+**(4.b) The 1/k term: reduction to A_{r-1}** (lines 126-130):
+Define for 0 ≤ s ≤ r-1: A_s := Σ_{n<L_s} σ_{r-s}(n) K_s(n).
+By Lemma 3.5 (u = r-1, L = N): K̂_r(k) = Σ_{j₁} Ψ_{r-1}(n',j₁) · (1 - N ρ_{r-1}(k,j₁)) + N²(integral), n' := [k/p].
+Therefore Σ'_{k<N} (1/k) K̂_r(k) ≡ Σ_{n'<M} σ_1(n') K_{r-1}(n') - N · X̂ = A_{r-1} - N · X̂ (mod p^{2r}), where X̂ := Σ'_{k<N} (1/k) Σ_{j₁} Ψ_{r-1}(n',j₁) ρ_{r-1}(k,j₁). (4.2)
+
+Let's verify carefully:
+K̂_r(k) = Σ_{j₁} Ψ_r(k,pj₁).
+By Lemma 3.5 with u=r-1, L = mp^r = N: Ψ_r(n, pj₁) = Ψ_{r-1}([n/p], j₁) · (1 - N ρ_{r-1}(n,j₁)) + N²(integral).
+Wait, Lemma 3.5 says: Ψ_{u+1}(n, pj₁) ≡ Ψ_u([n/p], j₁) · (1 - L ρ_u(n,j₁)) (mod p^{2u+2}), with L = mp^{u+1}.
+Here u+1 = r, so u = r-1, L = mp^r = N. And the congruence is modulo p^{2(r-1)+2} = p^{2r}. But the proof writes "K̂_r(k) = Σ_{j₁} Ψ_{r-1}(n',j₁) · (1 - N ρ_{r-1}(k,j₁)) + N²(integral)". The "N²(integral)" means the error is a multiple of N² = p^{2r} m², which is in p^{2r} ℤ_p. So the congruence is exact up to p^{2r}. **Correct.**
+
+Now Σ'_{k<N} (1/k) K̂_r(k) = Σ_{n'<M} Σ'_{k∈B_1(n')} (1/k) K̂_r(k).
+For k ∈ B_1(n'), n' = [k/p]. So Ψ_r(k,pj₁) ≡ Ψ_{r-1}(n',j₁) (1 - N ρ_{r-1}(k,j₁)) (mod p^{2r}).
+Then Σ'_{k∈B_1(n')} (1/k) Ψ_r(k,pj₁) ≡ Σ'_{k∈B_1(n')} (1/k) Ψ_{r-1}(n',j₁) (1 - N ρ_{r-1}(k,j₁)) (mod p^{2r}).
+Sum over j₁: ≡ Ψ_{r-1}(n',j₁) sum = K_{r-1}(n') times Σ'_{k∈B_1(n')} (1/k) minus N times Σ' (1/k) Σ_{j₁} Ψ_{r-1}(n',j₁) ρ_{r-1}(k,j₁).
+Σ'_{k∈B_1(n')} 1/k = σ_1(n'). So we get Σ_{n'} σ_1(n') K_{r-1}(n') - N X̂.
+And A_{r-1} = Σ_{n<L_{r-1}} σ_{r-(r-1)}(n) K_{r-1}(n) = Σ_{n<M} σ_1(n) K_{r-1}(n). **Correct.**
+
+Modulo: The error in K̂_r is N²(integral) = p^{2r} m² (integral). Multiplying by 1/k (which is integral since p∤k) and summing over k<N (there are mp^r terms) gives error p^{2r} · mp^r = m p^{3r} (integral) ≡ 0 (mod p^{3r}). But we're only claiming mod p^{2r} for the 1/k term before multiplying by N. Actually the equation (4.2) claims ≡ mod p^{2r}. The error from N²(integral) in K̂_r is O(N²) = O(p^{2r}). Multiplying by 1/k and summing over k gives O(p^{2r}) · (number of terms? No, each term is O(p^{2r}), sum of O(p^{2r}) terms is O(p^{3r})? Wait: the sum Σ'_{k<N} (1/k) K̂_r(k) has each term with K̂_r(k) having error O(p^{2r}). So each term in the sum has error O(p^{2r}/k) = O(p^{2r}) since 1/k is a unit. There are O(N) = O(p^r) terms, so total error O(p^{3r}). But we only need mod p^{2r} for the intermediate step (before multiplying by N). The error O(p^{3r}) is certainly 0 mod p^{2r}. So (4.2) is valid mod p^{2r}. **Correct.**
+
+Claims: (4.b.1) X̂ ≡ 0 (mod p^r). (4.b.2) A_{r-1} ≡ 0 (mod p^{2r}). Together with (4.a) and (4.1) they give Σ_K ≡ 0 (mod p^{3r}).
+
+If X̂ ≡ 0 (mod p^r), then N·X̂ ≡ 0 (mod p^{2r})? N = mp^r, so N·X̂ ≡ 0 (mod p^{2r}) if X̂ ≡ 0 (mod p^r). Then A_{r-1} - N·X̂ ≡ 0 (mod p^{2r}). Then N times that is ≡ 0 (mod p^{3r}). Combined with (4.a) gives Σ_K ≡ 0 (mod p^{3r}). **Correct.**
+
+**Proof of (4.b.1)** (lines 132-135):
+Split ρ = H'_k - H'_{pj₁} + 2H'_{k+pj₁}. X̂ = X̂₁ - X̂₂ + 2X̂₃.
+
+• X̂₁ = Σ'_k (1/k) H'_k K_{r-1}(n'). c_{n'} := Σ'_{k∈B_1(n')} H'_k/k. By Lemma 2.6 (s=0, t+1), Σ_{n'∈B_t(i)} c_{n'} = Σ'_{k∈B_{t+1}(i)} H'_k/k ≡ 0 (mod p^{t+1}).
+So a_{n'} := c_{n'}/p is integral with block sums ≡ 0 (mod p^t). Lemma 3.1 (tower (K_u)) gives Σ a_{n'} K_{r-1}(n') ≡ 0 (mod p^{r-1}), i.e. X̂₁ ≡ 0 (mod p^r).
+
+Check Lemma 2.6: Σ'_{k∈B_t(i)} (1/k) H'_{kp^s} ≡ 0 (mod p^{t+2s}). Here s=0, so Σ'_{k∈B_t(i)} H'_k/k ≡ 0 (mod p^t). But the claim is Σ_{n'∈B_t(i)} c_{n'} = Σ'_{k∈B_{t+1}(i)} H'_k/k ≡ 0 (mod p^{t+1}). That's Lemma 2.6 with t replaced by t+1, s=0: Σ'_{k∈B_{t+1}(i)} H'_k/k ≡ 0 (mod p^{t+1}). **Correct.**
+
+Then a_{n'} = c_{n'}/p. Need to check c_{n'} has valuation ≥ 1. c_{n'} = Σ'_{k∈B_1(n')} H'_k/k. Each term H'_k/k: H'_k has valuation ≥ 0, 1/k is a unit. But the sum over the block is ≡ 0 (mod p) by Lemma 2.6 with t=0? Wait, Lemma 2.6 for t=0: Σ'_{k∈B_0(i)} H'_k/k. B_0(i) = {i}. If p∤i, this is H'_i/i. Is H'_i/i ≡ 0 (mod p)? Not necessarily. But c_{n'} is defined for n' (which is the block index at level 1). n' ranges over 0 to M-1 = mp^{r-1}-1. For a given n', B_1(n') = {n'p, n'p+1, ..., n'p+p-1} excluding multiples of p. So c_{n'} = Σ_{u=1}^{p-1} H'_{n'p+u} / (n'p+u). By Lemma 2.6 with t=1, s=0: Σ'_{k∈B_1(n')} H'_k/k ≡ 0 (mod p^1). So c_{n'} ≡ 0 (mod p). Thus a_{n'} = c_{n'}/p is integral. **Correct.**
+
+Block sums of a_{n'}: Σ_{n'∈B_t(i)} a_{n'} = p^{-1} Σ_{n'∈B_t(i)} c_{n'} = p^{-1} Σ'_{k∈B_{t+1}(i)} H'_k/k ≡ 0 (mod p^t) by Lemma 2.6 (since the sum is ≡ 0 mod p^{t+1}). **Correct.**
+
+Lemma 3.1 applied to tower (K_u) with weights a_{n'} gives Σ a_{n'} K_{r-1}(n') ≡ 0 (mod p^{r-1}). Then X̂₁ = p Σ a_{n'} K_{r-1}(n') ≡ 0 (mod p^r). **Correct.**
+
+• X̂₂ = Σ'_k (1/k) Σ_{j₁} Ψ_{r-1}(n',j₁) H'_{pj₁} = Σ_{n'} σ_1(n') K̃^{(1)}_{r-1}(n').
+By Lemma 2.2, a_{n'} := σ_1(n')/p² is integral and Σ_{n'∈B_t(i)} a_{n'} = σ_{t+1}(i)/p² ≡ 0 (mod p^{2t}).
+Lemma 3.1 with the tower of Lemma 3.4(d) gives X̂₂ ≡ 0 (mod p^{2+r-1}).
+
+Check: Lemma 2.2 says σ_t(l) ≡ 0 (mod p^{2t}). So σ_1(n') ≡ 0 (mod p²). So a_{n'} = σ_1(n')/p² is integral. Σ_{n'∈B_t(i)} a_{n'} = σ_{t+1}(i)/p² ≡ 0 (mod p^{2t}) because σ_{t+1}(i) ≡ 0 (mod p^{2(t+1)}). **Correct.**
+
+Lemma 3.4(d): K̃_u^{(d)}(q) is a tower. Here we have K̃_{r-1}^{(1)}(n'). The tower property: K̃_{r-1}^{(1)}(n') ≡ K̃_{r-2}^{(2)}([n'/p]) (mod p^{r-1}), etc. But Lemma 3.1 requires a tower of functions T_u with T_u(k) ≡ T_{u-1}([k/p]) (mod p^u). Here we have K̃_{r-1}^{(1)}, K̃_{r-2}^{(2)}, ... The index u in K̃_u^{(d)} is the first subscript. For Lemma 3.1, we need a sequence T_s for s=0,...,r-1. Let T_s = K̃_s^{(r-s)}? Wait, Lemma 3.4(d) says: for any s₀, d₀, T_u := K̃_u^{(d₀+s₀-u)} (0≤u≤s₀) is a tower. Take s₀ = r-1, d₀ = 1? Then T_u = K̃_u^{(1 + (r-1) - u)} = K̃_u^{(r-u)}. For u = r-1, T_{r-1} = K̃_{r-1}^{(1)}. For u = r-2, T_{r-2} = K̃_{r-2}^{(2)}, etc. The tower property: T_u(q) ≡ T_{u-1}([q/p]) (mod p^u). This matches the requirement.
+
+So Lemma 3.1 with weights a_{n'} and tower T_u = K̃_u^{(r-u)} gives Σ a_{n'} T_{r-1}(n') ≡ 0 (mod p^{r-1}). T_{r-1}(n') = K̃_{r-1}^{(1)}(n'). So Σ a_{n'} K̃_{r-1}^{(1)}(n') ≡ 0 (mod p^{r-1}). Then X̂₂ = p² Σ a_{n'} K̃_{r-1}^{(1)}(n') ≡ 0 (mod p^{r+1}). The proof says "mod p^{2+r-1}" = p^{r+1}. **Correct.** (Note: p^{r+1} is stronger than the required p^r for X̂ ≡ 0 mod p^r, but that's fine.)
+
+• X̂₃ = Σ'_k (1/k) Σ_{j₁} Ψ_{r-1}(n',j₁) H'_{k+pj₁}. Exactly, H'_{k+pj₁} = H'_{pj₁} + Σ'_{λ≤k} 1/(pj₁+λ). In ℤ_p, 1/(pj₁+λ) = Σ_{t≥0} (-pj₁)^t λ^{-t-1} (convergent).
+
+So X̂₃ = X̂₂ + Σ_{t≥0} (-p)^t Σ'_k (1/k) S_{t+1}(k) K^{[t]}_{r-1}(n').
+
+The t=0 term is X̂₁ ≡ 0 (mod p^r).
+For t≥1, S_{t+1}(k) is integral and K^{[t]}_{r-1}(n') ≡ 0 (mod p^{r-1}) by Lemma 3.4(c), so the t-th term is ≡ 0 (mod p^{t+r-1}) ⊂ p^r ℤ_p; the series converges and all its terms lie in p^r ℤ_p. So X̂₃ ≡ 0 (mod p^r).
+
+Check: H'_{k+pj₁} = H'_{pj₁} + Σ_{λ=1, p∤λ}^k 1/(pj₁+λ). (Since p∤k, λ≤k and p∤λ is the same as p∤λ.)
+1/(pj₁+λ) = 1/λ · 1/(1 + pj₁/λ) = Σ_{t≥0} (-pj₁)^t λ^{-t-1}. This converges in ℤ_p since v(pj₁) ≥ 1. Sum over λ: Σ_{λ≤k} 1/(pj₁+λ) = Σ_{t≥0} (-pj₁)^t S_{t+1}(k). **Correct.**
+
+Then X̂₃ = Σ (1/k) Σ_{j₁} Ψ [H'_{pj₁} + Σ_t (-pj₁)^t S_{t+1}(k)] = X̂₂ + Σ_t (-p)^t Σ (1/k) S_{t+1}(k) Σ_{j₁} j₁^t Ψ = X̂₂ + Σ_t (-p)^t Σ (1/k) S_{t+1}(k) K^{[t]}_{r-1}(n').
+
+t=0: K^{[0]} = K, so term is -p Σ (1/k) S_1(k) K_{r-1}(n')? Wait, (-p)^0 = 1, t=0: Σ (1/k) S_1(k) K_{r-1}(n'). S_1(k) = Σ'_{λ≤k} 1/λ = H'_k. So this is Σ (1/k) H'_k K_{r-1}(n') = X̂₁. But the proof says "The t=0 term is X̂₁". However the formula has (-p)^t, so for t=0 it's +1 * Σ (1/k) S_1(k) K^{[0]} = X̂₁. But the proof writes "X̂₃ = X̂₂ + Σ_{t≥0} (-p)^t Σ... The t=0 term is X̂₁". If t=0, (-p)^0 = 1, so it's X̂₂ + X̂₁ + ... But earlier X̂₃ = X̂₂ + Σ_t ... So X̂₃ = X̂₂ + X̂₁ + (higher terms). Then the proof says "The t=0 term is X̂₁ ≡ 0 (mod p^r)". But then X̂₃ = X̂₂ + X̂₁ + ... ≡ X̂₂ + 0 + ... The proof needs X̂₂ ≡ 0 (mod p^r) and higher terms ≡ 0. It already showed X̂₂ ≡ 0 (mod p^{r+1}) ⊂ p^r. For t≥1: term is (-p)^t Σ (1/k) S_{t+1}(k) K^{[t]}_{r-1}(n'). S_{t+1}(k) is integral. K^{[t]}_{r-1}(n') ≡ 0 (mod p^{r-1}) by Lemma 3.4(c). So the sum Σ (1/k) S_{t+1}(k) K^{[t]} is ≡ 0 (mod p^{r-1}). Multiply by p^t: ≡ 0 (mod p^{t+r-1}). Since t≥1, t+r-1 ≥ r. So each term is in p^r ℤ_p. The series converges p-adically. **Correct.**
+
+Thus X̂ ≡ 0 (mod p^r). **Correct.**
+
+**Proof of (4.b.2) — the induction A_0 ≡ A_1 ≡ … ≡ A_{r-1} ≡ 0 (mod p^{2r})** (lines 137-149):
+
+Base: A_0 = Σ_{n<m} σ_r(n) K_0(n) ≡ 0 (mod p^{2r}) by Lemma 2.2.
+
+Lemma 2.2: σ_r(n) ≡ 0 (mod p^{2r})? Wait, Lemma 2.2 says σ_t(l) ≡ 0 (mod p^{2t}). Here t=r, so σ_r(n) ≡ 0 (mod p^{2r}). K_0(n) is integer. So A_0 ≡ 0 (mod p^{2r}). **Correct.**
+
+Step s → s+1 (0 ≤ s ≤ r-2). Let L := L_{s+1} = mp^{s+1}, q := [n/p].
+Splitting the j-sum into scaled and unscaled j:
+K_{s+1}(n) = Σ_{j₁} Ψ_{s+1}(n,pj₁) + Σ'_j Ψ_{s+1}(n,j).
+For scaled j: Lemma 3.5 gives Ψ_{s+1}(n,pj₁) = Ψ_s(q,j₁)(1 - L ρ_s(n,j₁)) + p^{2s+2}(integral).
+For unscaled j (p∤j): Lemma 3.3 gives Ψ_{s+1}(n,j) = (L_{s+1}/j) Ξ̂_{s+1}(n,j) = L · (1/j) Ξ̂_{s+1}(n,j).
+So K_{s+1}(n) = Σ_{j₁} Ψ_s(q,j₁)(1 - L ρ_s(n,j₁)) + L Σ'_j (1/j) Ξ̂_{s+1}(n,j) + p^{2s+2}(integral).
+
+Multiply by σ_{r-s-1}(n) and sum over n < L_{s+1}.
+σ_{r-s-1}(n) ≡ 0 (mod p^{2(r-s-1)}) by Lemma 2.2.
+The error term p^{2s+2} times σ_{r-s-1}(n) is ≡ 0 (mod p^{2(r-s-1)+2s+2}) = p^{2r}. **Correct.**
+
+Now Σ_{n<L_{s+1}} σ_{r-s-1}(n) Σ_{j₁} Ψ_s(q,j₁) = Σ_q (Σ_{n∈B_1(q)} σ_{r-s-1}(n)) K_s(q).
+Σ_{n∈B_1(q)} σ_{r-s-1}(n) = σ_{r-s}(q). (Since σ_a(n) summed over B_1 gives σ_{a+1}).
+So this part gives Σ_q σ_{r-s}(q) K_s(q) = A_s.
+
+The cross term: -L Σ_n σ_{r-s-1}(n) Σ_{j₁} Ψ_s(q,j₁) ρ_s(n,j₁) = -mp^{s+1} X_s.
+The unscaled j term: L Σ_n σ_{r-s-1}(n) Σ'_j (1/j) Ξ̂_{s+1}(n,j) = mp^{s+1} Y_s.
+
+Thus A_{s+1} ≡ A_s - mp^{s+1} X_s + mp^{s+1} Y_s (mod p^{2r}). (4.3)
+It remains to show X_s ≡ 0 and Y_s ≡ 0 (mod p^{2r-s-1}).
+Put s' := r-s-1 ≥ 1. (So s' is the index such that σ_{s'} appears.)
+
+• X_s = X_{s,1} - X_{s,2} + 2X_{s,3} with ρ_s = H'_n - H'_{pj₁} + 2H'_{n+pj₁}.
+
+X_{s,1} = Σ_n σ_{s'}(n) H'_n K_s(q) = Σ_q c_q K_s(q), c_q := Σ_{n∈B_1(q)} σ_{s'}(n) H'_n.
+By Lemma 2.5 (with s' and t+1), Σ_{q∈B_t(i)} c_q = Σ_{n∈B_{t+1}(i)} σ_{s'}(n) H'_n ≡ 0 (mod p^{t+1+2s'}).
+So a_q := c_q / p^{2s'+1} is integral with block sums ≡ 0 (mod p^t).
+Lemma 3.1 (tower (K_u)) gives Σ a_q K_s(q) ≡ 0 (mod p^s): X_{s,1} ≡ 0 (mod p^{2s'+1+s}) = (mod p^{2r-s-1}).
+
+Check: Lemma 2.5: Σ_{n∈B_t(i)} σ_s(n) H'_n ≡ 0 (mod p^{t+2s}). Here s is s' (the proof uses s' for the harmonic index, but Lemma 2.5 uses s for the harmonic index and t for the block level). In Lemma 2.5, the sum is over n∈B_t(i), with σ_s(n) H'_n, result ≡ 0 (mod p^{t+2s}). In our case, we have Σ_{n∈B_{t+1}(i)} σ_{s'}(n) H'_n. This matches Lemma 2.5 with t replaced by t+1, s replaced by s': ≡ 0 (mod p^{(t+1)+2s'}) = p^{t+1+2s'}. **Correct.**
+
+Then a_q = c_q / p^{2s'+1}. c_q is Σ over B_1(q), so it's a single block sum at level 1. The block sum at level t for a_q is Σ_{q∈B_t(i)} a_q = p^{-(2s'+1)} Σ_{q∈B_t(i)} c_q = p^{-(2s'+1)} Σ_{n∈B_{t+1}(i)} σ_{s'}(n) H'_n ≡ 0 (mod p^t). **Correct.**
+
+Lemma 3.1 with tower (K_u): K_s(q) is the top of the tower? The tower is K_u for u = s, s-1, ... with K_u(q) ≡ K_{u-1}([q/p]) (mod p^u). But here the sum is over q < L_s = mp^s. The induction in Lemma 3.1 goes up to level s. The weights a_q have block sums ≡ 0 mod p^t. Lemma 3.1 gives Σ_{q<L_s} a_q K_s(q) ≡ 0 (mod p^s). Then X_{s,1} = p^{2s'+1} Σ a_q K_s(q) ≡ 0 (mod p^{2s'+1+s}). Now 2s'+1+s = 2(r-s-1)+1+s = 2r-2s-2+1+s = 2r-s-1. **Correct.**
+
+X_{s,2} = Σ_n σ_{s'}(n) Σ_{j₁} Ψ_s(q,j₁) H'_{pj₁} = Σ_q σ_{s'+1}(q) K̃^{(1)}_s(q).
+a_q := σ_{s'+1}(q) / p^{2s'+2} is integral (Lemma 2.2: σ_{s'+1} ≡ 0 mod p^{2(s'+1)} = p^{2s'+2}).
+Block sums: Σ_{q∈B_t(i)} a_q = σ_{s'+1+t}(i) / p^{2s'+2} ≡ 0 (mod p^{2t}) because σ_{s'+1+t} ≡ 0 (mod p^{2(s'+1+t)}).
+Lemma 3.1 with the tower of Lemma 3.4(d): K̃_s^{(1)}(q) is the top of a tower? Lemma 3.4(d) says K̃_u^{(d)} is a tower in u. For fixed d=1, K̃_u^{(1)}(q) ≡ K̃_{u-1}^{(2)}([q/p]) (mod p^u). But the tower in Lemma 3.1 requires T_u(q) ≡ T_{u-1}([q/p]) (mod p^u). Here the functions change their d index. However, Lemma 3.4(d) says: for any s₀, d₀, T_u := K̃_u^{(d₀+s₀-u)} (0≤u≤s₀) forms a tower. Take s₀ = s, d₀ = 1. Then T_u = K̃_u^{(1+s-u)}. For u=s, T_s = K̃_s^{(1)}. For u=s-1, T_{s-1} = K̃_{s-1}^{(2)}, etc. The tower property: T_u(q) ≡ T_{u-1}([q/p]) (mod p^u). So yes, (K̃_s^{(1)}, K̃_{s-1}^{(2)}, ...) is a tower in the sense of Lemma 3.1. **Correct.**
+
+Then Σ a_q T_s(q) ≡ 0 (mod p^s). So Σ a_q K̃_s^{(1)}(q) ≡ 0 (mod p^s). Then X_{s,2} = p^{2s'+2} Σ a_q K̃_s^{(1)}(q) ≡ 0 (mod p^{2s'+2+s}) ⊂ p^{2r-s-1} (since 2s'+2+s = 2r-2s-2+2+s = 2r-s ≥ 2r-s-1). **Correct.**
+
+X_{s,3} = Σ_n σ_{s'}(n) Σ_{j₁} Ψ_s(q,j₁) H'_{n+pj₁} = X_{s,2} + Σ_{t≥0} (-p)^t Σ_n σ_{s'}(n) S_{t+1}(n) K^{[t]}_s(q) (same expansion as for X̂₃).
+
+The t=0 term: t=0 gives Σ σ_{s'}(n) S_1(n) K_s(q) = Σ σ_{s'}(n) H'_n K_s(q) = X_{s,1} ≡ 0 (mod p^{2s'+1+s}) = p^{2r-s-1}. **Correct.**
+
+For t≥1: S_{t+1}(n) is integral. K^{[t]}_s(q) ≡ 0 (mod p^s) by Lemma 3.4(c) (since u=s, K^{[t]}_s ≡ 0 mod p^s for t≥1). The sum Σ σ_{s'}(n) S_{t+1}(n) K^{[t]}_s(q) is then ≡ 0 (mod p^s). Multiply by p^t: ≡ 0 (mod p^{t+s}). But we also have the factor σ_{s'}(n) which is ≡ 0 (mod p^{2s'}) by Lemma 2.2. So the sum is actually ≡ 0 (mod p^{2s'+s}). Multiply by p^t: ≡ 0 (mod p^{t+2s'+s}). For t≥1, t+2s'+s = t + 2(r-s-1) + s = t + 2r - 2s - 2 + s = t + 2r - s - 2. Since t≥1, this is ≥ 2r - s - 1. So each term is in p^{2r-s-1} ℤ_p. **Correct.**
+
+• Y_s: Apply Lemma 3.2 at level s+1 to the tower (Ξ̂_{s+1}; Ξ^{(·)}_s; Ξ^{(·)}_{s-1}; ...) of Lemma 3.4(b), with top-level weights a^{(0)}_{n,j} := p^{-2s'} σ_{s'}(n)/j for p∤j (0 otherwise; a^{(1)} := 0), which are integral by Lemma 2.2.
+
+The cell hypothesis at level t ≥ 1 is Σ_{(n,j)∈Cell_t(i,i';c)} σ_{s'}(n)/j ≡ 0 (mod p^{2s'+t}), which is Lemma 2.7(Y).
+
+Hence Σ_{n,j} a^{(0)}_{n,j} Ξ̂_{s+1}(n,j) ≡ 0 (mod p^{s+1}), i.e. Y_s ≡ 0 (mod p^{2s'+s+1}) = (mod p^{2r-s-1}).
+
+Check: Y_s = Σ_{n<L_{s+1}} σ_{s'}(n) Σ'_j (1/j) Ξ̂_{s+1}(n,j).
+The tower is: at level s+1, we have Ξ̂_{s+1}(n,j) for p∤j. The two-index tower of Lemma 3.4(b) gives Ξ̂_{s+1}(n,j) ≡ Ξ_s^{(δ)}([n/p],[j/p]) (mod p^{s+1}) with δ = [n̄+j̄ ≥ p]. Then Ξ_s^{(δ)} ≡ Ξ_{s-1}^{(δ')} (mod p^s), etc.
+
+Lemma 3.2 requires: for all t≥1, i,i',c, the cell sums of a at level t are ≡ 0 (mod p^t).
+Here a^{(0)}_{n,j} = p^{-2s'} σ_{s'}(n)/j for p∤j.
+At level t (meaning blocks of size p^t), the cell is Cell_t(i,i';c) = {(n,j): n∈B_t(i), j∈B_t(i'), p∤j, [n̄+j̄ ≥ p^t] = c}.
+The sum over the cell is Σ σ_{s'}(n)/j. Lemma 2.7(Y) says this is ≡ 0 (mod p^{2s'+t}). But Lemma 3.2 requires the cell sum to be ≡ 0 (mod p^t) (without the p^{-2s'} factor? Wait.)
+
+Lemma 3.2 hypothesis: a^{(δ)}_{q,q'} ∈ ℤ_p satisfy Σ_{(q,q',δ)∈Cell_t(i,i';c)} a^{(δ)}_{q,q'} ≡ 0 (mod p^t) for all t≥1, i,i',c.
+Here a^{(0)}_{n,j} = p^{-2s'} σ_{s'}(n)/j. So the cell sum is p^{-2s'} Σ σ_{s'}(n)/j.
+Lemma 2.7(Y) says Σ σ_{s'}(n)/j ≡ 0 (mod p^{2s'+t}). So p^{-2s'} times that is ≡ 0 (mod p^t). **Correct.**
+
+Then Lemma 3.2 gives Σ_{n,j} a^{(0)}_{n,j} Ξ̂_{s+1}(n,j) ≡ 0 (mod p^{s+1}).
+But Y_s = Σ σ_{s'}(n)/j Ξ̂_{s+1}(n,j) = p^{2s'} Σ a^{(0)}_{n,j} Ξ̂_{s+1}(n,j) ≡ 0 (mod p^{2s'+s+1}) = p^{2(r-s-1)+s+1} = p^{2r-2s-2+s+1} = p^{2r-s-1}. **Correct.**
+
+Thus A_{s+1} ≡ A_s (mod p^{2r}). By induction, A_{r-1} ≡ A_0 ≡ 0 (mod p^{2r}). **Correct.**
+
+**No issue found in §4.** The Class K proof is solid.
+
+---
+### §5: Class J
+
+The proof claims symmetry: replace (Ψ, harmonic index n, kernel index j) with (Φ, harmonic index j, kernel index k).
+
+Definition: For p∤j, k=pk₁,
+S̃(N;pk₁,j) = (N/(N+j)) · Φ_r(pk₁,j) with
+Φ_u(k,j) := C(L_u-1,k)² · (-1)^k C(-L_u,k) · C(L_u-1,k+j)² · (-1)^j C(-L_u-1,j).
+
+Check Lemma 3.3 analog: S̃(N;pk₁,j) = (N/(N+j)) Φ_r(pk₁,j)?
+S̃(N;k,j) = C(N-1,k)² C(N+k-1,k) C(N-1,k+j)² C(N+j-1,j).
+For k=pk₁: C(N-1,pk₁)² C(N+pk₁-1,pk₁) C(N-1,pk₁+j)² C(N+j-1,j).
+C(N+pk₁-1,pk₁) = (-1)^{pk₁} C(-N, pk₁) = (-1)^{k₁} C(-N, pk₁) (since p odd).
+C(N+j-1,j) = (-1)^j C(-N,j).
+So S̃ = C(N-1,pk₁)² (-1)^{k₁} C(-N,pk₁) C(N-1,pk₁+j)² (-1)^j C(-N,j) · (N/(N+j))? Wait, the factor (N/(N+j)) should come from C(N+j-1,j) = (N/(N+j)) (-1)^j C(-N-1,j)? Let's check:
+C(N+j-1,j) = (-1)^j C(-N,j). C(-N,j) = C(-N-1,j) · (-N)/(-N-j) = C(-N-1,j) · N/(N+j). So C(N+j-1,j) = (-1)^j C(-N-1,j) · N/(N+j).
+Then S̃ = C(N-1,pk₁)² C(N+pk₁-1,pk₁) C(N-1,pk₁+j)² · (-1)^j C(-N-1,j) · N/(N+j).
+Now C(N+pk₁-1,pk₁) = (-1)^{pk₁} C(-N, pk₁) = (-1)^{k₁} C(-N, pk₁).
+But Φ_r(pk₁,j) is defined as C(L-1,k)² (-1)^k C(-L,k) C(L-1,k+j)² (-1)^j C(-L-1,j) with L=N.
+Wait: Φ_u(k,j) has (-1)^k C(-L_u, k) and (-1)^j C(-L_u-1, j).
+For k=pk₁: (-1)^{pk₁} C(-N, pk₁) = (-1)^{k₁} C(-N, pk₁).
+But C(-N, pk₁) vs C(-N-1, pk₁)? The definition has C(-L_u, k) not C(-L_u-1, k).
+S̃ has C(N+pk₁-1,pk₁) = (-1)^{pk₁} C(-N, pk₁) = (-1)^{k₁} C(-N, pk₁).
+So the factor matches: C(N-1,k)² (-1)^k C(-N,k) = C(N-1,k)² (-1)^k C(-N,k). And the remaining factor C(N-1,k+j)² C(N+j-1,j) = C(N-1,k+j)² (-1)^j C(-N-1,j) · N/(N+j).
+So S̃ = (N/(N+j)) · C(N-1,k)² (-1)^k C(-N,k) C(N-1,k+j)² (-1)^j C(-N-1,j) = (N/(N+j)) Φ_r(k,j). **Correct.**
+
+Now the symmetry properties:
+
+(i) For p∤k, Φ_u(k,j) = (L_u/k) · Ξ̂'_u(k,j) with Ξ̂'_u(k,j) := C(L_u-1,k)² (-1)^{k-1} C(-L_u-1,k-1) C(L_u-1,k+j)² (-1)^j C(-L_u-1,j).
+And Ξ̂'_u(k,j) ≡ Ξ^{(δ)}_{u-1}([k/p],[j/p]) (mod p^u) with the same two-index tower Ξ.
+
+Check: Ψ had factor (-1)^j C(-L,j) giving (L/j) Ξ̂. Here Φ has factor (-1)^k C(-L,k) giving (L/k) Ξ̂'. For p∤k, (-1)^k C(-L,k) = (L/k) (-1)^{k-1} C(-L-1,k-1). So Φ_u(k,j) = C(L-1,k)² (L/k)(-1)^{k-1} C(-L-1,k-1) C(L-1,k+j)² (-1)^j C(-L-1,j) = (L/k) Ξ̂'_u(k,j). **Correct.**
+
+The tower property: Ξ̂'_u(k,j) ≡ Ξ^{(δ)}_{u-1}([k/p],[j/p]). The kernel Ξ is defined as Ξ_u^{(δ)}(q,q') = C(L_u-1,q)² (-1)^q C(-L_u-1,q) C(L_u-1,q+q'+δ)² (-1)^{q'} C(-L_u-1,q').
+For Ξ̂'_u(k,j): the first two factors are C(L-1,k)² (-1)^{k-1} C(-L-1,k-1). By Lemma 1.2 consequence: for p∤k, (-1)^{k-1} C(-L-1,k-1) ≡ (-1)^{[k/p]} C(-L'-1,[k/p]) (mod p^u). The coupled factor C(L-1,k+j)²: [(k+j)/p] = [k/p] + [j/p] + δ with δ = [(k mod p)+(j mod p) ≥ p]. So C(L-1,k+j)² ≡ C(L'-1, [k/p]+[j/p]+δ)² (mod p^u). The last factor (-1)^j C(-L-1,j): here j is the harmonic index, but in Ξ the last factor has (-1)^{q'} C(-L-1,q'). So if we identify q' = j, this matches except for the δ in the coupled factor. The proof says "the kernel Ξ being symmetric in its two indices up to the position of δ, which enters only through q+q'+δ". Ξ_u^{(δ)}(q,q') has the δ in the third factor: C(L-1, q+q'+δ)². In Ξ̂'_u(k,j), the coupled factor is C(L-1, k+j)², and the carry is δ = [(k mod p)+(j mod p) ≥ p]. So it matches Ξ_{u-1}^{(δ)}([k/p], [j/p]). **Correct.**
+
+(ii) Φ_{u+1}(pk₁, j) = Φ_u(k₁, [j/p]) · P̄_{pk₁} P²_{pk₁} P²_{pk₁+j} P̄_j exactly (Lemma 1.1 factor by factor, as in Lemma 3.5).
+So Φ_{u+1}(pk₁,j) ≡ Φ_u(k₁,[j/p]) (1 - L_{u+1} ρ'_u(j,k₁)) (mod p^{2u+2}) with ρ'_u(j,k₁) = -H'_j + H'_{pk₁} + 2H'_{j+pk₁} (the harmonic index j now carries only the factor (-1)^j C(-L-1,j), whence -H'_j instead of +H'_n, and the kernel index k₁ carries C(L-1,pk₁)² (-1)^{pk₁} C(-L,pk₁), whence +H'_{pk₁}).
+
+Let's verify the exact factorization:
+Φ_{u+1}(n,j) = C(L-1,n)² (-1)^n C(-L-1,n) C(L-1,n+j)² (-1)^j C(-L-1,j)? Wait, the definition of Φ_u is:
+Φ_u(k,j) = C(L_u-1,k)² · (-1)^k C(-L_u,k) · C(L_u-1,k+j)² · (-1)^j C(-L_u-1,j).
+
+For Φ_{u+1}(pk₁, j): L = mp^{u+1}, L' = mp^u.
+Factors:
+1. C(L-1, pk₁)²: Lemma 1.1(i) with m: C(L-1, pk₁) = (-1)^{pk₁ - k₁} C(L'-1, k₁) P_{pk₁} = C(L'-1, k₁) P_{pk₁} (since pk₁ - k₁ is even? p odd, k₁ integer, pk₁ ≡ k₁ (mod 2), so pk₁ - k₁ is even. Sign is 1). Square: C(L-1, pk₁)² = C(L'-1, k₁)² P_{pk₁}².
+
+2. (-1)^{pk₁} C(-L, pk₁): Lemma 1.1(ii) with -m? L = mp^{u+1}, -L = (-m)p^{u+1}. For n = pk₁ (p|n), C(-L, n) = C(-L', n/p) Π'_{λ≤n} (1 - L/λ) by Lemma 1.1(ii). Wait, Lemma 1.1(ii) says: if p|n, C(L, n) = C(L', n/p) Π'_{λ≤n} (L-λ)/λ = C(L', n/p) Π'_{λ≤n} (1 - L/λ). For -L: C(-L, n) = C(-L', n/p) Π'_{λ≤n} (1 + L/λ)? Let's derive: C(-L, n) = (-L)(-L-1)...(-L-n+1)/n!. The product formula: C(-L, n) = Π_{λ=1}^n (-L - λ + 1)/λ = Π_{λ=1}^n -(L + λ - 1)/λ = (-1)^n Π_{λ=1}^n (L+λ-1)/λ. This is different from C(L-1, n). Actually, C(-L, n) = (-1)^n C(L+n-1, n). But the proof uses Lemma 1.1 with -m. Lemma 1.1(i) is for C(mp^s-1, n). Lemma 1.1(ii) is for C(mp^s, n) with p|n. For -L = (-m)p^{u+1}, we have C(-L, pk₁) with p|pk₁. So we can use Lemma 1.1(ii) with m replaced by -m: C((-m)p^{u+1}, pk₁) = C((-m)p^u, k₁) Π'_{λ≤pk₁} (1 - (-m)p^{u+1}/λ)? Wait, Lemma 1.1(ii): C(L, n) = C(L', n/p) Π'_{λ≤n} (1 - L/λ). For L = (-m)p^{u+1}, this gives C(-L, pk₁) = C(-L', k₁) Π'_{λ≤pk₁} (1 + L/λ). Since L = mp^{u+1}, this is C(-L', k₁) P̄_{pk₁}. Then (-1)^{pk₁} C(-L, pk₁) = (-1)^{k₁} C(-L', k₁) P̄_{pk₁} (since pk₁ ≡ k₁ mod 2). **Correct.**
+
+3. C(L-1, pk₁+j)²: Lemma 1.1(i) with m: C(L-1, pk₁+j) = (-1)^{pk₁+j - [ (pk₁+j)/p ]} C(L'-1, [ (pk₁+j)/p ]) P_{pk₁+j}. [(pk₁+j)/p] = k₁ + [j/p]. The exponent: pk₁+j - k₁ - [j/p] = (p-1)k₁ + j - [j/p]. Since p is odd, (p-1)k₁ is even. j - [j/p] has the same parity as the number of terms in the product? Actually, the sign in Lemma 1.1(i) is (-1)^{n - [n/p]}. For n = pk₁+j, this is (-1)^{pk₁+j - k₁ - [j/p]} = (-1)^{(p-1)k₁ + j - [j/p]}. Since (p-1)k₁ is even, this is (-1)^{j - [j/p]}. When we square C(L-1, pk₁+j), the sign disappears. So C(L-1, pk₁+j)² = C(L'-1, k₁+[j/p])² P_{pk₁+j}².
+
+4. (-1)^j C(-L-1, j): Lemma 1.1(i) with -m? -L-1 = (-m)p^{u+1} - 1. C(-L-1, j) = (-1)^{j - [j/p]} C(-L'-1, [j/p]) P̄_j. Then (-1)^j C(-L-1, j) = (-1)^{[j/p]} C(-L'-1, [j/p]) P̄_j.
+
+Multiplying all: Φ_{u+1}(pk₁, j) = [C(L'-1, k₁)² (-1)^{k₁} C(-L', k₁) C(L'-1, k₁+[j/p])² (-1)^{[j/p]} C(-L'-1, [j/p])] · P_{pk₁}² P̄_{pk₁} P_{pk₁+j}² P̄_j.
+The bracket is Φ_u(k₁, [j/p])? Φ_u(k₁, [j/p]) = C(L'-1, k₁)² (-1)^{k₁} C(-L', k₁) C(L'-1, k₁+[j/p])² (-1)^{[j/p]} C(-L'-1, [j/p]). Yes, because Φ_u uses C(-L_u, k) for the second factor, and here L' = L_u. **Correct.**
+
+Now the first-order expansion: the product E = P_{pk₁}² P̄_{pk₁} P_{pk₁+j}² P̄_j.
+e_1 = -2H'_{pk₁} + H'_{pk₁} - 2H'_{pk₁+j} + H'_j = -H'_{pk₁} - 2H'_{pk₁+j} + H'_j.
+So E ≡ 1 + L e_1 = 1 - L (H'_{pk₁} + 2H'_{pk₁+j} - H'_j) = 1 - L ρ' where ρ' = H'_{pk₁} + 2H'_{pk₁+j} - H'_j.
+But the proof says ρ'_u(j,k₁) = -H'_j + H'_{pk₁} + 2H'_{j+pk₁}. Same thing. **Correct.**
+
+The sign differences: in §4, ρ = H'_n - H'_{pj₁} + 2H'_{n+pj₁}. Here ρ' = -H'_j + H'_{pk₁} + 2H'_{j+pk₁}. So X̂' = -X̂'_1 + X̂'_2 + 2X̂'_3. The proof says "the signs are immaterial" because each piece is ≡ 0 by the same lemmas. Let's verify: X̂'_1 = Σ' (1/j) H'_j K'_{r-1}(...). The analysis of X̂_1 used Lemma 2.6 (H'_k/k sums). The symmetric version uses H'_j/j sums, which is exactly the same by symmetry of the double sum. X̂'_2 uses H'_{pk₁} with kernel, similar to X̂_2. X̂'_3 uses H'_{j+pk₁} expansion. All go through with same valuations. **Correct.**
+
+(iii) The towers: K'_u(j) := Σ_k Φ_u(k,j) satisfies K'_u(j) ≡ K'_{u-1}([j/p]) (mod p^u).
+Proof: unscaled k (p∤k): Φ_u(k,j) has factor (-1)^k C(-L,k) = (L/k)(-1)^{k-1} C(-L-1,k-1) divisible by p^u. Scaled k=pk₁: Φ_u(pk₁,j) ≡ Φ_{u-1}(k₁,[j/p]) (mod p^u) by Lemma 1.2 factor by factor (similar to Lemma 3.4(a)). No carry since pk₁ has lowest digit 0. **Correct.**
+
+Moment kernels: Σ_k k^t Φ_u(k,j) ≡ 0 (mod p^u) for t≥1. Same proof as Lemma 3.4(c) by induction. **Correct.**
+
+Harmonically weighted: Σ_k Φ_u(k,j) H'_{p^d k} ≡ Σ_{k₁} Φ_{u-1}(k₁,[j/p]) H'_{p^{d+1} k₁} (mod p^u). Same as Lemma 3.4(d). **Correct.**
+
+(iv) Top-level decomposition: Σ_J ≡ N Σ'_j (1/j) K̂'_r(j) - N² Σ'_j (1/j²) K̂'_r(j) (mod p^{3r}) with K̂'_r(j) := Σ_{k₁} Φ_r(pk₁,j). Same as (4.1) with roles swapped. **Correct.**
+
+A'_s := Σ_{j<L_s} σ_{r-s}(j) K'_s(j). Induction applies verbatim. The pieces X'_{s,1}, X'_{s,2}, X'_{s,3} use Lemmas 2.5, 2.2, 3.4-type for Φ. Y'_s uses Lemma 2.7(Y) with roles of indices exchanged (carry condition symmetric). **Correct.**
+
+**No issue found in §5.** The symmetry is correctly established.
+
+---
+### §6: Class B
+
+For p∤k, p∤j, by Lemma 3.3 twice:
+S̃(N;k,j) = (N/(N+k)) · (N/j) · Ξ̂_r(k,j) = (N²/(kj)) Ξ̂_r(k,j) - (N³/(k²j)) (1+N/k)^{-1} Ξ̂_r(k,j).
+
+The second term: N³/(k²j) has valuation 3r - 2v(k) - v(j)? Wait, p∤k and p∤j, so v(k)=v(j)=0. N=mp^r, so N³ has valuation 3r. The denominator k²j is a unit. So the term is in p^{3r} ℤ_p. **Correct.**
+
+So Σ_B ≡ N² Σ'_{k,j} Ξ̂_r(k,j)/(kj) (mod p^{3r}).
+
+Apply Lemma 3.2 at level r to the tower (Ξ̂_r; Ξ^{(·)}_{r-1}; ...) with weights a^{(0)}_{k,j} := 1/(kj) for p∤k, p∤j (0 otherwise).
+
+Cell hypothesis: Lemma 2.7(B): Σ_{(k,j)∈Cell_t(i,i';c), p∤k} 1/(kj) ≡ 0 (mod p^t).
+
+Lemma 3.2 then gives Σ_{k,j} a^{(0)}_{k,j} Ξ̂_r(k,j) ≡ 0 (mod p^r), so Σ_B ≡ 0 (mod p^{3r}).
+
+Check: Lemma 3.2 requires a^{(δ)}_{q,q'} ∈ ℤ_p. Here a^{(0)}_{k,j} = 1/(kj). Since p∤k, p∤j, this is a p-adic unit, hence in ℤ_p. a^{(1)} = 0.
+
+The tower is (Ξ̂_r; Ξ^{(·)}_{r-1}; ...). Lemma 3.4(b) gives the tower property with carry labels.
+
+Lemma 3.2 conclusion: Σ_{q∈B_s(l), q'∈B_s(l'), δ} a^{(δ)}_{q,q'} T_s^{(δ)}(q,q') ≡ 0 (mod p^s) for all s,l,l'.
+At top level s=r, δ=0 only, T_r^{(0)} = Ξ̂_r. The sum over all k,j (with p∤k,p∤j) is Σ_{k,j} a^{(0)}_{k,j} Ξ̂_r(k,j) ≡ 0 (mod p^r). **Correct.**
+
+**No issue found in §6.** Very clean.
+
+---
+### §7: Class S
+
+**Setup** (lines 166-168):
+Let k = pk', j = pj' (k', j' ≥ 0). By Lemma 1.1 (with m and -m, as in Lemma 3.5) and C(N+x-1,x) = (-1)^x C(-N,x), exactly
+S̃(N;pk',pj') = S̃(M;k',j') · E(k',j'), E := P_{pk'}² P̄_{pk'} P_{p(k'+j')}² P̄_{pj'},
+with P, P̄ as in Lemma 3.5 for L = N (the signs cancel: pk' - k' is even).
+Summing, Σ_S - a(M-1) = Σ_{k',j'} S̃(M;k',j') (E - 1).
+
+Check: S̃(N;pk',pj') = C(N-1,pk')² C(N+pk'-1,pk') C(N-1,pk'+pj')² C(N+pj'-1,pj').
+C(N-1,pk') = C(mp^r-1, pk') = by Lemma 1.1(i): (-1)^{pk' - k'} C(mp^{r-1}-1, k') P_{pk'} = C(M-1,k') P_{pk'} (since pk' - k' even).
+C(N+pk'-1,pk') = C(mp^r+pk'-1, pk') = (-1)^{pk'} C(-mp^r, pk')? Wait: C(N+pk'-1,pk') = C(mp^r+pk'-1, pk').
+Use C(a,b) = (-1)^b C(-a+b-1, b). So C(mp^r+pk'-1, pk') = (-1)^{pk'} C(-mp^r, pk').
+C(-mp^r, pk') = by Lemma 1.1(ii) with -m: C(-mp^r, pk') = C(-mp^{r-1}, k') P̄_{pk'} (since p|pk').
+So C(N+pk'-1,pk') = (-1)^{pk'} C(-mp^{r-1}, k') P̄_{pk'}.
+But (-1)^{pk'} = (-1)^{k'}. And C(M+k'-1,k') = C(mp^{r-1}+k'-1, k') = (-1)^{k'} C(-mp^{r-1}, k'). So C(N+pk'-1,pk') = C(M+k'-1,k') P̄_{pk'}.
+
+Similarly, C(N-1, pk'+pj')² = C(M-1, k'+j')² P_{p(k'+j')}².
+C(N+pj'-1, pj') = C(M+j'-1, j') P̄_{pj'}.
+
+Multiplying: S̃(N;pk',pj') = [C(M-1,k')² C(M+k'-1,k') C(M-1,k'+j')² C(M+j'-1,j')] · P_{pk'}² P̄_{pk'} P_{p(k'+j')}² P̄_{pj'} = S̃(M;k',j') · E. **Correct.**
+
+Signs: pk' - k' = (p-1)k' is even (p odd). So (-1)^{pk'-k'} = 1. Good.
+
+**Step 1** (lines 170-172):
+By Lemma 1.3, E - 1 = -N ρ_S + N² e_2 + Σ_{d≥3} N^d e_d with ρ_S := H'_{pk'} + 2H'_{p(k'+j')} - H'_{pj'}, all e_d integral.
+v(e_2) ≥ min(2v(ρ_S), v(S_2(pk')), v(S_2(p(k'+j'))), v(S_2(pj'))).
+
+Put a := v_p(k'), b := v_p(j') (a = ∞ if k'=0, etc.).
+For x ∈ {k', k'+j', j'} with x ≥ 1, v_p(px) ≥ 1 + min(a,b), so S_2(px) ≡ 0 (mod p^{1+min(a,b)}) (Lemma 2.1) and ρ_S ≡ 0 (mod p^{2+2min(a,b)}) (Lemma 2.2).
+Hence v(N² e_2) ≥ 2r + 1 + min(a,b).
+
+Wait: v(N²) = 2r. v(e_2) ≥ min(2v(ρ_S), v(S_2(px))). v(ρ_S) ≥ 2 + 2min(a,b)? Lemma 2.2 says H'_x ≡ 0 (mod p^{2v}) when p^v | x. Here px has v_p = 1 + v_p(x) ≥ 1 + min(a,b). So H'_{px} ≡ 0 (mod p^{2(1+min(a,b))}) = mod p^{2+2min(a,b)}. So v(ρ_S) ≥ 2 + 2min(a,b). Then 2v(ρ_S) ≥ 4 + 4min(a,b).
+v(S_2(px)) ≥ 1 + min(a,b) by Lemma 2.1 (since px = p^{1+min(a,b)} · (unit) · ...? Actually S_2(p^v y) ≡ 0 mod p^v. Here px has p-adic valuation 1+v_p(x) ≥ 1+min(a,b). So S_2(px) ≡ 0 mod p^{1+min(a,b)}. v(S_2) ≥ 1+min(a,b).
+So v(e_2) ≥ min(4+4min, 1+min) = 1+min(a,b).
+Then v(N² e_2) ≥ 2r + 1 + min(a,b). **Correct.**
+
+On the other side, for k' ≥ 1, C(M+k'-1,k') = (M/k') C(M+k'-1,k'-1) is divisible by p^{(r-1-a)⁺} (where a = v_p(k'), so M/k' has valuation (r-1) - a if a < r-1, else 0). Similarly C(M+j'-1,j') divisible by p^{(r-1-b)⁺}.
+So v(S̃(M;k',j')) ≥ (r-1-a)⁺ + (r-1-b)⁺ ≥ (r-1-min(a,b))⁺.
+
+Therefore v(S̃(M;k',j') N² e_2) ≥ 2r + 1 + min(a,b) + (r-1-min(a,b))⁺.
+If min(a,b) ≤ r-1: this is 2r + 1 + min + r - 1 - min = 3r.
+If min(a,b) ≥ r: (r-1-min)⁺ = 0, so valuation is 2r + 1 + min ≥ 3r (since min ≥ r). **Correct.**
+
+For d ≥ 3: v(N^d e_d) ≥ d·r ≥ 3r (since r ≥ 1). **Correct.**
+
+If k' = j' = 0 then E = 1 (empty products). **Correct.**
+
+Hence Σ_S - a(M-1) ≡ -N T_S (mod p^{3r}), T_S := Σ_{k',j'} S̃(M;k',j') ρ_S(k',j'), and need T_S ≡ 0 (mod p^{2r}).
+
+**Step 2** (lines 174-176): Decoupling the coupled harmonic sum.
+Exactly, H'_{p(k'+j')} - H'_{pk'} = Σ'_{μ≤pj'} 1/(pk'+μ) = H'_{pj'} - pk' Z(k',j'), Z := Σ'_{μ≤pj'} 1/(μ(μ+pk')) ∈ ℤ_p.
+
+Check: H'_{p(k'+j')} = Σ'_{λ≤p(k'+j')} 1/λ = H'_{pk'} + Σ'_{pk'<λ≤p(k'+j')} 1/λ.
+The sum over λ = pk' + μ, μ=1..pj'. But need p∤λ. λ = pk' + μ. p∤λ ⇔ p∤μ (since p|pk'). So Σ'_{μ=1}^{pj'} 1/(pk'+μ) where p∤μ.
+So H'_{p(k'+j')} - H'_{pk'} = Σ'_{μ≤pj'} 1/(pk'+μ).
+Now 1/(pk'+μ) = 1/μ - pk'/(μ(μ+pk')). Sum over μ: Σ'_{μ≤pj'} 1/μ - pk' Σ'_{μ≤pj'} 1/(μ(μ+pk')) = H'_{pj'} - pk' Z.
+So ρ_S = H'_{pk'} + 2(H'_{pk'} + H'_{pj'} - pk'Z) - H'_{pj'} = 3H'_{pk'} + H'_{pj'} - 2pk'Z. **Correct.**
+
+Claim: v(Z) ≥ 1 + b (for j' ≥ 1; Z=0 if j'=0).
+Indeed Z = Σ_{t≥0} (-pk')^t S_{t+2}(pj') (convergent in ℤ_p).
+1/(μ(μ+pk')) = 1/μ² · 1/(1+pk'/μ) = Σ_{t≥0} (-pk')^t μ^{-t-2}. Sum over μ: Σ'_{μ≤pj'} = Σ_{t≥0} (-pk')^t S_{t+2}(pj'). **Correct.**
+
+By Lemma 2.1, S_{t+2}(pj') ≡ 0 (mod p^{1+b-e(t+2)}) (pj' = p^{1+b} · (unit) · ..., a union of full p^{1+b}-blocks).
+Wait: Lemma 2.1 says for x = p^v y, S_d(x) ≡ 0 (mod p^{v-e(d)}). Here pj' has v_p = 1+b (since j' = p^b · unit, pj' = p^{b+1} · unit). So v = 1+b. Then S_{t+2}(pj') ≡ 0 (mod p^{1+b - e(t+2)}). **Correct.**
+
+The t-th term: v((-pk')^t S_{t+2}(pj')) ≥ t·v(pk') + 1+b - e(t+2) = t(1+a) + 1+b - e(t+2) ≥ 1+b + t - e(t+2).
+Now e(t+2) = 0 if (p-1)∤(t+2), else 1 + v_p(t+2).
+If (p-1)∤(t+2): t - e = t ≥ 0.
+If (p-1)|(t+2): then t+2 ≥ p-1 ≥ 4 (since p≥5), so t ≥ 2. e(t+2) = 1 + v_p(t+2) ≤ 1 + log_p(t+2) ≤ 1 + log_p(2t) for t≥2. We need t ≥ 1 + v_p(t+2). Since t+2 ≤ t+t = 2t for t≥2, v_p(t+2) ≤ log_p(2t) ≤ t-1 for t≥2? Let's check: t=2: t+2=4, v_p(4)≤2 (p≥5 so v_p(4)=0), e=1, t-e=1≥0. t=3: t+2=5, v_p(5)≥1 if p=5, e=2, t-e=1≥0. t=4: t+2=6, v_p(6)≤1 (p≥5), e≤2, t-e≥2. Generally t - (1+v_p(t+2)) ≥ 0 for t≥2 because v_p(t+2) ≤ log_p(t+2) ≤ t-2 for t≥3? For p=5, t=3: t+2=5, v_5=1, e=2, t-e=1. t=4: t+2=6, v_5=0, e=1, t-e=3. So yes, t - e(t+2) ≥ 0 for all t≥0. **Correct.**
+
+So v(Z) ≥ 1+b. **Correct.**
+
+Then v(N·pk'Z·S̃(M;k',j')) ≥ r + 1+a + 1+b + (r-1-a)⁺ + (r-1-b)⁺.
+If min(a,b) ≤ r-1: this is r + 1+a + 1+b + r-1-a + r-1-b = 3r.
+If min(a,b) ≥ r: (r-1-a)⁺ = 0, so ≥ r + 1+a + 1+b ≥ 3r (since a,b ≥ r). **Correct.**
+
+So T_S ≡ 3T_1 + T_2 (mod p^{2r}), where T_1 = Σ S̃(M;k',j') H'_{pk'}, T_2 = Σ S̃(M;k',j') H'_{pj'}.
+
+**Step 3** (lines 178-182): T_1 ≡ 0 (mod p^{2r}).
+T_1 = Σ_{k'≥1} H'_{pk'} · C(M-1,k')² C(M+k'-1,k') · G_1(k'), G_1(k') := Σ_{j'} C(M-1,k'+j')² C(M+j'-1,j').
+
+Stratify by σ := v_p(pk') ≥ 1, so k' = p^{σ-1} κ with p∤κ.
+
+If σ ≥ r: H'_{pk'} ≡ 0 (mod p^{2σ}) ⊂ p^{2r} (Lemma 2.2: pk' has v_p = σ, so H' ≡ 0 mod p^{2σ}). Other factors integers. Terms ≡ 0 (mod p^{2r}). **Correct.**
+
+If 1 ≤ σ ≤ r-1:
+C(M+k'-1,k') = (M/k') C(M+k'-1,k'-1) = (mp^{r-σ}/κ) · (-1)^{k'-1} C(-M-1, k'-1).
+Reduce the remaining factors σ-1 times by Lemma 1.2 (levels r-1, r-2, ..., r-σ+1, so modulo p^{r-σ+1} ⊂ p^{r-σ} ℤ_p):
+C(M-1,k')² ≡ C(mp^{r-σ}-1, κ)²;
+(-1)^{k'-1} C(-M-1,k'-1) ≡ (-1)^{κ-1} C(-mp^{r-σ}-1, κ-1) (since [(p^{σ-1}κ-1)/p^{σ-1}] = κ-1 and the intermediate floors are p^{σ-1-i}κ - 1);
+G_1(k') ≡ G_1^{(r-σ)}(κ) where G_1^{(u)}(x) := Σ_j C(mp^u-1,x+j)² C(mp^u+j-1,j) — a tower.
+
+Let's verify the G_1 tower:
+G_1^{(u)}(x) = Σ_j C(mp^u-1, x+j)² C(mp^u+j-1, j).
+For p∤j: C(mp^u+j-1,j) = (mp^u/j) C(mp^u+j-1,j-1) ≡ 0 (mod p^u).
+For j = pj₁: C(mp^u-1, x+pj₁)² ≡ C(mp^{u-1}-1, [x/p]+j₁)² (mod p^u); C(mp^u+pj₁-1, pj₁) = (-1)^{pj₁} C(-mp^u, pj₁) ≡ (-1)^{j₁} C(-mp^{u-1}, j₁) = C(mp^{u-1}+j₁-1, j₁) (mod p^u) by Lemma 1.2(b). So G_1^{(u)}(x) ≡ G_1^{(u-1)}([x/p]) (mod p^u). **Correct.**
+
+The reduction errors are O(p^{r-σ}) and meet the explicit p^{r-σ} (from M/k') and H'_{pk'} ≡ 0 (mod p^{2σ}), so they are ≡ 0 (mod p^{2r}). **Correct.**
+
+Hence the stratum is ≡ mp^{r-σ} Σ'_{κ<mp^{r-σ}} (1/κ) H'_{p^σ κ} R^{(r-σ)}(κ) (mod p^{2r}), where R^{(u)}(κ) := C(mp^u-1,κ)² (-1)^{κ-1} C(-mp^u-1,κ-1) G_1^{(u)}(κ).
+
+Put a_κ := p^{-2σ} (1/κ) H'_{p^σ κ} for p∤κ (0 otherwise): integral by Lemma 2.2 (H'_{p^σ κ} ≡ 0 mod p^{2σ}).
+Σ_{κ∈B_t(i)} a_κ ≡ 0 (mod p^t) by Lemma 2.6 (with s = σ).
+
+Wait, Lemma 2.6: Σ'_{k∈B_t(i)} (1/k) H'_{kp^s} ≡ 0 (mod p^{t+2s}). Here we have Σ_{κ∈B_t(i)} (1/κ) H'_{p^σ κ}. This matches Lemma 2.6 with s = σ, and the block parameter is t. So Σ ≡ 0 (mod p^{t+2σ}). Then a_κ sum = p^{-2σ} Σ (1/κ) H'_{p^σ κ} ≡ 0 (mod p^t). **Correct.**
+
+The kernel: for p∤κ, R^{(u)}(κ) ≡ R̂^{(u-1)}([κ/p]) (mod p^u) with R̂^{(w)}(q) := C(mp^w-1,q)² (-1)^q C(-mp^w-1,q) G_1^{(w)}(q) (Lemma 1.2 and consequence after it), and (R̂^{(w)})_w is a tower (Lemma 1.2 and tower property of G_1).
+
+Check R^{(u)}(κ) = C(mp^u-1,κ)² (-1)^{κ-1} C(-mp^u-1,κ-1) G_1^{(u)}(κ).
+By Lemma 1.2 consequence: for p∤κ, (-1)^{κ-1} C(-mp^u-1,κ-1) ≡ (-1)^{[κ/p]} C(-mp^{u-1}-1, [κ/p]) (mod p^u).
+C(mp^u-1,κ)² ≡ C(mp^{u-1}-1, [κ/p])² (mod p^u).
+G_1^{(u)}(κ) ≡ G_1^{(u-1)}([κ/p]) (mod p^u) as it's a tower.
+So R^{(u)}(κ) ≡ C(mp^{u-1}-1, [κ/p])² (-1)^{[κ/p]} C(-mp^{u-1}-1, [κ/p]) G_1^{(u-1)}([κ/p]) = R̂^{(u-1)}([κ/p]) (mod p^u). **Correct.**
+
+Lemma 3.1 with top function R^{(r-σ)} on the units and tower R̂ below gives Σ' a_κ R^{(r-σ)}(κ) ≡ 0 (mod p^{r-σ}).
+The stratum is ≡ mp^{r-σ} · p^{2σ} · p^{r-σ} = m p^{r-σ + 2σ + r-σ} = m p^{2r} ≡ 0 (mod p^{2r}). **Correct.**
+
+Summing strata, T_1 ≡ 0 (mod p^{2r}). **Correct.**
+
+**Step 4** (lines 184-185): T_2 ≡ 0 (mod p^{2r}).
+T_2 = Σ_{j'≥1} H'_{pj'} · C(M+j'-1,j') · G_2(j'), G_2(j') := Σ_{k'} C(M-1,k')² C(M+k'-1,k') C(M-1,k'+j')².
+
+Stratify by σ := v_p(pj'), j' = p^{σ-1} ι; σ ≥ r vanishes as before.
+For σ ≤ r-1:
+C(M+j'-1,j') = (mp^{r-σ}/ι) (-1)^{j'-1} C(-M-1,j'-1) with (-1)^{j'-1} C(-M-1,j'-1) ≡ (-1)^{ι-1} C(-mp^{r-σ}-1, ι-1) (mod p^{r-σ}) (σ-1 reductions).
+G_2(j') ≡ G_2^{(r-σ)}(ι) (mod p^{r-σ}) with G_2^{(u)}(y) := Σ_k C(mp^u-1,k)² C(mp^u+k-1,k) C(mp^u-1,k+y)², a tower in y.
+Unscaled k vanish mod p^u through C(mp^u+k-1,k) = (mp^u/k)·...; scaled k=pk₁ reduce by Lemma 1.2 with [(pk₁+y)/p] = k₁+[y/p]. **Correct.**
+
+Rest identical to Step 3 (Lemma 2.6 with s=σ, Lemma 3.1), giving T_2 ≡ 0 (mod p^{2r}).
+
+**No issue found in §7.** The stratification and valuation bookkeeping are correct.
+
+---
+I have thoroughly analyzed every section of PROOF.md. All lemmas are correctly proved, all invocations respect hypotheses, p-adic valuations are correctly tracked at every step, signs are consistent, index ranges are correct, and all inductions close properly. No errors, gaps, or unclear steps were found.
+
+**VERDICT: CORRECT**
+
+The three steps I am least sure about (due to their complexity and the many moving parts that must align perfectly, not because of any detected flaw):
+
+1. **Lemma 2.5 (double harmonic sums, first kind) – general block case (lines 62–65)**: The proof uses two exact expansions (α) and (β) with integral remainders, then multiplies them and sums four pieces. The valuation bookkeeping across the four pieces (especially the cross-term with τ_s(n̄) and the H'_{ip^t}·σ_{t'}(i) term) requires that every remainder term lands exactly in p^{t+2s}. The claim that 2t' ≥ t+2s (i.e., 2t+2s ≥ t+2s) holds trivially, but the tightest bound comes from the base block Σ(0) and the τ_s term. A subtle off-by-one in the block indexing or an overlooked carry in the expansion of σ_s could invalidate the induction step. (Numerically verified per the paper, but structurally the most delicate.)
+
+2. **§4 induction step (4.b.2), proof that X_s ≡ 0 (mod p^{2r−s−1}) (lines 145–148)**: The three parts X_{s,1}, X_{s,2}, X_{s,3} each invoke different lemmas (2.5, 2.2+3.4(d), and the series expansion from X̂_3). The valuations must all meet the required p^{2r−s−1} threshold. The X_{s,1} part uses Lemma 2.5 at level t+1, giving p^{t+1+2s'}, then divides by p^{2s'+1} and applies Lemma 3.1 at level s, yielding p^{2s'+1+s} = p^{2r−s−1} — this is tight (zero slack). Any miscalculation of the s' index or the block level in Lemma 2.5 would break the induction.
+
+3. **§7 Step 3 stratification of T_1 (lines 180–182)**: The reduction of factors σ−1 times by Lemma 1.2 must be done at the correct levels (r−1 down to r−σ+1) so that the congruence holds modulo p^{r−σ+1} ⊂ p^{r−σ}. The floors [(p^{σ−1}κ−1)/p^{σ−1}] = κ−1 and intermediate floors p^{σ−1−i}κ−1 must be exactly right for the sign (−1)^{k'−1} ≡ (−1)^{κ−1} to hold through the chain. The G_1 tower property and the Lemma 3.1 application with weights a_κ = p^{−2σ}(1/κ)H'_{p^σ κ} must align perfectly — the valuation of H' is exactly 2σ, so a_κ is integral but no more, and Lemma 2.6 gives the block sum condition at the precise level needed. A single off-by-one in the σ indexing or the tower height would lose the necessary p^{2r} factor.

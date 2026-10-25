@@ -1,0 +1,10 @@
+'A333561Oeis.aOEIS_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A333561Oeis.aOEIS_eq_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BinomIdent.S_eq_R' depends on axioms: [propext, Classical.choice, Quot.sound]
+A333561Oeis.aOEIS_supercongruence : ∀ (p n k : ℕ),
+  Nat.Prime p →
+    p ≥ 5 → n ≥ 1 → k ≥ 1 → A333561Oeis.aOEIS (n * p ^ k) ≡ A333561Oeis.aOEIS (n * p ^ (k - 1)) [MOD p ^ (3 * k)]
+def A333561Oeis.aOEIS : ℕ → ℕ :=
+fun n => ∑ j ∈ Finset.range (2 * n + 1), (n + j - 1).choose j * 2 ^ j
+lean4checker BalaCheck.BinomIdent exit=0 :: Found 1 modules to check
+lean4checker BalaCheck.A333561Oeis exit=0 :: Found 1 modules to check

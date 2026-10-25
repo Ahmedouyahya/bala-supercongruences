@@ -1,0 +1,210 @@
+Re-review of TheoremF-p3-proof.md (p = 3). 2026-10-15 20:52
+====================================================================================================
+
+== Lemma A: lambda_M(D g) = -M lambda_M((psi - c) g) for random g; lambda_M(psi - c) = 0 ==
+[PASS] Lemma A exact in 324 random instances (6 pairs x c<=3 x M in {1,2,3,4,6,9}), and lambda_M(psi-c)=0
+
+== Lemma B: A(N) - A(M) = sum_{j=2}^{3cM} (N^j/j!) lambda_M(C(L^j)) exactly; C(L) = 0; lambda_M(C(L^j)) in Z_(3) ==
+[PASS] Lemma B (a,b,c,M)=(2,-1,1,1): expansion exact, C(L)=0, integrality -- A(N)-A(M)=108
+[PASS] Lemma B (a,b,c,M)=(2,-1,1,3): expansion exact, C(L)=0, integrality -- A(N)-A(M)=16807824
+[PASS] Lemma B (a,b,c,M)=(3,-1,2,2): expansion exact, C(L)=0, integrality -- A(N)-A(M)=38862720
+[PASS] Lemma B (a,b,c,M)=(-1,-3,1,3): expansion exact, C(L)=0, integrality -- A(N)-A(M)=7621452
+[PASS] Lemma B (a,b,c,M)=(1,-1,2,2): expansion exact, C(L)=0, integrality -- A(N)-A(M)=141984
+[PASS] Lemma B (a,b,c,M)=(-2,5,3,2): expansion exact, C(L)=0, integrality -- A(N)-A(M)=13092690845952
+[PASS] Lemma B (a,b,c,M)=(4,4,1,6): expansion exact, C(L)=0, integrality -- A(N)-A(M)=-85113003096
+[PASS] Lemma B (a,b,c,M)=(0,-2,1,9): expansion exact, C(L)=0, integrality -- A(N)-A(M)=1537519631667897543930
+
+== Lemma C: v_3(N^2/2) = 2r, v_3(N^3/6) = 3r-1, v_3(N^j/j!) >= 3r (j >= 4); v_3(j!) = (j - s_3(j))/2 ==
+[PASS] Lemma C for r <= 7, j < 250 (min slack at j >= 4: 0); digit-sum formula for j < 2000
+
+== Lemma D: (N^3/6) lambda_M(C(L^3)) ≡ (9M^3/2) lambda_M(L) (mod 3^{3r}); C(L^3) ≡ L(y) (mod 3) ==
+[PASS] Lemma D (a,b)=(2,-1): C(L^3)≡L mod 3 to y^40; congruence slack -- c1r1m1:+0 c1r1m2:+0 c1r2m1:+1 c1r2m2:+0 c1r3m1:+2 c2r1m1:+0 c2r1m2:+0 c2r2m1:+0 c2r2m2:+0 c2r3m1:+1 c3r1m1:+0 c3r1m2:+1 c3r2m1:+2 c3r2m2:+0 c3r3m1:+4
+[PASS] Lemma D (a,b)=(-1,-3): C(L^3)≡L mod 3 to y^40; congruence slack -- c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+0 c1r3m1:+1 c2r1m1:+0 c2r1m2:+0 c2r2m1:+2 c2r2m2:+1 c2r3m1:+3 c3r1m1:+0 c3r1m2:+0 c3r2m1:+1 c3r2m2:+1 c3r3m1:+2
+[PASS] Lemma D (a,b)=(1,-1): C(L^3)≡L mod 3 to y^40; congruence slack -- c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+0 c1r3m1:+1 c2r1m1:+0 c2r1m2:+0 c2r2m1:+0 c2r2m2:+1 c2r3m1:+1 c3r1m1:+2 c3r1m2:+0 c3r2m1:+0 c3r2m2:+0 c3r3m1:+3
+[PASS] Lemma D (a,b)=(3,3): C(L^3)≡L mod 3 to y^40; congruence slack -- c1r1m1:inf c1r1m2:+0 c1r2m1:inf c1r2m2:+2 c1r3m1:inf c2r1m1:+0 c2r1m2:+0 c2r2m1:+2 c2r2m2:+2 c2r3m1:+4 c3r1m1:inf c3r1m2:+1 c3r2m1:inf c3r2m2:+3 c3r3m1:inf
+[PASS] Lemma D (a,b)=(-2,5): C(L^3)≡L mod 3 to y^40; congruence slack -- c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+0 c1r3m1:+1 c2r1m1:+1 c2r1m2:+0 c2r2m1:+0 c2r2m2:+1 c2r3m1:+1 c3r1m1:+0 c3r1m2:+0 c3r2m1:+0 c3r2m2:+0 c3r3m1:+3
+[PASS] Lemma D (a,b)=(0,4): C(L^3)≡L mod 3 to y^40; congruence slack -- c1r1m1:+0 c1r1m2:+0 c1r2m1:+0 c1r2m2:+1 c1r3m1:+2 c2r1m1:+0 c2r1m2:+0 c2r2m1:+0 c2r2m2:+0 c2r3m1:+2 c3r1m1:+0 c3r1m2:+0 c3r2m1:+0 c3r2m2:+1 c3r3m1:+2
+
+== Lemma E: (a) S_2 ≡ -3^{e-1} (mod 3^e); (b) 2S_1 ≡ 3^{2e-1} (mod 3^{2e}); (c) S_2^± ≡ 0 (mod 3^e).  exact leading digits ==
+[PASS] Lemma E e=1: (a) True [v_3(S_2)=0], (b) True [v_3(S_1)=1], (c) True [v_3(S_2^±)=1]; v_3(S_1^±)=0
+[PASS] Lemma E e=2: (a) True [v_3(S_2)=1], (b) True [v_3(S_1)=3], (c) True [v_3(S_2^±)=2]; v_3(S_1^±)=0
+[PASS] Lemma E e=3: (a) True [v_3(S_2)=2], (b) True [v_3(S_1)=5], (c) True [v_3(S_2^±)=3]; v_3(S_1^±)=0
+[PASS] Lemma E e=4: (a) True [v_3(S_2)=3], (b) True [v_3(S_1)=7], (c) True [v_3(S_2^±)=4]; v_3(S_1^±)=0
+[PASS] Lemma E e=5: (a) True [v_3(S_2)=4], (b) True [v_3(S_1)=9], (c) True [v_3(S_2^±)=5]; v_3(S_1^±)=0
+[PASS] Lemma E e=6: (a) True [v_3(S_2)=5], (b) True [v_3(S_1)=11], (c) True [v_3(S_2^±)=6]; v_3(S_1^±)=0
+
+== Lemma F: T = l 3^e, 3 ∤ l: (a) H_T ≡ -3^{2e-1} (mod 3^{2e}), v_3(H_T) = 2e-1; (b) T even: H_T^± ≡ 0 (mod 3^{2e}) ==
+[PASS] Lemma F(a) for all T ≡ 0 (mod 3), T <= 2700 (900 values, e up to 7) -- bad T: []
+[PASS] Lemma F(b) for all even T ≡ 0 (mod 3), T <= 2700 (450 values); min slack by e: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0} -- bad T: []
+       (for odd T the bound fails: min v_3(H_T^±) - 2e over odd T = -14)
+
+== Lemma G at p = 3 (direct convolution vs the harmonic formulas), T <= 300 ==
+[PASS] Lemma G at p=3, all T = 3, 6, ..., 300
+
+== Lemma H: g_t = [x^{3t}] L^2 / t in Z_(3), g_t ≡ a^2 (-1)^t + b^2 (mod 3), t <= 400 (direct convolution, no Lemma G) ==
+[PASS] Lemma H (a,b)=(2,-1): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(3,-1): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(4,-1): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(-1,-3): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(1,-1): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(0,1): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(1,0): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(2,2): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(3,3): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(-3,0): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(6,-9): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(5,7): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(-4,2): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H (a,b)=(1,2): integral True, residue a^2(-1)^t+b^2 True for t<=400 (incl. t=3,9,27,81,243) -- bad t: []
+[PASS] Lemma H ingredients: [x^T]U^2/t ≡ 1, [x^T]V^2/t ≡ (-1)^t, [x^T]UV/t ≡ 0 (mod 3) (UV = 0 for odd t), t <= 400
+[PASS] Lemma H(b) closed form gbar = y[(b^2-a^2) + (a^2+b^2)y]/(1-y^2) in F_3[[y]]
+
+== Lemma J over F_3 (series to order 150; rational-function identities with denominators (1-y^2)^2 are decided by this): ==
+   (a,b,c)≡(0,0,0): constants K with Lbar=(psibar-c)(gbar+K): [0, 1, 2]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(0,0,1): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(0,0,2): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(0,1,0): constants K with Lbar=(psibar-c)(gbar+K): [1]; lemma needs K0=1; in class (ii): True
+   (a,b,c)≡(0,1,1): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(0,1,2): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(0,2,0): constants K with Lbar=(psibar-c)(gbar+K): [1]; lemma needs K0=1; in class (ii): True
+   (a,b,c)≡(0,2,1): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(0,2,2): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(1,0,0): constants K with Lbar=(psibar-c)(gbar+K): [1]; lemma needs K0=1; in class (ii): True
+   (a,b,c)≡(1,0,1): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(1,0,2): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(1,1,0): constants K with Lbar=(psibar-c)(gbar+K): [2]; lemma needs K0=2; in class (ii): True
+   (a,b,c)≡(1,1,1): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(1,1,2): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(1,2,0): constants K with Lbar=(psibar-c)(gbar+K): [1]; lemma needs K0=1; in class (ii): True
+   (a,b,c)≡(1,2,1): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(1,2,2): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(2,0,0): constants K with Lbar=(psibar-c)(gbar+K): [1]; lemma needs K0=1; in class (ii): True
+   (a,b,c)≡(2,0,1): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(2,0,2): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(2,1,0): constants K with Lbar=(psibar-c)(gbar+K): [1]; lemma needs K0=1; in class (ii): True
+   (a,b,c)≡(2,1,1): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(2,1,2): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+   (a,b,c)≡(2,2,0): constants K with Lbar=(psibar-c)(gbar+K): [2]; lemma needs K0=2; in class (ii): True
+   (a,b,c)≡(2,2,1): constants K with Lbar=(psibar-c)(gbar+K): [0]; lemma needs K0=0; in class (ii): True
+   (a,b,c)≡(2,2,2): constants K with Lbar=(psibar-c)(gbar+K): []; lemma needs K0=None; in class (ii): False
+[PASS] Lemma J (a),(b),(c) [+ K0 := 0 for a≡b≡0] hold in F_3[[y]] for all 27 residue classes
+[PASS] Remark 1: outside the classes of (ii) NO constant K has Lbar = (psibar-c)(gbar+K)
+[FAIL] Remark 1 parenthetical: 'for a ≡ b ≡ 0 every constant works because both sides vanish' -- classes where only some constants work: [((0, 0, 1), [0]), ((0, 0, 2), [0])] (for 3 ∤ c the right side is (psibar - c)K = -cK, which vanishes only for K = 0)
+[PASS] Lemma J(b) polynomial identity (alpha y - c)[(b^2-a^2)+(a^2+b^2)y] = alpha + c y + alpha y^2 in all cases a+b≡c≢0
+[PASS] Lemma J(c) polynomial identity (alpha+beta y)[K0 + (b^2-a^2)y + (a^2+b^2-K0)y^2] = alpha + 2 beta y + alpha y^2 for 3|c
+
+== Proposition I: A(3M) - A(M) ≡ (9M^3/2) lambda_M(L - (psi-c) g) (mod 3^{3r}); and Remark 1 digit formula ==
+   (a,b,c)=(2,-1,1) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+0/+1/d0 r1m4:+0/+0/d0 r1m5:+0/+2/d0 r2m1:+1/+0/d0 r2m2:+0/+1/d0 r2m4:+1/+0/d0 r3m1:+2/+0/d0 r3m2:+3/+1/d0 r4m1:+3/+0/d0
+   (a,b,c)=(3,-1,1) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+0/+0/d0 r1m4:+0/+0/d0 r1m5:+0/+0/d0 r2m1:+0/-1/d2 r2m2:+0/+0/d0 r2m4:+1/+0/d0 r3m1:+1/-1/d2 r3m2:+2/+0/d0 r4m1:+2/-1/d2
+   (a,b,c)=(4,-1,1) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+1/-1/d1 r1m4:+0/-1/d2 r1m5:+0/-1/d2 r2m1:+0/-1/d2 r2m2:+0/-1/d1 r2m4:+0/-1/d2 r3m1:+1/-1/d2 r3m2:+1/-1/d1 r4m1:+2/-1/d2
+   (a,b,c)=(-1,-3,1) cls(ii)=False: r1m1:+0/-1/d1 r1m2:+0/+0/d0 r1m4:+2/-1/d2 r1m5:+0/+0/d0 r2m1:+0/-1/d1 r2m2:+0/+0/d0 r2m4:+0/-1/d2 r3m1:+1/-1/d1 r3m2:+2/+0/d0 r4m1:+2/-1/d1
+   (a,b,c)=(1,-1,1) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+0/-1/d1 r1m4:+3/+0/d0 r1m5:+0/+0/d0 r2m1:+0/-1/d2 r2m2:+0/-1/d1 r2m4:+0/+0/d0 r3m1:+1/-1/d2 r3m2:+1/-1/d1 r4m1:+2/-1/d2
+   (a,b,c)=(0,2,1) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+1/+0/d0 r1m4:+1/-1/d2 r1m5:+2/+1/d0 r2m1:+0/-1/d2 r2m2:+0/+0/d0 r2m4:+0/-1/d2 r3m1:+1/-1/d2 r3m2:+2/+0/d0 r4m1:+2/-1/d2
+   (a,b,c)=(2,2,1) cls(ii)=True: r1m1:inf/inf/d0 r1m2:+0/+0/d0 r1m4:+0/+0/d0 r1m5:inf/inf/d0 r2m1:inf/inf/d0 r2m2:+0/+0/d0 r2m4:+1/+0/d0 r3m1:inf/inf/d0 r3m2:+2/+0/d0 r4m1:inf/inf/d0
+   (a,b,c)=(1,2,1) cls(ii)=False: r1m1:inf/-1/d2 r1m2:+0/-1/d1 r1m4:+1/-1/d1 r1m5:+0/-1/d1 r2m1:+0/-1/d2 r2m2:+0/-1/d1 r2m4:+1/-1/d1 r3m1:+1/-1/d2 r3m2:+1/-1/d1 r4m1:+2/-1/d2
+   (a,b,c)=(-4,3,1) cls(ii)=False: r1m1:+0/-1/d1 r1m2:+0/+1/d0 r1m4:+4/-1/d2 r1m5:+0/+0/d0 r2m1:+0/-1/d1 r2m2:+0/+1/d0 r2m4:+0/-1/d2 r3m1:+1/-1/d1 r3m2:+3/+1/d0 r4m1:+2/-1/d1
+   (a,b,c)=(5,2,1) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+2/+0/d0 r1m4:+0/+1/d0 r1m5:+0/+0/d0 r2m1:+1/+0/d0 r2m2:+0/+0/d0 r2m4:+1/+1/d0 r3m1:+2/+0/d0 r3m2:+2/+0/d0 r4m1:+3/+0/d0
+   (a,b,c)=(3,3,1) cls(ii)=True: r1m1:inf/inf/d0 r1m2:+0/+1/d0 r1m4:+0/+1/d0 r1m5:inf/inf/d0 r2m1:inf/inf/d0 r2m2:+2/+1/d0 r2m4:+2/+1/d0 r3m1:inf/inf/d0 r3m2:+5/+1/d0 r4m1:inf/inf/d0
+   (a,b,c)=(-3,1,1) cls(ii)=True: r1m1:+0/+1/d0 r1m2:+2/+0/d0 r1m4:+0/+0/d0 r1m5:+1/+0/d0 r2m1:+0/+2/d0 r2m2:+1/+0/d0 r2m4:+0/+0/d0 r3m1:+3/+3/d0 r3m2:+2/+0/d0 r4m1:+4/+3/d0
+   (a,b,c)=(4,4,1) cls(ii)=False: r1m1:inf/inf/d0 r1m2:+0/-1/d1 r1m4:+0/+0/d0 r1m5:inf/inf/d0 r2m1:inf/inf/d0 r2m2:+0/-1/d1 r2m4:+0/+0/d0 r3m1:inf/inf/d0 r3m2:+1/-1/d1 r4m1:inf/inf/d0
+   (a,b,c)=(-2,-5,1) cls(ii)=False: r1m1:+0/+0/d0 r1m2:+1/-1/d1 r1m4:+1/+2/d0 r1m5:+1/-1/d2 r2m1:+1/+0/d0 r2m2:+0/-1/d1 r2m4:+0/+2/d0 r3m1:+2/+0/d0 r3m2:+1/-1/d1 r4m1:+3/+0/d0
+   (a,b,c)=(6,-3,1) cls(ii)=True: r1m1:+1/+2/d0 r1m2:+0/+1/d0 r1m4:+0/+1/d0 r1m5:+1/+3/d0 r2m1:+3/+2/d0 r2m2:+2/+1/d0 r2m4:+2/+1/d0 r3m1:+5/+2/d0 r3m2:+4/+1/d0 r4m1:+7/+2/d0
+   (a,b,c)=(-7,1,1) cls(ii)=False: r1m1:+1/-1/d1 r1m2:+0/-1/d1 r1m4:+1/-1/d1 r1m5:+0/-1/d2 r2m1:+0/-1/d1 r2m2:+0/-1/d1 r2m4:+2/-1/d1 r3m1:+1/-1/d1 r3m2:+1/-1/d1 r4m1:+2/-1/d1
+   (a,b,c)=(2,-1,2) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+0/+0/d0 r1m4:+1/-1/d1 r1m5:+0/+0/d0 r2m1:+0/-1/d2 r2m2:+0/+0/d0 r2m4:+0/-1/d1 r3m1:+1/-1/d2 r3m2:+2/+0/d0 r4m1:+2/-1/d2
+   (a,b,c)=(3,-1,2) cls(ii)=True: r1m1:+1/+0/d0 r1m2:+0/+0/d0 r1m4:+0/+1/d0 r1m5:+0/+0/d0 r2m1:+1/+0/d0 r2m2:+0/+0/d0 r2m4:+2/+1/d0 r3m1:+2/+0/d0 r3m2:+2/+0/d0 r4m1:+3/+0/d0
+   (a,b,c)=(4,-1,2) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+1/+0/d0 r1m4:+0/-1/d1 r1m5:+0/+1/d0 r2m1:+0/-1/d2 r2m2:+0/+0/d0 r2m4:+0/-1/d1 r3m1:+1/-1/d2 r3m2:+2/+0/d0 r4m1:+2/-1/d2
+   (a,b,c)=(-1,-3,2) cls(ii)=True: r1m1:+0/+2/d0 r1m2:+0/+1/d0 r1m4:+1/+1/d0 r1m5:+0/+0/d0 r2m1:+2/+1/d0 r2m2:+1/+3/d0 r2m4:+2/+2/d0 r3m1:+3/+1/d0 r3m2:+4/+2/d0 r4m1:+4/+1/d0
+   (a,b,c)=(1,-1,2) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+0/-1/d2 r1m4:+0/-1/d1 r1m5:+0/-1/d2 r2m1:+0/-1/d2 r2m2:+1/-1/d2 r2m4:+0/-1/d1 r3m1:+1/-1/d2 r3m2:+1/-1/d2 r4m1:+2/-1/d2
+   (a,b,c)=(0,2,2) cls(ii)=True: r1m1:+0/inf/d0 r1m2:+0/inf/d0 r1m4:+4/inf/d0 r1m5:+3/inf/d0 r2m1:+3/inf/d0 r2m2:+5/inf/d0 r2m4:+12/inf/d0 r3m1:+11/inf/d0 r3m2:+20/inf/d0 r4m1:+31/inf/d0
+   (a,b,c)=(2,2,2) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+1/+0/d0 r1m4:+1/-1/d2 r1m5:+2/+1/d0 r2m1:+0/-1/d2 r2m2:+0/+0/d0 r2m4:+0/-1/d2 r3m1:+1/-1/d2 r3m2:+2/+0/d0 r4m1:+2/-1/d2
+   (a,b,c)=(1,2,2) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+0/-1/d1 r1m4:+0/-1/d1 r1m5:+0/-1/d1 r2m1:+0/-1/d2 r2m2:+0/-1/d1 r2m4:+1/-1/d1 r3m1:+1/-1/d2 r3m2:+1/-1/d1 r4m1:+2/-1/d2
+   (a,b,c)=(-4,3,2) cls(ii)=True: r1m1:+2/+1/d0 r1m2:+1/+1/d0 r1m4:+0/+2/d0 r1m5:+0/+1/d0 r2m1:+2/+4/d0 r2m2:+2/+2/d0 r2m4:+3/+4/d0 r3m1:+3/+2/d0 r3m2:+3/+2/d0 r4m1:+4/+2/d0
+   (a,b,c)=(5,2,2) cls(ii)=False: r1m1:+1/-1/d2 r1m2:+1/+0/d0 r1m4:+0/-1/d2 r1m5:+0/+0/d0 r2m1:+0/-1/d2 r2m2:+0/+0/d0 r2m4:+0/-1/d2 r3m1:+1/-1/d2 r3m2:+2/+0/d0 r4m1:+2/-1/d2
+   (a,b,c)=(3,3,2) cls(ii)=True: r1m1:+0/+1/d0 r1m2:+0/+1/d0 r1m4:+2/+2/d0 r1m5:+0/+1/d0 r2m1:+2/+1/d0 r2m2:+2/+1/d0 r2m4:+3/+2/d0 r3m1:+4/+1/d0 r3m2:+5/+1/d0 r4m1:+5/+1/d0
+   (a,b,c)=(-3,1,2) cls(ii)=False: r1m1:+0/+2/d0 r1m2:+0/-1/d1 r1m4:+0/+0/d0 r1m5:+2/-1/d1 r2m1:+0/+3/d0 r2m2:+0/-1/d1 r2m4:+0/+0/d0 r3m1:+5/+6/d0 r3m2:+1/-1/d1 r4m1:+5/+4/d0
+   (a,b,c)=(4,4,2) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+0/+0/d0 r1m4:+0/+0/d0 r1m5:+0/+1/d0 r2m1:+0/+0/d0 r2m2:+1/+0/d0 r2m4:+0/+0/d0 r3m1:+2/+0/d0 r3m2:+2/+0/d0 r4m1:+3/+0/d0
+   (a,b,c)=(-2,-5,2) cls(ii)=True: r1m1:+2/+1/d0 r1m2:+0/+0/d0 r1m4:+2/+1/d0 r1m5:+0/+0/d0 r2m1:+0/+1/d0 r2m2:+1/+0/d0 r2m4:+0/+1/d0 r3m1:+4/+1/d0 r3m2:+2/+0/d0 r4m1:+6/+1/d0
+   (a,b,c)=(6,-3,2) cls(ii)=True: r1m1:+0/+1/d0 r1m2:+0/+1/d0 r1m4:+0/+1/d0 r1m5:+1/+3/d0 r2m1:+2/+1/d0 r2m2:+2/+1/d0 r2m4:+2/+1/d0 r3m1:+5/+1/d0 r3m2:+4/+1/d0 r4m1:+5/+1/d0
+   (a,b,c)=(-7,1,2) cls(ii)=False: r1m1:+0/-1/d2 r1m2:+0/-1/d1 r1m4:+0/-1/d1 r1m5:+0/-1/d2 r2m1:+0/-1/d2 r2m2:+0/-1/d1 r2m4:+3/-1/d1 r3m1:+1/-1/d2 r3m2:+1/-1/d1 r4m1:+2/-1/d2
+   (a,b,c)=(2,-1,3) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+1/+0/d0 r1m4:+0/+0/d0 r1m5:+0/+2/d0 r2m1:+2/+0/d0 r2m2:+0/+0/d0 r2m4:+1/+0/d0 r3m1:+4/+0/d0 r3m2:+2/+0/d0 r4m1:+4/+0/d0
+   (a,b,c)=(3,-1,3) cls(ii)=True: r1m1:+0/+2/d0 r1m2:+3/+0/d0 r1m4:+1/+0/d0 r1m5:+0/+0/d0 r2m1:+2/+1/d0 r2m2:+0/+0/d0 r2m4:+1/+0/d0 r3m1:+4/+1/d0 r3m2:+2/+0/d0 r4m1:+6/+1/d0
+   (a,b,c)=(4,-1,3) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+0/+0/d0 r1m4:+0/+0/d0 r1m5:+0/+1/d0 r2m1:+0/+0/d0 r2m2:+0/+0/d0 r2m4:+0/+0/d0 r3m1:+3/+0/d0 r3m2:+5/+0/d0 r4m1:+4/+0/d0
+   (a,b,c)=(-1,-3,3) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+0/+1/d0 r1m4:+2/+1/d0 r1m5:+0/+0/d0 r2m1:+1/+0/d0 r2m2:+1/+5/d0 r2m4:+3/+1/d0 r3m1:+2/+0/d0 r3m2:+4/+2/d0 r4m1:+3/+0/d0
+   (a,b,c)=(1,-1,3) cls(ii)=True: r1m1:+3/+1/d0 r1m2:+0/+0/d0 r1m4:+0/+0/d0 r1m5:+1/+0/d0 r2m1:+0/+1/d0 r2m2:+0/+0/d0 r2m4:+0/+0/d0 r3m1:+3/+1/d0 r3m2:+3/+0/d0 r4m1:+4/+1/d0
+   (a,b,c)=(0,2,3) cls(ii)=True: r1m1:+2/inf/d0 r1m2:+0/inf/d0 r1m4:+3/inf/d0 r1m5:+3/inf/d0 r2m1:+3/inf/d0 r2m2:+5/inf/d0 r2m4:+12/inf/d0 r3m1:+11/inf/d0 r3m2:+20/inf/d0 r4m1:+31/inf/d0
+   (a,b,c)=(2,2,3) cls(ii)=True: r1m1:inf/inf/d0 r1m2:+3/+0/d0 r1m4:+0/+0/d0 r1m5:inf/inf/d0 r2m1:inf/inf/d0 r2m2:+0/+0/d0 r2m4:+1/+0/d0 r3m1:inf/inf/d0 r3m2:+2/+0/d0 r4m1:inf/inf/d0
+   (a,b,c)=(1,2,3) cls(ii)=True: r1m1:+1/inf/d0 r1m2:+0/inf/d0 r1m4:+1/inf/d0 r1m5:+0/inf/d0 r2m1:+0/inf/d0 r2m2:+4/inf/d0 r2m4:+6/inf/d0 r3m1:+4/inf/d0 r3m2:+12/inf/d0 r4m1:+14/inf/d0
+   (a,b,c)=(-4,3,3) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+1/+1/d0 r1m4:+0/+2/d0 r1m5:+0/+0/d0 r2m1:+1/+0/d0 r2m2:+1/+2/d0 r2m4:+3/+2/d0 r3m1:+2/+0/d0 r3m2:+3/+3/d0 r4m1:+3/+0/d0
+   (a,b,c)=(5,2,3) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+0/+2/d0 r1m4:+3/+0/d0 r1m5:+0/+0/d0 r2m1:+2/+0/d0 r2m2:+0/+2/d0 r2m4:+5/+0/d0 r3m1:+3/+0/d0 r3m2:+5/+2/d0 r4m1:+4/+0/d0
+   (a,b,c)=(3,3,3) cls(ii)=True: r1m1:inf/inf/d0 r1m2:+1/+2/d0 r1m4:+1/+3/d0 r1m5:inf/inf/d0 r2m1:inf/inf/d0 r2m2:+3/+2/d0 r2m4:+4/+3/d0 r3m1:inf/inf/d0 r3m2:+6/+2/d0 r4m1:inf/inf/d0
+   (a,b,c)=(-3,1,3) cls(ii)=True: r1m1:+2/+1/d0 r1m2:+0/+1/d0 r1m4:+0/+0/d0 r1m5:+0/+1/d0 r2m1:+0/+2/d0 r2m2:+2/+1/d0 r2m4:+0/+0/d0 r3m1:+3/+3/d0 r3m2:+3/+1/d0 r4m1:+4/+3/d0
+   (a,b,c)=(4,4,3) cls(ii)=True: r1m1:inf/inf/d0 r1m2:+5/+0/d0 r1m4:+0/+0/d0 r1m5:inf/inf/d0 r2m1:inf/inf/d0 r2m2:+1/+0/d0 r2m4:+0/+0/d0 r3m1:inf/inf/d0 r3m2:+2/+0/d0 r4m1:inf/inf/d0
+   (a,b,c)=(-2,-5,3) cls(ii)=True: r1m1:+0/+0/d0 r1m2:+0/+0/d0 r1m4:+1/+0/d0 r1m5:+1/+2/d0 r2m1:+1/+0/d0 r2m2:+3/+0/d0 r2m4:+0/+0/d0 r3m1:+2/+0/d0 r3m2:+3/+0/d0 r4m1:+3/+0/d0
+   (a,b,c)=(6,-3,3) cls(ii)=True: r1m1:+2/+3/d0 r1m2:+1/+4/d0 r1m4:+2/+3/d0 r1m5:+1/+5/d0 r2m1:+4/+3/d0 r2m2:+6/+4/d0 r2m4:+4/+3/d0 r3m1:+6/+3/d0 r3m2:+8/+4/d0 r4m1:+7/+3/d0
+   (a,b,c)=(-7,1,3) cls(ii)=True: r1m1:+1/+2/d0 r1m2:+0/+1/d0 r1m4:+1/+0/d0 r1m5:+0/+1/d0 r2m1:+0/+2/d0 r2m2:+1/+1/d0 r2m4:+0/+0/d0 r3m1:+4/+2/d0 r3m2:+4/+1/d0 r4m1:+5/+2/d0
+[PASS] Proposition I exact mod 3^(3r) in 480 cases (0 failures); weak bound 3^(3r-1) always; Remark 1 digit formula always
+   (format: slack of the congruence / slack of A(N)-A(M) vs 3r / digit = lambda_M(L-(psi-c)g) mod 3)
+
+== Theorem F_3: slack = v_3(A(3M)-A(M)) - 3r, M = m 3^{r-1}, 3 ∤ m; r <= 4, m <= 8, cN <= 600 ==
+[PASS] F_3 (2,-1,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+0 r1m5:+2 r1m7:+1 r1m8:+2 r2m1:+0 r2m2:+1 r2m4:+0 r2m5:+2 r2m7:+1 r2m8:+2 r3m1:+0 r3m2:+1 r3m4:+0 r3m5:+2 r3m7:+1 r3m8:+2 r4m1:+0 r4m2:+1 r4m4:+0 r4m5:+2 r4m7:+1
+[PASS] F_3 (3,-1,2) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+0 r1m4:+1 r1m5:+0 r1m7:+1 r1m8:+1 r2m1:+0 r2m2:+0 r2m4:+1 r2m5:+0 r2m7:+1 r2m8:+1 r3m1:+0 r3m2:+0 r3m4:+1 r3m5:+0 r3m7:+1 r3m8:+1 r4m1:+0 r4m2:+0
+[PASS] F_3 (4,-1,3) [good 3|c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+0 r1m4:+0 r1m5:+1 r1m7:+2 r1m8:+2 r2m1:+0 r2m2:+0 r2m4:+0 r2m5:+1 r2m7:+2 r2m8:+2 r3m1:+0 r3m2:+0 r3m4:+0 r3m5:+1 r3m7:+2 r4m1:+0 r4m2:+0
+[PASS] F_3 (-1,-3,1) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r1m8:+1 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+0 r2m7:-1 r2m8:+1 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+0 r3m7:-1 r3m8:+1 r4m1:-1 r4m2:+0 r4m4:-1 r4m5:+0 r4m7:-1
+[PASS] F_3 (1,-1,1) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:-1 r1m4:+0 r1m5:+0 r1m7:-1 r1m8:-1 r2m1:-1 r2m2:-1 r2m4:+0 r2m5:+0 r2m7:-1 r2m8:-1 r3m1:-1 r3m2:-1 r3m4:+0 r3m5:+0 r3m7:-1 r3m8:-1 r4m1:-1 r4m2:-1 r4m4:+0 r4m5:+0 r4m7:-1
+[PASS] F_3 (1,-1,2) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:-1 r1m4:-1 r1m5:-1 r1m7:-1 r1m8:-1 r2m1:-1 r2m2:-1 r2m4:-1 r2m5:-1 r2m7:-1 r2m8:-1 r3m1:-1 r3m2:-1 r3m4:-1 r3m5:-1 r3m7:-1 r3m8:-1 r4m1:-1 r4m2:-1
+[PASS] F_3 (-1,2,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+0 r1m5:+2 r1m7:+1 r1m8:+2 r2m1:+0 r2m2:+1 r2m4:+0 r2m5:+2 r2m7:+1 r2m8:+2 r3m1:+0 r3m2:+1 r3m4:+0 r3m5:+2 r3m7:+1 r3m8:+2 r4m1:+0 r4m2:+1 r4m4:+0 r4m5:+2 r4m7:+1
+[PASS] F_3 (5,2,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+0 r1m4:+1 r1m5:+0 r1m7:+0 r1m8:+0 r2m1:+0 r2m2:+0 r2m4:+1 r2m5:+0 r2m7:+0 r2m8:+0 r3m1:+0 r3m2:+0 r3m4:+1 r3m5:+0 r3m7:+0 r3m8:+0 r4m1:+0 r4m2:+0 r4m4:+1 r4m5:+0 r4m7:+0
+[PASS] F_3 (-4,0,2) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+1 r1m7:+0 r1m8:+1 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+1 r2m7:+0 r2m8:+1 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+1 r3m7:+0 r3m8:+1 r4m1:+0 r4m2:+1
+[PASS] F_3 (2,2,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:inf r1m2:+0 r1m4:+0 r1m5:inf r1m7:inf r1m8:+0 r2m1:inf r2m2:+0 r2m4:+0 r2m5:inf r2m7:inf r2m8:+0 r3m1:inf r3m2:+0 r3m4:+0 r3m5:inf r3m7:inf r3m8:+0 r4m1:inf r4m2:+0 r4m4:+0 r4m5:inf r4m7:inf
+[PASS] F_3 (-3,1,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+1 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r1m8:+1 r2m1:+2 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r2m8:+1 r3m1:+3 r3m2:+0 r3m4:+0 r3m5:+0 r3m7:+0 r3m8:+1 r4m1:+3 r4m2:+0 r4m4:+0 r4m5:+0 r4m7:+0
+[PASS] F_3 (1,-1,3) [good 3|c] min slack +0 (need >= 0) -- r1m1:+1 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r1m8:+3 r2m1:+1 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r2m8:+2 r3m1:+1 r3m2:+0 r3m4:+0 r3m5:+0 r3m7:+0 r4m1:+1 r4m2:+0
+[PASS] F_3 (5,-2,3) [good 3|c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+1 r1m8:+2 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+0 r2m7:+1 r2m8:+2 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+0 r3m7:+1 r4m1:+0 r4m2:+1
+[PASS] F_3 (-2,-1,3) [good 3|c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+2 r1m4:+1 r1m5:+0 r1m7:+0 r1m8:+1 r2m1:+0 r2m2:+2 r2m4:+1 r2m5:+0 r2m7:+0 r2m8:+1 r3m1:+0 r3m2:+2 r3m4:+1 r3m5:+0 r3m7:+0 r4m1:+0 r4m2:+2
+[PASS] F_3 (3,0,1) [good a=b=0] min slack +1 (need >= 0) -- r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 r1m7:+2 r1m8:+2 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+1 r2m7:+2 r2m8:+2 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+1 r3m7:+2 r3m8:+2 r4m1:+1 r4m2:+1 r4m4:+2 r4m5:+1 r4m7:+2
+[PASS] F_3 (0,3,2) [good a=b=0] min slack +1 (need >= 0) -- r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 r1m7:+2 r1m8:+2 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+1 r2m7:+2 r2m8:+2 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+1 r3m7:+2 r3m8:+2 r4m1:+1 r4m2:+1
+[PASS] F_3 (-3,-3,1) [good a=b=0] min slack +1 (need >= 0) -- r1m1:inf r1m2:+1 r1m4:+1 r1m5:inf r1m7:inf r1m8:+3 r2m1:inf r2m2:+1 r2m4:+1 r2m5:inf r2m7:inf r2m8:+3 r3m1:inf r3m2:+1 r3m4:+1 r3m5:inf r3m7:inf r3m8:+3 r4m1:inf r4m2:+1 r4m4:+1 r4m5:inf r4m7:inf
+[PASS] F_3 (6,-3,2) [good a=b=0] min slack +1 (need >= 0) -- r1m1:+1 r1m2:+1 r1m4:+1 r1m5:+3 r1m7:+3 r1m8:+2 r2m1:+1 r2m2:+1 r2m4:+1 r2m5:+3 r2m7:+3 r2m8:+2 r3m1:+1 r3m2:+1 r3m4:+1 r3m5:+3 r3m7:+3 r3m8:+2 r4m1:+1 r4m2:+1
+[PASS] F_3 (-6,3,1) [good a=b=0] min slack +1 (need >= 0) -- r1m1:+2 r1m2:+1 r1m4:+1 r1m5:+2 r1m7:+2 r1m8:+1 r2m1:+2 r2m2:+1 r2m4:+1 r2m5:+2 r2m7:+2 r2m8:+1 r3m1:+2 r3m2:+1 r3m4:+1 r3m5:+2 r3m7:+2 r3m8:+1 r4m1:+2 r4m2:+1 r4m4:+1 r4m5:+2 r4m7:+2
+[PASS] F_3 (3,-6,2) [good a=b=0] min slack +1 (need >= 0) -- r1m1:+1 r1m2:+1 r1m4:+2 r1m5:+1 r1m7:+4 r1m8:+2 r2m1:+1 r2m2:+1 r2m4:+2 r2m5:+1 r2m7:+4 r2m8:+2 r3m1:+1 r3m2:+1 r3m4:+2 r3m5:+1 r3m7:+4 r3m8:+2 r4m1:+1 r4m2:+1
+[PASS] F_3 (9,0,1) [good a=b=0] min slack +3 (need >= 0) -- r1m1:+3 r1m2:+3 r1m4:+3 r1m5:+3 r1m7:+3 r1m8:+3 r2m1:+3 r2m2:+3 r2m4:+3 r2m5:+3 r2m7:+3 r2m8:+3 r3m1:+3 r3m2:+3 r3m4:+3 r3m5:+3 r3m7:+3 r3m8:+3 r4m1:+3 r4m2:+3 r4m4:+3 r4m5:+3 r4m7:+3
+[PASS] F_3 (1,2,1) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:-1 r1m4:-1 r1m5:-1 r1m7:-1 r1m8:-1 r2m1:-1 r2m2:-1 r2m4:-1 r2m5:-1 r2m7:-1 r2m8:-1 r3m1:-1 r3m2:-1 r3m4:-1 r3m5:-1 r3m7:-1 r3m8:-1 r4m1:-1 r4m2:-1 r4m4:-1 r4m5:-1 r4m7:-1
+[PASS] F_3 (4,4,1) [BAD] min slack -1 (need >= -1) -- r1m1:inf r1m2:-1 r1m4:+0 r1m5:inf r1m7:inf r1m8:-1 r2m1:inf r2m2:-1 r2m4:+0 r2m5:inf r2m7:inf r2m8:-1 r3m1:inf r3m2:-1 r3m4:+0 r3m5:inf r3m7:inf r3m8:-1 r4m1:inf r4m2:-1 r4m4:+0 r4m5:inf r4m7:inf
+[PASS] F_3 (5,2,2) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r1m8:+1 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+0 r2m7:-1 r2m8:+1 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+0 r3m7:-1 r3m8:+1 r4m1:-1 r4m2:+0
+[PASS] F_3 (2,-1,2) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+0 r1m7:-1 r1m8:+0 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+0 r2m7:-1 r2m8:+0 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+0 r3m7:-1 r3m8:+0 r4m1:-1 r4m2:+0
+[PASS] F_3 (3,-1,1) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r1m8:+1 r2m1:-1 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r2m8:+1 r3m1:-1 r3m2:+0 r3m4:+0 r3m5:+0 r3m7:+0 r3m8:+1 r4m1:-1 r4m2:+0 r4m4:+0 r4m5:+0 r4m7:+0
+[PASS] F_3 (-3,-2,2) [BAD] min slack -1 (need >= -1) -- r1m1:+0 r1m2:+3 r1m4:+1 r1m5:-1 r1m7:+0 r1m8:+1 r2m1:+0 r2m2:+3 r2m4:+1 r2m5:-1 r2m7:+0 r2m8:+1 r3m1:+0 r3m2:+3 r3m4:+1 r3m5:-1 r3m7:+0 r3m8:+1 r4m1:+0 r4m2:+3
+[PASS] F_3 (-2,-3,2) [BAD] min slack -1 (need >= -1) -- r1m1:+0 r1m2:+3 r1m4:+1 r1m5:-1 r1m7:+0 r1m8:+1 r2m1:+0 r2m2:+3 r2m4:+1 r2m5:-1 r2m7:+0 r2m8:+1 r3m1:+0 r3m2:+3 r3m4:+1 r3m5:-1 r3m7:+0 r3m8:+1 r4m1:+0 r4m2:+3
+[PASS] F_3 (3,4,2) [BAD] min slack -1 (need >= -1) -- r1m1:+0 r1m2:+3 r1m4:+0 r1m5:-1 r1m7:+3 r1m8:-1 r2m1:+0 r2m2:+2 r2m4:+0 r2m5:-1 r2m7:+3 r2m8:-1 r3m1:+0 r3m2:+2 r3m4:+0 r3m5:-1 r3m7:+3 r3m8:-1 r4m1:+0 r4m2:+2
+[PASS] F_3 (4,3,2) [BAD] min slack -1 (need >= -1) -- r1m1:+0 r1m2:+3 r1m4:+0 r1m5:-1 r1m7:+3 r1m8:-1 r2m1:+0 r2m2:+2 r2m4:+0 r2m5:-1 r2m7:+3 r2m8:-1 r3m1:+0 r3m2:+2 r3m4:+0 r3m5:-1 r3m7:+3 r3m8:-1 r4m1:+0 r4m2:+2
+[PASS] F_3 (-5,-1,1) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:-1 r1m4:-1 r1m5:-1 r1m7:+0 r1m8:+0 r2m1:-1 r2m2:-1 r2m4:-1 r2m5:-1 r2m7:+0 r2m8:+0 r3m1:-1 r3m2:-1 r3m4:-1 r3m5:-1 r3m7:+0 r3m8:+0 r4m1:-1 r4m2:-1 r4m4:-1 r4m5:-1 r4m7:+0
+[PASS] F_3 (7,-3,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+0 r1m8:+3 r2m1:+0 r2m2:+2 r2m4:+4 r2m5:+0 r2m7:+0 r2m8:+4 r3m1:+0 r3m2:+2 r3m4:+2 r3m5:+0 r3m7:+0 r3m8:+4 r4m1:+0 r4m2:+2 r4m4:+2 r4m5:+0 r4m7:+0
+[PASS] F_3 (-2,5,3) [good 3|c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+0 r1m7:+1 r1m8:+2 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+0 r2m7:+1 r2m8:+2 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+0 r3m7:+1 r4m1:+0 r4m2:+1
+[PASS] F_3 (0,-4,2) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+1 r1m4:+1 r1m5:+1 r1m7:+0 r1m8:+1 r2m1:+0 r2m2:+1 r2m4:+1 r2m5:+1 r2m7:+0 r2m8:+1 r3m1:+0 r3m2:+1 r3m4:+1 r3m5:+1 r3m7:+0 r3m8:+1 r4m1:+0 r4m2:+1
+[PASS] F_3 (-1,5,1) [good a+b=c] min slack +0 (need >= 0) -- r1m1:+0 r1m2:+0 r1m4:+0 r1m5:+0 r1m7:+0 r1m8:+1 r2m1:+0 r2m2:+0 r2m4:+0 r2m5:+0 r2m7:+0 r2m8:+1 r3m1:+0 r3m2:+0 r3m4:+0 r3m5:+0 r3m7:+0 r3m8:+1 r4m1:+0 r4m2:+0 r4m4:+0 r4m5:+0 r4m7:+0
+[PASS] F_3 (3,2,4) [BAD] min slack -1 (need >= -1) -- r1m1:-1 r1m2:+0 r1m4:-1 r1m5:+2 r1m7:-1 r1m8:+0 r2m1:-1 r2m2:+0 r2m4:-1 r2m5:+2 r2m7:-1 r2m8:+0 r3m1:-1 r3m2:+0 r3m4:-1 r3m5:+2 r4m1:-1
+   min slack by class: {'good a+b=c': 0, 'good 3|c': 0, 'BAD': -1, 'good a=b=0': 1}
+
+== Remark 1 sentence: 'the data show the digit is nonzero for suitable m ..., e.g. for A352373 at every tested (r, m)' ==
+   A352373 = A_(-1,-3,1): r1m1:v3=2 (3r-1=2) digit=2; r1m2:v3=3 (3r-1=2) digit=0; r1m4:v3=2 (3r-1=2) digit=1; r1m5:v3=3 (3r-1=2) digit=0; r1m7:v3=2 (3r-1=2) digit=2; r1m8:v3=4 (3r-1=2) digit=0; r2m1:v3=5 (3r-1=5) digit=2; r2m2:v3=6 (3r-1=5) digit=0; r2m4:v3=5 (3r-1=5) digit=1; r2m5:v3=6 (3r-1=5) digit=0; r2m7:v3=5 (3r-1=5) digit=2; r2m8:v3=7 (3r-1=5) digit=0; r3m1:v3=8 (3r-1=8) digit=2; r3m2:v3=9 (3r-1=8) digit=0; r3m4:v3=8 (3r-1=8) digit=1; r3m5:v3=9 (3r-1=8) digit=0; r3m7:v3=8 (3r-1=8) digit=2
+[FAIL] Remark 1 claim 'A352373 digit nonzero at every tested (r,m)' (tested (r,m) in the note's own V1: m in {1,2}) -- (r,m) with ZERO digit: [(1, 2), (1, 5), (1, 8), (2, 2), (2, 5), (2, 8), (3, 2), (3, 5)]
+
+== Remark 3 / Observation: triples outside (ii) that pass the sweep range (m in {1,2,4}, r<=3) -- do they fail for larger m? ==
+[PASS] (-3,-2,2) [class (0,1,2), outside (ii)] r=1: fails (slack -1) at some m < 30: [5, 23] -- m1:+0 m2:+3 m4:+1 m5:-1 m7:+0 m8:+1 m10:+0 m11:+0 m13:+2 m14:+0 m16:+1 m17:+1 m19:+0 m20:+0 m22:+1 m23:-1 m25:+2 m26:+2 m28:+0 m29:+0
+[PASS] (-2,-3,2) [class (1,0,2), outside (ii)] r=1: fails (slack -1) at some m < 30: [5, 23] -- m1:+0 m2:+3 m4:+1 m5:-1 m7:+0 m8:+1 m10:+0 m11:+0 m13:+2 m14:+0 m16:+1 m17:+1 m19:+0 m20:+0 m22:+1 m23:-1 m25:+2 m26:+2 m28:+0 m29:+0
+[PASS] (3,4,2) [class (0,1,2), outside (ii)] r=1: fails (slack -1) at some m < 30: [5, 8, 11, 14, 17, 23, 26] -- m1:+0 m2:+3 m4:+0 m5:-1 m7:+3 m8:-1 m10:+1 m11:-1 m13:+0 m14:-1 m16:+1 m17:-1 m19:+3 m20:+0 m22:+0 m23:-1 m25:+1 m26:-1 m28:+1 m29:+1
+[PASS] (4,3,2) [class (1,0,2), outside (ii)] r=1: fails (slack -1) at some m < 30: [5, 8, 11, 14, 17, 23, 26] -- m1:+0 m2:+3 m4:+0 m5:-1 m7:+3 m8:-1 m10:+1 m11:-1 m13:+0 m14:-1 m16:+1 m17:-1 m19:+3 m20:+0 m22:+0 m23:-1 m25:+1 m26:-1 m28:+1 m29:+1
+   Observation check over the sweep range (-4<=a,b<=5, c in {1,2}, r<=3, m in {1,2,4}):
+     class (0, 1, 2): 9 members, 6 with slack -1; holders: [((-3, -2), '+0'), ((0, 1), 'inf'), ((3, 4), '+0')]
+     class (0, 2, 1): 12 members, 12 with slack -1; holders: []
+     class (1, 0, 2): 9 members, 6 with slack -1; holders: [((-2, -3), '+0'), ((1, 0), 'inf'), ((4, 3), '+0')]
+     class (1, 1, 1): 9 members, 9 with slack -1; holders: []
+     class (1, 2, 1): 12 members, 12 with slack -1; holders: []
+     class (1, 2, 2): 12 members, 12 with slack -1; holders: []
+     class (2, 0, 1): 12 members, 12 with slack -1; holders: []
+     class (2, 1, 1): 12 members, 12 with slack -1; holders: []
+     class (2, 1, 2): 12 members, 12 with slack -1; holders: []
+     class (2, 2, 2): 16 members, 16 with slack -1; holders: []
+[PASS] Observation: every residue class outside (ii) with c in {1,2} has a sweep member with slack -1
+
+====================================================================================================
+SUMMARY: 87 passed, 2 failed; elapsed 5.1s

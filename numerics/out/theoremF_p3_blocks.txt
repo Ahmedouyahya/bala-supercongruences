@@ -1,0 +1,6 @@
+r=1 m=1: v(E2+E3)-3r=0; termwise min=0; p-block sums min=0; pair(s,cM-1-s) min=None
+r=1 m=2: v(E2+E3)-3r=1; termwise min=1; p-block sums min=1; pair(s,cM-1-s) min=1
+r=2 m=1: v(E2+E3)-3r=0; termwise min=0; p-block sums min=0; pair(s,cM-1-s) min=0
+r=2 m=2: v(E2+E3)-3r=1; termwise min=-1; p-block sums min=-1; pair(s,cM-1-s) min=-1
+r=3 m=1: v(E2+E3)-3r=0; termwise min=0; p-block sums min=0; pair(s,cM-1-s) min=0
+r=3 m=2: v(E2+E3)-3r=1; termwise min=-1; p-block sums min=-1; pair(s,cM-1-s) min=-1

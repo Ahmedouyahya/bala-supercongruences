@@ -1,0 +1,1 @@
+'oeis_A333565_conjecture_strong_gauss_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]

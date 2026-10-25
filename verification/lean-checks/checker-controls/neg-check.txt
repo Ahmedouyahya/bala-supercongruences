@@ -1,0 +1,6 @@
+leanchecker found a problem in BalaProofs.NegControl.BadKernel
+uncaught exception: while replaying declaration 'NegControl.bad':
+(kernel) declaration type mismatch, 'NegControl.bad' has type
+  True
+but it is expected to have type
+  False

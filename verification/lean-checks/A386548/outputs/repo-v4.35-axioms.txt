@@ -1,0 +1,3 @@
+'oeis_A386548_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A386548.S_cong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A386548.a_eq_S' depends on axioms: [propext, Classical.choice, Quot.sound]

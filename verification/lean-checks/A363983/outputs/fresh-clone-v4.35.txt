@@ -1,0 +1,11 @@
+fresh EpochA361883 exit=0 wall=462s errors=0
+fresh A386548Padic exit=0 wall=501s errors=0
+fresh OSSLib exit=0 wall=450s errors=0
+fresh A363983Defs exit=0 wall=214s errors=0
+fresh A363983Rec exit=0 wall=494s errors=0
+fresh A363983Lemmas exit=0 wall=138s errors=0
+fresh A363983Main exit=0 wall=35s errors=0
+fresh A363983 exit=0 wall=272s errors=0
+'oeis_A363983_conjecture_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound] 
+
+

@@ -1,0 +1,22 @@
+Building Challenge
+⚠ [8000/8001] Built Challenge (4.3s)
+warning: run/Challenge.lean:46:8: declaration uses 'sorry'
+warning: run/Challenge.lean:51:8: declaration uses 'sorry'
+Build completed successfully (8001 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_364175_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.A364175Spec
+⚠ [7890/7896] Replayed Submission.Old.BlockProduct
+warning: Submission/Old/BlockProduct.lean:20:66: unused variable `hp`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [7895/7896] Replayed Submission.A364175Full
+warning: Submission/A364175Full.lean:401:3: unused variable `hn`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (7896 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_364175_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.A364175Spec
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!

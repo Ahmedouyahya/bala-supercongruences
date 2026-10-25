@@ -1,0 +1,34 @@
+% Shared preamble for the four papers (amsart). Journal classes are applied only after acceptance.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{xurl}
+\setlist{itemsep=1pt,topsep=3pt}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theorem*}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Zp}{\mathbb{Z}_{p}}
+\newcommand{\vp}{v_p}
+\newcommand{\fl}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\sumu}{\sideset{}{'}\sum}
+\newcommand{\produ}{\sideset{}{'}\prod}
+\newcommand{\Hp}{H'}
+\renewcommand{\pmod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\OEIS}[1]{\href{https://oeis.org/#1}{#1}}

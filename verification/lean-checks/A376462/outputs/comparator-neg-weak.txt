@@ -1,0 +1,39 @@
+Building Challenge
+⚠ [8000/8001] Replayed Challenge
+warning: run/Challenge.lean:42:8: declaration uses 'sorry'
+warning: run/Challenge.lean:57:8: declaration uses 'sorry'
+Build completed successfully (8001 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_376462_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.A376462NegWeak
+⚠ [8002/8018] Replayed Submission.EpochJac
+warning: Submission/EpochJac.lean:28:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+warning: Submission/EpochJac.lean:513:49: unused variable `hp5`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:611:29: `mul_le_mul_left'` has been deprecated: Use `_root_.mul_le_mul_right` instead
+warning: Submission/EpochJac.lean:819:55: unused variable `hp5`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:820:5: unused variable `hu1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:820:19: unused variable `hpu`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:1085:8: `Finset.range_succ` has been deprecated: Use `Finset.range_add_one` instead
+warning: Submission/EpochJac.lean:1160:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+warning: Submission/EpochJac.lean:1257:12: `Nat.succ_mul_choose_eq` has been deprecated: Use `Nat.add_one_mul_choose_eq` instead
+warning: Submission/EpochJac.lean:1484:61: unused variable `hB`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:1591:59: unused variable `hA`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:2035:40: `mul_le_mul_left'` has been deprecated: Use `_root_.mul_le_mul_right` instead
+Build completed successfully (8018 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_376462_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.A376462NegWeak
+uncaught exception: Challenge and solution theorem statement do not match: 'oeis_376462_conjecture_0'

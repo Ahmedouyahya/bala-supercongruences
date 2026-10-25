@@ -1,0 +1,33 @@
+Fresh clone of commit fbdac5f, 2026-10-16: lake exe cache get (exit 0), then lake build in lean/ (exit 0, 261 s): "Build completed successfully (9133 jobs)"; 78 BalaProofs modules built; no 'declaration uses sorry' warning; no error.
+
+#print axioms of the final theorems:
+A333561 :: 'oeis_333561_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+A333561Oeis :: 'A333561Oeis.aOEIS_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+A333562 :: 'oeis_333562_conjecture_0_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+A333565 :: 'oeis_A333565_conjecture_strong_gauss_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+A352275 :: 'u_m_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+A352373 :: 'oeis_a352373_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+A361711 :: 'A361711_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+A363983 :: 'oeis_A363983_conjecture_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+A364175 :: 'oeis_364175_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+A364178 :: 'oeis_364178_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+A370092 :: 'oeis_370092_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+A376462 :: 'oeis_376462_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+A386548 :: 'oeis_A386548_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+TFMain :: 'TF.theoremF' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lake env leanchecker on every module of lean/BalaProofs: 78 of 78 modules exit 0.
+
+verification/lean-statement-check/Check*.lean against the fresh build:
+CheckA333561.lean exit=0 :: 'Bench333561.oeis_333561_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA333562.lean exit=0 :: 'Bench333562.oeis_333562_conjecture_0_congruence' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA333565.lean exit=0 :: 'Bench333565.oeis_A333565_conjecture_strong_gauss_congruence' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA352275.lean exit=0 :: 'Bench352275.u_m_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA352373.lean exit=0 :: 'Bench352373.oeis_a352373_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA361711.lean exit=0 :: 'Bench361711.A361711_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA363983.lean exit=0 :: 'Bench363983.oeis_A363983_conjecture_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA364175.lean exit=0 :: 'Bench364175.oeis_364175_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA364178.lean exit=0 :: 'Bench364178.oeis_364178_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA370092.lean exit=0 :: 'Bench370092.oeis_370092_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA376462.lean exit=0 :: 'Bench376462.oeis_376462_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0
+CheckA386548.lean exit=0 :: 'Bench386548.oeis_A386548_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound] :: errors=0

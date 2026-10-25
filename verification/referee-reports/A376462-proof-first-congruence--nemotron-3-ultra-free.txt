@@ -1,0 +1,95 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/A376462-proof-first-congruence.md only (background notes NOT supplied in this run; some 'missing lemma' remarks stem from that). Prompt: notes/referee-reports/PROMPT.txt. AI output kept as evidence, not authority.
+===========================================================================
+# Referee Report on PROOF.md
+
+## Section 0
+**No issue found.** The sequence definition and rewrite as double sum (1) are algebraically correct: substituting \(j=n-k\) into \(A108625(n,n-k)=\sum_i \binom{n}{i}^2\binom{2n-k-i}{n-k-i}\) and using \(\binom{2n-k-i}{n-k-i}=\binom{2n-k-i}{n}\) gives \(T(n;k,i)=\binom{n}{k}^2\binom{n+k}{k}\binom{n}{i}^2\binom{2n-k-i}{n}\).
+
+---
+
+## Section 1 (Class S)
+
+### Issue 1: Lemma 1 moduli not stated/proved in this document
+- **Location**: Lines 29–31, application of “Lemma 1 (Kazandzidis)” to \(Q_1,Q_2,Q_3,Q_4\).
+- **Claimed**: Specific congruences with moduli \(r+s+\min(r,s)\), \(r+\sigma+\min(r,\sigma)\), and \(r+2+2\min(r-1,\mu-1)\).
+- **Why it fails**: The proof says “Lemmas 1–4 of that note are used verbatim” referring to `notes/A363983-proof.md`, but that file is **not in the directory**. The one-line description in line 21 (“Kazandzidis quotient form”) does not specify the modulus for the generalized quotients \(C(mp^r, k_1p^s)/C(mp^{r-1}, k_1p^{s-1})\) etc. Without the exact statement and proof of Lemma 1, the critical modulus bounds cannot be verified.
+- **Severity**: **GAP** (the claim may be true but the justification is missing from this document).
+
+### Issue 2: Valuation bound for \(Q_4\) uses \(v_p(2M-K'-I'), v_p(M-K'-I') \ge \min(r-1,\mu-1)\)
+- **Location**: Line 30.
+- **Claimed**: These valuations are bounded below by \(\min(r-1,\mu-1)\).
+- **Why it’s unclear**: No justification is given for this lower bound. \(K'=k_1p^{s-1}\), \(I'=i_1p^{\sigma-1}\) with \(\mu=\min(s,\sigma)\). The expressions \(2M-K'-I'\) and \(M-K'-I'\) involve subtraction; their \(p\)-adic valuation depends on possible cancellations. A proof would need to analyse the base-\(p\) digits of \(K',I'\) relative to \(M=mp^{r-1}\). This step is asserted without proof.
+- **Severity**: **GAP**.
+
+### Issue 3: “\(k=0\) (resp. \(i=0\)) included with convention \(s=\infty\)”
+- **Location**: Line 29.
+- **Claimed**: The cases \(k=0\) or \(i=0\) are handled by setting \(s=\infty\) (resp. \(\sigma=\infty\)) with \(Q_1=Q_2=1\) (resp. \(Q_3=1\)).
+- **Why it’s incomplete**: When \(k=0\), \(K'=0\) and \(Q_1=C(N,0)/C(M,0)=1\), \(Q_2=C(N,0)/C(M,0)=1\) exactly. But the valuation argument “\(v_p(T(M;K',I')) \ge 2(r-\mu)\)” with \(\mu=\infty\) would give a negative bound. The text says “for \(k=i=0\), \(Q_4=C(2N,N)/C(2M,M)\equiv 1\pmod{p^{3r}}\)” which is a separate check. The \(\mu=\infty\) convention is sloppy; a clean proof would treat the zero indices as a separate trivial case.
+- **Severity**: **UNCLEAR** (likely fixable by a trivial separate check, but the written argument is not rigorous at the boundary).
+
+---
+
+## Section 2 (Class K)
+
+### Issue 4: Lemma 7 proof assumes Lemma 1 gives \(C(mp^t,pi'')\equiv C(mp^{t-1},i'')\pmod{p^t}\) for all \(t\)
+- **Location**: Line 44, “\(C(mp^t,pi'')^2\equiv C(mp^{t-1},i'')^2\) (Lemma 1)”.
+- **Claimed**: The Kazandzidis quotient (Lemma 1) yields this congruence modulo \(p^t\).
+- **Why it fails**: The classical Kazandzidis congruence is \(C(p^r a, p^r b)\equiv C(p^{r-1}a,p^{r-1}b)\pmod{p^{3r}}\). Here we have \(C(p\cdot mp^{t-1}, p\cdot i'')\) — only **one** extra factor of \(p\), not \(p^t\). The standard result gives \(\pmod{p^3}\), which is insufficient when \(t\ge 3\). The proof in Class (S) applied Lemma 1 with \(s=1\) and obtained modulus \(r+1+\min(r,1)=r+2\); if that same generalized Lemma 1 is used here with \(r=t\), it would give modulus \(t+2\ge t\), which would suffice. But **the exact statement of Lemma 1 is not in this document**, so we cannot confirm it covers this case.
+- **Severity**: **GAP** (depends on the missing Lemma 1 having the required strength).
+
+### Issue 5: Reduction \(S_K\equiv \sum_k' k^{-2}\Psi_1(M,[k/p])\pmod{p^r}\) uses Lemma 4(ii) on \(C(2N-k-pi',N)\)
+- **Location**: Lines 39–41.
+- **Claimed**: \(C(2N-k-pi',N)\equiv C(2M-i'-[k/p]-1,M)\pmod{p^r}\).
+- **Why it’s unclear**: Lemma 4(ii) is described as “\(C(j,mp^r)\equiv C(\lfloor j/p\rfloor, mp^{r-1})\pmod{p^r}\)”. Here the lower index is \(N=mp^r\), so it matches. But the upper index is \(2N-k-pi' = 2mp^r - k - pi'\). We need \(\lfloor(2mp^r - k - pi')/p\rfloor = 2mp^{r-1} - i' - \lfloor k/p\rfloor - 1\). This holds because \(k/p\) is not an integer. The application is correct **if** Lemma 4(ii) is exactly as stated. Since Lemma 4 is from the missing note, this is another dependency on an unverified external lemma.
+- **Severity**: **GAP** (conditional on the missing note).
+
+---
+
+## Section 3 (Class I)
+- **No new issues**. The symmetry argument is valid because \(T(n;k,i)\) is symmetric in \(k,i\) and the divisibility conditions are symmetric.
+
+---
+
+## Section 5 (Second congruence, \(r=1\))
+
+### Issue 6: First-order \(p\)-adic expansions for binomial coefficients are not proved
+- **Location**: Lines 70–73, expansions of \(C(N-1,k)^2\), \(C(N+k-1,k-1)\), \(C(N-1,k+pj')^2\), \(C(N+pj'-1,pj')\) modulo \(p^2\).
+- **Claimed**: 
+  \[
+  C(mp-1,k)^2 \equiv C(m-1,n')^2(1-2pm H'_k),\quad
+  C(mp+k-1,k-1) \equiv C(m+n',n')(1+pm(H'_k-1/k)),
+  \]
+  etc., where \(H'_k=\sum_{p\nmid i\le k}1/i\).
+- **Why it fails**: The proof says “from the product formulas behind Lemma 3 and Lemma 4(i), keeping the first-order term” but **those product formulas are not displayed or derived in this document**. The expansions are numerically verified for small parameters, but no mathematical justification is given. For a rigorous proof, each expansion must be derived (e.g., by writing the binomial coefficient as a product and expanding logarithms, or by citing a known \(p\)-adic expansion theorem).
+- **Severity**: **GAP** (the expansions are the core of the \(r=1\) proof; without them the argument is incomplete).
+
+### Issue 7: “Kazandzidis for the last factor” \(C(N+pj'-1,pj')\equiv C(m+j'-1,j')\pmod{p^3}\)
+- **Location**: Line 72.
+- **Claimed**: This congruence holds modulo \(p^3\).
+- **Why it’s unclear**: \(C(mp+pj'-1,pj') = C(p(m+j')-1, pj')\). The classical Kazandzidis congruence applies to \(C(pA, pB)\), not \(C(pA-1, pB)\). There is a related congruence for \(C(pA-1, pB)\) but it is not the standard Kazandzidis one. The proof does not cite a specific result, only says “Kazandzidis”. This needs a precise reference or derivation.
+- **Severity**: **GAP**.
+
+### Issue 8: Class (J) expansion \(C(N+pk'-1,pk')\equiv C(m+k'-1,k')\pmod{p^3}\)
+- **Location**: Line 76.
+- **Same problem as Issue 7**: \(C(p(m+k')-1, pk')\) is not of the form \(C(pA, pB)\).
+
+---
+
+## Overall Verdict
+
+**VERDICT: CORRECT WITH FIXES**
+
+The proof strategy is sound and the \(p\)-adic bookkeeping in Sections 1–3 is internally consistent **assuming** the external lemmas (1–4 from the missing note) hold with the exact moduli claimed. The second congruence (\(r=1\)) proof is also structurally correct but relies on unproven first-order expansions and a non-standard Kazandzidis variant for \(C(pA-1, pB)\).
+
+### Three steps I am least sure about:
+
+1. **Lemma 1’s generalized modulus** (Section 1, lines 29–30): The entire Class (S) argument hangs on the specific bounds \(r+s+\min(r,s)\), \(r+\sigma+\min(r,\sigma)\), and \(r+2+2\min(r-1,\mu-1)\). These are not standard Kazandzidis bounds; they come from the missing note. If the note proves them, the argument closes; otherwise the proof has a central hole.
+
+2. **First-order expansions in §5** (lines 70–73): The expansions modulo \(p^2\) for \(C(mp-1,k)\), \(C(mp+k-1,k-1)\), etc., are the engine of the \(r=1\) proof. They are attributed to “product formulas behind Lemma 3 and 4(i)” but those formulas are not shown. Deriving them rigorously requires careful \(p\)-adic analysis of products like \(\prod_{j=1}^k \frac{mp-j}{j}\); it is not obvious that the harmonic sum \(H'_k\) appears with the claimed coefficients.
+
+3. **Valuation bound for \(Q_4\) in Class (S)** (line 30): The claim \(v_p(2M-K'-I'), v_p(M-K'-I') \ge \min(r-1,\mu-1)\) is used to deduce the modulus for \(Q_4\). No proof is given, and it involves possible cancellation in the base-\(p\) digits of \(K',I'\) relative to \(M\). A counterexample could exist if the digits align badly, so this step must be justified.
+
+---
+
+**Recommendation**: The proof should be accepted only after (a) the missing note `A363983-proof.md` is supplied and its Lemmas 1–4 are verified to give the exact moduli used here, and (b) the first-order expansions in §5 are either derived in an appendix or replaced with citations to established \(p\)-adic expansion theorems (e.g., work of Zhao, Sun, or Straub on harmonic-number expansions of binomial coefficients).

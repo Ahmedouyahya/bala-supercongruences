@@ -1,0 +1,10 @@
+Building Challenge
+⚠ [8000/8001] Replayed Challenge
+warning: run/Challenge.lean:32:8: declaration uses 'sorry'
+warning: run/Challenge.lean:41:8: declaration uses 'sorry'
+Build completed successfully (8001 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333561_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.A333561NegWeak
+Build completed successfully (8010 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333561_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.A333561NegWeak
+uncaught exception: Challenge and solution theorem statement do not match: 'oeis_333561_conjecture'

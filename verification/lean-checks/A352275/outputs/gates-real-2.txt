@@ -1,0 +1,16 @@
+PASS   build exit 0: exit 0
+PASS   no sorry in build log
+PASS   no error in build log
+PASS   audit file exit 0: exit 0
+PASS   axioms of A352275_from_target: Classical.choice, Quot.sound, propext
+PASS   axioms of BalaA352275.u_scale: Classical.choice, Quot.sound, propext
+PASS   axioms of A352275_a_eq_u2: Classical.choice, Quot.sound, propext
+PASS   axioms of a_one: Classical.choice, Quot.sound, propext
+PASS   axioms of a_two: Classical.choice, Quot.sound, propext
+PASS   axioms of a_three: Classical.choice, Quot.sound, propext
+GREP modules: BalaCheck.A352275, BalaCheck.EpochSol
+GREP hits: 15 | approved in GREP-ALLOW.txt: 15
+PASS   tamper grep: every hit reviewed and approved: 0 unapproved of 15
+PASS   lean4checker BalaCheck.A352275: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.EpochSol: exit 0; Found 1 modules to check
+VERDICT: ACCEPT 

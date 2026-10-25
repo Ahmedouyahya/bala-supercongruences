@@ -1,0 +1,6 @@
+order 2: no recurrence with degree <= 8 found from 46 terms
+order 3, degree 6: nullspace dim 1; recurrence coefficients P_i(n):
+   P_0 = (n + 1)**4*(7*n**2 + 33*n + 39)
+   P_1 = -2023*n**6 - 21675*n**5 - 95773*n**4 - 223446*n**3 - 290457*n**2 - 199575*n - 56667
+   P_2 = -399*n**6 - 5073*n**5 - 26575*n**4 - 73282*n**3 - 111973*n**2 - 89733*n - 29445
+   P_3 = (n + 3)**4*(7*n**2 + 19*n + 13)

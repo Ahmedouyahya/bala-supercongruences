@@ -1,0 +1,6 @@
+I1/I2: formula (1) == direct series == OEIS formula for N<=60; I3 first terms: [1, 0, -2, -3, 6, 25, 1, -147]
+I4: (T1),(T2) identities exact for N<80, j<=N, k<80
+I5: general forms hold for N<200; min slack per p: {2: 0, 3: 0, 5: 0, 7: 0}
+I6-I10: identities, synchronisation, signs, case bookkeeping checked for p in {5,7,11,13}, r<=3, n in {1..6,p}, N<=1600
+I8 at p=3: pairs with p|j xor p|k (N in 3,6,9): [(0, 1), (0, 2), (3, 1)]
+PASS 197209 FAIL 0

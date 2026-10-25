@@ -1,0 +1,150 @@
+== A376462Defs.lean
+== ShiftLibProd.lean
+== ShiftLibHarm.lean
+BalaProofs/ShiftLibHarm.lean:382:2: warning: Try this: 
+  haveI̵
+
+--
+BalaProofs/ShiftLibHarm.lean:431:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+--
+BalaProofs/ShiftLibHarm.lean:447:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibHarm.lean:460:65: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibHarm.lean:501:47: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibHarm.lean:537:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibHarm.lean:901:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== ShiftLibBlock.lean
+BalaProofs/ShiftLibBlock.lean:106:22: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:106:34: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:110:33: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:110:43: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:123:75: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:179:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:185:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:185:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:188:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:188:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:193:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:197:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:197:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:200:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:200:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:218:50: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:253:6: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:361:22: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:361:34: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:365:33: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:365:43: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/ShiftLibBlock.lean:393:33: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+== A376462Rep.lean
+== A376462Kernel.lean
+== A376462Classes.lean
+BalaProofs/A376462Classes.lean:92:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/A376462Classes.lean:111:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+--
+BalaProofs/A376462Classes.lean:133:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== A376462First.lean
+BalaProofs/A376462First.lean:22:2: warning: Try this: 
+  haveI̵
+
+== A376462ShiftRep.lean
+== A376462ShiftK.lean
+BalaProofs/A376462ShiftK.lean:140:4: warning: Unused tactic linter: `beta_reduce` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+== A376462ShiftJ.lean
+== A376462ShiftB.lean
+== A376462ShiftS.lean
+== A376462ShiftMain.lean
+BalaProofs/A376462ShiftMain.lean:35:2: warning: Try this: 
+  haveI̵
+
+== A376462Main.lean
+== A376462.lean

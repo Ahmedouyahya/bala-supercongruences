@@ -1,0 +1,43 @@
+PASS Lemma B: m=2..8, k<=60, m+2<=n<m+2+100: violations []
+INFO Lemma B slack min over (m,n) per k=0..40: [None, None, 1, 0, 1, 0, 0, 0, 2, 1, 1, 1, 1, 1, 1, 0, 3, 3, 2, 2, 3, 2, 3, 3, 5, 5, 6, 5, 7, 7, 7, 7, 12, 11, 12, 12, 13, 13, 14, 13, 16]
+INFO k<=60 with Lemma B slack 0: [3, 5, 6, 7, 15]
+FAIL NOTE'S PARENTHETICAL (Lemma B): 'the minimum over n of v2(b_k)-m is independent of m: 2,4,2,3,3,6,5,6,6,8 for k=3..12'; measured with n ranging over m+2..m+65: {2: [2, 3, 2, 3, 3, 5, 5, 6, 6, 8], 3: [2, 3, 2, 3, 3, 6, 5, 5, 5, 7], 5: [2, 3, 2, 3, 3, 6, 5, 6, 6, 6], 8: [2, 3, 2, 3, 3, 5, 5, 5, 5, 6]}
+INFO the committed file lemmaB_stirling_2adic.txt took the minimum over n in [40,200] only (m=5,8), which excludes the n=m+2 minimum at k=4 (v2(b_4(m+2,2^m)) = m+3 for every m)
+PASS Lemma B at n = m+2 exactly, m=2..12, k<45: violations []
+PASS Lemma B fails for some k at every n <= m+1 (m=2..8)
+PASS in particular k=3 fails at every n <= m+1
+INFO k<30 failing Lemma B at n=m+1, for m=2..8: {2: [3, 6, 7], 3: [3], 4: [3, 6, 7], 5: [3], 6: [3, 6, 7, 15], 7: [3], 8: [3, 6, 7]}
+INFO k<30 failing Lemma B at n=m,   for m=2..8: {2: [2, 3, 4, 5, 6], 3: [2, 3, 4, 5, 6, 7], 4: [2, 3, 4, 5, 7, 9], 5: [2, 3, 4, 5, 6, 7, 10, 11], 6: [2, 3, 4, 5, 7, 9, 10, 11, 12, 13], 7: [2, 3, 4, 5, 6, 7, 12, 13, 14, 15], 8: [2, 3, 4, 5, 7, 9]}
+PASS bound (2) for n>=m+1, m=2..8, k<50: violations []; min slack 0 at (m,k,n)=(2, 2, 3)
+INFO bound (2) at n = m (outside its hypothesis): failing (m,k) = [(2, 2), (2, 3), (2, 4), (2, 5), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (4, 2), (4, 3)] (so n>=m+1 is needed there)
+PASS k<5000 with v2(floor(k/2)!) < floor(k/3): [3, 6, 7, 15]
+PASS v2(floor(k/2)!) + 1 >= floor(k/3) for all k<5000
+PASS for k in {3,6,7,15}: v2(floor(k/2)!)+1 = floor(k/3) = 1,2,2,5
+PASS v2(floor(k/2)!) >= floor(k/2) - log2(k) - 1, k<20000
+PASS floor(k/2) - log2(k) - 1 > k/3 for 400<k<20000
+INFO smallest k from which floor(k/2)-log2(k)-1 > k/3 holds onward (k<1000): 42
+PASS F(2t) in 2^n Z[t] (m=2..6, n<m+8)
+PASS F(1+2t) in 2^(m+1) Z[t] (m=2..6, n<m+8)
+PASS min valuation of the coefficients of F(1+2t) is exactly m+1 (so v_LA1(2^-(m+1)F) = min(n-m-1,0) exactly)
+PASS v2(C(2^m,i)) = m - v2(i), 1<=i<=2^m, m<=10
+PASS v2(C(2^m,i) 2^i) = m - v2(i) + i >= m+1, equality iff i in {1,2}, >= m+2 for i>=3
+PASS R_m(t) has integer coefficients with v2 = i-2-v2(i), and (1+2t)^(2^m)-1 = 2^(m+1)[t+(2^m-1)t^2] + 2^(m+2) R_m(t), m=2..8
+PASS b_k = E_k + 2^(m+1) S_1 + 2^(m+2) S_2 exactly, 1680 cases (m=2..6, k<20, 0<=n<m+12), bad []
+PASS v2(E_k) >= n + v2(floor(k/2)!) for all n>=0 (m=2..6, k<36): min slack 0, violations []
+PASS v2(S_2) >= v2(floor(k/2)!) for all n>=0 (m=2..6, k<36): min slack 0, violations []
+PASS exceptional k, n>=m+2: E_k == 0 and 2^(m+2) S_2 == 0 mod 2^(m+1+floor(k/3)) (m=2..7, 30 n each)
+PASS v2(S_1) >= floor(k/3) for k in (3,6,7,15), ALL n in [0,200), m=2..14: violations []; min v2(S_1) per k = {3: 2, 6: 2, 7: 2, 15: 9}
+PASS S_1 mod 2^d is periodic in n with period lambda(2^d) (= 1,2,2,8), m=2..12, n<60
+PASS S_1 mod 2^d depends on m only through (2^m - 1) mod 2^d (m,m' in 2..12)
+PASS the note's finite case set (m=2..d plus one m>=d, one full n-period from m+2): 49 cases, all v2(S_1) >= d
+PASS by hand k=3: S_1 = 2^m 3^n
+PASS by hand k=6: S_1 = -20*3^n*2^m - 6*5^n*2*(1+2(2^m-1))
+PASS by hand k=7: S_1 = 35*3^n*2^m + 21*5^n*2*(2^(m+1)-1) + 7^n*3*(3*2^m-2)
+PASS 21*5^n + 3*7^n is even
+PASS k=7: S_1 == -2(21*5^n+3*7^n) (mod 4)
+PASS b_3 = 3^n(3^(2^m)-1) - 3*2^n(2^(2^m)-1) for n>=1 (at n=0 the j=0 term contributes 0^0=1; the note uses the formula for n>=m+2)
+PASS v2(b_3) = m+2 exactly for n >= m+3
+INFO v2(b_3) at n=m+2, m=2..9: [7, 6, 9, 8, 13, 10, 13, 12] (note says only >= m+2)
+PASS v2(b_3) = n < m+2 for 1 <= n <= m+1 (Lemma B start n>=m+2 is sharp)
+PASS v2(3^(2^m)-1) = m+2
+TOTAL: 33 pass, 1 fail

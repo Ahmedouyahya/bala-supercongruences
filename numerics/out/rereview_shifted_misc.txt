@@ -1,0 +1,8 @@
+(1) symmetry of Xi_u^{(delta)}(q,q') under q <-> q'
+   pairs tested: 15758; asymmetric: 14988; first example (p,m,u,q,q',delta,Xi(q,q'),Xi(q',q)) = (5, 1, 1, 0, 1, 0, 96, 1536)
+  FAIL  Xi symmetric in (q,q') as the parenthetical says  14988 of 15758 pairs are asymmetric
+(2) carry composition: [(q mod p^t)+(q' mod p^t)+delta >= p^t] == [(q1 mod p^(t-1))+(q1' mod p^(t-1))+delta' >= p^(t-1)]
+
+== rereview_shifted_misc: 1 pass, 1 fail ==
+failures:
+  Xi symmetric in (q,q') as the parenthetical says: 14988 of 15758 pairs are asymmetric

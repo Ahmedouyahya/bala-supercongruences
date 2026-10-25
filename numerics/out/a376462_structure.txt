@@ -1,0 +1,11 @@
+double-sum form agrees with OEIS definition n<=12: True
+values: [1, 5, 109, 3317, 121501, 4954505, 216867925]
+p=5 r=1 m=1: v(a(N)-a(M))-3r=0; scaled-diff sum 0, termwise min 0; unscaled: k-only 0, i-only 0, both 1
+p=5 r=1 m=2: v(a(N)-a(M))-3r=0; scaled-diff sum 2, termwise min 0; unscaled: k-only 1, i-only 0, both 1
+p=5 r=2 m=1: v(a(N)-a(M))-3r=0; scaled-diff sum 0, termwise min 0; unscaled: k-only 0, i-only 3, both 3
+p=5 r=2 m=2: v(a(N)-a(M))-3r=0; scaled-diff sum 0, termwise min 0; unscaled: k-only 1, i-only 0, both 3
+p=7 r=1 m=1: v(a(N)-a(M))-3r=1; scaled-diff sum 0, termwise min 0; unscaled: k-only 0, i-only 0, both 2
+p=7 r=1 m=2: v(a(N)-a(M))-3r=1; scaled-diff sum 0, termwise min 0; unscaled: k-only 0, i-only 0, both 2
+p=7 r=2 m=1: v(a(N)-a(M))-3r=1; scaled-diff sum 0, termwise min 0; unscaled: k-only 0, i-only 3, both 4
+p=7 r=2 m=2: v(a(N)-a(M))-3r=1; scaled-diff sum 0, termwise min 0; unscaled: k-only 0, i-only 0, both 4
+second congruence check: [(5, 1, 1, 0), (5, 1, 2, 0), (5, 2, 1, 0), (5, 2, 2, 0), (7, 1, 1, 1), (7, 1, 2, 2), (7, 2, 1, 1), (7, 2, 2, 2)]

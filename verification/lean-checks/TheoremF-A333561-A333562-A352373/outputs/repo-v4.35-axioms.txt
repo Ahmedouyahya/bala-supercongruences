@@ -1,0 +1,6 @@
+#print axioms, Lean v4.35.0, project lean/BalaProofs, 2026-10-16 (scratch files outside the project, deleted after the run;
+one file per entry, because the three entries each define a root-level `a`)
+'oeis_333561_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TF.theoremF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'oeis_333562_conjecture_0_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'oeis_a352373_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound]

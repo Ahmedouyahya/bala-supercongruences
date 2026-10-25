@@ -1,0 +1,16 @@
+A000984 (r,s)=(2,0) rev 1196: compared n=1..15, mismatches []
+A001700 (r,s)=(0,-1) rev 734: compared n=1..15, mismatches []
+A002003 (r,s)=(1,-1) rev 105: compared n=1..15, mismatches []
+A091527 (r,s)=(3,-1) rev 75: compared n=1..15, mismatches []
+A119259 (r,s)=(2,-1) rev 85: compared n=1..15, mismatches []
+A156894 (r,s)=(1,-2) rev 46: compared n=1..15, mismatches []
+A165817 (r,s)=(0,-2) rev 104: compared n=1..15, mismatches []
+A234839 (r,s)=(1,2) rev 66: compared n=1..15, mismatches []
+A348410 (r,s)=(-1,-2) rev 60: compared n=1..15, mismatches []
+A351857 (r,s)=(-2,-4) rev 20: compared n=1..15, mismatches []
+A352373 (r,s)=(-1,-3) rev 24: compared n=1..15, mismatches []
+A333715 a(r,s,n) (r,s)=(3,1) rev 35: compared n=1..12, mismatches []
+A002003 a(r,s,n) (r,s)=(1,1) rev 105: compared n=1..12, mismatches []
+A103885 a(r,s,n) (r,s)=(2,1) rev 91: compared n=1..12, mismatches []
+Gate A mismatches: 0
+Gate B: 1056 congruence tests, 0 failures, minimal slack 0

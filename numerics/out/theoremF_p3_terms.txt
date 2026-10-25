@@ -1,0 +1,16 @@
+A119259 r=1 m=1: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 2, 996, 996, 996, 996]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): True
+A119259 r=1 m=2: v3(A(N)-A(M))-3r=1; parts(j=2..7) v3-3r: [-1, -1, 3, 5, 7, 996]; v3(E2+E3)-3r=1; v3(sum parts)-3r=1; identity sum==A(N)-A(M): True
+A119259 r=2 m=1: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 1, 3, 4, 7, 12]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A119259 r=2 m=2: v3(A(N)-A(M))-3r=1; parts(j=2..7) v3-3r: [2, 1, 2, 3, 4, 7]; v3(E2+E3)-3r=1; v3(sum parts)-3r=1; identity sum==A(N)-A(M): False
+A333561 r=1 m=1: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 0, 1, 1, 1, 996]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): True
+A333561 r=1 m=2: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [-1, -1, 4, 6, 3, 3]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A333561 r=2 m=1: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 1, 3, 4, 5, 8]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A333561 r=2 m=2: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 1, 2, 3, 4, 7]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A333562 r=1 m=1: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [-1, -1, 2, 1, 1, 5]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A333562 r=1 m=2: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [-1, -1, 2, 1, 1, 3]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A333562 r=2 m=1: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 1, 2, 3, 4, 9]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A333562 r=2 m=2: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 1, 2, 3, 4, 8]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False
+A352373 r=1 m=1: v3(A(N)-A(M))-3r=-1; parts(j=2..7) v3-3r: [-1, -1, 996, 996, 996, 996]; v3(E2+E3)-3r=-1; v3(sum parts)-3r=-1; identity sum==A(N)-A(M): True
+A352373 r=1 m=2: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [-1, -1, 1, 1, 1, 996]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): True
+A352373 r=2 m=1: v3(A(N)-A(M))-3r=-1; parts(j=2..7) v3-3r: [-1, 0, 2, 3, 4, 7]; v3(E2+E3)-3r=-1; v3(sum parts)-3r=-1; identity sum==A(N)-A(M): False
+A352373 r=2 m=2: v3(A(N)-A(M))-3r=0; parts(j=2..7) v3-3r: [0, 1, 2, 3, 4, 7]; v3(E2+E3)-3r=0; v3(sum parts)-3r=0; identity sum==A(N)-A(M): False

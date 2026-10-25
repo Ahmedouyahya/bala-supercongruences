@@ -1,0 +1,16 @@
+Building Challenge
+⚠ [7885/7886] Built Challenge (16s)
+warning: run/Challenge.lean:15:8: declaration uses 'sorry'
+warning: run/Challenge.lean:20:8: declaration uses 'sorry'
+Build completed successfully (7886 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, BalaGeneral.bala_A352373_general, BalaGeneral.bala_A333715_general, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.BalaGeneralSpec
+✔ [8007/8008] Built Submission.BalaGeneralFull (7.6s)
+✔ [8008/8008] Built Submission.BalaGeneralSpec (4.3s)
+Build completed successfully (8008 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, BalaGeneral.bala_A352373_general, BalaGeneral.bala_A333715_general, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.BalaGeneralSpec
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!

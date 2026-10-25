@@ -1,0 +1,7 @@
+BalaProofs/A352275.lean:35:34: warning: `if_true` has been deprecated: Use `ite_true` instead
+BalaProofs/A352275.lean:35:66: warning: `if_false` has been deprecated: Use `ite_false` instead
+BalaProofs/A352275.lean:39:35: warning: `if_false` has been deprecated: Use `ite_false` instead
+BalaProofs/A352275.lean:87:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A352275.lean:126:9: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A352275.lean:162:52: warning: Variable name `hm` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:

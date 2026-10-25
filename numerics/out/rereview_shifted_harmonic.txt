@@ -1,0 +1,50 @@
+Re-review (b), section 2: harmonic block lemmas (mod p^E engine, E=30)
+Lemma 2.1: sum_{u in (Z/p^v)^x} u^{-d} = 0 mod p^{v-e(d)}; S_d(p^v y); block sums of mu^{-2}
+Lemma 2.2: sigma_t(l) = 0 mod p^{2t}; H'_{p^v y} = 0 mod p^{2v}
+Lemma 2.3: reflection; H'_{p^t-1-n} - H'_n = -p^t sum'_{n<mu<p^t} mu^{-2} mod p^{2t}; second claim mod p^{t+2s}
+Lemma 2.4: block shift
+Lemma 2.5: sum_{n in B_t(i)} sigma_s(n) H'_n = 0 mod p^{t+2s}  (and the pieces of its proof)
+Lemma 2.6: sum'_{k in B_t(i)} (1/k) H'_{k p^s} = 0 mod p^{t+2s}
+Lemma 2.7 (Y),(B): carry-restricted cell sums
+
+== rereview_shifted_harmonic: 70708 pass, 0 fail ==
+minimal slack per item (observed - claimed valuation):
+  L2.1 S_d(p^v y) = 0 mod p^{v-e(d)}               min slack    0   (v=1, claimed 1) at p=5 v=1 y=1 d=2
+  L2.1 block sum mu^{-2} over B_v(l) = 0 mod p^v   min slack    0   (v=1, claimed 1) at p=5 v=1 l=0
+  L2.1 unit-group power sum d=(p-1)|d              min slack    0   (v=0, claimed 0) at p=5 v=1 d=4 e(d)=1
+  L2.1 unit-group power sum d=generic              min slack    0   (v=1, claimed 1) at p=5 v=1 d=2 e(d)=0
+  L2.2 H'_{p^v y} = 0 mod p^{2v}                   min slack    0   (v=2, claimed 2) at p=5 v=1 y=1
+  L2.2 sigma_t(l) = 0 mod p^{2t}                   min slack    0   (v=0, claimed 0) at p=5 t=0 l=1
+  L2.3 first claim mod p^{2t}                      min slack    0   (v=2, claimed 2) at p=5 t=1 n=0
+  L2.3 second claim mod p^{t+2s}                   min slack    0   (v=3, claimed 3) at p=5 t=1 s=1 k=1
+  L2.3 weak form H'_{p^t-1-n} = H'_n mod p^t       min slack    0   (v=1, claimed 1) at p=5 t=1 n=1
+  L2.4 1/(ip^t+lam)^d = lam^{-d} mod p^t           min slack    0   (v=1, claimed 1) at p=5 t=1 i=1 lam=1 d=1
+  L2.4 H'_n = H'_{ip^t} + H'_{nbar} mod p^t        min slack    0   (v=1, claimed 1) at p=5 t=1 i=1 nbar=1
+  L2.5 general: p^{t'} sum tau_s H'_nbar mod p^{t+2s} min slack    0   (v=1, claimed 1) at p=5 s=0 t=1 i=1
+  L2.5 general: piece1 H'_{ip^t} sigma_{t'}(i) mod p^{2t+2t'} min slack    0   (v=4, claimed 4) at p=5 s=0 t=1 i=1
+  L2.5 general: piece2 sum sigma_s(ip^t+nbar) H'_nbar mod p^{t+2s} min slack    0   (v=1, claimed 1) at p=5 s=0 t=1 i=1
+  L2.5 general: piece3 mod p^{t+2s}                min slack    0   (v=1, claimed 1) at p=5 s=0 t=1 i=1
+  L2.5 general: piece4 (p^{2t} eta part) mod p^{2t+2s} min slack    0   (v=2, claimed 2) at p=5 s=0 t=1 i=1
+  L2.5 main claim s=0                              min slack    0   (v=0, claimed 0) at p=5 s=0 t=0 i=1
+  L2.5 main claim s=1                              min slack    0   (v=2, claimed 2) at p=5 s=1 t=0 i=1
+  L2.5 main claim s=2                              min slack    0   (v=4, claimed 4) at p=5 s=2 t=0 i=1
+  L2.5 main claim s=3                              min slack    0   (v=6, claimed 6) at p=5 s=3 t=0 i=1
+  L2.5 proof base: first sum mod p^{t+2s}          min slack    0   (v=3, claimed 3) at p=5 s=1 t=1
+  L2.5 proof base: second sum mod p^{t+2s}         min slack    0   (v=3, claimed 3) at p=5 s=1 t=1
+  L2.5 proof base: sum k^-2 H'_{n(k)} mod p^s      min slack    0   (v=1, claimed 1) at p=5 s=1 t=1
+  L2.5 proof s=0: first sum mod p^t                min slack    0   (v=1, claimed 1) at p=5 t=1
+  L2.5 proof s=0: second sum mod p^t               min slack    0   (v=1, claimed 1) at p=5 t=1
+  L2.5 proof s=0: third sum mod p^t                min slack    0   (v=1, claimed 1) at p=5 t=1
+  L2.6 proof base: first sum mod p^{t+2s}          min slack    0   (v=3, claimed 3) at p=5 s=1 t=1
+  L2.6 proof base: second sum mod p^{t+2s}         min slack    0   (v=3, claimed 3) at p=5 s=1 t=1
+  L2.6 s=0 (claimed p^(t+2s))                      min slack    0   (v=0, claimed 0) at p=5 s=0 t=0 i=1
+  L2.6 s=1 (claimed p^(t+2s))                      min slack    0   (v=2, claimed 2) at p=5 s=1 t=0 i=1
+  L2.6 s=1 vs Beukers' weaker p^(t+s)              min slack    1   (v=2, claimed 1) at p=5 s=1 t=0 i=1
+  L2.6 s=2 (claimed p^(t+2s))                      min slack    0   (v=4, claimed 4) at p=5 s=2 t=0 i=1
+  L2.6 s=2 vs Beukers' weaker p^(t+s)              min slack    2   (v=4, claimed 2) at p=5 s=2 t=0 i=1
+  L2.6 s=3 (claimed p^(t+2s))                      min slack    0   (v=6, claimed 6) at p=5 s=3 t=0 i=1
+  L2.6 s=3 vs Beukers' weaker p^(t+s)              min slack    3   (v=6, claimed 3) at p=5 s=3 t=0 i=1
+  L2.7(B) mod p^t                                  min slack    0   (v=1, claimed 1) at p=5 t=1 i=0 i'=0 c=0
+  L2.7(Y) s'=0 mod p^(2s'+t)                       min slack    0   (v=1, claimed 1) at p=5 t=1 i=0 i'=0 c=0 cellsize=10
+  L2.7(Y) s'=1 mod p^(2s'+t)                       min slack    0   (v=3, claimed 3) at p=5 t=1 i=0 i'=0 c=0 cellsize=10
+  L2.7(Y) s'=2 mod p^(2s'+t)                       min slack    0   (v=5, claimed 5) at p=5 t=1 i=0 i'=0 c=0 cellsize=10

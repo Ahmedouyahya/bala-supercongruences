@@ -1,0 +1,8 @@
+A333561: 18 b-file terms (n = 0..17), mismatches: 0
+A333562: 16 b-file terms (n = 0..15), mismatches: 0
+A352373: 300 b-file terms (n = 1..300), mismatches: 0
+A333565: 23 b-file terms (n = 0..22), mismatches: 0
+A370092: all terms integers for n <= 400: True
+A370092: 201 b-file terms (n = 0..200), mismatches: 0
+A376462: 19 b-file terms (n = 0..18), mismatches: 0
+FAILURES: 0

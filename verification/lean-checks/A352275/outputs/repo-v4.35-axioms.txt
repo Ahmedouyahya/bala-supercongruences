@@ -1,0 +1,7 @@
+'u_m_supercongruence_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BalaA352275.u_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A352275_a_eq_u2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'a_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'a_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'a_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'a_three' depends on axioms: [propext, Classical.choice, Quot.sound]

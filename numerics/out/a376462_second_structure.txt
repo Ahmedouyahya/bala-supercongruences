@@ -1,0 +1,13 @@
+representation check a(N-1) = sum S~: True
+p=5 r=1 m=1: total 0 | scaled-diff sum 996 (termwise 996) | KU 0, JU 1, BU 0 | min termwise v: KU 1, BU 2
+p=5 r=1 m=2: total 0 | scaled-diff sum 0 (termwise 0) | KU 0, JU 0, BU 0 | min termwise v: KU 1, BU 2
+p=5 r=2 m=1: total 0 | scaled-diff sum 0 (termwise -1) | KU 0, JU 0, BU 0 | min termwise v: KU 2, BU 4
+p=5 r=2 m=2: total 0 | scaled-diff sum 0 (termwise -1) | KU 0, JU 0, BU 0 | min termwise v: KU 2, BU 4
+p=7 r=1 m=1: total 1 | scaled-diff sum 996 (termwise 996) | KU 0, JU 0, BU 0 | min termwise v: KU 1, BU 2
+p=7 r=1 m=2: total 2 | scaled-diff sum 0 (termwise 0) | KU 0, JU 0, BU 0 | min termwise v: KU 1, BU 2
+p=7 r=2 m=1: total 1 | scaled-diff sum 0 (termwise -1) | KU 0, JU 0, BU 0 | min termwise v: KU 2, BU 4
+p=7 r=2 m=2: total 2 | scaled-diff sum 0 (termwise -1) | KU 0, JU 0, BU 0 | min termwise v: KU 2, BU 4
+p=11 r=1 m=1: total 0 | scaled-diff sum 996 (termwise 996) | KU 0, JU 0, BU 0 | min termwise v: KU 1, BU 2
+p=11 r=1 m=2: total 0 | scaled-diff sum 0 (termwise 0) | KU 0, JU 0, BU 0 | min termwise v: KU 1, BU 2
+p=11 r=2 m=1: total 0 | scaled-diff sum 0 (termwise -1) | KU 0, JU 0, BU 0 | min termwise v: KU 2, BU 4
+p=11 r=2 m=2: total 0 | scaled-diff sum 0 (termwise -1) | KU 0, JU 0, BU 0 | min termwise v: KU 2, BU 4

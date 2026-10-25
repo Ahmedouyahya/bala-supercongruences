@@ -1,0 +1,16 @@
+== A370092Defs.lean
+== A370092Formula.lean
+BalaProofs/A370092Formula.lean:70:44: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+== A370092Odd.lean
+== A370092Two.lean
+BalaProofs/A370092Two.lean:195:2: warning: Try this: 
+  haveI̵
+
+--
+BalaProofs/A370092Two.lean:198:18: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+== A370092Main.lean
+== A370092.lean

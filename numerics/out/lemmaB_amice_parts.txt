@@ -1,0 +1,8 @@
+even-part bound: min slack 0 at (m,k,n,v2E,bound)= (2, 2, 4, 4, 4)
+odd-part  bound: min slack 0 at (m,k,n,v2O,bound)= (2, 5, 4, 4, 4)
+k with v2(floor(k/2)!) < floor(k/3): [3, 6, 7, 15]
+k with v2(floor(k/2)!)+1 < floor(k/3): []
+k=3: min over n in [0,64) of v2(O_k) - m, per m: {2: 2, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2, 8: 2, 9: 2}   (need >= 2)
+k=6: min over n in [0,64) of v2(O_k) - m, per m: {2: 3, 3: 3, 4: 3, 5: 3, 6: 3, 7: 3, 8: 3, 9: 3}   (need >= 3)
+k=7: min over n in [0,64) of v2(O_k) - m, per m: {2: 3, 3: 3, 4: 3, 5: 3, 6: 3, 7: 3, 8: 3, 9: 3}   (need >= 3)
+k=15: min over n in [0,64) of v2(O_k) - m, per m: {2: 9, 3: 9, 4: 9, 5: 9, 6: 9, 7: 9, 8: 9, 9: 9}   (need >= 6)

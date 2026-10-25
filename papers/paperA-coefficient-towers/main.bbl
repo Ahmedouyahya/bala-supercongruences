@@ -1,0 +1,93 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{adamczewski2026}
+Tom Adamczewski, \emph{{OEIS} {O}pen: How many conjectures can language models
+  turn into theorems?}, arXiv:2608.11941 [cs.AI], 2026.
+
+\bibitem{amice1964}
+Yvette Amice, \emph{Interpolation $p$-adique}, Bull. Soc. Math. France
+  \textbf{92} (1964), 117--180.
+
+\bibitem{bala}
+Peter Bala, \emph{Comments, formulas and conjectures in {OEIS} entries
+  {A119259}, {A333561}, {A333562}, {A333565}, {A352275}, {A352373}, {A361711},
+  {A363983}, {A364172}--{A364184}, {A370092}, {A376462}, {A386548}},
+  \url{https://oeis.org}, 2020--2025.
+
+\bibitem{bv3}
+Frits Beukers and Masha Vlasenko, \emph{Dwork crystals {III}: from excellent
+  {F}robenius lifts towards supercongruences}, arXiv:2105.14841 [math.NT],
+  2021.
+
+\bibitem{jacobsthal1952}
+V.~Brun, J.~O. Stubban, J.~E. Fjeldstad, R.~Tambs~Lyche, K.~E. Aubert,
+  W.~Ljunggren, and E.~Jacobsthal, \emph{On the divisibility of the difference
+  between two binomial coefficients}, Den 11te Skandinaviske
+  Matematikerkongress, Trondheim, 1949, Johan Grundt Tanums Forlag, Oslo, 1952,
+  pp.~42--54.
+
+\bibitem{colmez2010}
+Pierre Colmez, \emph{Fonctions d'une variable $p$-adique}, Ast\'erisque, vol.
+  330, Soc. Math. France, 2010.
+
+\bibitem{lean4}
+Leonardo de~Moura and Sebastian Ullrich, \emph{The {L}ean 4 theorem prover and
+  programming language}, Automated Deduction -- CADE 28, Lecture Notes in
+  Comput. Sci., vol. 12699, Springer, 2021, pp.~625--635.
+
+\bibitem{epoch}
+{Epoch AI}, \emph{{LeanOpenProblems-results}: results repository of the {OEIS}
+  {O}pen evaluation},
+  \url{https://github.com/epoch-research/LeanOpenProblems-results}, 2026.
+
+\bibitem{repo}
+Mohamed~Vadel Hadweni and Ahmedou Yahye~Gleiguem Kheyri,
+  \emph{bala-supercongruences: proofs, numerical checks and {L}ean~4
+  formalisations}, \url{https://github.com/Ahmedouyahya/bala-supercongruences},
+  2026, Repository accompanying this paper.
+
+\bibitem{kallat2026}
+Ahaan Kallat, \emph{A proof of {B}ala's congruence conjectures for {A158690}},
+  arXiv:2609.07238 [math.NT], 2026.
+
+\bibitem{kazandzidis1968}
+G.~S. Kazandzidis, \emph{Congruences on the binomial coefficients}, Bull. Soc.
+  Math. Gr\`ece (N.S.) \textbf{9} (1968), 1--12.
+
+\bibitem{mellitvlasenko2013}
+Anton Mellit and Masha Vlasenko, \emph{Dwork's congruences for the constant
+  terms of powers of a {L}aurent polynomial}, arXiv:1306.5811 [math.NT], 2013.
+
+\bibitem{mestrovic2011}
+Romeo Me\v{s}trovi\'c, \emph{Wolstenholme's theorem: its generalizations and
+  extensions in the last hundred and fifty years (1862--2012)}, arXiv:1111.3057
+  [math.NT], 2011.
+
+\bibitem{rbajaj5}
+rbajaj5, \emph{a183068-supercongruence: unreviewed drafts ({J}uly--{A}ugust
+  2026)}, \url{https://github.com/rbajaj5/a183068-supercongruence}, commit
+  e6955c6, 2026.
+
+\bibitem{robertzuber1995}
+Alain Robert and Maxime Zuber, \emph{The {K}azandzidis supercongruences. {A}
+  simple proof and an application}, Rend. Sem. Mat. Univ. Padova \textbf{94}
+  (1995), 235--243.
+
+\bibitem{straub2014}
+Armin Straub, \emph{Multivariate {A}p\'ery numbers and supercongruences of
+  rational functions}, Algebra Number Theory \textbf{8} (2014), no.~8,
+  1985--2008.
+
+\bibitem{mathlib2020}
+{The mathlib Community}, \emph{The {L}ean mathematical library}, Proceedings of
+  the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs
+  (CPP 2020), ACM, 2020, pp.~367--381.
+
+\end{thebibliography}

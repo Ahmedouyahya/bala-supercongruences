@@ -1,0 +1,8 @@
+Gate A: u_1 vs A333093 b-file: 23 terms compared (n = 0..22)
+Gate A: u_2 vs A352275 b-file: 401 terms compared (n = 0..400)
+Gate A: u_3 vs A352276 b-file: 476 terms compared (n = 0..475)
+Gate B1: term identity, integrality, non-negativity, = formalCatalanCoeff n k: 11040 pairs (n<=60, k<=6n)
+Gate B2: u m n = formalPartial n (mn) = FNat((2m+1)n, mn): 280 pairs (m<=6, n<=40)
+Gate B3: formalPartial (A-2N) N = FNat A N: 1891 pairs (A<=60, N<=30)
+Gate B4: scaling lemma as applied and target congruence: 120 cases (p in 5,7,11,13; m<=4; n<=3; r<=2); min slack 0
+FAILURES: 0

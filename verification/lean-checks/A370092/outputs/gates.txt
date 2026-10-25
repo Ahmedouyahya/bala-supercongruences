@@ -1,0 +1,19 @@
+PASS   build exit 0: exit 0
+PASS   no sorry in build log
+PASS   no error in build log
+PASS   audit file exit 0: exit 0
+PASS   axioms of A370092_from_target: Classical.choice, Quot.sound, propext
+PASS   axioms of A370092.k_dvd: Classical.choice, Quot.sound, propext
+PASS   axioms of A370092.lemmaB: Classical.choice, Quot.sound, propext
+PASS   axioms of A370092.a_eq_Aq: Classical.choice, Quot.sound, propext
+PASS   axioms of A370092.a_num: Classical.choice, Quot.sound, propext
+PASS   axioms of A370092.A_odd: Classical.choice, Quot.sound, propext
+PASS   axioms of A370092.A_two: Classical.choice, Quot.sound, propext
+GREP modules: BalaCheck.A370092Main, BalaCheck.A370092Two, BalaCheck.A370092Formula, BalaCheck.A370092Odd
+GREP hits: 0 | approved in GREP-ALLOW.txt: 0
+PASS   tamper grep: every hit reviewed and approved: 0 unapproved of 0
+PASS   lean4checker BalaCheck.A370092Main: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A370092Two: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A370092Formula: exit 0; Found 1 modules to check
+PASS   lean4checker BalaCheck.A370092Odd: exit 0; Found 1 modules to check
+VERDICT: ACCEPT 

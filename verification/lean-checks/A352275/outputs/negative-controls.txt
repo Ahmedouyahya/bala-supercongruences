@@ -1,0 +1,28 @@
+================ NEGATIVE CONTROL: Sorry
+REJECT no sorry in build log
+REJECT axioms of neg_sorry: Classical.choice, Quot.sound, propext, sorryAx
+   UNAPPROVED BalaCheck.Neg.NegSorry:2:sorry
+REJECT tamper grep: every hit reviewed and approved: 1 unapproved of 1
+VERDICT: REJECT (expected REJECT)
+gate script exit=0 (0 = rejected as expected)
+================ NEGATIVE CONTROL: Axiom
+REJECT axioms of neg_axiom: Classical.choice, Quot.sound, fake_proof, propext
+   UNAPPROVED BalaCheck.Neg.NegAxiom:2:axiom
+REJECT tamper grep: every hit reviewed and approved: 1 unapproved of 1
+VERDICT: REJECT (expected REJECT)
+gate script exit=0 (0 = rejected as expected)
+================ NEGATIVE CONTROL: Native
+REJECT axioms of neg_native: Lean.ofReduceBool, Lean.trustCompiler
+   UNAPPROVED BalaCheck.Neg.NegNative:2:native_decide
+REJECT tamper grep: every hit reviewed and approved: 1 unapproved of 1
+REJECT lean4checker BalaCheck.Neg.NegNative: exit 1; uncaught exception: (kernel) (interpreter) unknown declaration 'neg_native._nativeDecide_1_1'
+VERDICT: REJECT (expected REJECT)
+gate script exit=0 (0 = rejected as expected)
+================ NEGATIVE CONTROL: Exit
+REJECT audit file exit 0: exit 1
+REJECT axioms of neg_exit: no axiom line for this exact name
+   UNAPPROVED BalaCheck.Neg.NegExit:3:sorry
+   UNAPPROVED BalaCheck.Neg.NegExit:2:#exit
+REJECT tamper grep: every hit reviewed and approved: 2 unapproved of 2
+VERDICT: REJECT (expected REJECT)
+gate script exit=0 (0 = rejected as expected)

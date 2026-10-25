@@ -1,0 +1,161 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/deepseek-v4.1-flash-free via OpenCode CLI, read-only 'plan' agent, run locally on the authors' machine.
+Input: notes/TheoremF-p3-proof.md (plus one background note). Prompt: notes/referee-reports/PROMPT.txt. The report is AI output and is kept as evidence, not as authority.
+===========================================================================
+I'll verify the lemmas numerically and check the logical steps. Let me first check available tools.
+Let me test the corollary's supporting identity and the sequence-level tower claims.
+I have completed an exhaustive check: I re-derived every lemma algebraically and verified all of them numerically (exact rational arithmetic and exhaustive parameter ranges), and independently re-checked the F₃ identities with sympy. Report below.
+
+```
+ADVERSARIAL REFEREE REPORT — PROOF.md ("Theorem F at p = 3")
+
+Scope: I checked every lemma/step in order, re-derived each one by hand, and
+re-verified each numerically (exact rational and modular arithmetic; exhaustive
+sweeps plus independent sympy re-checks). I looked specifically for p-adic
+valuation shortfalls, lemma hypotheses not met, sign errors, off-by-one/index
+errors, and non-closing induction.
+
+=====================================================================
+§0. Statement
+=====================================================================
+No issue found in the mathematical assertions.
+- (i) A(3M) ≡ A(M) (mod 3^{3r-1}), r = 1+v_3(M): verified for c∈{1..6},
+  -5≤a,b≤5, M≤16, plus targeted M∈{1,3,9,27,81}. No violation.
+- (ii) condition {3|c} ∨ {a+b≡c} ∨ {a≡b≡0}: verified on the same sweep; no
+  violation. The excluded classes do fail mod 3^{3r} (e.g. (1,-1,1),(1,-1,2),
+  (-1,-3,1) all have v_3(A(3)-A(1))=2), so the classification is sharp and the
+  theorem is not vacuous.
+- The stated "equivalence" A(3M)≡A(M) ↔ A(n3^r)≡A(n3^{r-1}) is correct (set
+  M=n3^{r-1}; the forward modulus is ≥3r), though it is asserted, not proved.
+
+=====================================================================
+§1. Set-up (p=3)
+=====================================================================
+No issue found.
+- U,V,L ∈ ℤ_(3)[[x]] with no exponent divisible by 3: correct (1/i∈ℤ_(3) for
+  3∤i).
+- Reduced logarithm φ(x)^3 = φ(x³)exp(3L): the p≥5 proof uses only p odd; p=3
+  is odd, and the term-cancellation (3log(1+x)-log(1+x^3)=3V, and analogously
+  -3U for (1-x)) is correct at p=3. Equation (1) follows.
+- ψ = xφ'/φ = ax/(1+x) - bx/(1-x) = Σℓ_i y^i, ℓ_i = a(-1)^{i+1}-b: correct,
+  including α=a-b (odd i), β=-(a+b) (even i).
+- (C1),(C2) and the functional λ_M: λ_M maps ℤ_(3)[[y]]→ℤ_(3) and λ_M mod 3
+  depends only on f mod 3 (both correct, since the γ_s are integers).
+
+=====================================================================
+§2. Four lemmas
+=====================================================================
+Lemma A: no issue found. D(φ^M y^{-cM} g) = φ^M y^{-cM}(Mψg - cMg + Dg) is
+correct (D=y d/dy), the constant term of D(·) vanishes, and [y^0](φ^M y^{-cM}h)
+= λ_M(h). Verified symbolically and numerically.
+Lemma B: no issue found. The Cartier push-through, the j=0 term λ_M(1)=A(M),
+C(L)=0 (L has no exponent divisible by 3), integrality of λ_M(C(L^j)), and
+finiteness (j ≤ 3cM) are all correct.
+Lemma C: no issue found. v_3(N²/2)=2r, v_3(N³/6)=3r-1, and the j≥4 estimate
+v_3(N^j/j!) ≥ 3r (Legendre: v_3(j!) = (j-s_3(j))/2) are correct for r≥1.
+Lemma D: no issue found. C(L³)=L(y)+3R with R∈ℤ_(3)[[y]] by (C2); the difference
+is (27M³/2)λ_M(R) with v_3 = 3+3(r-1)=3r. Verified numerically.
+
+=====================================================================
+§3. Harmonic sums and the series g
+=====================================================================
+Lemma E: no issue found.
+ (a) S_2 = X(2X²-3)/9 = 2·3^{3e-2} - 3^{e-1} ≡ -3^{e-1} mod 3^e. (Algebra
+     re-derived; e=1: 5/4≡2≡-1.)
+ (b) pairing u↔3^e-u (fixed-point free as 3^e odd), 1/(3^e-u) ≡ -u^{-1}-3^e u^{-2}
+     mod 3^{2e}, so 2S_1 ≡ -3^e S_2 ≡ 3^{2e-1} mod 3^{2e}. Correct; checked e≤8.
+ (c) S_2^± = 7S_2/8 - S_2/8 = 3S_2/4 ≡ 0 mod 3^e. Correct; checked e≤8.
+Lemma F: no issue found.
+ (a) H_T ≡ 3^{2e-1}[ℓ/2 + ℓ(ℓ-1)/2] = 3^{2e-1}ℓ²/2 ≡ -3^{2e-1} mod 3^{2e};
+     v_3(H_T)=2e-1 exactly. Correct; checked e≤6, ℓ≤7.
+ (b) parity of β3^e+u is that of β+u; Σ(-1)^β=0, Σ(-1)^ββ=-ℓ/2; cross term
+     (ℓ/2)3^e S_2^± ≡ 0 mod 3^{2e}. Correct; checked.
+Lemma G (quoted from the p≥5 note): the three coefficient identities use only
+T≡0 (mod 3); I re-derived [x^T]U²=2H_T/T, [x^T]V²=(-1)^T 2H_T/T, and
+[x^T]UV=(1+(-1)^T)H_T^±/T directly. Correct at p=3.
+Lemma H: no issue found (one terse step; see note below).
+ (a) Dg = C(L²) and g ∈ ℤ_(3)[[y]]. Correct.
+ (b) g_t ≡ a²(-1)^t + b² mod 3: verified for -4≤a,b≤4 and t≤59 with EXACT
+     rational arithmetic (including 3|t, where the naive mod-3 "inverse of t"
+     is illegal — the integrality is genuinely needed and holds).
+NOTE (minor, not an error): in (a) the integrality g_t∈ℤ_(3) is deferred to
+"the exact expressions in the proof of (b)"; the actual justification is
+Lemma F(a) inside (b). Valid, but the logical ordering is a bit implicit. This
+is at most a presentational GAP.
+
+=====================================================================
+§4. Reduction, Lemma J, and the proof
+=====================================================================
+Proposition I: no issue found. The exact substitution
+λ_M(C(L²)) = λ_M(Dg) = -M λ_M((ψ-c)g) makes the quadratic term exactly
+-(9M³/2)λ_M((ψ-c)g), the cubic is (9M³/2)λ_M(L) mod 3^{3r}, and j≥4 drop
+mod 3^{3r}. I verified A(3M)-A(M) ≡ (9M³/2)λ_M(L-(ψ-c)g) mod 3^{3r} for
+c∈{1..4}, -3≤a,b≤4, M≤11 (exact). r-bookkeeping (v_3(9M³/2)=3r-1) is correct.
+Lemma J: no issue found.
+ (a) L̄ = Dψ̄ = y(α+2βy+αy²)/(1-y²)²: correct (1/i≡i for 3∤i).
+ (b) In F_3[y], (αy-c)[(b²-a²)+(a²+b²)y] = α+cy+αy²: constant c²α=α, y²
+     α(a²+b²) with a²+b²≡1, y coeff -c(α²+a²+b²)≡c, checked in both
+     sub-cases (a≢b ⇒ {a,b}={0,c}; a≡b≢0 ⇒ a≡b≡2c). Correct.
+ (c) The bracket is K₀+(b²-a²)y+(a²+b²-K₀)y² — note the K₀ in the y² slot is
+     correct because ḡ+K₀ = [K₀(1-y²)+(b²-a²)y+(a²+b²)y²]/(1-y²). All four
+     coefficients checked; case a≡b≢0 and a≡b≡0 as stated. Correct.
+ I re-verified (b) and (c) with an independent sympy F_3[[y]] computation over
+ all residue classes; 0 failures.
+Final proof of (ii): no issue found.
+- Case 3∤c, a+b≡c: L̄-(ψ̄-c̄)ḡ=0 ⇒ λ_M(...)≡0.
+- Case 3|c: L̄-(ψ̄-c̄)ḡ=K₀(ψ̄-c̄) ⇒ λ_M(...)≡K₀λ_M(ψ-c)=0 by Lemma A.
+- Case a≡b≡0: L̄=ψ̄=ḡ=0 ⇒ λ_M(...)≡0 for every c.
+ All lemma hypotheses are met in each invocation (Lemma A: g∈ℚ[[y]] ✓;
+ Lemma J(b): 3∤c and a+b≡c ✓; Lemma J(c): 3|c ✓; Lemma H(b): a≡b≡0 ✓).
+ The induction/tower closes (single-step congruence; iteration to n3^r holds).
+
+=====================================================================
+§5. Remarks / §6. Corollary
+=====================================================================
+No mathematical error found. Spot-checks:
+- Observation's v_3(A(3)-A(1))=2 for (-1,-3,1),(1,-1,1),(1,-1,2): confirmed.
+- a≡b≡0 class shows slack ≥1 in the data (e.g. (3,0,2): 4,7,10,13 = 3r+1),
+  consistent with the remark.
+- Corollary's A333565(n)=2·A119259(n)-(-1)^n verified termwise n≤12, and the
+  tower for A119259, A333565, A333564 verified for n≤5, r≤4.
+MINOR RELIANCE (background file): the identity A333565=2A119259-(-1)^n and the
+instances A333561/A333562/A352373 are proved in TheoremF-p-ge-5-note.md §5, not
+in PROOF.md; likewise Lemma G and the reduced logarithm are cited from the
+note. Admitted as known, this is fine; if PROOF.md is required to be
+self-contained, these are GAP-level (true but not proved here).
+
+=====================================================================
+Additional adversarial checks
+=====================================================================
+- P-adic bookkeeping: quadratic 2r, +（r-1) from exact form → 3r-1 (consumed by
+  (i)); cubic 3r-1; j≥4 ≥3r; Lemma-D difference ≥3r; Lemma-J mod-3 boost → 3r.
+  No piece is claimed to vanish to a modulus stronger than it actually does.
+- Sign conventions: V and H_T^± both use (-1)^{i+1}; [x^T]V²=(-1)^T·2H_T/T and
+  [x^T]UV=(1+(-1)^T)H_T^±/T re-derived correctly.
+- Index ranges: Lemma F block 0≤β<ℓ covers i∈[1,T-1] with 3∤i exactly once (no
+  off-by-one); R_e excludes multiples of 3 correctly.
+
+=====================================================================
+VERDICT: CORRECT
+
+No false claim and no valuation/sign/index error was found. The only
+deficiencies are two mild, non-fatal gaps:
+ (G1) self-containment: Lemma G and the reduced-logarithm Lemma 1 (and the
+      A333565 identity used in the Corollary) are imported from the background
+      note; and the F_3 identity in Lemma J is asserted as "checked", not
+      shown in-line;
+ (G2) Lemma H defers the integrality g_t∈ℤ_(3) to the proof of (b) — a
+      presentational ordering issue, not a logical one.
+
+Steps I am least sure about (in decreasing order of residual doubt):
+1. Lemma H(b) for t divisible by 3, where the mod-3 reduction of g_t=[x^{3t}]L²/t
+   silently requires g_t∈ℤ_(3) (confirmed only via Lemma F(a)); my naive check
+   crashed here, and I had to redo it with exact rationals — it holds, but this
+   is the one place where the valuation bookkeeping is easy to get wrong.
+2. Lemma G, invoked from the (background) p≥5 note with the claim that only
+   3|T is needed; I re-derived the three identities independently and agree,
+   but the reliance is external.
+3. Lemma J(c)'s cross-term simplification (the y³ coefficient vanishing via
+   β≡0 or a²+b²≡1, and the K₀ placed in the y² slot of the bracket) — correct
+   on re-derivation and sympy, but it is the densest algebraic step in the
+   paper and the spot where a sign/index slip would be easiest to hide.
+```

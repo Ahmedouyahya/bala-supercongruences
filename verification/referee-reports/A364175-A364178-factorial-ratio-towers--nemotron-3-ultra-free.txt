@@ -1,0 +1,32 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/A364175-A364178-factorial-ratio-towers.md only (background notes not supplied). Prompt: notes/referee-reports/PROMPT.txt plus a 1500-word limit. AI output kept as evidence, not authority; see DISPOSITIONS.md for the disposition of each item.
+===========================================================================
+VERDICT: CORRECT WITH FIXES
+
+## Section 0
+no issue found
+
+## Section 1 (Theorem 2, odd q)
+UNCLEAR: Definition `F(x) := ⌊10x⌋ + ⌊3x⌋ − ⌊6x⌋ − ⌊5x⌋ − ⌊x⌋` includes `−⌊x⌋` which is identically 0 on `[0,1)`. The coefficient cancellation "10+3−6−5−1−1 = 0" conflates the `t`-coefficient from `F(n/q^k)` (which contributes `10+3−6−5−1 = +1` because `⌊n/q^k⌋ = t`) with the `−t` from `−N_k`. The math is correct but the exposition is confusing; a reader might think `F(t+x)=F(t)+F(x)`.
+
+## Section 2 (Lemma A)
+GAP: The proof invokes "Lemma 2 of `notes/TheoremF-coefficient-framing-proof.md`" for `S_1 ≡ 0 (mod p^{2r})` and `S_2 ≡ 0 (mod p^r)` (`p ≥ 5`). This lemma is not present in the directory; the entire argument for Lemmas A and B depends on it. While the congruences are known (generalized Wolstenholme), the proof is not self-contained.
+
+## Section 2 (Lemma B)
+GAP: Same external dependency on the unproven `S_1, S_2` congruences. Otherwise the `p`-adic logarithm estimates are correct for `p ≥ 5`.
+
+## Section 3 (Theorem 3)
+no issue found (the exact identities for `a(N)/a(M)` and `b(N)/b(M)` were verified algebraically; the computer checks are supplementary)
+
+## Section 4
+no issue found (remarks are speculative, not part of the core proof)
+
+---
+
+### Three steps I am least sure about and why
+
+1. **The Wolstenholme congruences `S_1 ≡ 0 (mod p^{2r})`, `S_2 ≡ 0 (mod p^r)` for all `r ≥ 1`, `p ≥ 5`** (invoked in Lemmas A and B via the missing Lemma 2). The main theorem collapses without them; they are a known result but the proof here is not self-contained.
+
+2. **The block-decomposition step in Theorem 2** where `ε_k = 1` is claimed to force `ρ/q^k ≥ 1/3`. The logic `ρ + 2s ∈ {q^k, 2q^k} ⇒ q^k ≤ 3ρ` is correct, but it relies on `s` being the offset in the last partial block (`s ∈ [1, ρ]`), which is a subtle index manipulation that could hide an off-by-one error if `ρ = 0` (though then `ε_k = 0` vacuously).
+
+3. **The derivation of the exact ratio identities in Theorem 3** (lines 47–48). The paper says they were "checked by computer" and gives a terse derivation. I re-derived them and they are correct, but the written derivation skips the cancellation of the `p^M` factor from the unbalanced factorial ratio (sum `ε_i a_i = 1`) against the `p^M` from the `p ∣ j` factors in the product — a step where a sign or exponent error would be easy to make.

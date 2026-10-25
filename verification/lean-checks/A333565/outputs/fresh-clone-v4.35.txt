@@ -1,0 +1,54 @@
+clone at f49d98a
+fresh EpochA361883 exit=0 errors=0
+fresh A386548Padic exit=0 errors=0
+fresh OSSLib exit=0 errors=0
+fresh EpochA333042 exit=0 errors=0
+fresh TFSetup exit=0 errors=0
+fresh TFFrob exit=0 errors=0
+fresh TFHarmonic exit=0 errors=0
+fresh TFEps exit=0 errors=0
+fresh TFLift exit=0 errors=0
+fresh TFMain exit=0 errors=0
+fresh TFInst exit=0 errors=0
+fresh A333561Defs exit=0 errors=0
+fresh A333561Main exit=0 errors=0
+fresh A333561 exit=0 errors=0
+fresh A333562Defs exit=0 errors=0
+fresh A333562Ident exit=0 errors=0
+fresh A333562Main exit=0 errors=0
+fresh A333562 exit=0 errors=0
+fresh A352373Defs exit=0 errors=0
+fresh A352373Main exit=0 errors=0
+fresh A352373 exit=0 errors=0
+fresh BinomIdent exit=0 errors=0
+fresh A333561Oeis exit=0 errors=0
+fresh A376462Defs exit=0 errors=0
+fresh ShiftLibProd exit=0 errors=0
+fresh ShiftLibHarm exit=0 errors=0
+fresh ShiftLibBlock exit=0 errors=0
+fresh A376462Rep exit=0 errors=0
+fresh A376462Kernel exit=0 errors=0
+fresh A376462Classes exit=0 errors=0
+fresh A376462First exit=0 errors=0
+fresh A376462ShiftRep exit=0 errors=0
+fresh A376462ShiftK exit=0 errors=0
+fresh A376462ShiftJ exit=0 errors=0
+fresh A376462ShiftB exit=0 errors=0
+fresh A376462ShiftS exit=0 errors=0
+fresh A376462ShiftMain exit=0 errors=0
+fresh A376462Main exit=0 errors=0
+fresh A376462 exit=0 errors=0
+fresh A333565Defs exit=0 errors=0
+fresh A333565Bridge exit=0 errors=0
+fresh TF3Harm exit=0 errors=0
+fresh TF3G exit=0 errors=0
+fresh TF3Exp exit=0 errors=0
+fresh TF3Main exit=0 errors=0
+fresh A333565Main exit=0 errors=0
+fresh A333565 exit=0 errors=0
+'oeis_333561_conjecture' depends on axioms: [propext, Classical.choice, Quot.sound] 
+'oeis_333562_conjecture_0_congruence' depends on axioms: [propext, Classical.choice, Quot.sound] 
+'oeis_a352373_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound] 
+'oeis_376462_conjecture_0' depends on axioms: [propext, Classical.choice, Quot.sound] 
+'oeis_A333565_conjecture_strong_gauss_congruence' depends on axioms: [propext, Classical.choice, Quot.sound] 
+'A333561Oeis.aOEIS_supercongruence' depends on axioms: [propext, Classical.choice, Quot.sound] 

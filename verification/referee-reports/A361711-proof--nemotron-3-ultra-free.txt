@@ -1,0 +1,26 @@
+Cross-model adversarial referee report (verbatim). Date: 2026-10-15. Model: opencode/nemotron-3-ultra-free via OpenCode CLI, read-only 'plan' agent, run locally.
+Input: notes/A361711-proof.md only (background notes not supplied). Prompt: notes/referee-reports/PROMPT.txt plus a 1500-word limit. AI output kept as evidence, not authority; see DISPOSITIONS.md for the disposition of each item.
+===========================================================================
+VERDICT: CORRECT WITH FIXES
+
+## Section 1 (Lemma 1)
+**Line 27–35**: The telescoping sum defines G(n,n+1):=0 and claims the polynomial identity holds at k=n because "P(n,n) = (n+2)⁴(n+1)²(3n²−2n+1), checked symbolically". While the polynomial identity *does* hold at k=n (making G(n,n+1)=0 consistent), the proof does not derive this boundary value from the certificate—it simply defines it and verifies consistency a posteriori. The earlier status line mentions "one rigor gap found in the telescoping boundary and repaired below", but the repair is not explicitly marked; a reader must reconstruct the check. Moreover, the entire recurrence derivation depends on a computer-verified Zeilberger certificate (Maxima/sympy) whose 8th-degree polynomial P(n,k) is only given in Appendix A without human-readable verification. **Severity: GAP** (true but relies on computer algebra and an opaque boundary fix).
+
+## Section 2 (Lemma 2)
+No issue found. The floor-identity proof and sign calculation are correct for p≥5.
+
+## Section 3 (Lemma 3)
+**Line 53**: "Σ_{0<v<p^k, p∤v} 1/v² ≡ Σ_{0<v<p^k, p∤v} v² (mod p^k) (inversion permutes the units mod p^k)". The justification is too terse. One must argue: for each unit v, choose its unique inverse w∈[1,p^k−1]; then v w ≡ 1 (mod p^k) ⇒ w² ≡ v^{−2} (mod p^k). Since v↦w is a permutation of the unit representatives, the sums are congruent mod p^k. The proof omits this reasoning. **Severity: UNCLEAR** (true but insufficiently justified for a human reader).
+
+## Section 3 (Theorem proof)
+**Line 55**: "Since a(M') is a nonzero integer". Non-zeroness is not proved here; it follows from Lemma 1 (a(p^{k−1}) = ±C(3n'+1,n')C(2n',n') with positive binomial coefficients) but the proof does not cite this. **Severity: GAP** (minor, easily fixed by referencing Lemma 1).
+
+## Section 4–5, Appendix A
+No issues (commentary/reference only).
+
+---
+
+**Three steps I am least sure about:**
+1. **Lemma 1's Zeilberger certificate**: The proof's core algebraic identity is verified only by computer algebra (sympy/Maxima). Without running the code, a referee cannot confirm the polynomial P(n,k) in Appendix A actually satisfies the certificate equation for all n,k. The "independent referee check" mentioned in the status line is not reproduced in the text.
+2. **Lemma 3's unit-permutation step**: The congruence Σ 1/v² ≡ Σ v² (mod p^k) is correct but the proof's one-phrase justification ("inversion permutes the units mod p^k") skips the necessary p-adic lifting argument (that the modular inverse w satisfies 1/v² ≡ w² mod p^k). A rigorous write-up would need a few more lines.
+3. **The product expansion's remainder bound**: The claim a(M)/a(M') − 1 ≡ −p^{2k}H_2 (mod p^{4k}) assumes the elementary symmetric functions e_j are p-adic integers. This holds because each 1/u² is a p-adic unit, but the proof does not explicitly note that the number of terms in e_j does not introduce extra p-factors (it doesn't, since |U| = p^{k−1}(p−1)/2 is prime to p). This is true but not argued.

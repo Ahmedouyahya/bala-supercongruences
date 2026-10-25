@@ -1,0 +1,56 @@
+BalaProofs/A386548Main.lean:99:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Main.lean:99:20: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Main.lean:123:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Main.lean:123:20: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Main.lean:154:2: warning: Try this: 
+BalaProofs/A386548Padic.lean:21:2: warning: Try this: 
+BalaProofs/A386548Series.lean:88:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Series.lean:94:55: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Series.lean:116:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Series.lean:119:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Series.lean:140:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Series.lean:140:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Series.lean:140:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Series.lean:146:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/A386548Series.lean:146:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Series.lean:146:32: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Series.lean:148:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/A386548Series.lean:148:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/EpochA361883.lean:65:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:78:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:120:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:184:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:205:20: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+BalaProofs/EpochA361883.lean:214:20: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+BalaProofs/EpochA361883.lean:226:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:407:21: warning: `if_true` has been deprecated: Use `ite_true` instead
+BalaProofs/EpochA361883.lean:447:21: warning: `if_false` has been deprecated: Use `ite_false` instead
+BalaProofs/EpochA361883.lean:558:21: warning: `if_false` has been deprecated: Use `ite_false` instead
+BalaProofs/EpochA361883.lean:522:49: warning: Variable name `hp5` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+BalaProofs/EpochA361883.lean:713:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/EpochA361883.lean:713:33: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/EpochA361883.lean:720:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/EpochA361883.lean:720:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/EpochA361883.lean:734:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/EpochA361883.lean:734:33: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+BalaProofs/EpochA361883.lean:741:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/EpochA361883.lean:741:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+BalaProofs/EpochA361883.lean:808:21: warning: `if_false` has been deprecated: Use `ite_false` instead
+BalaProofs/EpochA361883.lean:828:55: warning: Variable name `hp5` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+BalaProofs/EpochA361883.lean:829:5: warning: Variable name `hu1` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+BalaProofs/EpochA361883.lean:829:19: warning: Variable name `hpu` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+BalaProofs/EpochA361883.lean:1160:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:1217:18: warning: `if_false` has been deprecated: Use `ite_false` instead
+BalaProofs/EpochA361883.lean:1267:6: warning: Unused tactic linter: `simp only [Nat.succ_eq_add_one] at h` does nothing.
+BalaProofs/EpochA361883.lean:1493:61: warning: Variable name `hB` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+BalaProofs/EpochA361883.lean:1600:59: warning: Variable name `hA` is not explicitly referenced.
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+BalaProofs/EpochA361883.lean:1875:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:1998:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:2107:2: warning: Try this: 
+BalaProofs/EpochA361883.lean:2148:2: warning: Try this: 

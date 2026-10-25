@@ -1,0 +1,5 @@
+(p,r,m) | N=m p^r | v_p(a(N-1)-a(N/p-1)) vs 3r | v_p(a(N)-a(N/p)) vs 3r | seconds
+(11,3,1) | 1331 | shifted v=9 need 9 OK | first v=9 need 9 OK | 341.3
+(13,3,1) | 2197 | shifted v=9 need 9 OK | first v=9 need 9 OK | 1465.2
+(7,4,1) | 2401 | shifted v=13 need 12 OK | first v=13 need 12 OK | 1649.8
+(5,5,1) | 3125 | shifted v=15 need 15 OK | first v=15 need 15 OK | 3947.1

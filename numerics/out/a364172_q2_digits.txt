@@ -1,0 +1,14 @@
+violations of sum extra_k <= 2 s_2(n) for n<=2000: []
+equality cases (v_2(a(n))=0) up to 2000: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+1 0b1 extras: [1, 1] sum 2 2s2 2
+2 0b10 extras: [0, 1, 1] sum 2 2s2 2
+4 0b100 extras: [0, 0, 1, 1] sum 2 2s2 2
+8 0b1000 extras: [0, 0, 0, 1, 1] sum 2 2s2 2
+3 0b11 extras: [1, 1, 0] sum 2 2s2 4
+5 0b101 extras: [1, 1, 1, 0] sum 3 2s2 4
+6 0b110 extras: [0, 1, 1, 0] sum 2 2s2 4
+7 0b111 extras: [1, 1, 1, 1] sum 4 2s2 6
+9 0b1001 extras: [1, 1, 0, 0, 0] sum 2 2s2 4
+12 0b1100 extras: [0, 0, 1, 1, 0] sum 2 2s2 4
+24 0b11000 extras: [0, 0, 0, 1, 1, 0] sum 2 2s2 4
+48 0b110000 extras: [0, 0, 0, 0, 1, 1, 0] sum 2 2s2 4

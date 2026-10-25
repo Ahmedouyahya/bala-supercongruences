@@ -1,0 +1,29 @@
+Step S (scaled terms): v_p(A(mp^r,kp^s) - A(mp^(r-1),kp^(s-1))) >= 3r for p∤k
+  p=5: min slack 0
+  p=7: min slack 0
+Step U1: unscaled sum G0(N) = sum_{p∤k} A(N,k): v_p >= 3r ;  and  G0(N) = (-1)^N N^2 * S  with S = sum'_k (-1)^k C(N-1,k-1)C(N+k-1,k-1)C(2k,N)/k^2
+  p=5 r=1 m=1: v(G0)-3r=1, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 1, Sigma chain slacks [], v(Sigma_r)-r = 1
+  p=5 r=1 m=2: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=5 r=1 m=3: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 1, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=5 r=2 m=1: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 1
+  p=5 r=2 m=2: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=5 r=2 m=3: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=7 r=1 m=1: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=7 r=1 m=2: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=7 r=1 m=3: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=7 r=2 m=1: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=7 r=2 m=2: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=7 r=2 m=3: v(G0)-3r=2, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=11 r=1 m=1: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=11 r=1 m=2: v(G0)-3r=1, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=11 r=1 m=3: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [], v(Sigma_r)-r = 0
+  p=11 r=2 m=1: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=11 r=2 m=2: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [0], v(Sigma_r)-r = 0
+  p=11 r=2 m=3: v(G0)-3r=0, identity G0=(-1)^N N^2 S: True, v(S + S1)-r = 0, Sigma chain slacks [1], v(Sigma_r)-r = 0
+Lemma 2.2 (n=-2): sum'_{k<p^s} 1/k^2 == 0 mod p^s and half-sum sum'_{k<p^s/2} 1/k^2 == 0 mod p^s (p>=5):
+  p=5: [(1, 0, 0), (2, 0, 0), (3, 0, 0)]
+  p=7: [(1, 0, 1), (2, 0, 1), (3, 0, 1)]
+  p=11: [(1, 0, 0), (2, 0, 0), (3, 0, 0)]
+  p=13: [(1, 0, 0), (2, 0, 0), (3, 0, 0)]
+Lemma 2.4-type reductions mod p^r (random spot checks):
+  358 checks, failures: 0

@@ -1,0 +1,48 @@
+Building Challenge
+⚠ [8000/8001] Built Challenge (12s)
+warning: run/Challenge.lean:38:8: declaration uses 'sorry'
+warning: run/Challenge.lean:44:8: declaration uses 'sorry'
+Build completed successfully (8001 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_A386548_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Submission.A386548Spec
+✔ [8000/8005] Built Submission.A386548Defs (4.0s)
+✔ [8001/8005] Built Submission.A386548Series (6.1s)
+⚠ [8002/8005] Built Submission.EpochJac (11s)
+warning: Submission/EpochJac.lean:28:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+warning: Submission/EpochJac.lean:513:49: unused variable `hp5`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:611:29: `mul_le_mul_left'` has been deprecated: Use `_root_.mul_le_mul_right` instead
+warning: Submission/EpochJac.lean:819:55: unused variable `hp5`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:820:5: unused variable `hu1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:820:19: unused variable `hpu`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:1085:8: `Finset.range_succ` has been deprecated: Use `Finset.range_add_one` instead
+warning: Submission/EpochJac.lean:1160:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+warning: Submission/EpochJac.lean:1257:12: `Nat.succ_mul_choose_eq` has been deprecated: Use `Nat.add_one_mul_choose_eq` instead
+warning: Submission/EpochJac.lean:1484:61: unused variable `hB`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:1591:59: unused variable `hA`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Submission/EpochJac.lean:2035:40: `mul_le_mul_left'` has been deprecated: Use `_root_.mul_le_mul_right` instead
+✔ [8003/8005] Built Submission.A386548Padic (4.3s)
+✔ [8004/8005] Built Submission.A386548Main (4.2s)
+✔ [8005/8005] Built Submission.A386548Spec (3.7s)
+Build completed successfully (8005 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_A386548_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.A386548Spec
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!

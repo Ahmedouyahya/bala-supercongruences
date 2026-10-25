@@ -1,0 +1,13 @@
+PASS floor(k/2)! C(x,k) has Z_2-integral coefficients in t=(x-a)/2 on both classes, k<=70
+INFO k<=70 for which C(x,k) alone is NOT in the unit ball of LA_1: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]... (count 67)
+PASS v_LA1(floor(k/2)! C(x,k)) = 0 exactly for k<=70
+PASS (B) 400 random f (deg<=10, integer t-coefficients): v2(a_k(f)) >= v2(floor(k/2)!) for k<=60; violations []
+PASS (B) minimum slack = 0 at (trial,k)=(0, 0) (bound is attained)
+PASS (B) e_{1,n}-type functions 1_(a+2Z2)(x) t^i (i<25): bound holds for k<=60; violations []; #slack-0 pairs 489
+PASS (C) control: with t-coefficients in (1/2)Z the bound v2(a_k) >= v2(floor(k/2)!) FAILS in 530/4099 cases (normalisation matters)
+PASS (C) control: integral coefficients in (x-a) (stronger) => bound holds, min slack 0
+PASS (D) f=2^-(m+1)F, n>=m+1: v2(a_k(F)) >= m+1+v2(floor(k/2)!) for k<=60, m=2..6; min slack 0
+PASS (D) even part F*1_(2Z2): v2(E_k) >= n + v2(floor(k/2)!) ; min slack 0
+PASS (D) S_2 function: v2(S_2) >= v2(floor(k/2)!) ; min slack 0
+PASS (E) a_k(sum beta_l floor(l/2)! C(x,l)) = beta_k floor(k/2)!
+TOTAL: 11 pass, 0 fail

@@ -1,0 +1,11 @@
+import BalaProofs.TFMain
+import BalaProofs.TFInst
+import BalaProofs.A333562Ident
+
+/-!
+# A333562 from Theorem F
+
+By `A333562.a_eq_rep`, the target's `a n = Σ_{j ≤ 3n} C(n+j-1, j) 2^j` equals
+`Σ_{k ≤ 3n} C(4n, 3n-k) C(n+k-1, k) = [x^{3n}] ((1+x)^4 (1-x)^{-1})^n` for `n ≥ 1`,
+i.e. Theorem F with `(a, b, c) = (4, -1, 3)` (`TF.A_m_neg_one`, `TF.tower_int`).
+-/

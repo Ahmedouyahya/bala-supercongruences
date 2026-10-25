@@ -1,0 +1,72 @@
+Re-review (b): class K (section 4) and class J (section 5) piece by piece
+--- case p=5 r=2 m=1: N=25, M=5, E=26
+    (0.0s)
+--- case p=5 r=2 m=2: N=50, M=10, E=26
+    (0.0s)
+--- case p=5 r=3 m=1: N=125, M=25, E=29
+    (0.1s)
+--- case p=5 r=3 m=2: N=250, M=50, E=29
+    (0.3s)
+--- case p=7 r=2 m=1: N=49, M=7, E=26
+    (0.0s)
+--- case p=7 r=2 m=2: N=98, M=14, E=26
+    (0.0s)
+--- case p=7 r=3 m=1: N=343, M=49, E=29
+    (0.4s)
+--- case p=7 r=3 m=2: N=686, M=98, E=29
+    (1.5s)
+--- case p=11 r=2 m=1: N=121, M=11, E=26
+    (0.0s)
+--- case p=11 r=2 m=2: N=242, M=22, E=26
+    (0.2s)
+--- case p=5 r=2 m=5: N=125, M=25, E=26
+    (0.0s)
+--- case p=5 r=1 m=5: N=25, M=5, E=23
+    (0.0s)
+--- case p=7 r=1 m=7: N=49, M=7, E=23
+    (0.0s)
+--- case p=5 r=1 m=1: N=5, M=1, E=23
+    (0.0s)
+--- case p=7 r=1 m=2: N=14, M=2, E=23
+    (0.0s)
+
+== rereview_shifted_classKJ: 750 pass, 0 fail ==
+minimal slack per item (observed - claimed valuation):
+  (4.1) Sigma_K - [N S1 - N^2 S2] = 0 mod p^{3r}   min slack    1   (v=4, claimed 3) at p=5 r=1 m=1
+  (4.2) S1 - (A_{r-1} - N X^) = 0 mod p^{2r}       min slack    0   (v=2, claimed 2) at p=5 r=1 m=1
+  (4.a) sum'(1/k^2) K^_r(k) = 0 mod p^r            min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (4.b) sum'(1/k) K^_r(k) = 0 mod p^{2r}           min slack    0   (v=4, claimed 4) at p=5 r=2 m=1
+  (4.b.1) X^ = 0 mod p^r                           min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (4.b.1) X^_1 = 0 mod p^r                         min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (4.b.1) X^_2 = 0 mod p^{r+1}                     min slack    2   (v=4, claimed 2) at p=7 r=1 m=2
+  (4.b.1) X^_3 = 0 mod p^r                         min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (4.b.2) A_s = 0 mod p^{2r}                       min slack    0   (v=4, claimed 4) at p=5 r=2 m=1 s=0
+  (4.b.2) X_s = 0 mod p^{2r-s-1}                   min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (4.b.2) X_{s,1} = 0 mod p^{2r-s-1}               min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (4.b.2) X_{s,2} = 0 mod p^{2r-s}                 min slack    2   (v=6, claimed 4) at p=5 r=2 m=2 s=0
+  (4.b.2) X_{s,3} = 0 mod p^{2r-s-1}               min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (4.b.2) Y_s = 0 mod p^{2r-s-1}                   min slack    0   (v=3, claimed 3) at p=5 r=2 m=2 s=0
+  (4.b.2) Y_s split by top-level carry c = 0 mod p^{2r-s-1} min slack    0   (v=3, claimed 3) at p=5 r=2 m=2 s=0 c=0
+  (4.b.2) step A_{s+1} - A_s + mp^{s+1}X_s - mp^{s+1}Y_s = 0 mod p^{2r} min slack    0   (v=4, claimed 4) at p=7 r=2 m=1 s=0
+  (J) A'_s = 0 mod p^{2r}                          min slack    0   (v=4, claimed 4) at p=5 r=2 m=1 s=0
+  (J) S1' - (A'_{r-1} - N X^') = 0 mod p^{2r}  [rho' = -H'_j + H'_{pk1} + 2H'_{j+pk1}] min slack    0   (v=2, claimed 2) at p=5 r=1 m=1
+  (J) Sigma_J - [N S1' - N^2 S2'] = 0 mod p^{3r}   min slack    1   (v=4, claimed 3) at p=5 r=1 m=1
+  (J) Sigma_J = 0 mod p^{3r}                       min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  (J) X'_s = 0 mod p^{2r-s-1}                      min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (J) X'_{s,1} = 0 mod p^{2r-s-1}                  min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (J) X'_{s,2} = 0 mod p^{2r-s}                    min slack    2   (v=6, claimed 4) at p=5 r=2 m=2 s=0
+  (J) X'_{s,3} = 0 mod p^{2r-s-1}                  min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (J) X^' = 0 mod p^r                              min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (J) X^'_1 = 0 mod p^r                            min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (J) X^'_2 = 0 mod p^{r+1}                        min slack    2   (v=4, claimed 2) at p=7 r=1 m=2
+  (J) X^'_3 = 0 mod p^r                            min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (J) Y'_s = 0 mod p^{2r-s-1}                      min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0
+  (J) Y'_s split by carry c = 0 mod p^{2r-s-1}     min slack    0   (v=3, claimed 3) at p=5 r=2 m=1 s=0 c=0
+  (J) [diagnostic] X^' with class-K sign pattern = 0 mod p^r min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (J) step A'_{s+1} - A'_s + mp^{s+1}X'_s - mp^{s+1}Y'_s = 0 mod p^{2r} min slack    0   (v=4, claimed 4) at p=5 r=2 m=1 s=0
+  (J) sum'(1/j) K^'_r(j) = 0 mod p^{2r}            min slack    0   (v=4, claimed 4) at p=5 r=2 m=1
+  (J) sum'(1/j^2) K^'_r(j) = 0 mod p^r             min slack    0   (v=2, claimed 2) at p=5 r=2 m=1
+  (K) Sigma_K = 0 mod p^{3r}                       min slack    0   (v=6, claimed 6) at p=5 r=2 m=1
+  X^_3 = X^_2 + series (truncated at 6 terms) mod p^{r+5} min slack    1   (v=8, claimed 7) at p=5 r=2 m=1
+  X^_3 series term t>=1 = 0 mod p^{t+r-1}          min slack    0   (v=1, claimed 1) at p=7 r=1 m=2 t=1
+  X_{s,3} series term t>=1 = 0 mod p^{t+2s'+s}     min slack    0   (v=3, claimed 3) at p=5 r=2 m=2 s=0 t=1

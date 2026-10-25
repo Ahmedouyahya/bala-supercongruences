@@ -1,0 +1,11 @@
+F(n,..,n)=a(n) for n=0..6: True
+F(-N,..,-N)=b(N-1) for N=1..6: True
+b(n), n=0..8: [1, 17, 1549, 215585, 36505501, 6921832517, 1412721479989, 303643747364513, 67815981014552605]
+p=5 r=1: slack b(mp^r)-b(mp^(r-1)) = [1, 0, 0];  slack b(mp^r-1)-b(mp^(r-1)-1) = [0, 0, 0]
+p=5 r=2: slack b(mp^r)-b(mp^(r-1)) = [1, 0, 0];  slack b(mp^r-1)-b(mp^(r-1)-1) = [0, 0, 0]
+p=7 r=1: slack b(mp^r)-b(mp^(r-1)) = [1, 1, 1];  slack b(mp^r-1)-b(mp^(r-1)-1) = [1, 1, 1]
+p=7 r=2: slack b(mp^r)-b(mp^(r-1)) = [1, 1, 1];  slack b(mp^r-1)-b(mp^(r-1)-1) = [1, 1, 1]
+p=11 r=1: slack b(mp^r)-b(mp^(r-1)) = [0, 0, 0];  slack b(mp^r-1)-b(mp^(r-1)-1) = [0, 0, 0]
+p=11 r=2: slack b(mp^r)-b(mp^(r-1)) = [0, 0];  slack b(mp^r-1)-b(mp^(r-1)-1) = [0, 0]
+p=13 r=1: slack b(mp^r)-b(mp^(r-1)) = [0, 0, 0];  slack b(mp^r-1)-b(mp^(r-1)-1) = [0, 0, 0]
+p=13 r=2: slack b(mp^r)-b(mp^(r-1)) = [0, 0];  slack b(mp^r-1)-b(mp^(r-1)-1) = [0, 0]

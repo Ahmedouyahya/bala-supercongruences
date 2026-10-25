@@ -1,0 +1,3 @@
+certificate identity c0 F(n,k) + c1 F(n+1,k) + c2 F(n+2,k) = G(n,k+1) - G(n,k): 980 (n,k), failures 0
+recurrence c0 a(n) + c1 a(n+1) + c2 a(n+2) = 0 for 1 <= n < 200: failures 0
+boundary: G(n,0) = 0 and G(n, n+3) = 0 for n <= 40: True
